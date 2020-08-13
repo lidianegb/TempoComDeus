@@ -98,4 +98,8 @@ extension UIColor {
     static let blueClear = UIColor.rgb(red: 148, green: 223, blue: 235)
     
     static let nota1 = UIColor.rgb(red: 255, green: 242, blue: 242)
+    static let nota2 = UIColor.rgb(red: 230, green: 235, blue: 246)
+    static let nota3 = UIColor.rgb(red: 241, green: 241, blue: 241)
+    static let nota4 = UIColor.rgb(red: 206, green: 224, blue: 213)
+    static let nota5 = UIColor.rgb(red: 255, green: 224, blue: 207)
 }
