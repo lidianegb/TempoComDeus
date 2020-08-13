@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF21B47224E5D25900D44D39 /* NotasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47124E5D25900D44D39 /* NotasModel.swift */; };
+		AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */; };
 		AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200024E557440058FA2C /* AppDelegate.swift */; };
 		AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200224E557440058FA2C /* SceneDelegate.swift */; };
 		AF7F200524E557440058FA2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200424E557440058FA2C /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF21B47124E5D25900D44D39 /* NotasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasModel.swift; sourceTree = "<group>"; };
+		AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF7F1FFD24E557440058FA2C /* tempoComDeusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempoComDeusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7F200024E557440058FA2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF7F200224E557440058FA2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 		AF7F203024E5583B0058FA2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AF21B47124E5D25900D44D39 /* NotasModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				AF7F203C24E583DA0058FA2C /* BackView.swift */,
+				AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,8 +312,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */,
 				AF7F200524E557440058FA2C /* ViewController.swift in Sources */,
 				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
+				AF21B47224E5D25900D44D39 /* NotasModel.swift in Sources */,
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
 				AF7F203524E5589C0058FA2C /* Extensions.swift in Sources */,

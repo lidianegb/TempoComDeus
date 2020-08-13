@@ -11,6 +11,15 @@ import UIKit
 class NotasViewController: UIViewController {
 
     // MARK: Properties
+    var collectionView : UICollectionView?
+    var notas :[Notas] = []{
+        didSet{
+            initialLabel.text = " "
+            collectionView?.reloadData()
+            
+        }
+    }
+    
     let initialLabel: UILabel = {
         var label = UILabel()
         label.text = "Clique + para adicionar uma nova anotação."
@@ -47,6 +56,22 @@ class NotasViewController: UIViewController {
         configureUI()
         addBackground()
         addTextInicial()
+        notas = Notas.mock()
+       
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+         
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        
+        collectionView?.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: "notasCell")
+        
+        collectionView?.backgroundColor = .clear
+      
+        collectionView?.delegate = self
+        collectionView!.dataSource = self
+      
+        view.insertSubview(collectionView ?? UICollectionView(), at: 1)
+        
        // adicionarHeader()
           // Do any additional setup after loading the view.
       }
@@ -76,7 +101,7 @@ class NotasViewController: UIViewController {
           let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         let statusBarHeight = (window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + (navigationController?.navigationBar.frame.height ?? 0 )
           let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
-          view.addSubview(backView)
+          view.insertSubview(backView, at: 0)
           backView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: statusBarHeight, paddingLeft: 8, paddingBottom: tabBarHeight, paddingRight: 8)
       }
     
@@ -94,4 +119,24 @@ class NotasViewController: UIViewController {
      }
 
 
+}
+
+extension NotasViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        notas.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "notasCell", for: indexPath) as! NotasCollectionViewCell
+        myCell.createCell(text: notas[indexPath.row].text, date: notas[indexPath.row].date)
+        return myCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellWidth =  collectionView.frame.width / 2 - 15
+        let cellHeigth = collectionView.frame.height / 5 - 10
+        return CGSize(width: cellWidth, height: cellHeigth)
+    }
+    
 }

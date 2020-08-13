@@ -96,4 +96,6 @@ extension UIColor {
     static let blueBackgroud = UIColor.rgb(red: 228, green: 246, blue: 250)
     static let myGray = UIColor.rgb(red: 201, green: 201, blue: 201)
     static let blueClear = UIColor.rgb(red: 148, green: 223, blue: 235)
+    
+    static let nota1 = UIColor.rgb(red: 255, green: 242, blue: 242)
 }
