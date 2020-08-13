@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icone nota.png",
+      "filename" : "icon_nota_unselected.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icone nota@2x.png",
+      "filename" : "icon_nota_unselected@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icone nota@3x.png",
+      "filename" : "icon_nota_unselected@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

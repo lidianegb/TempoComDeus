@@ -17,6 +17,8 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewControllers()
+        tabBar.backgroundColor = .white
+        
     }
     
     // MARK: Selectors
@@ -30,6 +32,7 @@ class MainTabBarController: UITabBarController {
 
         let notas = NotasViewController()
         let navNotas = templetaNavigationController(image: UIImage(named: "icon_nota_unselected"), rootViewController: notas)
+        
 
         viewControllers = [navBiblia, navNotas]
         

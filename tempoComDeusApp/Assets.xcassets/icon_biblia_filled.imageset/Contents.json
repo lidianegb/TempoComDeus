@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icon_biblia_unselected.png",
+      "filename" : "icon_biblia_filled.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icon_biblia_unselected@2x.png",
+      "filename" : "icon_biblia_filled@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icon_biblia_unselected@3x.png",
+      "filename" : "icon_biblia_filled@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

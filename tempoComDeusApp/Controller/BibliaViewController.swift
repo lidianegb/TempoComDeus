@@ -10,21 +10,30 @@ import UIKit
 
 class BibliaViewController: UIViewController {
 
+    // MARK: Properties
+       
+       
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureUI()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    // MARK: Selectors
+     
+     
+     // MARK: Helpers
+    
+    func configureUI(){
+         
+            view.backgroundColor = .white
+         //   navigationController?.navigationBar.barStyle = .black
+         //   navigationController?.navigationBar.isHidden = true
+            navigationItem.title = "Biblia"
+          // let image = UIImageView(image: UIImage(named: "twitter_logo_blue"))
+        //   image.contentMode = .scaleAspectFit
+        //   navigationItem.titleView = image
+       }
 
 }
