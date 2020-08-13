@@ -15,6 +15,8 @@
 		AF7F200D24E557450058FA2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */; };
 		AF7F201824E557450058FA2C /* tempoComDeusAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F201724E557450058FA2C /* tempoComDeusAppTests.swift */; };
 		AF7F202324E557450058FA2C /* tempoComDeusAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F202224E557450058FA2C /* tempoComDeusAppUITests.swift */; };
+		AF7F203524E5589C0058FA2C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203424E5589C0058FA2C /* Extensions.swift */; };
+		AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203624E5592E0058FA2C /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		AF7F201E24E557450058FA2C /* tempoComDeusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tempoComDeusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7F202224E557450058FA2C /* tempoComDeusAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempoComDeusAppUITests.swift; sourceTree = "<group>"; };
 		AF7F202424E557450058FA2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF7F203424E5589C0058FA2C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AF7F203624E5592E0058FA2C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,10 @@
 		AF7F1FFF24E557440058FA2C /* tempoComDeusApp */ = {
 			isa = PBXGroup;
 			children = (
+				AF7F203324E558770058FA2C /* Utils */,
+				AF7F203024E5583B0058FA2C /* Model */,
+				AF7F203124E558430058FA2C /* View */,
+				AF7F203224E5584F0058FA2C /* Controller */,
 				AF7F200024E557440058FA2C /* AppDelegate.swift */,
 				AF7F200224E557440058FA2C /* SceneDelegate.swift */,
 				AF7F200424E557440058FA2C /* ViewController.swift */,
@@ -126,6 +134,36 @@
 				AF7F202424E557450058FA2C /* Info.plist */,
 			);
 			path = tempoComDeusAppUITests;
+			sourceTree = "<group>";
+		};
+		AF7F203024E5583B0058FA2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AF7F203124E558430058FA2C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF7F203224E5584F0058FA2C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AF7F203624E5592E0058FA2C /* MainTabBarController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AF7F203324E558770058FA2C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AF7F203424E5589C0058FA2C /* Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +299,9 @@
 			files = (
 				AF7F200524E557440058FA2C /* ViewController.swift in Sources */,
 				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
+				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
+				AF7F203524E5589C0058FA2C /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
