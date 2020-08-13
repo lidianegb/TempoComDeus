@@ -11,12 +11,17 @@ import UIKit
 class BibliaViewController: UIViewController {
 
     // MARK: Properties
-       
+  
        
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        addBackground()
+        
+     
+     
+    
         // Do any additional setup after loading the view.
     }
     
@@ -26,14 +31,21 @@ class BibliaViewController: UIViewController {
      // MARK: Helpers
     
     func configureUI(){
-         
-            view.backgroundColor = .white
-         //   navigationController?.navigationBar.barStyle = .black
-         //   navigationController?.navigationBar.isHidden = true
-            navigationItem.title = "Biblia"
-          // let image = UIImageView(image: UIImage(named: "twitter_logo_blue"))
-        //   image.contentMode = .scaleAspectFit
-        //   navigationItem.titleView = image
-       }
+        navigationController?.navigationBar.shadowImage = UIImage()
+        view.backgroundColor = .blueBackgroud
+     //   navigationItem.title = "biblia"
+        navigationController?.navigationBar.isHidden = true
+       
+    }
+    
+    func addBackground(){
+        let backView = BackView()
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
+        view.addSubview(backView)
+        backView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: statusBarHeight, paddingLeft: 8, paddingBottom: tabBarHeight, paddingRight: 8)
+    }
+    
 
 }

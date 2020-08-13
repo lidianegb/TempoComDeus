@@ -91,5 +91,8 @@ extension UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
     
-    static let twitterBlue = UIColor.rgb(red: 29, green: 161, blue: 242)
+    static let blueAct = UIColor.rgb(red: 6, green: 181, blue: 209)
+    static let blueBackgroud = UIColor.rgb(red: 228, green: 246, blue: 250)
+    static let myGray = UIColor.rgb(red: 201, green: 201, blue: 201)
+    static let blueClear = UIColor.rgb(red: 148, green: 223, blue: 235)
 }

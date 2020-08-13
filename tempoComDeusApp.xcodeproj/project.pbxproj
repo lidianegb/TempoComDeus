@@ -19,6 +19,7 @@
 		AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203624E5592E0058FA2C /* MainTabBarController.swift */; };
 		AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibliaViewController.swift */; };
 		AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */; };
+		AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203C24E583DA0058FA2C /* BackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		AF7F203624E5592E0058FA2C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AF7F203824E55B060058FA2C /* BibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaViewController.swift; sourceTree = "<group>"; };
 		AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
+		AF7F203C24E583DA0058FA2C /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		AF7F203124E558430058FA2C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AF7F203C24E583DA0058FA2C /* BackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
 				AF7F203524E5589C0058FA2C /* Extensions.swift in Sources */,
+				AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */,
 				AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */,
 				AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */,
 			);
