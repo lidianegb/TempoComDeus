@@ -25,19 +25,13 @@ class MainTabBarController: UITabBarController {
     // MARK: Helpers
     
     func configureViewControllers(){
-//        let feed = FeedController()
-//        let navFeed = templetaNavigationController(image: UIImage(named: "home_unselected"), rootViewController: feed)
-//
-//        let explore = ExploreController()
-//        let navExplore = templetaNavigationController(image: UIImage(named: "search_unselected"), rootViewController: explore)
-//
-//        let notifications = NotificationsController()
-//        let navNotifications = templetaNavigationController(image: UIImage(named: "like_unselected"), rootViewController: notifications)
-//
-//        let conversations = ConversationsController()
-//        let navConversations = templetaNavigationController(image: UIImage(named: "ic_mail_outline_white_2x-1"), rootViewController: conversations)
-//
-//        viewControllers = [navFeed, navExplore, navNotifications, navConversations]
+        let biblia = BibliaViewController()
+        let navBiblia = templetaNavigationController(image: UIImage(named: "icon_biblia_unselected"), rootViewController: biblia)
+
+        let notas = NotasViewController()
+        let navNotas = templetaNavigationController(image: UIImage(named: "icon_nota_unselected"), rootViewController: notas)
+
+        viewControllers = [navBiblia, navNotas]
         
     }
     
