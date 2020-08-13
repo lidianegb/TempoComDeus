@@ -21,6 +21,24 @@ class NotasViewController: UIViewController {
         return label
     }()
     
+    let leftButton: UIButton = {
+        var button = UIButton()
+        let img = UIImage(named: "plus")
+        button.setImage(img, for: .normal)
+        button.imageView?.contentMode = .scaleToFill
+        button.setDimensions(width: 20, height: 20)
+        return button
+    }()
+    
+    let navTitle: UILabel = {
+        var label = UILabel()
+        label.text = "Anotações"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        return label
+    }()
+    
      let backView = BackView()
          
       // MARK: Lifecycle
@@ -29,6 +47,7 @@ class NotasViewController: UIViewController {
         configureUI()
         addBackground()
         addTextInicial()
+       // adicionarHeader()
           // Do any additional setup after loading the view.
       }
       
@@ -41,10 +60,11 @@ class NotasViewController: UIViewController {
     
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
-        navigationController?.navigationBar.isHidden = true
-      
+        navigationItem.title = "Anotações"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        navigationItem.rightBarButtonItem?.tintColor = .blueAct
     }
-    
+
     func addTextInicial(){
         backView.addSubview(initialLabel)
         initialLabel.anchor(left: backView.leftAnchor, right: backView.rightAnchor,paddingLeft: 16, paddingRight: 16)
@@ -54,11 +74,24 @@ class NotasViewController: UIViewController {
     func addBackground(){
          
           let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-          let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let statusBarHeight = (window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + (navigationController?.navigationBar.frame.height ?? 0 )
           let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
           view.addSubview(backView)
           backView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: statusBarHeight, paddingLeft: 8, paddingBottom: tabBarHeight, paddingRight: 8)
       }
+    
+    func adicionarHeader(){
+          
+          let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+          let top: CGFloat = window?.safeAreaInsets.top ?? 44
+          
+         let stackView = UIStackView(arrangedSubviews: [UIView(), navTitle, leftButton])
+         stackView.distribution = .equalCentering
+       
+         
+         backView.addSubview(stackView)
+        stackView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: top + 8, paddingLeft: 0, paddingRight: 24)
+     }
 
 
 }
