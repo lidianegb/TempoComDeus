@@ -18,11 +18,7 @@ class BibliaViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         addBackground()
-        
-     
-     
     
-        // Do any additional setup after loading the view.
     }
     
     // MARK: Selectors
@@ -33,15 +29,15 @@ class BibliaViewController: UIViewController {
     func configureUI(){
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
-     //   navigationItem.title = "biblia"
-        navigationController?.navigationBar.isHidden = true
+        navigationItem.title = "biblia"
+      //  navigationController?.navigationBar.isHidden = true
        
     }
     
     func addBackground(){
         let backView = BackView()
         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let statusBarHeight = (window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + (navigationController?.navigationBar.frame.height ?? 0)
         let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
         view.addSubview(backView)
         backView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: statusBarHeight, paddingLeft: 8, paddingBottom: tabBarHeight, paddingRight: 8)
