@@ -1,0 +1,21 @@
+//
+//  BackView.swift
+//  tempoComDeusApp
+//
+//  Created by Lidiane Gomes Barbosa on 13/08/20.
+//  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
+//
+
+import UIKit
+
+class BackView: UIView {
+
+    /*
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+    }
+    */
+
+}
