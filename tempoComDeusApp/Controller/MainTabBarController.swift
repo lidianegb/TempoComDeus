@@ -11,13 +11,13 @@ import UIKit
 class MainTabBarController: UITabBarController {
 
     // MARK: Properties
-    var heightNav: CGFloat?
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewControllers()
         configureUI()
+     
     }
     
     // MARK: Selectors
