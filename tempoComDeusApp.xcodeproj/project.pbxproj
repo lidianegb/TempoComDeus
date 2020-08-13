@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200024E557440058FA2C /* AppDelegate.swift */; };
+		AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200224E557440058FA2C /* SceneDelegate.swift */; };
+		AF7F200524E557440058FA2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200424E557440058FA2C /* ViewController.swift */; };
+		AF7F200824E557440058FA2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200624E557440058FA2C /* Main.storyboard */; };
+		AF7F200A24E557450058FA2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200924E557450058FA2C /* Assets.xcassets */; };
+		AF7F200D24E557450058FA2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */; };
+		AF7F201824E557450058FA2C /* tempoComDeusAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F201724E557450058FA2C /* tempoComDeusAppTests.swift */; };
+		AF7F202324E557450058FA2C /* tempoComDeusAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F202224E557450058FA2C /* tempoComDeusAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF7F201424E557450058FA2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF7F1FF524E557440058FA2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF7F1FFC24E557440058FA2C;
+			remoteInfo = tempoComDeusApp;
+		};
+		AF7F201F24E557450058FA2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF7F1FF524E557440058FA2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF7F1FFC24E557440058FA2C;
+			remoteInfo = tempoComDeusApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AF7F1FFD24E557440058FA2C /* tempoComDeusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempoComDeusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF7F200024E557440058FA2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AF7F200224E557440058FA2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AF7F200424E557440058FA2C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF7F200724E557440058FA2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AF7F200924E557450058FA2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF7F200C24E557450058FA2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF7F200E24E557450058FA2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF7F201324E557450058FA2C /* tempoComDeusAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tempoComDeusAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF7F201724E557450058FA2C /* tempoComDeusAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempoComDeusAppTests.swift; sourceTree = "<group>"; };
+		AF7F201924E557450058FA2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF7F201E24E557450058FA2C /* tempoComDeusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tempoComDeusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF7F202224E557450058FA2C /* tempoComDeusAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempoComDeusAppUITests.swift; sourceTree = "<group>"; };
+		AF7F202424E557450058FA2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF7F1FFA24E557440058FA2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF7F201024E557450058FA2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF7F201B24E557450058FA2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF7F1FF424E557440058FA2C = {
+			isa = PBXGroup;
+			children = (
+				AF7F1FFF24E557440058FA2C /* tempoComDeusApp */,
+				AF7F201624E557450058FA2C /* tempoComDeusAppTests */,
+				AF7F202124E557450058FA2C /* tempoComDeusAppUITests */,
+				AF7F1FFE24E557440058FA2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AF7F1FFE24E557440058FA2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF7F1FFD24E557440058FA2C /* tempoComDeusApp.app */,
+				AF7F201324E557450058FA2C /* tempoComDeusAppTests.xctest */,
+				AF7F201E24E557450058FA2C /* tempoComDeusAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF7F1FFF24E557440058FA2C /* tempoComDeusApp */ = {
+			isa = PBXGroup;
+			children = (
+				AF7F200024E557440058FA2C /* AppDelegate.swift */,
+				AF7F200224E557440058FA2C /* SceneDelegate.swift */,
+				AF7F200424E557440058FA2C /* ViewController.swift */,
+				AF7F200624E557440058FA2C /* Main.storyboard */,
+				AF7F200924E557450058FA2C /* Assets.xcassets */,
+				AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */,
+				AF7F200E24E557450058FA2C /* Info.plist */,
+			);
+			path = tempoComDeusApp;
+			sourceTree = "<group>";
+		};
+		AF7F201624E557450058FA2C /* tempoComDeusAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				AF7F201724E557450058FA2C /* tempoComDeusAppTests.swift */,
+				AF7F201924E557450058FA2C /* Info.plist */,
+			);
+			path = tempoComDeusAppTests;
+			sourceTree = "<group>";
+		};
+		AF7F202124E557450058FA2C /* tempoComDeusAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AF7F202224E557450058FA2C /* tempoComDeusAppUITests.swift */,
+				AF7F202424E557450058FA2C /* Info.plist */,
+			);
+			path = tempoComDeusAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF7F1FFC24E557440058FA2C /* tempoComDeusApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF7F202724E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusApp" */;
+			buildPhases = (
+				AF7F1FF924E557440058FA2C /* Sources */,
+				AF7F1FFA24E557440058FA2C /* Frameworks */,
+				AF7F1FFB24E557440058FA2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tempoComDeusApp;
+			productName = tempoComDeusApp;
+			productReference = AF7F1FFD24E557440058FA2C /* tempoComDeusApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF7F201224E557450058FA2C /* tempoComDeusAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF7F202A24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppTests" */;
+			buildPhases = (
+				AF7F200F24E557450058FA2C /* Sources */,
+				AF7F201024E557450058FA2C /* Frameworks */,
+				AF7F201124E557450058FA2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF7F201524E557450058FA2C /* PBXTargetDependency */,
+			);
+			name = tempoComDeusAppTests;
+			productName = tempoComDeusAppTests;
+			productReference = AF7F201324E557450058FA2C /* tempoComDeusAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AF7F201D24E557450058FA2C /* tempoComDeusAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF7F202D24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppUITests" */;
+			buildPhases = (
+				AF7F201A24E557450058FA2C /* Sources */,
+				AF7F201B24E557450058FA2C /* Frameworks */,
+				AF7F201C24E557450058FA2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF7F202024E557450058FA2C /* PBXTargetDependency */,
+			);
+			name = tempoComDeusAppUITests;
+			productName = tempoComDeusAppUITests;
+			productReference = AF7F201E24E557450058FA2C /* tempoComDeusAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF7F1FF524E557440058FA2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Lidiane Gomes Barbosa";
+				TargetAttributes = {
+					AF7F1FFC24E557440058FA2C = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					AF7F201224E557450058FA2C = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = AF7F1FFC24E557440058FA2C;
+					};
+					AF7F201D24E557450058FA2C = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = AF7F1FFC24E557440058FA2C;
+					};
+				};
+			};
+			buildConfigurationList = AF7F1FF824E557440058FA2C /* Build configuration list for PBXProject "tempoComDeusApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF7F1FF424E557440058FA2C;
+			productRefGroup = AF7F1FFE24E557440058FA2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF7F1FFC24E557440058FA2C /* tempoComDeusApp */,
+				AF7F201224E557450058FA2C /* tempoComDeusAppTests */,
+				AF7F201D24E557450058FA2C /* tempoComDeusAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF7F1FFB24E557440058FA2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF7F200D24E557450058FA2C /* LaunchScreen.storyboard in Resources */,
+				AF7F200A24E557450058FA2C /* Assets.xcassets in Resources */,
+				AF7F200824E557440058FA2C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF7F201124E557450058FA2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF7F201C24E557450058FA2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF7F1FF924E557440058FA2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF7F200524E557440058FA2C /* ViewController.swift in Sources */,
+				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
+				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF7F200F24E557450058FA2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF7F201824E557450058FA2C /* tempoComDeusAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF7F201A24E557450058FA2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF7F202324E557450058FA2C /* tempoComDeusAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF7F201524E557450058FA2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF7F1FFC24E557440058FA2C /* tempoComDeusApp */;
+			targetProxy = AF7F201424E557450058FA2C /* PBXContainerItemProxy */;
+		};
+		AF7F202024E557450058FA2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF7F1FFC24E557440058FA2C /* tempoComDeusApp */;
+			targetProxy = AF7F201F24E557450058FA2C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AF7F200624E557440058FA2C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF7F200724E557440058FA2C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF7F200C24E557450058FA2C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AF7F202524E557450058FA2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AF7F202624E557450058FA2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF7F202824E557450058FA2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T373QFGJQA;
+				INFOPLIST_FILE = tempoComDeusApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF7F202924E557450058FA2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T373QFGJQA;
+				INFOPLIST_FILE = tempoComDeusApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AF7F202B24E557450058FA2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T373QFGJQA;
+				INFOPLIST_FILE = tempoComDeusAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tempoComDeusApp.app/tempoComDeusApp";
+			};
+			name = Debug;
+		};
+		AF7F202C24E557450058FA2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T373QFGJQA;
+				INFOPLIST_FILE = tempoComDeusAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tempoComDeusApp.app/tempoComDeusApp";
+			};
+			name = Release;
+		};
+		AF7F202E24E557450058FA2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T373QFGJQA;
+				INFOPLIST_FILE = tempoComDeusAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tempoComDeusApp;
+			};
+			name = Debug;
+		};
+		AF7F202F24E557450058FA2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T373QFGJQA;
+				INFOPLIST_FILE = tempoComDeusAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tempoComDeusApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF7F1FF824E557440058FA2C /* Build configuration list for PBXProject "tempoComDeusApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF7F202524E557450058FA2C /* Debug */,
+				AF7F202624E557450058FA2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF7F202724E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF7F202824E557450058FA2C /* Debug */,
+				AF7F202924E557450058FA2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF7F202A24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF7F202B24E557450058FA2C /* Debug */,
+				AF7F202C24E557450058FA2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF7F202D24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF7F202E24E557450058FA2C /* Debug */,
+				AF7F202F24E557450058FA2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF7F1FF524E557440058FA2C /* Project object */;
+}
