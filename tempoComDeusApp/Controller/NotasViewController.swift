@@ -128,7 +128,27 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "notasCell", for: indexPath) as! NotasCollectionViewCell
+        
         myCell.createCell(text: notas[indexPath.row].text, date: notas[indexPath.row].date)
+        
+        switch indexPath.row {
+        case 1:
+            myCell.wrapperView.backgroundColor = .nota1
+        case 2:
+            myCell.wrapperView.backgroundColor = .nota2
+        case 3:
+            myCell.wrapperView.backgroundColor = .nota3
+        case 4:
+            myCell.wrapperView.backgroundColor = .nota4
+        case 5:
+            myCell.wrapperView.backgroundColor = .nota5
+        default:
+            myCell.wrapperView.backgroundColor = .nota1
+        }
+        
+        
+        
+     
         return myCell
     }
     

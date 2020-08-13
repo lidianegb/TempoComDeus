@@ -30,10 +30,11 @@ class NotasCollectionViewCell: UICollectionViewCell {
         addTextPreview(text: text)
         addButtonDelete()
         addTextDate(text: date)
+        
     }
     
     private func addWrapperView(){
-        wrapperView.backgroundColor = .nota1
+        wrapperView.backgroundColor = .nota4
         contentView.addSubview(wrapperView)
         wrapperView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
         wrapperView.layer.masksToBounds = true

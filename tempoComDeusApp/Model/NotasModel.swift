@@ -11,7 +11,7 @@ import Foundation
 struct Notas{
     let date :String
     let text: String
-    
+
     
     init(text: String) {
         self.text = text
@@ -21,6 +21,7 @@ struct Notas{
         dateFormatter.dateFormat = "MMMM"
         let monthString = dateFormatter.string(from: date)
         self.date = "20 " + monthString
+  
         
     }
     
