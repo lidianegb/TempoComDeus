@@ -91,7 +91,6 @@ class NotasViewController: UIViewController {
         view.backgroundColor = .blueBackgroud
         navigationItem.title = "Anotações"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-        navigationItem.rightBarButtonItem?.tintColor = .blueAct
     }
 
     func addTextInicial(){
@@ -144,6 +143,13 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let cellWidth =  collectionView.frame.width / 2 - 15
         let cellHeigth = collectionView.frame.height / 5 - 10
         return CGSize(width: cellWidth, height: cellHeigth)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let visualizarNota = VisualizarNotaViewController()
+            visualizarNota.nota = notas[indexPath.row]
+        visualizarNota.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(visualizarNota, animated: true)
     }
     
 }

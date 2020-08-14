@@ -30,8 +30,6 @@ class BibliaViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
         navigationItem.title = "biblia"
-      //  navigationController?.navigationBar.isHidden = true
-       
     }
     
     func addBackground(){

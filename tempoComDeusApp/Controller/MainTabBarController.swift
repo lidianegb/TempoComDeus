@@ -31,7 +31,7 @@ class MainTabBarController: UITabBarController {
         tabBar.barStyle = .black
         tabBar.unselectedItemTintColor = .blueClear
         tabBar.barTintColor = .blueBackgroud
-        tabBar.tintColor = .blueAct
+
     }
     func configureViewControllers(){
         let biblia = BibliaViewController()

@@ -23,6 +23,8 @@
 		AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */; };
 		AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203C24E583DA0058FA2C /* BackView.swift */; };
 		AFC2A31F24E6B8AA001A266D /* NotaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A31E24E6B8AA001A266D /* NotaService.swift */; };
+		AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */; };
+		AFC2A32424E6CC59001A266D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32324E6CC59001A266D /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
 		AF7F203C24E583DA0058FA2C /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
 		AFC2A31E24E6B8AA001A266D /* NotaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaService.swift; sourceTree = "<group>"; };
+		AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
+		AFC2A32324E6CC59001A266D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,7 @@
 				AF7F203624E5592E0058FA2C /* MainTabBarController.swift */,
 				AF7F203824E55B060058FA2C /* BibliaViewController.swift */,
 				AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */,
+				AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				AF7F203424E5589C0058FA2C /* Extensions.swift */,
+				AFC2A32324E6CC59001A266D /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -327,6 +333,8 @@
 				AF7F200524E557440058FA2C /* ViewController.swift in Sources */,
 				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
 				AF21B47224E5D25900D44D39 /* NotaModel.swift in Sources */,
+				AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */,
+				AFC2A32424E6CC59001A266D /* Utils.swift in Sources */,
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
 				AF7F203524E5589C0058FA2C /* Extensions.swift in Sources */,
