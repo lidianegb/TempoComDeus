@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class NotasCollectionViewCell: UICollectionViewCell {
 
     var nota:Nota?{
@@ -24,6 +26,7 @@ class NotasCollectionViewCell: UICollectionViewCell {
     let labelDate = UILabel()
     let buttonDelete = UIButton()
     
+ 
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -71,5 +74,6 @@ class NotasCollectionViewCell: UICollectionViewCell {
        wrapperView.addSubview(labelDate)
         labelDate.anchor(top: labelPreview.bottomAnchor, left: wrapperView.leftAnchor, bottom: wrapperView.bottomAnchor, right: buttonDelete.leftAnchor, paddingTop: 10, paddingLeft: 12, paddingBottom: 20, paddingRight: 12)
     }
+    
     
 }

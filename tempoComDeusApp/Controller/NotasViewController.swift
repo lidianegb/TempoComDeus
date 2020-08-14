@@ -11,6 +11,7 @@ import UIKit
 class NotasViewController: UIViewController {
 
     // MARK: Properties
+    
     let cellId = "CellId"
     var collectionView : UICollectionView?
     let backView = BackView()
@@ -24,6 +25,7 @@ class NotasViewController: UIViewController {
             }
         }
     }
+    
     
     let initialLabel: UILabel = {
         var label = UILabel()
@@ -69,8 +71,7 @@ class NotasViewController: UIViewController {
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         
         collectionView?.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.layer.backgroundColor = UIColor.purple.cgColor
-        
+         
        collectionView?.backgroundColor = .clear
       
         collectionView?.delegate = self
@@ -120,6 +121,14 @@ class NotasViewController: UIViewController {
          backView.addSubview(stackView)
         stackView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: top + 8, paddingLeft: 0, paddingRight: 24)
      }
+    
+    func getHeight() -> (CGFloat, CGFloat, CGFloat){
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+              let statusBarHeigth = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+              let navBarHeigth = navigationController?.navigationBar.frame.size.height ?? 0
+              let tabBarHeigth = tabBarController?.tabBar.frame.size.height ?? 0
+        return (statusBarHeigth, navBarHeigth, tabBarHeigth)
+    }
 
 
 }
@@ -146,10 +155,16 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let visualizarNota = VisualizarNotaViewController()
-            visualizarNota.nota = notas[indexPath.row]
+        
+        let visualizarNota = VisualizarNotaViewController()
+        visualizarNota.nota = notas[indexPath.row]
+        
         visualizarNota.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(visualizarNota, animated: true)
     }
     
+
+    
 }
+
+
