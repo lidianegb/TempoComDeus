@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol NotasCellDelegate: class{
+    func deleteCell(cell: NotasCollectionViewCell)
+}
 
+class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
 
-class NotasCollectionViewCell: UICollectionViewCell {
+    weak var viewController: UIViewController?
+    weak var delegate: NotasCellDelegate?
 
     var nota:Nota?{
        didSet{
@@ -64,6 +69,7 @@ class NotasCollectionViewCell: UICollectionViewCell {
         buttonDelete.setDimensions(width: 16, height: 17)
         wrapperView.addSubview(buttonDelete)
         buttonDelete.anchor( top: labelPreview.bottomAnchor, bottom: wrapperView.bottomAnchor, right: wrapperView.rightAnchor, paddingTop: 10, paddingBottom: 20, paddingRight: 12)
+        buttonDelete.addTarget(self, action: #selector(displayActionSheet), for: .touchUpInside)
     }
     
     private func addTextDate(){
@@ -75,5 +81,18 @@ class NotasCollectionViewCell: UICollectionViewCell {
         labelDate.anchor(top: labelPreview.bottomAnchor, left: wrapperView.leftAnchor, bottom: wrapperView.bottomAnchor, right: buttonDelete.leftAnchor, paddingTop: 10, paddingLeft: 12, paddingBottom: 20, paddingRight: 12)
     }
     
+   @objc func displayActionSheet(){
+        let menu = UIAlertController(title: nil, message: "Deletar nota?", preferredStyle: .actionSheet)
+        let deleteAtion = UIAlertAction(title: "Deletar", style: .destructive, handler: { action in
+            self.delegate?.deleteCell(cell: self)
+            }
+        )
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
     
+        menu.addAction(deleteAtion)
+        menu.addAction(cancelAction)
+        viewController?.present(menu, animated: true, completion: nil)
+  
+   }
 }

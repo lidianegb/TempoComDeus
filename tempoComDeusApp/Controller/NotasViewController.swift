@@ -19,9 +19,9 @@ class NotasViewController: UIViewController {
     var notas:[Nota] = [] {
         didSet{
             if notas.isEmpty{
-                initialLabel.text = " "
-            }else{
                 initialLabel.text = "Clique + para adicionar uma nova anotação."
+            }else{
+                initialLabel.text = " "
             }
         }
     }
@@ -29,7 +29,6 @@ class NotasViewController: UIViewController {
     
     let initialLabel: UILabel = {
         var label = UILabel()
-        label.text = "Clique + para adicionar uma nova anotação."
         label.textColor = .myGray
         label.font = .systemFont(ofSize: 17)
         label.numberOfLines = 0
@@ -85,6 +84,7 @@ class NotasViewController: UIViewController {
        
        
        // MARK: Helpers
+    
       
       func configureUI(){
     
@@ -92,6 +92,7 @@ class NotasViewController: UIViewController {
         view.backgroundColor = .blueBackgroud
         navigationItem.title = "Anotações"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+    
     }
 
     func addTextInicial(){
@@ -129,7 +130,7 @@ class NotasViewController: UIViewController {
               let tabBarHeigth = tabBarController?.tabBar.frame.size.height ?? 0
         return (statusBarHeigth, navBarHeigth, tabBarHeigth)
     }
-
+ 
 
 }
 
@@ -143,7 +144,8 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         myCell.nota = notas[indexPath.row]
         myCell.createCell()
-
+        myCell.viewController = self
+        myCell.delegate = self
         return myCell
     }
     
@@ -162,9 +164,18 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
         visualizarNota.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(visualizarNota, animated: true)
     }
-    
+
 
     
 }
-
+extension NotasViewController: NotasCellDelegate{
+    func deleteCell(cell: NotasCollectionViewCell) {
+        if let indexPath = collectionView?.indexPath(for: cell){
+            notas.remove(at: indexPath.row)
+            collectionView?.deleteItems(at: [indexPath])
+        }
+    }
+    
+    
+}
 
