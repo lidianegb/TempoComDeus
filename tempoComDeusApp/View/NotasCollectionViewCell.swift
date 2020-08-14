@@ -10,6 +10,15 @@ import UIKit
 
 class NotasCollectionViewCell: UICollectionViewCell {
 
+    var nota:Nota?{
+       didSet{
+           if let nota = nota{
+            labelPreview.text = nota.text
+            labelDate.text = nota.date
+            wrapperView.backgroundColor = UIColor.getColor(name: nota.color)
+           }
+       }
+    }
     let wrapperView = UIView()
     let labelPreview = UILabel()
     let labelDate = UILabel()
@@ -22,29 +31,24 @@ class NotasCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func createCell(text:String, date:String){
-        labelPreview.text = text
-        labelDate.text = date
-        
+    func createCell(){
         addWrapperView()
-        addTextPreview(text: text)
+        addTextPreview()
         addButtonDelete()
-        addTextDate(text: date)
+        addTextDate()
         
     }
     
     private func addWrapperView(){
-        wrapperView.backgroundColor = .nota4
         contentView.addSubview(wrapperView)
         wrapperView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
         wrapperView.layer.masksToBounds = true
         wrapperView.layer.cornerRadius = 8
     }
     
-    private func addTextPreview(text:String){
+    private func addTextPreview(){
         labelPreview.font = UIFont.systemFont(ofSize: 17)
         labelPreview.textAlignment = .left
-        labelPreview.text = text
         labelPreview.textColor = .black
         labelPreview.numberOfLines = 2
         wrapperView.addSubview(labelPreview)
@@ -59,10 +63,9 @@ class NotasCollectionViewCell: UICollectionViewCell {
         buttonDelete.anchor( top: labelPreview.bottomAnchor, bottom: wrapperView.bottomAnchor, right: wrapperView.rightAnchor, paddingTop: 10, paddingBottom: 20, paddingRight: 12)
     }
     
-    private func addTextDate(text:String){
+    private func addTextDate(){
         labelDate.font = UIFont.systemFont(ofSize: 14)
        labelDate.textAlignment = .left
-       labelDate.text = text
        labelDate.textColor = .systemGray
        labelDate.numberOfLines = 1
        wrapperView.addSubview(labelDate)

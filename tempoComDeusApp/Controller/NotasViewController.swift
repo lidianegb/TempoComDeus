@@ -11,12 +11,17 @@ import UIKit
 class NotasViewController: UIViewController {
 
     // MARK: Properties
+    let cellId = "CellId"
     var collectionView : UICollectionView?
-    var notas :[Notas] = []{
+    let backView = BackView()
+           
+    var notas:[Nota] = [] {
         didSet{
-            initialLabel.text = " "
-            collectionView?.reloadData()
-            
+            if notas.isEmpty{
+                initialLabel.text = " "
+            }else{
+                initialLabel.text = "Clique + para adicionar uma nova anotação."
+            }
         }
     }
     
@@ -48,32 +53,31 @@ class NotasViewController: UIViewController {
         return label
     }()
     
-     let backView = BackView()
-         
+   
       // MARK: Lifecycle
       override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         addBackground()
         addTextInicial()
-        notas = Notas.mock()
        
+        notas = NotaService.shared.buscaNotas()
+        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
          
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         
-        collectionView?.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: "notasCell")
+        collectionView?.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.layer.backgroundColor = UIColor.purple.cgColor
         
-        collectionView?.backgroundColor = .clear
+       collectionView?.backgroundColor = .clear
       
         collectionView?.delegate = self
         collectionView!.dataSource = self
       
         view.insertSubview(collectionView ?? UICollectionView(), at: 1)
         
-       // adicionarHeader()
-          // Do any additional setup after loading the view.
       }
       
       // MARK: Selectors
@@ -127,28 +131,11 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "notasCell", for: indexPath) as! NotasCollectionViewCell
+         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! NotasCollectionViewCell
         
-        myCell.createCell(text: notas[indexPath.row].text, date: notas[indexPath.row].date)
-        
-        switch indexPath.row {
-        case 1:
-            myCell.wrapperView.backgroundColor = .nota1
-        case 2:
-            myCell.wrapperView.backgroundColor = .nota2
-        case 3:
-            myCell.wrapperView.backgroundColor = .nota3
-        case 4:
-            myCell.wrapperView.backgroundColor = .nota4
-        case 5:
-            myCell.wrapperView.backgroundColor = .nota5
-        default:
-            myCell.wrapperView.backgroundColor = .nota1
-        }
-        
-        
-        
-     
+        myCell.nota = notas[indexPath.row]
+        myCell.createCell()
+
         return myCell
     }
     

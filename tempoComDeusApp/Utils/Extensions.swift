@@ -102,4 +102,22 @@ extension UIColor {
     static let nota3 = UIColor.rgb(red: 241, green: 241, blue: 241)
     static let nota4 = UIColor.rgb(red: 206, green: 224, blue: 213)
     static let nota5 = UIColor.rgb(red: 255, green: 224, blue: 207)
+    
+    
+    static func getColor(name:String) -> UIColor{
+        switch name {
+        case "nota1":
+            return .nota1
+        case "nota2":
+            return .nota2
+        case "nota3":
+            return .nota3
+        case "nota4":
+            return .nota4
+        case "nota5":
+            return .nota5
+        default:
+            return .nota1
+        }
+    }
 }

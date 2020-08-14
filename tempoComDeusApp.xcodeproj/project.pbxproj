@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF21B47224E5D25900D44D39 /* NotasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47124E5D25900D44D39 /* NotasModel.swift */; };
+		AF21B47224E5D25900D44D39 /* NotaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47124E5D25900D44D39 /* NotaModel.swift */; };
 		AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */; };
 		AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200024E557440058FA2C /* AppDelegate.swift */; };
 		AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200224E557440058FA2C /* SceneDelegate.swift */; };
@@ -22,6 +22,7 @@
 		AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibliaViewController.swift */; };
 		AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */; };
 		AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203C24E583DA0058FA2C /* BackView.swift */; };
+		AFC2A31F24E6B8AA001A266D /* NotaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A31E24E6B8AA001A266D /* NotaService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AF21B47124E5D25900D44D39 /* NotasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasModel.swift; sourceTree = "<group>"; };
+		AF21B47124E5D25900D44D39 /* NotaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaModel.swift; sourceTree = "<group>"; };
 		AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCollectionViewCell.swift; sourceTree = "<group>"; };
-		AF7F1FFD24E557440058FA2C /* tempoComDeusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempoComDeusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF7F1FFD24E557440058FA2C /* tempo com Deus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tempo com Deus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7F200024E557440058FA2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF7F200224E557440058FA2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AF7F200424E557440058FA2C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		AF7F203824E55B060058FA2C /* BibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaViewController.swift; sourceTree = "<group>"; };
 		AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
 		AF7F203C24E583DA0058FA2C /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
+		AFC2A31E24E6B8AA001A266D /* NotaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,7 @@
 		AF7F1FFE24E557440058FA2C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AF7F1FFD24E557440058FA2C /* tempoComDeusApp.app */,
+				AF7F1FFD24E557440058FA2C /* tempo com Deus.app */,
 				AF7F201324E557450058FA2C /* tempoComDeusAppTests.xctest */,
 				AF7F201E24E557450058FA2C /* tempoComDeusAppUITests.xctest */,
 			);
@@ -124,6 +126,7 @@
 				AF7F200924E557450058FA2C /* Assets.xcassets */,
 				AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */,
 				AF7F200E24E557450058FA2C /* Info.plist */,
+				AFC2A32024E6B8B3001A266D /* Service */,
 			);
 			path = tempoComDeusApp;
 			sourceTree = "<group>";
@@ -149,7 +152,7 @@
 		AF7F203024E5583B0058FA2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AF21B47124E5D25900D44D39 /* NotasModel.swift */,
+				AF21B47124E5D25900D44D39 /* NotaModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +184,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		AFC2A32024E6B8B3001A266D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AFC2A31E24E6B8AA001A266D /* NotaService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -198,7 +209,7 @@
 			);
 			name = tempoComDeusApp;
 			productName = tempoComDeusApp;
-			productReference = AF7F1FFD24E557440058FA2C /* tempoComDeusApp.app */;
+			productReference = AF7F1FFD24E557440058FA2C /* tempo com Deus.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AF7F201224E557450058FA2C /* tempoComDeusAppTests */ = {
@@ -315,11 +326,12 @@
 				AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */,
 				AF7F200524E557440058FA2C /* ViewController.swift in Sources */,
 				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
-				AF21B47224E5D25900D44D39 /* NotasModel.swift in Sources */,
+				AF21B47224E5D25900D44D39 /* NotaModel.swift in Sources */,
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
 				AF7F203524E5589C0058FA2C /* Extensions.swift in Sources */,
 				AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */,
+				AFC2A31F24E6B8AA001A266D /* NotaService.swift in Sources */,
 				AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */,
 				AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */,
 			);
@@ -502,7 +514,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "tempo com Deus";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -520,7 +532,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "tempo com Deus";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
