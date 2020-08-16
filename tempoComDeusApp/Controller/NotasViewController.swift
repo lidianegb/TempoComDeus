@@ -35,24 +35,7 @@ class NotasViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    
-    let leftButton: UIButton = {
-        var button = UIButton()
-        let img = UIImage(named: "plus")
-        button.setImage(img, for: .normal)
-        button.imageView?.contentMode = .scaleToFill
-        button.setDimensions(width: 20, height: 20)
-        return button
-    }()
-    
-    let navTitle: UILabel = {
-        var label = UILabel()
-        label.text = "Anotações"
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 20)
-        label.textAlignment = .center
-        return label
-    }()
+
     
    
       // MARK: Lifecycle
@@ -82,6 +65,13 @@ class NotasViewController: UIViewController {
       
       // MARK: Selectors
        
+    @objc func addNota(){
+        
+          let novaNota = NovaNota()
+        novaNota.nota = Nota(text: "Vazio", color: "nota1")
+        novaNota.modalPresentationStyle = .fullScreen
+        self.present(novaNota, animated: true)
+    }
        
        // MARK: Helpers
     
@@ -91,7 +81,7 @@ class NotasViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
         navigationItem.title = "Anotações"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNota))
     
     }
 
@@ -109,29 +99,6 @@ class NotasViewController: UIViewController {
           view.insertSubview(backView, at: 0)
           backView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: statusBarHeight, paddingLeft: 8, paddingBottom: tabBarHeight, paddingRight: 8)
       }
-    
-    func adicionarHeader(){
-          
-          let window = UIApplication.shared.windows.first { $0.isKeyWindow }
-          let top: CGFloat = window?.safeAreaInsets.top ?? 44
-          
-         let stackView = UIStackView(arrangedSubviews: [UIView(), navTitle, leftButton])
-         stackView.distribution = .equalCentering
-       
-         
-         backView.addSubview(stackView)
-        stackView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: top + 8, paddingLeft: 0, paddingRight: 24)
-     }
-    
-    func getHeight() -> (CGFloat, CGFloat, CGFloat){
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-              let statusBarHeigth = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-              let navBarHeigth = navigationController?.navigationBar.frame.size.height ?? 0
-              let tabBarHeigth = tabBarController?.tabBar.frame.size.height ?? 0
-        return (statusBarHeigth, navBarHeigth, tabBarHeigth)
-    }
- 
-
 }
 
 extension NotasViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
@@ -160,7 +127,6 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         let visualizarNota = VisualizarNotaViewController()
         visualizarNota.nota = notas[indexPath.row]
-        
         visualizarNota.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(visualizarNota, animated: true)
     }
@@ -178,4 +144,3 @@ extension NotasViewController: NotasCellDelegate{
     
     
 }
-
