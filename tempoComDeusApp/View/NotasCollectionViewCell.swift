@@ -20,11 +20,9 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     var nota:Nota?{
        didSet{
            if let nota = nota{
-            labelPreview.text = nota.text
+            labelPreview.text = nota.body
             labelDate.text = "\(String(describing: nota.date))"
-            if let cor = nota.color{
-                wrapperView.backgroundColor = UIColor.getColor(name: cor)
-            }
+            wrapperView.backgroundColor = UIColor.getColor(name: nota.color)
            }
        }
     }

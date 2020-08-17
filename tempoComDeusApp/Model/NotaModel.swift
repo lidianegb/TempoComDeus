@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct Nota : Codable{
+class Nota : Codable{
     var id: UUID
-    let text: String?
-    let date : TimeInterval?
-    let color: String?
+    let body: String
+    let date : Date
+    let color: String
     
-    init(id: UUID = UUID(), text: String? = nil, color: String? = nil, date: TimeInterval = Date().timeIntervalSince1970) {
-        self.id = id
-        self.text = text
-        self.color = color
-        self.date  = date
+    required init() {
+        self.id = UUID()
+        self.body = "vazio"
+        self.color = "nota1"
+        self.date  = Date()
     }
     private enum CodingKeys: String, CodingKey{
-           case id, text, date, color
+           case id, body, date, color
     }
     
 }

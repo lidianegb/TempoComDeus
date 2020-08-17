@@ -68,7 +68,7 @@ class NotasViewController: UIViewController {
     @objc func addNota(){
         
           let novaNota = NovaNota()
-        novaNota.nota = Nota(text: "Vazio", color: "nota1")
+        novaNota.nota = Nota()
         novaNota.modalPresentationStyle = .fullScreen
         self.present(novaNota, animated: true)
     }

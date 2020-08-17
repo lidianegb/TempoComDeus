@@ -125,10 +125,6 @@ class NovaNota: UIViewController, UITextViewDelegate{
             }
         }
         @objc func salvar(){
-            let nota = Nota(text: textView.text, color: backView.backgroundColor?.description ?? " ")
-            print(nota.color)
-            print(nota.date)
-            print(nota.text)
             self.dismiss(animated: true, completion: nil)
         }
     

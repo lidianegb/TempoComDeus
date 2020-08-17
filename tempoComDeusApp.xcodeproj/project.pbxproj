@@ -26,6 +26,8 @@
 		AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */; };
 		AFC2A32424E6CC59001A266D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32324E6CC59001A266D /* Utils.swift */; };
 		AFC2A32624E87A13001A266D /* NovaNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* NovaNotaViewController.swift */; };
+		AFF120EB24EAB6A1000A9B12 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EA24EAB6A1000A9B12 /* Repository.swift */; };
+		AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
 		AFC2A32324E6CC59001A266D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* NovaNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaNotaViewController.swift; sourceTree = "<group>"; };
+		AFF120EA24EAB6A1000A9B12 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		AF7F1FFF24E557440058FA2C /* tempoComDeusApp */ = {
 			isa = PBXGroup;
 			children = (
+				AFF120E924EAB67F000A9B12 /* Protocols */,
 				AF7F203324E558770058FA2C /* Utils */,
 				AF7F203024E5583B0058FA2C /* Model */,
 				AF7F203124E558430058FA2C /* View */,
@@ -189,6 +194,7 @@
 			children = (
 				AF7F203424E5589C0058FA2C /* Extensions.swift */,
 				AFC2A32324E6CC59001A266D /* Utils.swift */,
+				AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -199,6 +205,14 @@
 				AFC2A31E24E6B8AA001A266D /* NotaService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		AFF120E924EAB67F000A9B12 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AFF120EA24EAB6A1000A9B12 /* Repository.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +348,7 @@
 			files = (
 				AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */,
 				AF7F200524E557440058FA2C /* ViewController.swift in Sources */,
+				AFF120EB24EAB6A1000A9B12 /* Repository.swift in Sources */,
 				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
 				AF21B47224E5D25900D44D39 /* NotaModel.swift in Sources */,
 				AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */,
@@ -342,6 +357,7 @@
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
 				AF7F203524E5589C0058FA2C /* Extensions.swift in Sources */,
+				AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */,
 				AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */,
 				AFC2A31F24E6B8AA001A266D /* NotaService.swift in Sources */,
 				AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */,
