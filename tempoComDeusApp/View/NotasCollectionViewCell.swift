@@ -21,8 +21,10 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
        didSet{
            if let nota = nota{
             labelPreview.text = nota.text
-            labelDate.text = nota.date
-            wrapperView.backgroundColor = UIColor.getColor(name: nota.color)
+            labelDate.text = "\(String(describing: nota.date))"
+            if let cor = nota.color{
+                wrapperView.backgroundColor = UIColor.getColor(name: cor)
+            }
            }
        }
     }
@@ -49,6 +51,7 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     
     private func addWrapperView(){
         contentView.addSubview(wrapperView)
+        wrapperView.backgroundColor = .nota1
         wrapperView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
         wrapperView.layer.masksToBounds = true
         wrapperView.layer.cornerRadius = 8

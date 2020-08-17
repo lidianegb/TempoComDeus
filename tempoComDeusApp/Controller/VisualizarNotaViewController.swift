@@ -17,7 +17,9 @@ class VisualizarNotaViewController: UIViewController {
     var nota: Nota?{
         didSet{
             if let nota = nota{
-                backView.backgroundColor = UIColor.getColor(name: nota.color)
+                if let cor = nota.color{
+                    backView.backgroundColor = UIColor.getColor(name: cor)
+                }
                 textView.text = nota.text
                 view.reloadInputViews()
                 
@@ -40,16 +42,9 @@ class VisualizarNotaViewController: UIViewController {
        override func viewDidLoad() {
             super.viewDidLoad()
             configureUI()
-           
-        let window = UIApplication.shared.windows.filter{$0.isKeyWindow}.first
-        let top = (window?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 0) + (navigationController?.navigationBar.frame.size.height ?? 0)
-        let bottom = tabBarController?.tabBar.frame.size.height ?? 0
-    
-           view.insertSubview(backView, at: 0)
-           backView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: top , paddingLeft: 8, paddingBottom: bottom, paddingRight: 8)
-        
+            addBackView()
             addTextView()
-       
+            
        }
 
        
@@ -73,6 +68,15 @@ class VisualizarNotaViewController: UIViewController {
             textView.anchor(top: backView.topAnchor, left: backView.leftAnchor, bottom: backView.bottomAnchor, right: backView.rightAnchor, paddingTop: 20, paddingLeft: 16, paddingBottom: 20, paddingRight: 16)
             
         }
+    
+        private func addBackView(){
+           let window = UIApplication.shared.windows.filter{$0.isKeyWindow}.first
+           let top = (window?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 0) + (navigationController?.navigationBar.frame.size.height ?? 0)
+           let bottom = tabBarController?.tabBar.frame.size.height ?? 0
+      
+           view.insertSubview(backView, at: 0)
+           backView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: top , paddingLeft: 8, paddingBottom: bottom, paddingRight: 8)
+       }
 
     
 }
