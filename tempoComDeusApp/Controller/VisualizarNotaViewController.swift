@@ -17,7 +17,6 @@ class VisualizarNotaViewController: UIViewController {
     var nota: Nota?{
         didSet{
             if let nota = nota{
-                backView.backgroundColor = UIColor.getColor(name: nota.color)
                 textView.text = nota.body
                 view.reloadInputViews()
             }

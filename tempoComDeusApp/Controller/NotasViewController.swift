@@ -8,6 +8,16 @@
 
 import UIKit
 
+
+protocol NotaListDelegate: class {
+    func didSelectNote(with id: UUID)
+    func deleteNote(for id: UUID)
+}
+protocol NotaDelegate: class {
+    func didChange(body: String)
+}
+
+
 class NotasViewController: UIViewController {
 
     // MARK: Properties
@@ -15,20 +25,26 @@ class NotasViewController: UIViewController {
     let cellId = "CellId"
     var collectionView : UICollectionView?
     let backView = BackView()
-           
-    var notas:[Nota] = [] {
-        didSet{
-            if notas.isEmpty{
-                initialLabel.text = "Clique + para adicionar uma nova anotação."
-            }else{
-                initialLabel.text = " "
-            }
-        }
-    }
     
+    
+     weak var delegate: NotaListDelegate? = nil
+     
+     var notas: [Nota] = [] {
+         didSet {
+             if notas.isEmpty {
+                 setupEmptyState()
+             } else if collectionView?.superview == self {
+                 self.collectionView?.reloadData()
+             } else {
+                 setupCollectionView()
+             }
+         }
+     }
+     
     
     let initialLabel: UILabel = {
         var label = UILabel()
+        label.text = "Clique + para adicionar uma nova nota."
         label.textColor = .myGray
         label.font = .systemFont(ofSize: 17)
         label.numberOfLines = 0
@@ -43,32 +59,20 @@ class NotasViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         addBackground()
-        addTextInicial()
-       
-        notas = NotaService.shared.buscaNotas()
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-         
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        
-        collectionView?.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-         
-       collectionView?.backgroundColor = .clear
+        if notas.isEmpty{
+            setupEmptyState()
+        }else{
+            setupCollectionView()
+        }
       
-        collectionView?.delegate = self
-        collectionView!.dataSource = self
-      
-        view.insertSubview(collectionView ?? UICollectionView(), at: 1)
         
       }
       
       // MARK: Selectors
        
     @objc func addNota(){
-        
-          let novaNota = NovaNota()
-        novaNota.nota = Nota()
+        let novaNota = NovaNota()
         novaNota.modalPresentationStyle = .fullScreen
         self.present(novaNota, animated: true)
     }
@@ -99,6 +103,27 @@ class NotasViewController: UIViewController {
           view.insertSubview(backView, at: 0)
           backView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: statusBarHeight, paddingLeft: 8, paddingBottom: tabBarHeight, paddingRight: 8)
       }
+    
+    func setupEmptyState() {
+        collectionView?.removeFromSuperview()
+        addTextInicial()
+       }
+    
+    func setupCollectionView() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+                
+       collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+       
+       collectionView?.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        
+      collectionView?.backgroundColor = .clear
+     
+       collectionView?.delegate = self
+       collectionView!.dataSource = self
+     
+       view.addSubview(collectionView ?? UICollectionView())
+       }
 }
 
 extension NotasViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{

@@ -9,19 +9,18 @@
 import Foundation
 
 class Nota : Codable{
+    
     var id: UUID
     let body: String
     let date : Date
-    let color: String
     
-    required init() {
+    required init(body: String) {
         self.id = UUID()
-        self.body = "vazio"
-        self.color = "nota1"
+        self.body = body
         self.date  = Date()
     }
     private enum CodingKeys: String, CodingKey{
-           case id, body, date, color
+           case id, body, date
     }
     
 }

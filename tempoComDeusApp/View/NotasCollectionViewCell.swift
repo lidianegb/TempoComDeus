@@ -22,7 +22,6 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
            if let nota = nota{
             labelPreview.text = nota.body
             labelDate.text = "\(String(describing: nota.date))"
-            wrapperView.backgroundColor = UIColor.getColor(name: nota.color)
            }
        }
     }

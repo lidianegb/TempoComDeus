@@ -13,17 +13,14 @@ class NovaNota: UIViewController, UITextViewDelegate{
 
      let backView = BackView()
     
+//    
+//     private let notaRepository: NotaRepository
+//      private let notaID: UUID
+//      private var nota: Nota? {
+//          notaRepository.readItem(id: notaID)
+//      }
+//    
     
-    var nota: Nota?
-    //{
-     //   didSet{
-           // if let nota = nota{
-              //  textView.text = nota.text
-             //   view.reloadInputViews()
-                
-          //  }
-      //  }
- //   }
     
     var textView: UITextView = {
         let text = UITextView()
@@ -58,7 +55,19 @@ class NovaNota: UIViewController, UITextViewDelegate{
     
     
        // MARK: Lifecycle
-       override func viewDidLoad() {
+    
+//        init(notaRepository: NotaRepository, id: UUID) {
+//           self.notaRepository = notaRepository
+//           self.notaID = id
+//           super.init(nibName: nil, bundle: nil)
+//       }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
+    
+        override func viewDidLoad() {
             super.viewDidLoad()
             configureUI()
             addBackView()
@@ -125,6 +134,7 @@ class NovaNota: UIViewController, UITextViewDelegate{
             }
         }
         @objc func salvar(){
+           
             self.dismiss(animated: true, completion: nil)
         }
     
