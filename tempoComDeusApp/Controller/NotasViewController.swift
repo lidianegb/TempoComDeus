@@ -9,15 +9,6 @@
 import UIKit
 
 
-protocol NotaListDelegate: class {
-    func didSelectNote(with id: UUID)
-    func deleteNote(for id: UUID)
-}
-protocol NotaDelegate: class {
-    func didChange(body: String)
-}
-
-
 class NotasViewController: UIViewController {
 
     // MARK: Properties
@@ -26,18 +17,20 @@ class NotasViewController: UIViewController {
     var collectionView : UICollectionView?
     let backView = BackView()
     
+    private var notaRepository: NotaRepository {
+          NotaRepository()
+    }
     
-     weak var delegate: NotaListDelegate? = nil
-     
-     var notas: [Nota] = [] {
+    var notas: [Nota] = [] {
          didSet {
              if notas.isEmpty {
-                 setupEmptyState()
-             } else if collectionView?.superview == self {
-                 self.collectionView?.reloadData()
+                initialLabel.isHidden = false
+                collectionView?.isHidden = true
              } else {
-                 setupCollectionView()
-             }
+                collectionView?.isHidden = false
+                initialLabel.isHidden = true
+            }
+            collectionView?.reloadData()
          }
      }
      
@@ -57,26 +50,29 @@ class NotasViewController: UIViewController {
       // MARK: Lifecycle
       override func viewDidLoad() {
         super.viewDidLoad()
+       notas = notaRepository.readAllItems()
+        
         configureUI()
         addBackground()
+        // Setup view
+        backView.addSubview(initialLabel)
+        addTextInicial()
         
-        if notas.isEmpty{
-            setupEmptyState()
-        }else{
-            setupCollectionView()
-        }
-      
-        
+        setupCollectionView()
       }
+    
+    override func viewWillAppear(_ animated: Bool) {
+           notas = notaRepository.readAllItems()
+       }
       
       // MARK: Selectors
+
        
-    @objc func addNota(){
-        let novaNota = NovaNota()
-        novaNota.modalPresentationStyle = .fullScreen
-        self.present(novaNota, animated: true)
+    @objc  func showNewNota(){
+        let notaViewController = NovaNota(notaRepository: notaRepository, id: UUID())
+        notaViewController.modalPresentationStyle = .fullScreen
+        self.present(notaViewController, animated: true)
     }
-       
        // MARK: Helpers
     
       
@@ -85,29 +81,19 @@ class NotasViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
         navigationItem.title = "Anotações"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNota))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showNewNota))
     
     }
 
     func addTextInicial(){
-        backView.addSubview(initialLabel)
         initialLabel.anchor(left: backView.leftAnchor, right: backView.rightAnchor,paddingLeft: 16, paddingRight: 16)
         initialLabel.centerY(inView: backView)
     }
     
     func addBackground(){
-         
-          let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        let statusBarHeight = (window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + (navigationController?.navigationBar.frame.height ?? 0 )
-          let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
-          view.insertSubview(backView, at: 0)
-          backView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: statusBarHeight, paddingLeft: 8, paddingBottom: tabBarHeight, paddingRight: 8)
+        view.addSubview(backView)
+          backView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
       }
-    
-    func setupEmptyState() {
-        collectionView?.removeFromSuperview()
-        addTextInicial()
-       }
     
     func setupCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -122,7 +108,7 @@ class NotasViewController: UIViewController {
        collectionView?.delegate = self
        collectionView!.dataSource = self
      
-       view.addSubview(collectionView ?? UICollectionView())
+       backView.addSubview(collectionView ?? UICollectionView())
        }
 }
 
@@ -136,7 +122,6 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         myCell.nota = notas[indexPath.row]
         myCell.createCell()
-        myCell.viewController = self
         myCell.delegate = self
         return myCell
     }
@@ -162,10 +147,11 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
 extension NotasViewController: NotasCellDelegate{
     func deleteCell(cell: NotasCollectionViewCell) {
         if let indexPath = collectionView?.indexPath(for: cell){
-            notas.remove(at: indexPath.row)
-            collectionView?.deleteItems(at: [indexPath])
+            collectionView?.performBatchUpdates({
+                notaRepository.delete(id: notas[indexPath.row].id)
+                collectionView?.deleteItems(at: [indexPath])
+                notas = notaRepository.readAllItems()
+            }, completion: nil)
         }
     }
-    
-    
 }

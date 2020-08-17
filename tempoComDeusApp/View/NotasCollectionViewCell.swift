@@ -8,15 +8,14 @@
 
 import UIKit
 
-protocol NotasCellDelegate: class{
+protocol NotasCellDelegate: UIViewController {
     func deleteCell(cell: NotasCollectionViewCell)
 }
 
 class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
 
-    weak var viewController: UIViewController?
     weak var delegate: NotasCellDelegate?
-
+    
     var nota:Nota?{
        didSet{
            if let nota = nota{
@@ -31,6 +30,9 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     let buttonDelete = UIButton()
     
  
+    deinit {
+        print("Bye")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -84,15 +86,17 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
    @objc func displayActionSheet(){
         let menu = UIAlertController(title: nil, message: "Deletar nota?", preferredStyle: .actionSheet)
         let deleteAtion = UIAlertAction(title: "Deletar", style: .destructive, handler: { action in
-            self.delegate?.deleteCell(cell: self)
-            }
-        )
+                    self.delegate?.deleteCell(cell: self)
+                }
+           
+            )
+
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         
     
         menu.addAction(deleteAtion)
         menu.addAction(cancelAction)
-        viewController?.present(menu, animated: true, completion: nil)
+        delegate?.present(menu, animated: true, completion: nil)
   
    }
 }

@@ -13,13 +13,10 @@ class NovaNota: UIViewController, UITextViewDelegate{
 
      let backView = BackView()
     
-//    
-//     private let notaRepository: NotaRepository
-//      private let notaID: UUID
-//      private var nota: Nota? {
-//          notaRepository.readItem(id: notaID)
-//      }
-//    
+    
+     private let notaRepository: NotaRepository
+      private let notaID: UUID
+    
     
     
     var textView: UITextView = {
@@ -56,15 +53,15 @@ class NovaNota: UIViewController, UITextViewDelegate{
     
        // MARK: Lifecycle
     
-//        init(notaRepository: NotaRepository, id: UUID) {
-//           self.notaRepository = notaRepository
-//           self.notaID = id
-//           super.init(nibName: nil, bundle: nil)
-//       }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+        init(notaRepository: NotaRepository, id: UUID) {
+           self.notaRepository = notaRepository
+           self.notaID = id
+           super.init(nibName: nil, bundle: nil)
+       }
+    
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("We aren't using storyboards")
+        }
     
     
         override func viewDidLoad() {
@@ -107,7 +104,6 @@ class NovaNota: UIViewController, UITextViewDelegate{
         let stackViewBottom = UIStackView(arrangedSubviews: [cor1, cor2, cor3, cor4, cor5, UIView(), UIView(), UIView()])
         stackViewBottom.alignment = .leading
         stackViewBottom.spacing = 10
-      //  stackViewBottom.distribution = .equalSpacing
         backView.addSubview(stackViewBottom)
         stackViewBottom.anchor(top: textView.bottomAnchor, left: backView.leftAnchor, bottom: backView.bottomAnchor, right: backView.rightAnchor, paddingTop: 20, paddingLeft: 16, paddingBottom: 10, paddingRight: 16)
     
@@ -134,7 +130,7 @@ class NovaNota: UIViewController, UITextViewDelegate{
             }
         }
         @objc func salvar(){
-           
+            notaRepository.createNewItem(body: textView.text)
             self.dismiss(animated: true, completion: nil)
         }
     

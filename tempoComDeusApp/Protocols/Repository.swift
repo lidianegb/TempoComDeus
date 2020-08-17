@@ -12,7 +12,7 @@ protocol Repository: class {
       
       var items: [Item] { get set }
       
-    func createNewItem(body:String) -> Item?
+    func createNewItem(body:String)
       func readAllItems() -> [Item]
       func readItem(id: UUID) -> Item?
       func update(item: Item)
@@ -22,14 +22,12 @@ protocol Repository: class {
 
 extension Repository {
     
-    func createNewItem(body: String) -> Item? {
-        let newItem = Item(body: body)
+    func createNewItem(body: String) {
+        let newItem = Item()
+        newItem.body = body
         if let data = try? JSONEncoder().encode(newItem) {
             FileHelper().createFile(with: data, name: newItem.id.uuidString)
-            return newItem
         }
-
-        return nil
     }
     
     func readAllItems() -> [Item] {
@@ -62,5 +60,6 @@ extension Repository {
     func delete(id: UUID) {
         FileHelper().removeFile(at: id.uuidString)
     }
+
     
 }

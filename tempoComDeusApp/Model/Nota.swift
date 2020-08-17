@@ -10,13 +10,13 @@ import Foundation
 
 class Nota : Codable{
     
-    var id: UUID
-    let body: String
+    let id: UUID
+    var body: String
     let date : Date
     
-    required init(body: String) {
+    required init() {
         self.id = UUID()
-        self.body = body
+        self.body = " "
         self.date  = Date()
     }
     private enum CodingKeys: String, CodingKey{
