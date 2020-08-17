@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class NotasViewController: UIViewController {
 
     // MARK: Properties
@@ -55,7 +54,7 @@ class NotasViewController: UIViewController {
         configureUI()
         addBackground()
         // Setup view
-        backView.addSubview(initialLabel)
+
         addTextInicial()
         
         setupCollectionView()
@@ -86,6 +85,7 @@ class NotasViewController: UIViewController {
     }
 
     func addTextInicial(){
+        backView.addSubview(initialLabel)
         initialLabel.anchor(left: backView.leftAnchor, right: backView.rightAnchor,paddingLeft: 16, paddingRight: 16)
         initialLabel.centerY(inView: backView)
     }
@@ -108,7 +108,8 @@ class NotasViewController: UIViewController {
        collectionView?.delegate = self
        collectionView!.dataSource = self
      
-       backView.addSubview(collectionView ?? UICollectionView())
+       view.addSubview(collectionView ?? UICollectionView())
+        
        }
 }
 

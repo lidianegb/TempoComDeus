@@ -8,16 +8,16 @@
 
 import UIKit
 
+
 class NovaNota: UIViewController, UITextViewDelegate{
     // MARK: Properties
 
      let backView = BackView()
     
-    
+ 
      private let notaRepository: NotaRepository
       private let notaID: UUID
-    
-    
+    private var color = "nota1"
     
     var textView: UITextView = {
         let text = UITextView()
@@ -53,7 +53,7 @@ class NovaNota: UIViewController, UITextViewDelegate{
     
        // MARK: Lifecycle
     
-        init(notaRepository: NotaRepository, id: UUID) {
+    init(notaRepository: NotaRepository, id: UUID) {
            self.notaRepository = notaRepository
            self.notaID = id
            super.init(nibName: nil, bundle: nil)
@@ -130,7 +130,7 @@ class NovaNota: UIViewController, UITextViewDelegate{
             }
         }
         @objc func salvar(){
-            notaRepository.createNewItem(body: textView.text)
+            notaRepository.createNewItem(body: textView.text, cor: color)
             self.dismiss(animated: true, completion: nil)
         }
     
@@ -153,19 +153,24 @@ class NovaNota: UIViewController, UITextViewDelegate{
     
         @objc func changeColor1(){
             backView.backgroundColor = .nota1
+                color = "nota1"
         }
         @objc func changeColor2(){
-                   backView.backgroundColor = .nota2
-               }
+            backView.backgroundColor = .nota2
+            color = "nota2"
+        }
         @objc func changeColor3(){
             backView.backgroundColor = .nota3
-               }
+            color = "nota3"
+        }
         @objc func changeColor4(){
             backView.backgroundColor = .nota4
-               }
+            color = "nota4"
+        }
         @objc func changeColor5(){
-               backView.backgroundColor = .nota5
-           }
+            backView.backgroundColor = .nota5
+            color = "nota5"
+        }
     
         @objc func keyboardHiden(notification: NSNotification){
                 if let duracao =  notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double{

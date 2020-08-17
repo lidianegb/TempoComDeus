@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Foundation
 protocol NotasCellDelegate: UIViewController {
     func deleteCell(cell: NotasCollectionViewCell)
 }
@@ -20,7 +20,14 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
        didSet{
            if let nota = nota{
             labelPreview.text = nota.body
-            labelDate.text = "\(String(describing: nota.date))"
+            wrapperView.backgroundColor = .getColor(name: nota.cor)
+            
+            let dateFormatter = DateFormatter()
+            let date = nota.date
+            dateFormatter.locale = Locale(identifier: "pt_BR")
+            dateFormatter.setLocalizedDateFormatFromTemplate("MMMMd")
+           
+            labelDate.text = dateFormatter.string(from: date)
            }
        }
     }
@@ -30,9 +37,6 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     let buttonDelete = UIButton()
     
  
-    deinit {
-        print("Bye")
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,7 +54,7 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     
     private func addWrapperView(){
         contentView.addSubview(wrapperView)
-        wrapperView.backgroundColor = .nota1
+       
         wrapperView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
         wrapperView.layer.masksToBounds = true
         wrapperView.layer.cornerRadius = 8

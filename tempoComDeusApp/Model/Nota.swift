@@ -13,14 +13,16 @@ class Nota : Codable{
     let id: UUID
     var body: String
     let date : Date
+    var cor: String
     
     required init() {
         self.id = UUID()
         self.body = " "
         self.date  = Date()
+        self.cor = "nota1"
     }
     private enum CodingKeys: String, CodingKey{
-           case id, body, date
+           case id, body, date, cor
     }
     
 }

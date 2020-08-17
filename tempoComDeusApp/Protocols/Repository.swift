@@ -12,7 +12,7 @@ protocol Repository: class {
       
       var items: [Item] { get set }
       
-    func createNewItem(body:String)
+    func createNewItem(body:String, cor: String)
       func readAllItems() -> [Item]
       func readItem(id: UUID) -> Item?
       func update(item: Item)
@@ -22,8 +22,9 @@ protocol Repository: class {
 
 extension Repository {
     
-    func createNewItem(body: String) {
+    func createNewItem(body: String, cor: String) {
         let newItem = Item()
+        newItem.cor = cor
         newItem.body = body
         if let data = try? JSONEncoder().encode(newItem) {
             FileHelper().createFile(with: data, name: newItem.id.uuidString)
@@ -40,7 +41,9 @@ extension Repository {
             return nil
         }
         
-        return items
+        return items.sorted { (item1, item2) -> Bool in
+            item1.date > item2.date
+        }
     }
     
     func readItem(id: UUID) -> Item? {
