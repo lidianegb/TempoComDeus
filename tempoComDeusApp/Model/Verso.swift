@@ -9,15 +9,15 @@
 import Foundation
 
 class Verso: Decodable{
-    let numero: Int
-    let texto: String
+    let number: Int
+    let text: String
     
-    init(numero: Int, texto: String) {
-        self.numero = numero
-        self.texto = texto
+    init(number: Int, text: String) {
+        self.number = number
+        self.text = text
     }
     
     enum Codingkeys: String, CodingKey{
-        case numero = "number", texto = "text"
+        case number = "number", text = "text"
     }
 }

@@ -8,27 +8,29 @@
 
 import Foundation
 class Livro: Decodable{
-    
-    let id: UUID
-    var nome: String
-    let abreviacao: String
-    let autor: String
-    let testamento: String
-    let grupo: String
-    let capitulos : Int
+
+    var abbrev: Dictionary<String, String>
+    var name: String
+    let author: String
+    let chapters : Int?
+    let group: String?
+    let testament: String?
+    let version: String?
+   
   
     
-    required init(id:UUID = UUID(), nome: String, abreviacao: String, autor: String, testamento:String, grupo: String, capitulos: Int) {
-        self.id = id
-        self.nome = nome
-        self.abreviacao = abreviacao
-        self.autor = autor
-        self.testamento = testamento
-        self.grupo = grupo
-        self.capitulos = capitulos
+    init(abbrev: Dictionary<String, String>,name: String,  author: String, chapters: Int, group: String, testament: String, version: String) {
+   
+        self.abbrev = abbrev
+        self.name = name
+        self.author = author
+        self.testament = testament
+        self.group = group
+        self.chapters = chapters
+        self.version = version
     }
     private enum CodingKeys: String, CodingKey{
-        case id, nome = "name", abreviacao = "abbrev", autor = "author", testamento = "testament", grupo = "group", capitulos = "chapters"
+        case  name = "name", abbrev = "abbrev", author = "author", group = "group", chapters = "chapters", testament = "testament", version = "version"
     }
     
 }

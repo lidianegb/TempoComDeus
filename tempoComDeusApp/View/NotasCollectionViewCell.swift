@@ -72,7 +72,7 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     
     private func addButtonDelete(){
         buttonDelete.setImage(UIImage(named: "delete"), for: .normal)
-        buttonDelete.setDimensions(width: 16, height: 17)
+        buttonDelete.setDimensions(width: 20, height: 22)
         wrapperView.addSubview(buttonDelete)
         buttonDelete.anchor( top: labelPreview.bottomAnchor, bottom: wrapperView.bottomAnchor, right: wrapperView.rightAnchor, paddingTop: 10, paddingBottom: 20, paddingRight: 12)
         buttonDelete.addTarget(self, action: #selector(displayActionSheet), for: .touchUpInside)

@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+class Biblia: Decodable{
+    let verses: [Verso]
+    let chapter: Dictionary<String, Int>
+    let book: Livro
+  
+ 
+    init(book: Livro, chapter: Dictionary<String, Int>, verses: [Verso]) {
+        self.book = book
+        self.chapter = chapter
+        self.verses = verses
+    }
+    enum CodingKeys: String, CodingKey{
+        case book = "book", chapter = "chapter", verses = "verses"
+    }
+    
+}

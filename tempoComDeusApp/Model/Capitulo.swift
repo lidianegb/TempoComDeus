@@ -7,7 +7,6 @@
 //
 
 import Foundation
-class Capitulo: Decodable {
-    let numero: Int,
-    versos: [Verso]
+class Capitulo: Decodable{
+    
 }
