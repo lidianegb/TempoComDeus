@@ -17,7 +17,7 @@ class Nota : Codable{
     
     required init() {
         self.id = UUID()
-        self.body = " "
+        self.body = ""
         self.date  = Date()
         self.cor = "nota1"
     }

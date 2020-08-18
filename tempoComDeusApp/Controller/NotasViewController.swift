@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol NotaDelegate: UIViewController {
+    func didChange(body: String, cor: String)
+}
+
+
 class NotasViewController: UIViewController {
 
     // MARK: Properties
@@ -61,6 +66,7 @@ class NotasViewController: UIViewController {
       }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
            notas = notaRepository.readAllItems()
        }
       
@@ -136,8 +142,7 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let visualizarNota = VisualizarNotaViewController()
-        visualizarNota.nota = notas[indexPath.row]
+        let visualizarNota = VisualizarNotaViewController(notaRepository: notaRepository, id: notas[indexPath.row].id)
         visualizarNota.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(visualizarNota, animated: true)
     }

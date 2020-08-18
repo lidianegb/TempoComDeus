@@ -30,8 +30,8 @@
             filePath = "tempoComDeusApp/Controller/NovaNotaViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "createButtonCor(cor:)"
             landmarkType = "7">
          </BreakpointContent>

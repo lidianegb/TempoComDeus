@@ -9,20 +9,21 @@
 import UIKit
 
 class VisualizarNotaViewController: UIViewController {
-
     // MARK: Properties
 
      let backView = BackView()
     
-    var nota: Nota?{
+    
+    private let notaRepository: NotaRepository
+    private let notaID: UUID
+    private var nota: Nota {
         didSet{
-            if let nota = nota{
-                backView.backgroundColor = .getColor(name: nota.cor)
-                textView.text = nota.body
-                view.reloadInputViews()
-            }
+            textView.text = nota.body
+            backView.backgroundColor = .getColor(name: nota.cor)
         }
     }
+       
+
     
     let textView: UITextView = {
         let text = UITextView()
@@ -43,10 +44,32 @@ class VisualizarNotaViewController: UIViewController {
             addTextView()
             
        }
+    
+        init(notaRepository: NotaRepository, id: UUID) {
+              self.notaRepository = notaRepository
+              self.notaID = id
+            self.nota = notaRepository.readItem(id: notaID) ?? Nota()
+              super.init(nibName: nil, bundle: nil)
+          }
+       
+           required init?(coder aDecoder: NSCoder) {
+               fatalError("We aren't using storyboards")
+           }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        nota = notaRepository.readItem(id: notaID) ?? Nota()
+    }
+       
 
        
        // MARK: Selectors
-        
+        @objc  func editNota(){
+             let notaViewController = EditNota(notaRepository: notaRepository, id: notaID)
+             notaViewController.modalPresentationStyle = .fullScreen
+            notaViewController.delegate = self
+             self.present(notaViewController, animated: true)
+         }
         
         // MARK: Helpers
        
@@ -54,7 +77,7 @@ class VisualizarNotaViewController: UIViewController {
            navigationController?.navigationBar.shadowImage = UIImage()
            view.backgroundColor = .blueBackgroud
             
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editNota) )
         
             backView.layer.cornerRadius = 10
             backView.layer.masksToBounds = true
@@ -74,3 +97,12 @@ class VisualizarNotaViewController: UIViewController {
     
 }
 
+extension VisualizarNotaViewController: NotaDelegate {
+
+    func didChange(body: String, cor: String) {
+        nota.body = body
+        nota.cor = cor
+        notaRepository.update(item: nota)
+    }
+
+}

@@ -15,7 +15,7 @@ class NovaNota: UIViewController, UITextViewDelegate{
      let backView = BackView()
     
  
-     private let notaRepository: NotaRepository
+   private let notaRepository: NotaRepository
       private let notaID: UUID
     private var color = "nota1"
     
@@ -54,10 +54,10 @@ class NovaNota: UIViewController, UITextViewDelegate{
        // MARK: Lifecycle
     
     init(notaRepository: NotaRepository, id: UUID) {
-           self.notaRepository = notaRepository
-           self.notaID = id
-           super.init(nibName: nil, bundle: nil)
-       }
+        self.notaRepository = notaRepository
+        self.notaID = id
+        super.init(nibName: nil, bundle: nil)
+    }
     
         required init?(coder aDecoder: NSCoder) {
             fatalError("We aren't using storyboards")
@@ -82,7 +82,7 @@ class NovaNota: UIViewController, UITextViewDelegate{
         
         textView.delegate = self
         backView.addSubview(textView)
-        backView.backgroundColor = .nota1
+            backView.backgroundColor = .getColor(name: color)
         textView.anchor(top: stackViewHeader.bottomAnchor, left: backView.leftAnchor,bottom: backView.bottomAnchor, right: backView.rightAnchor, paddingTop: 50, paddingLeft: 16,paddingBottom: 80, paddingRight: 16)
         
         
@@ -109,12 +109,11 @@ class NovaNota: UIViewController, UITextViewDelegate{
     
        
        }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        if textView == self.textView {
-            self.saveButton.isEnabled = !textView.text.isEmpty
-        }
-    }
+     func textViewDidChange(_ textView: UITextView) {
+           if textView == self.textView {
+               self.saveButton.isEnabled = !textView.text.isEmpty
+           }
+       }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -123,16 +122,16 @@ class NovaNota: UIViewController, UITextViewDelegate{
        // MARK: Selectors
             
         @objc func cancelar(){
-            if let text = textView.text, text.isEmpty{
-                self.dismiss(animated: true, completion: nil)
-            }else{
-                displayActionSheet()
-            }
-        }
-        @objc func salvar(){
-            notaRepository.createNewItem(body: textView.text, cor: color)
-            self.dismiss(animated: true, completion: nil)
-        }
+           if let text = textView.text, text.isEmpty{
+               self.dismiss(animated: true, completion: nil)
+           }else{
+               displayActionSheet()
+           }
+       }
+         @objc func salvar(){
+           notaRepository.createNewItem(body: textView.text, cor: color)
+           self.dismiss(animated: true, completion: nil)
+       }
     
         @objc func displayActionSheet(){
           let menu = UIAlertController(title: nil, message: "Descartar alterações?", preferredStyle: .actionSheet)
