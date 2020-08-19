@@ -53,13 +53,13 @@ class BibliaViewController: UIViewController {
 
   
     
-    var biblia = Biblia(book: Livro(abbrev: ["pt": "", "en": ""], name: "", author: "", chapters: 0, group: "", testament: "", version: ""), chapter: Capitulo(number: 0, verses: 0), verses: [Verso(number: 0, text: ""), Verso(number: 0, text: "")]){
+    var biblia: Biblia? {
         didSet{
             DispatchQueue.main.async {
                self.tableView.reloadData()
-                let buttonTitle = self.biblia.book.name + " " + String(describing: self.biblia.chapter.number)
+                let buttonTitle = String(describing: self.biblia?.book.name)  + " " + String(describing: self.biblia?.chapter.number)
                 self.titleButton.setTitle(buttonTitle, for: .normal)
-                let rightButtonTitle = self.biblia.book.version?.uppercased()
+                let rightButtonTitle = self.biblia?.book.version?.uppercased()
                 self.rightButton.setTitle(rightButtonTitle, for: .normal)
             }
         }
@@ -113,12 +113,12 @@ class BibliaViewController: UIViewController {
 
 extension BibliaViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         biblia.verses.count
+        biblia?.verses.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BibliaTableViewCell
-        myCell.createCell(num: "\(String(describing: biblia.verses[indexPath.row].number))" , verso: biblia.verses[indexPath.row].text)
+        myCell.createCell(num: String(describing: biblia?.verses[indexPath.row].number) , verso: String(describing: biblia?.verses[indexPath.row].text))
         return myCell
     }
     
