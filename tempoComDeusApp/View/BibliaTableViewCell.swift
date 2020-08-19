@@ -29,7 +29,7 @@ class BibliaTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+    
     }
     
     func createCell(num: String, verso: String){

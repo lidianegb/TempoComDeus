@@ -8,17 +8,32 @@
 
 import UIKit
 
-class LivrosTableView: UIViewController {
 
-      lazy var tableView: UITableView = {
-          let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .clear
-          tableView.alwaysBounceVertical = false
-          tableView.alwaysBounceHorizontal = false
-          tableView.delegate = self
-          tableView.dataSource = self
-          return tableView
-      }()
+class LivrosTableView: UIViewController {
+    
+    var tableData = CellData.data()
+    
+        var livros: [Livro] = []{
+              didSet{
+                  DispatchQueue.main.async {
+                     self.tableView.reloadData()
+                  }
+              }
+        }
+
+      
+        let cellId = "cellId"
+        let cellSection = "cellSection"
+    
+        lazy var tableView: UITableView = {
+            let tableView = UITableView(frame: .zero, style: .plain)
+            tableView.backgroundColor = .clear
+            tableView.alwaysBounceVertical = false
+            tableView.alwaysBounceHorizontal = false
+            tableView.delegate = self
+            tableView.dataSource = self
+            return tableView
+        }()
     
     let cancelButton : UIButton = {
            let button = UIButton()
@@ -36,13 +51,7 @@ class LivrosTableView: UIViewController {
         return label
     }()
     
-  var livros: [Livro] = []{
-        didSet{
-            DispatchQueue.main.async {
-               self.tableView.reloadData()
-            }
-        }
-      }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +78,8 @@ class LivrosTableView: UIViewController {
     }
     
     func setupTableView(){
+        tableView.register(LivrosTableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(SectionLivrosTableViewCell.self, forCellReuseIdentifier: cellSection)
         view.insertSubview(tableView, at: 0)
         tableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
     }
@@ -78,16 +89,42 @@ class LivrosTableView: UIViewController {
 
 extension LivrosTableView: UITableViewDelegate, UITableViewDataSource{
      func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return livros.count
+       tableData.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return livros[section].chapters ?? 0
+            if tableData[section].opened == true{
+                return 5
+            }else{
+                return 1
+            }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           return UITableViewCell()
-       }
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSection) as? SectionLivrosTableViewCell else { return UITableViewCell()}
+                cell.textLabel?.text = tableData[indexPath.section].title
+                cell.configure()
+            return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as? LivrosTableViewCell else { return UITableViewCell()}
+                cell.textLabel?.text = "\(tableData[indexPath.section].items)"
+                cell.configure()
+                return cell
+            }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableData[indexPath.section].opened == true{
+            tableData[indexPath.section].opened = false
+            let sections = IndexSet.init(integer: indexPath.section)
+            tableView.reloadSections(sections, with: .none)
+        }else{
+            tableData[indexPath.section].opened = true
+            let sections = IndexSet.init(integer: indexPath.section)
+            tableView.reloadSections(sections, with: .none)
+         
+        }
+    }
 }

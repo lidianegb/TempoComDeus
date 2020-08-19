@@ -57,7 +57,7 @@ class BibliaViewController: UIViewController {
         didSet{
             DispatchQueue.main.async {
                self.tableView.reloadData()
-                let buttonTitle = String(describing: self.biblia?.book.name)  + " " + String(describing: self.biblia?.chapter.number)
+                let buttonTitle = "\(self.biblia?.book.name ?? "")"  + " " + "\(self.biblia?.chapter.number ?? 0)"
                 self.titleButton.setTitle(buttonTitle, for: .normal)
                 let rightButtonTitle = self.biblia?.book.version?.uppercased()
                 self.rightButton.setTitle(rightButtonTitle, for: .normal)
@@ -118,7 +118,7 @@ extension BibliaViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BibliaTableViewCell
-        myCell.createCell(num: String(describing: biblia?.verses[indexPath.row].number) , verso: String(describing: biblia?.verses[indexPath.row].text))
+        myCell.createCell(num: "\(biblia?.verses[indexPath.row].number ?? 0)" , verso: "\(biblia?.verses[indexPath.row].text ?? " ")" )
         return myCell
     }
     
