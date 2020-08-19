@@ -10,11 +10,11 @@ import Foundation
 
 class Biblia: Decodable{
     let verses: [Verso]
-    let chapter: Dictionary<String, Int>
+    let chapter: Capitulo
     let book: Livro
   
  
-    init(book: Livro, chapter: Dictionary<String, Int>, verses: [Verso]) {
+    init(book: Livro, chapter: Capitulo, verses: [Verso]) {
         self.book = book
         self.chapter = chapter
         self.verses = verses

@@ -11,7 +11,21 @@ import UIKit
 class BibliaViewController: UIViewController {
 
     // MARK: Properties
-      let cellId = "CellId"
+    let cellId = "CellId"
+      let backView = BackView()
+    
+    let titleButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .blueAct
+        button.setTitle("??", for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.tintColor = .white
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = true
+        button.setDimensions(width: 120, height: 25)
+        button.addTarget(self, action: #selector(showLivros), for: .touchUpInside)
+        return button
+    }()
     
      lazy var tableView: UITableView = {
        let tableView = UITableView(frame: .zero, style: .grouped)
@@ -27,10 +41,12 @@ class BibliaViewController: UIViewController {
 
   
     
-    var biblia = Biblia(book: Livro(abbrev: ["pt": "", "en": ""], name: "", author: "", chapters: 0, group: "", testament: "", version: ""), chapter: ["numero": 0, "versos": 0], verses: [Verso(number: 0, text: ""), Verso(number: 0, text: "")]){
+    var biblia = Biblia(book: Livro(abbrev: ["pt": "", "en": ""], name: "", author: "", chapters: 0, group: "", testament: "", version: ""), chapter: Capitulo(number: 0, verses: 0), verses: [Verso(number: 0, text: ""), Verso(number: 0, text: "")]){
         didSet{
             DispatchQueue.main.async {
                self.tableView.reloadData()
+                let buttonTitle = self.biblia.book.name + " " + String(describing: self.biblia.chapter.number)
+                self.titleButton.setTitle(buttonTitle, for: .normal)
             }
         }
     }
@@ -38,35 +54,45 @@ class BibliaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        BibliaRepository().getCapitulo(livro: "lc", cap: 2){
+        BibliaRepository().getCapitulo(livro: "gn", cap: 1){
             [weak self] (biblia) in self?.biblia = biblia
         }
         configureUI()
         addBackground()
+        addTitleButton()
         setupTableView()
+      
     }
     
     // MARK: Selectors
 
-    
+    @objc func showLivros(){
+        print("cliclou")
+        let livrosTableView = LivrosTableView()
+        self.present(livrosTableView, animated: true)
+    }
      
      // MARK: Helpers
     
     func configureUI(){
         navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .blueBackgroud
-        navigationItem.title = "biblia"
+    }
+    
+    func addTitleButton(){
+        backView.addSubview(titleButton)
+        titleButton.centerX(inView: backView, topAnchor: backView.topAnchor, paddingTop: 10)
     }
     
     func addBackground(){
-        let backView = BackView()
         view.insertSubview(backView, at: 0)
         backView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
     }
     
     func setupTableView(){
         view.insertSubview(tableView, at: 1)
-        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
+        tableView.anchor(top: titleButton.bottomAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
         tableView.register(BibliaTableViewCell.self, forCellReuseIdentifier: cellId)
     }
     

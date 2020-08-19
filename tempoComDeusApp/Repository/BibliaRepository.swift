@@ -75,7 +75,7 @@ class BibliaRepository{
                            }
         
         
-                        let aux = Biblia(book: Livro(abbrev: ["pt": "", "en": ""], name: "", author: "", chapters: 0, group: "", testament: "", version: ""), chapter: ["numero": 0, "versos": 0], verses: [Verso(number: 0, text: "")])
+                        let aux = Biblia(book: Livro(abbrev: ["pt": "", "en": ""], name: "", author: "", chapters: 0, group: "", testament: "", version: ""), chapter: Capitulo(number: 0, verses: 0), verses: [Verso(number: 0, text: "")])
                                                      
                            switch response.statusCode {
                            case 200:

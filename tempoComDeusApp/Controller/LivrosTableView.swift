@@ -31,7 +31,7 @@ class LivrosTableView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     
+        view.backgroundColor = .white
         BibliaRepository().getLivros(){
             [weak self] (livros) in self?.livros = livros
         }
