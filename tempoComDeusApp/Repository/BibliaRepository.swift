@@ -32,7 +32,13 @@ class BibliaRepository{
                                     print(obj)
                         }else if let obj = json as? [Any]{
                             for item in obj as! [Dictionary<String, AnyObject>]{
-                                let name =  item["name"] as! String
+                                let n =  item["name"] as! String
+                                var name = n
+                                if n.count > 13{
+                                    let index = n.index(n.startIndex, offsetBy: 10)
+                                    name = String(n[...index])
+                                }
+                               
                                 let abbrev = item["abbrev"] as! Dictionary<String, String>
                                 let author = item["author"] as! String
                                 let chapters = item["chapters"] as! Int
@@ -40,8 +46,7 @@ class BibliaRepository{
                                 let version = item["version"] as? String
                                 let testment = item["testment"] as? String
                                 let livro = Livro(abbrev: abbrev, name: name, author: author, chapters: chapters, group: group, testament: testment ?? "", version: version ?? "")
-                                books.append(livro)
-                                
+                                    books.append(livro)
                                 }
                             }
                         

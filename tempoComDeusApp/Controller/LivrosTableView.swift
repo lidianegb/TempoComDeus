@@ -20,6 +20,22 @@ class LivrosTableView: UIViewController {
           return tableView
       }()
     
+    let cancelButton : UIButton = {
+           let button = UIButton()
+           button.setTitle("Cancelar", for: .normal)
+           button.setTitleColor(.blueAct, for: .normal)
+           button.addTarget(self, action: #selector(cancelar), for: .touchUpInside)
+           return button
+       }()
+    
+    let labelTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Livros"
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        return label
+    }()
+    
   var livros: [Livro] = []{
         didSet{
             DispatchQueue.main.async {
@@ -35,10 +51,28 @@ class LivrosTableView: UIViewController {
         BibliaRepository().getLivros(){
             [weak self] (livros) in self?.livros = livros
         }
+        setupTableView()
+        addHeader()
     }
 
-    // MARK: - Table view data source
+    @objc func cancelar(){
+        self.dismiss(animated: true, completion: nil)
+    }
 
+    
+    func addHeader(){
+        view.insertSubview(cancelButton, at: 1)
+        cancelButton.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
+        
+        view.insertSubview(labelTitle, at: 1)
+        labelTitle.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: 16)
+    }
+    
+    func setupTableView(){
+        view.insertSubview(tableView, at: 0)
+        tableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+    }
+    
 
 }
 
