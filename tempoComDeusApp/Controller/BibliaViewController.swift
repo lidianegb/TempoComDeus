@@ -24,12 +24,10 @@ class BibliaViewController: UIViewController {
             tableView.allowsSelection = false
         return tableView
        }()
-    
-     
-    
+
   
     
-    var biblia = Biblia(book: Livro(abbrev: ["pt": "", "en": ""], name: "", author: "", chapters: 0, group: "", testament: "", version: ""), chapter: ["numero": 0, "versos": 0], verses: [Verso(number: 0, text: "Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama"), Verso(number: 0, text: "Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama Deus te ama")]){
+    var biblia = Biblia(book: Livro(abbrev: ["pt": "", "en": ""], name: "", author: "", chapters: 0, group: "", testament: "", version: ""), chapter: ["numero": 0, "versos": 0], verses: [Verso(number: 0, text: ""), Verso(number: 0, text: "")]){
         didSet{
             DispatchQueue.main.async {
                self.tableView.reloadData()
@@ -40,8 +38,6 @@ class BibliaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      
-       
         BibliaRepository().getCapitulo(livro: "lc", cap: 2){
             [weak self] (biblia) in self?.biblia = biblia
         }

@@ -34,7 +34,7 @@
 		AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */; };
 		AFF120EF24EABBAB000A9B12 /* NotaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EE24EABBAB000A9B12 /* NotaRepository.swift */; };
 		AFFA1D0F24EC199500399F96 /* Biblia.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D0E24EC199500399F96 /* Biblia.swift */; };
-		AFFA1D1124EC1C6B00399F96 /* LivrosTableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1024EC1C6B00399F96 /* LivrosTableTableView.swift */; };
+		AFFA1D1124EC1C6B00399F96 /* LivrosTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1024EC1C6B00399F96 /* LivrosTableView.swift */; };
 		AFFA1D1324EC1CF400399F96 /* BibliaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1224EC1CF400399F96 /* BibliaTableViewCell.swift */; };
 		AFFA1D1B24EC854000399F96 /* Capitulo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1A24EC854000399F96 /* Capitulo.swift */; };
 /* End PBXBuildFile section */
@@ -90,7 +90,7 @@
 		AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		AFF120EE24EABBAB000A9B12 /* NotaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaRepository.swift; sourceTree = "<group>"; };
 		AFFA1D0E24EC199500399F96 /* Biblia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biblia.swift; sourceTree = "<group>"; };
-		AFFA1D1024EC1C6B00399F96 /* LivrosTableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosTableTableView.swift; sourceTree = "<group>"; };
+		AFFA1D1024EC1C6B00399F96 /* LivrosTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosTableView.swift; sourceTree = "<group>"; };
 		AFFA1D1224EC1CF400399F96 /* BibliaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaTableViewCell.swift; sourceTree = "<group>"; };
 		AFFA1D1A24EC854000399F96 /* Capitulo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capitulo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,7 +219,7 @@
 				AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */,
 				AFC2A32524E87A13001A266D /* NovaNotaViewController.swift */,
 				AF1947BF24EB4B4400724B23 /* EditViewController.swift */,
-				AFFA1D1024EC1C6B00399F96 /* LivrosTableTableView.swift */,
+				AFFA1D1024EC1C6B00399F96 /* LivrosTableView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 				AF1947C424EBF02200724B23 /* Livro.swift in Sources */,
 				AF1947CA24EBF91000724B23 /* HTTP.swift in Sources */,
 				AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */,
-				AFFA1D1124EC1C6B00399F96 /* LivrosTableTableView.swift in Sources */,
+				AFFA1D1124EC1C6B00399F96 /* LivrosTableView.swift in Sources */,
 				AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */,
 				AFFA1D1B24EC854000399F96 /* Capitulo.swift in Sources */,
 				AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */,

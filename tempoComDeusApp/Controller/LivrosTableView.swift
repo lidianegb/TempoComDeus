@@ -1,5 +1,5 @@
 //
-//  LivrosTableTableView.swift
+//  LivrosTableView.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 18/08/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LivrosTableTableView: UIViewController {
+class LivrosTableView: UIViewController {
 
       lazy var tableView: UITableView = {
           let tableView = UITableView(frame: .zero, style: .grouped)
@@ -39,18 +39,21 @@ class LivrosTableTableView: UIViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 
 }
 
 extension LivrosTableView: UITableViewDelegate, UITableViewDataSource{
+     func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return livros.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return livros[section].chapters ?? 0
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           return UITableViewCell()
+       }
 }

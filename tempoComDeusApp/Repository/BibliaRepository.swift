@@ -26,8 +26,8 @@ class BibliaRepository{
             
 
                          let json = try? JSONSerialization.jsonObject(with: data, options: [])
-            
-                        var books = [String: Livro]()
+        
+                        var books = [Livro]()
                         if let obj = json as? [String:Any]{
                                     print(obj)
                         }else if let obj = json as? [Any]{
@@ -40,21 +40,14 @@ class BibliaRepository{
                                 let version = item["version"] as? String
                                 let testment = item["testment"] as? String
                                 let livro = Livro(abbrev: abbrev, name: name, author: author, chapters: chapters, group: group, testament: testment ?? "", version: version ?? "")
-                                books[name] = livro
+                                books.append(livro)
                                 
+                                }
                             }
-            }
-            
                         
                          switch response.statusCode {
                          case 200:
-                            var livros = [Livro]()
-                            for livro in books.keys{
-                                livros.append(books[livro]!)
-                            }
-                            
-                             
-                                completion(livros)
+                                completion(books)
                              return
                          default:
                              completion([])

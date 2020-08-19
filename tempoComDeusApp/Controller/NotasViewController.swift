@@ -18,8 +18,20 @@ class NotasViewController: UIViewController {
     // MARK: Properties
     
     let cellId = "CellId"
-    var collectionView : UICollectionView?
     let backView = BackView()
+    
+    lazy var collectionView: UICollectionView = {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+                       
+       let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceVertical = false
+         collectionView.alwaysBounceHorizontal = false
+         collectionView.delegate = self
+         collectionView.dataSource = self
+         return collectionView
+    }()
     
     private var notaRepository: NotaRepository {
           NotaRepository()
@@ -29,12 +41,12 @@ class NotasViewController: UIViewController {
          didSet {
              if notas.isEmpty {
                 initialLabel.isHidden = false
-                collectionView?.isHidden = true
+                collectionView.isHidden = true
              } else {
-                collectionView?.isHidden = false
+                collectionView.isHidden = false
                 initialLabel.isHidden = true
             }
-            collectionView?.reloadData()
+            collectionView.reloadData()
          }
      }
      
@@ -102,19 +114,11 @@ class NotasViewController: UIViewController {
       }
     
     func setupCollectionView() {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-                
-       collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-       
-       collectionView?.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        
-      collectionView?.backgroundColor = .clear
+       collectionView.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+       collectionView.delegate = self
+       collectionView.dataSource = self
      
-       collectionView?.delegate = self
-       collectionView!.dataSource = self
-     
-       view.addSubview(collectionView ?? UICollectionView())
+       view.addSubview(collectionView)
         
        }
 }
@@ -152,10 +156,10 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
 }
 extension NotasViewController: NotasCellDelegate{
     func deleteCell(cell: NotasCollectionViewCell) {
-        if let indexPath = collectionView?.indexPath(for: cell){
-            collectionView?.performBatchUpdates({
+        if let indexPath = collectionView.indexPath(for: cell){
+            collectionView.performBatchUpdates({
                 notaRepository.delete(id: notas[indexPath.row].id)
-                collectionView?.deleteItems(at: [indexPath])
+                collectionView.deleteItems(at: [indexPath])
                 notas = notaRepository.readAllItems()
             }, completion: nil)
         }
