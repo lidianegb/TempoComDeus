@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SectionLivrosTableViewCell: UITableViewCell {
 
     
@@ -23,21 +24,31 @@ class SectionLivrosTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
     func configure(){
     //    self.backgroundColor = .blue
-        
         contentView.addSubview(rightDetail)
 //        imageView?.setDimensions(width: 10, height: 10)
         rightDetail.setDimensions(width: 14, height: 14)
         rightDetail.centerY(inView: contentView, rightAnchor: contentView.rightAnchor, paddingRight: 16)
     }
-    func setImageDetail(imageName: String){
-        imageView?.image = UIImage(named: imageName)
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
     }
 
+}
+extension SectionLivrosTableViewCell{
+    func didSelected(isSelected: Bool) {
+        if isSelected{
+            rightDetail.image = UIImage(named: "arrowup")
+            textLabel?.textColor = .blueAct
+        }else{
+             rightDetail.image = UIImage(named: "arrowdown")
+             textLabel?.textColor = .black
+        }
+        self.reloadInputViews()
+    }
+    
+    
 }

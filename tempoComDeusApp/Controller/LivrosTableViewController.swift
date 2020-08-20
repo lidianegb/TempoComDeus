@@ -11,6 +11,7 @@ import UIKit
 protocol LivrosTableViewDelegate: class{
     func didSelectSection(abbr: String, chapter: Int)
 }
+
 class LivrosTableViewController: UIViewController {
     
     var tableData = CellData.data()
@@ -31,6 +32,7 @@ class LivrosTableViewController: UIViewController {
         }()
     
     var delegate:LivrosTableViewDelegate?
+
     
     let cancelButton : UIButton = {
            let button = UIButton()
@@ -102,6 +104,7 @@ extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSection) as? SectionLivrosTableViewCell else { return UITableViewCell()}
                 cell.textLabel?.text = tableData[indexPath.section].title
+                cell.didSelected(isSelected: tableData[indexPath.section].opened)
                 cell.configure()
             return cell
             } else {
@@ -149,3 +152,4 @@ extension LivrosTableViewController: CapitulosTableViewCellDelegate {
     
     
 }
+   
