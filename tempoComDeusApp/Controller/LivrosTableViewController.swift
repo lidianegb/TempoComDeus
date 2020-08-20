@@ -1,5 +1,5 @@
 //
-//  LivrosTableView.swift
+//  LivrosTableViewController.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 18/08/20.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class LivrosTableView: UIViewController {
+class LivrosTableViewController: UIViewController {
     
     var tableData = CellData.data()
     
@@ -93,7 +93,7 @@ class LivrosTableView: UIViewController {
 
 }
 
-extension LivrosTableView: UITableViewDelegate, UITableViewDataSource{
+extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource{
      func numberOfSections(in tableView: UITableView) -> Int {
        tableData.count
     }
@@ -114,7 +114,8 @@ extension LivrosTableView: UITableViewDelegate, UITableViewDataSource{
             return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as? CapitulosTableViewCell else { return UITableViewCell()}
-                cell.configure()
+            cell.delegate = self
+            cell.configure(items: tableData[indexPath.section].items)
                 return cell
             }
     }
@@ -137,7 +138,16 @@ extension LivrosTableView: UITableViewDelegate, UITableViewDataSource{
         if indexPath.row == 0 {
            return 44
         } else {
-            return 100
+            let heigth = ceil(Double(tableData[indexPath.section].items)/7.0)
+            return CGFloat( heigth == 1 ? 70 : heigth * 50 + 20 )
         }
     }
+}
+
+extension LivrosTableViewController: CapitulosTableViewCellDelegate {
+    func didTap(chapter: Int) {
+        // navegacao
+    }
+    
+    
 }

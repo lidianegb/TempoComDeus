@@ -81,8 +81,7 @@ class BibliaViewController: UIViewController {
 
 
     @objc func showLivros(){
-        print("cliclou")
-        let livrosTableView = LivrosTableView()
+        let livrosTableView = LivrosTableViewController()
         self.present(livrosTableView, animated: true)
     }
      
