@@ -82,6 +82,7 @@ class BibliaViewController: UIViewController {
 
     @objc func showLivros(){
         let livrosTableView = LivrosTableViewController()
+        livrosTableView.delegate = self
         self.present(livrosTableView, animated: true)
     }
      
@@ -127,3 +128,10 @@ extension BibliaViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 
+extension BibliaViewController: LivrosTableViewDelegate{
+    func didSelectSection(abbr: String, chapter: Int) {
+         BibliaRepository().getCapitulo(livro: abbr, cap: chapter){
+        [weak self] (biblia) in self?.biblia = biblia
+        }
+    }
+}

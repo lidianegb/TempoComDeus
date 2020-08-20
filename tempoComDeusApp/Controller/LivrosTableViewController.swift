@@ -8,19 +8,13 @@
 
 import UIKit
 
-
+protocol LivrosTableViewDelegate: class{
+    func didSelectSection(abbr: String, chapter: Int)
+}
 class LivrosTableViewController: UIViewController {
     
     var tableData = CellData.data()
-    
-//        var livros: [Livro] = []{
-//              didSet{
-//                  DispatchQueue.main.async {
-//                     self.tableView.reloadData()
-//                  }
-//              }
-//        }
-
+    var abbr: String?
       
         let cellId = "cellId"
         let cellSection = "cellSection"
@@ -35,6 +29,8 @@ class LivrosTableViewController: UIViewController {
             tableView.dataSource = self
             return tableView
         }()
+    
+    var delegate:LivrosTableViewDelegate?
     
     let cancelButton : UIButton = {
            let button = UIButton()
@@ -57,10 +53,6 @@ class LivrosTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-       
-//        BibliaRepository().getLivros(){
-//            [weak self] (livros) in self?.livros = livros
-//        }
        
     }
 
@@ -132,6 +124,7 @@ extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource{
             tableView.reloadSections(sections, with: .none)
          
         }
+        self.abbr = tableData[indexPath.section].abbrev
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -146,7 +139,9 @@ extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource{
 
 extension LivrosTableViewController: CapitulosTableViewCellDelegate {
     func didTap(chapter: Int) {
-        // navegacao
+        
+        self.delegate?.didSelectSection(abbr: self.abbr ?? " ", chapter: chapter)
+        self.dismiss(animated: true, completion: nil)
     }
     
     

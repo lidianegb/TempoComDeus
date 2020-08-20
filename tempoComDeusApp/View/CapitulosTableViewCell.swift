@@ -9,10 +9,7 @@
 import UIKit
 
 protocol CapitulosTableViewCellDelegate: class {
-    
-    
     func didTap(chapter: Int)
-    
 }
 
 class CapitulosTableViewCell: UITableViewCell {
@@ -78,7 +75,7 @@ extension CapitulosTableViewCell: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      //  let chapter = ...
-     //   self.delegate?.didTap(chapter: chapter)
+
+        self.delegate?.didTap(chapter: indexPath.row + 1)
     }
 }

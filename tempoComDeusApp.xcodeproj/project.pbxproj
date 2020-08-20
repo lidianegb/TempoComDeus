@@ -34,6 +34,7 @@
 		AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */; };
 		AFC2A32624E87A13001A266D /* NovaNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* NovaNotaViewController.swift */; };
 		AFDB6D6124EEA80000F58A6D /* CapitulosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB6D6024EEA80000F58A6D /* CapitulosCollectionViewCell.swift */; };
+		AFDB6D6324EEC8E700F58A6D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB6D6224EEC8E700F58A6D /* UserDefaults.swift */; };
 		AFF120EB24EAB6A1000A9B12 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EA24EAB6A1000A9B12 /* Repository.swift */; };
 		AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */; };
 		AFF120EF24EABBAB000A9B12 /* NotaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EE24EABBAB000A9B12 /* NotaRepository.swift */; };
@@ -94,6 +95,7 @@
 		AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* NovaNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaNotaViewController.swift; sourceTree = "<group>"; };
 		AFDB6D6024EEA80000F58A6D /* CapitulosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitulosCollectionViewCell.swift; sourceTree = "<group>"; };
+		AFDB6D6224EEC8E700F58A6D /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		AFF120EA24EAB6A1000A9B12 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		AFF120EE24EABBAB000A9B12 /* NotaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaRepository.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				AF1947C924EBF91000724B23 /* HTTP.swift */,
 				AF1947CE24EBFA3500724B23 /* URL.swift */,
+				AFDB6D6224EEC8E700F58A6D /* UserDefaults.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */,
 				AFFA1D1B24EC854000399F96 /* Capitulo.swift in Sources */,
 				AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */,
+				AFDB6D6324EEC8E700F58A6D /* UserDefaults.swift in Sources */,
 				AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */,
 				AF1947C624EBF40D00724B23 /* Verso.swift in Sources */,
 				AFDB6D6124EEA80000F58A6D /* CapitulosCollectionViewCell.swift in Sources */,
