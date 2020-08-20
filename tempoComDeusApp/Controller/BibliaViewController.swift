@@ -12,12 +12,13 @@ class BibliaViewController: UIViewController {
 
     // MARK: Properties
     let cellId = "CellId"
-      let backView = BackView()
+    let backView = BackView()
+    let defaults = UserDefaults.standard
     
     lazy var titleButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blueAct
-        button.setTitle("??", for: .normal)
+        button.setTitle("", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.tintColor = .white
         button.layer.cornerRadius = 5
@@ -57,23 +58,25 @@ class BibliaViewController: UIViewController {
         didSet{
             DispatchQueue.main.async {
                self.tableView.reloadData()
-                let buttonTitle = "\(self.biblia?.book.name ?? "")"  + " " + "\(self.biblia?.chapter.number ?? 0)"
-                self.titleButton.setTitle(buttonTitle, for: .normal)
-                let rightButtonTitle = self.biblia?.book.version?.uppercased()
-                self.rightButton.setTitle(rightButtonTitle, for: .normal)
+                self.updateValues()
+                self.updateButtonTitle()
             }
         }
     }
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        BibliaRepository().getCapitulo(livro: "job", cap: 33){
+        
+        setupInitialValues()
+        let livro = defaults.string(forKey: "abbr") ?? ""
+        let chapter = defaults.integer(forKey: "chapter")
+        BibliaRepository().getCapitulo(livro: livro, cap: chapter){
             [weak self] (biblia) in self?.biblia = biblia
         }
         configureUI()
         addBackground()
         setupTableView()
+     
       
     }
     
@@ -95,7 +98,29 @@ class BibliaViewController: UIViewController {
         navigationItem.titleView = titleButton
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
     }
-
+    
+    func setupInitialValues(){
+      
+        if let _ = defaults.value(forKey: "abbr") as? String {
+        }else {
+            defaults.set("gn", forKey: "abbr")
+        }
+        if let _ = defaults.value(forKey: "chapter") as? Int {
+        }else {
+            defaults.set(1, forKey: "chapter")
+        }
+    }
+    
+    func updateValues(){
+        defaults.set(biblia?.book.abbrev["pt"] ?? "", forKey: "abbr")
+        defaults.set(biblia?.chapter.number, forKey: "chapter")
+    }
+    func updateButtonTitle(){
+        let buttonTitle = "\(biblia?.book.name ?? "")"  + " " + "\(biblia?.chapter.number ?? 0)"
+            titleButton.setTitle(buttonTitle, for: .normal)
+            let rightButtonTitle = self.biblia?.book.version?.uppercased()
+            rightButton.setTitle(rightButtonTitle, for: .normal)
+    }
     
     func addBackground(){
          view.addSubview(backView)
