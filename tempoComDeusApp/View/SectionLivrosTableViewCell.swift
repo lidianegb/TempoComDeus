@@ -25,7 +25,7 @@ class SectionLivrosTableViewCell: UITableViewCell {
     }
     
     func configure(){
-        self.backgroundColor = .blue
+    //    self.backgroundColor = .blue
         
         contentView.addSubview(rightDetail)
 //        imageView?.setDimensions(width: 10, height: 10)
@@ -35,8 +35,6 @@ class SectionLivrosTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
