@@ -25,7 +25,7 @@ class BibliaViewController: UIViewController {
         button.titleLabel?.tintColor = .white
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.setDimensions(width: 150, height: 20)
+        button.setDimensions(width: 150, height: 30)
         button.addTarget(self, action: #selector(showLivros), for: .touchUpInside)
         return button
     }()
@@ -38,7 +38,7 @@ class BibliaViewController: UIViewController {
            button.titleLabel?.tintColor = .white
            button.layer.cornerRadius = 5
            button.layer.masksToBounds = true
-           button.setDimensions(width: 40, height: 20)
+           button.setDimensions(width: 40, height: 30)
            return button
        }()
     
@@ -78,6 +78,7 @@ class BibliaViewController: UIViewController {
                self.tableView.reloadData()
                 self.updateValues()
                 self.updateButtonTitle()
+                self.showHiddenArrowLeftRight()
             }
         }
     }
@@ -152,17 +153,26 @@ class BibliaViewController: UIViewController {
         }
     }
     
+    func showHiddenArrowLeftRight(){
+        if biblia?.book.abbrev["pt"] == "gn" && biblia?.chapter.number == 1{
+            rightSwipeButton.isHidden = true
+        }else{
+            rightSwipeButton.isHidden = false
+        }
+        
+        if biblia?.book.abbrev["pt"] == "ap" && biblia?.chapter.number == 22{
+           leftSwipeButton.isHidden = true
+       }else{
+           leftSwipeButton.isHidden = false
+       }
+    }
+    
     @objc func leftSwipe(){
-        print("right")
         for (ind, book) in books.enumerated(){
             let abbrev = biblia?.book.abbrev["pt"] ?? ""
-            print(abbrev)
             let chapter = biblia?.chapter.number ?? 0
-            print(chapter)
             if book.abbrev == abbrev{
-                print("entrou1")
                 if chapter < book.items{
-                    print("entrou2")
                     BibliaRepository().getCapitulo(livro: abbrev, cap: chapter + 1){
                         [weak self] (biblia) in self?.biblia = biblia
                     }
@@ -179,7 +189,6 @@ class BibliaViewController: UIViewController {
         }
     }
     @objc func rightSwipe(){
-        print("left")
         for (ind, book) in books.enumerated(){
            let abbrev = biblia?.book.abbrev["pt"] ?? ""
             let chapter = biblia?.chapter.number ?? 0
