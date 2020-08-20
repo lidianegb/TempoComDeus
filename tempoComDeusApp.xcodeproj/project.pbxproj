@@ -15,7 +15,7 @@
 		AF1947D524EC015100724B23 /* BibliaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1947D424EC015100724B23 /* BibliaRepository.swift */; };
 		AF21B47224E5D25900D44D39 /* Nota.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47124E5D25900D44D39 /* Nota.swift */; };
 		AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */; };
-		AF51DF8A24EDA6D4001C352D /* LivrosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8924EDA6D4001C352D /* LivrosTableViewCell.swift */; };
+		AF51DF8A24EDA6D4001C352D /* CapitulosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8924EDA6D4001C352D /* CapitulosTableViewCell.swift */; };
 		AF51DF8C24EDB520001C352D /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8B24EDB520001C352D /* CellData.swift */; };
 		AF51DF8E24EDC0B9001C352D /* SectionLivrosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8D24EDC0B9001C352D /* SectionLivrosTableViewCell.swift */; };
 		AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200024E557440058FA2C /* AppDelegate.swift */; };
@@ -68,7 +68,7 @@
 		AF1947D424EC015100724B23 /* BibliaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaRepository.swift; sourceTree = "<group>"; };
 		AF21B47124E5D25900D44D39 /* Nota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nota.swift; sourceTree = "<group>"; };
 		AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCollectionViewCell.swift; sourceTree = "<group>"; };
-		AF51DF8924EDA6D4001C352D /* LivrosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosTableViewCell.swift; sourceTree = "<group>"; };
+		AF51DF8924EDA6D4001C352D /* CapitulosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitulosTableViewCell.swift; sourceTree = "<group>"; };
 		AF51DF8B24EDB520001C352D /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
 		AF51DF8D24EDC0B9001C352D /* SectionLivrosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLivrosTableViewCell.swift; sourceTree = "<group>"; };
 		AF7F1FFD24E557440058FA2C /* tempo com Deus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tempo com Deus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,7 +213,7 @@
 				AF7F203C24E583DA0058FA2C /* BackView.swift */,
 				AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */,
 				AFFA1D1224EC1CF400399F96 /* BibliaTableViewCell.swift */,
-				AF51DF8924EDA6D4001C352D /* LivrosTableViewCell.swift */,
+				AF51DF8924EDA6D4001C352D /* CapitulosTableViewCell.swift */,
 				AF51DF8D24EDC0B9001C352D /* SectionLivrosTableViewCell.swift */,
 			);
 			path = View;
@@ -403,7 +403,7 @@
 				AF1947C024EB4B4400724B23 /* EditViewController.swift in Sources */,
 				AF51DF8C24EDB520001C352D /* CellData.swift in Sources */,
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
-				AF51DF8A24EDA6D4001C352D /* LivrosTableViewCell.swift in Sources */,
+				AF51DF8A24EDA6D4001C352D /* CapitulosTableViewCell.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
 				AF7F203524E5589C0058FA2C /* Extensions.swift in Sources */,
 				AF51DF8E24EDC0B9001C352D /* SectionLivrosTableViewCell.swift in Sources */,

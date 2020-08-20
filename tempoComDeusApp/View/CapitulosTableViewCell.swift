@@ -1,5 +1,5 @@
 //
-//  LivrosTableViewCell.swift
+//  CapitulosTableViewCell.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 19/08/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LivrosTableViewCell: UITableViewCell {
+class CapitulosTableViewCell: UITableViewCell {
 
     
     override func awakeFromNib() {

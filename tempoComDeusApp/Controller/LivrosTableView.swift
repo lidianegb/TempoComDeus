@@ -13,13 +13,13 @@ class LivrosTableView: UIViewController {
     
     var tableData = CellData.data()
     
-        var livros: [Livro] = []{
-              didSet{
-                  DispatchQueue.main.async {
-                     self.tableView.reloadData()
-                  }
-              }
-        }
+//        var livros: [Livro] = []{
+//              didSet{
+//                  DispatchQueue.main.async {
+//                     self.tableView.reloadData()
+//                  }
+//              }
+//        }
 
       
         let cellId = "cellId"
@@ -28,6 +28,7 @@ class LivrosTableView: UIViewController {
         lazy var tableView: UITableView = {
             let tableView = UITableView(frame: .zero, style: .plain)
             tableView.backgroundColor = .clear
+            tableView.separatorColor = .blueBackgroud
             tableView.alwaysBounceVertical = false
             tableView.alwaysBounceHorizontal = false
             tableView.delegate = self
@@ -55,15 +56,20 @@ class LivrosTableView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+       
+//        BibliaRepository().getLivros(){
+//            [weak self] (livros) in self?.livros = livros
+//        }
+       
+    }
 
+    func configureUI(){
         view.backgroundColor = .white
-        BibliaRepository().getLivros(){
-            [weak self] (livros) in self?.livros = livros
-        }
         setupTableView()
         addHeader()
     }
-
+    
     @objc func cancelar(){
         self.dismiss(animated: true, completion: nil)
     }
@@ -78,7 +84,7 @@ class LivrosTableView: UIViewController {
     }
     
     func setupTableView(){
-        tableView.register(LivrosTableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(CapitulosTableViewCell.self, forCellReuseIdentifier: cellId)
         tableView.register(SectionLivrosTableViewCell.self, forCellReuseIdentifier: cellSection)
         view.insertSubview(tableView, at: 0)
         tableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
@@ -94,7 +100,7 @@ extension LivrosTableView: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             if tableData[section].opened == true{
-                return 5
+                return 2
             }else{
                 return 1
             }
@@ -107,8 +113,7 @@ extension LivrosTableView: UITableViewDelegate, UITableViewDataSource{
                 cell.configure()
             return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as? LivrosTableViewCell else { return UITableViewCell()}
-                cell.textLabel?.text = "\(tableData[indexPath.section].items)"
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as? CapitulosTableViewCell else { return UITableViewCell()}
                 cell.configure()
                 return cell
             }
@@ -125,6 +130,14 @@ extension LivrosTableView: UITableViewDelegate, UITableViewDataSource{
             let sections = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(sections, with: .none)
          
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+           return 44
+        } else {
+            return 100
         }
     }
 }

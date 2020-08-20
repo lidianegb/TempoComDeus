@@ -67,7 +67,7 @@ extension UIView {
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant!).isActive = true
         
         if let rightAnchor = rightAnchor, let padding = paddingRight {
-            self.rightAnchor.constraint(equalTo: rightAnchor, constant: padding).isActive = true
+            self.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding).isActive = true
         }
     }
     

@@ -13,7 +13,7 @@ class SectionLivrosTableViewCell: UITableViewCell {
     
     var rightDetail: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "delete")
+        imageView.image = UIImage(named: "arrowdown")
         imageView.layer.cornerRadius = 5
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
@@ -29,8 +29,11 @@ class SectionLivrosTableViewCell: UITableViewCell {
         
         contentView.addSubview(rightDetail)
 //        imageView?.setDimensions(width: 10, height: 10)
-        rightDetail.anchor(top: contentView.topAnchor, right: contentView.rightAnchor, paddingTop: 10, paddingRight: 10, width: 10, height: 10)
-       // rightDetail.centerY(inView: contentView, rightAnchor: contentView.rightAnchor, paddingRight: 10)
+        rightDetail.setDimensions(width: 14, height: 14)
+        rightDetail.centerY(inView: contentView, rightAnchor: contentView.rightAnchor, paddingRight: 16)
+    }
+    func setImageDetail(imageName: String){
+        imageView?.image = UIImage(named: imageName)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
