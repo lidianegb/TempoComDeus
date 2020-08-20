@@ -15,6 +15,8 @@ class BibliaViewController: UIViewController {
     let backView = BackView()
     let defaults = UserDefaults.standard
     
+    let books = CellData.data()
+    
     lazy var titleButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blueAct
@@ -53,6 +55,22 @@ class BibliaViewController: UIViewController {
        }()
 
   
+    lazy var rightSwipeButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "left"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.addTarget(self, action: #selector(rightSwipe), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    lazy var leftSwipeButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "right"), for: .normal)
+         button.imageView?.contentMode = .scaleAspectFill
+        button.addTarget(self, action: #selector(leftSwipe), for: .touchUpInside)
+        return button
+    }()
     
     var biblia: Biblia? {
         didSet{
@@ -76,7 +94,17 @@ class BibliaViewController: UIViewController {
         configureUI()
         addBackground()
         setupTableView()
-     
+        addButtonsSwipe()
+        
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        view.addGestureRecognizer(rightSwipe)
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
+        
+        
+        
       
     }
     
@@ -87,6 +115,19 @@ class BibliaViewController: UIViewController {
         let livrosTableView = LivrosTableViewController()
         livrosTableView.delegate = self
         self.present(livrosTableView, animated: true)
+    }
+    
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer){
+        if sender.state == .ended{
+            switch sender.direction {
+            case .right:
+               rightSwipe()
+            case .left:
+                leftSwipe()
+            default:
+                break
+            }
+        }
     }
      
      // MARK: Helpers
@@ -111,6 +152,55 @@ class BibliaViewController: UIViewController {
         }
     }
     
+    @objc func leftSwipe(){
+        print("right")
+        for (ind, book) in books.enumerated(){
+            let abbrev = biblia?.book.abbrev["pt"] ?? ""
+            print(abbrev)
+            let chapter = biblia?.chapter.number ?? 0
+            print(chapter)
+            if book.abbrev == abbrev{
+                print("entrou1")
+                if chapter < book.items{
+                    print("entrou2")
+                    BibliaRepository().getCapitulo(livro: abbrev, cap: chapter + 1){
+                        [weak self] (biblia) in self?.biblia = biblia
+                    }
+                     return
+                }
+                
+                if ind < (books.count - 1){
+                    BibliaRepository().getCapitulo(livro: books[ind + 1].abbrev, cap: 1){
+                          [weak self] (biblia) in self?.biblia = biblia
+                   }
+                   return
+                }
+            }
+        }
+    }
+    @objc func rightSwipe(){
+        print("left")
+        for (ind, book) in books.enumerated(){
+           let abbrev = biblia?.book.abbrev["pt"] ?? ""
+            let chapter = biblia?.chapter.number ?? 0
+           if book.abbrev == abbrev{
+               if chapter > 1{
+                   BibliaRepository().getCapitulo(livro: abbrev, cap: chapter - 1){
+                       [weak self] (biblia) in self?.biblia = biblia
+                   }
+                    return
+               }
+               
+               if ind > 0 {
+                BibliaRepository().getCapitulo(livro: books[ind - 1].abbrev, cap: books[ind - 1].items){
+                    [weak self] (biblia) in self?.biblia = biblia
+                }
+                return
+               }
+           }
+       }
+    }
+    
     func updateValues(){
         defaults.set(biblia?.book.abbrev["pt"] ?? "", forKey: "abbr")
         defaults.set(biblia?.chapter.number, forKey: "chapter")
@@ -131,6 +221,16 @@ class BibliaViewController: UIViewController {
         view.addSubview(tableView)
         tableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: backView.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
         tableView.register(BibliaTableViewCell.self, forCellReuseIdentifier: cellId)
+        
+      
+    }
+    
+    func addButtonsSwipe(){
+        view.addSubview(rightSwipeButton)
+        rightSwipeButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,  paddingLeft: 10, paddingBottom: 10, width: 20, height: 20)
+        
+        view.addSubview(leftSwipeButton)
+        leftSwipeButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 10, paddingRight: 10, width: 20, height: 20)
     }
     
 

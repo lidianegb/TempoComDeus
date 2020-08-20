@@ -61,7 +61,15 @@ class NotasViewController: UIViewController {
         return label
     }()
 
-    
+    let titleLabel: UILabel = {
+        var label = UILabel()
+        label.text = "Anotações"
+        label.textColor = .blueAct
+        label.font = .systemFont(ofSize: 17, weight: .bold)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
    
       // MARK: Lifecycle
       override func viewDidLoad() {
@@ -94,10 +102,9 @@ class NotasViewController: UIViewController {
     
       
       func configureUI(){
-    
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
-        navigationItem.title = "Anotações"
+        navigationItem.titleView = titleLabel
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showNewNota))
     
     }

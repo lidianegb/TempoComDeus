@@ -9,10 +9,10 @@
 import Foundation
 
 struct CellData {
-    var opened = false
-    var title = String()
-    var abbrev = String()
-    var items = Int()
+     var opened = false
+     var title = String()
+     var abbrev = String()
+     var items = Int()
 }
 
 extension CellData{
