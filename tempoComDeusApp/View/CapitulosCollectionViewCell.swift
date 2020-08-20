@@ -10,6 +10,12 @@ import UIKit
 
 class CapitulosCollectionViewCell: UICollectionViewCell {
     
+    override var isSelected: Bool{
+        didSet{
+            self.backgroundColor = .blueClear
+        }
+    }
+    
     let labelCapitulo: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -35,6 +41,7 @@ class CapitulosCollectionViewCell: UICollectionViewCell {
         addLabel()
           
       }
+    
     
     func addLabel(){
         contentView.addSubview(labelCapitulo)

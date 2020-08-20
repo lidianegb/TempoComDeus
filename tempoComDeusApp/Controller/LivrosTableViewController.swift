@@ -141,7 +141,10 @@ extension LivrosTableViewController: CapitulosTableViewCellDelegate {
     func didTap(chapter: Int) {
         
         self.delegate?.didSelectSection(abbr: self.abbr ?? " ", chapter: chapter)
-        self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.02){
+                self.dismiss(animated: true, completion: nil)
+        }
+      
     }
     
     
