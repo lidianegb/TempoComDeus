@@ -10,8 +10,8 @@ import UIKit
 
 class CapitulosCollectionViewCell: UICollectionViewCell {
     
-    override var isSelected: Bool{
-        didSet{
+    override var isSelected: Bool {
+        didSet {
             self.backgroundColor = .blueClear
         }
     }
@@ -27,10 +27,9 @@ class CapitulosCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
           super.awakeFromNib()
           
-          
       }
       
-    func createCell(textLabel: String){
+    func createCell(textLabel: String) {
         self.backgroundColor = .white
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = true
@@ -42,8 +41,7 @@ class CapitulosCollectionViewCell: UICollectionViewCell {
           
       }
     
-    
-    func addLabel(){
+    func addLabel() {
         contentView.addSubview(labelCapitulo)
         labelCapitulo.center(inView: contentView)
     }

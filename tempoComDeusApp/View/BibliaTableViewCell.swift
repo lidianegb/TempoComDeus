@@ -32,7 +32,7 @@ class BibliaTableViewCell: UITableViewCell {
     
     }
     
-    func createCell(num: String, verso: String){
+    func createCell(num: String, verso: String) {
         setupNum()
       setupVerso()
         self.num.text = num
@@ -40,16 +40,20 @@ class BibliaTableViewCell: UITableViewCell {
         
     }
     
-    func setupNum(){
+    func setupNum() {
         contentView.addSubview(num)
         num.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, paddingTop: 5, paddingLeft: 5, width: 30)
     }
-    func setupVerso(){
+    func setupVerso() {
         contentView.addSubview(verso)
-        verso.anchor(top: num.bottomAnchor, left: num.rightAnchor, right: contentView.rightAnchor, paddingTop: 1, paddingLeft: 3, paddingRight: 16)
+        verso.anchor(top: num.bottomAnchor,
+                     left: num.rightAnchor,
+                     right: contentView.rightAnchor,
+                     paddingTop: 1,
+                     paddingLeft: 3,
+                     paddingRight: 16)
        translatesAutoresizingMaskIntoConstraints = false
         contentView.bottomAnchor.constraint(equalTo: verso.bottomAnchor, constant: 5).isActive = true
     }
     
-  
 }

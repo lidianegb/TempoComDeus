@@ -7,19 +7,23 @@
 //
 
 import Foundation
-class Livro: Decodable{
+class Livro: Decodable {
 
-    var abbrev: Dictionary<String, String>
+    var abbrev: [String: String]
     var name: String
     let author: String
-    let chapters : Int?
+    let chapters: Int?
     let group: String?
     let testament: String?
     let version: String?
    
-  
-    
-    init(abbrev: Dictionary<String, String>,name: String,  author: String, chapters: Int, group: String, testament: String, version: String) {
+    init(abbrev: [String: String],
+         name: String,
+         author: String,
+         chapters: Int,
+         group: String,
+         testament: String,
+         version: String) {
    
         self.abbrev = abbrev
         self.name = name
@@ -29,8 +33,8 @@ class Livro: Decodable{
         self.chapters = chapters
         self.version = version
     }
-    private enum CodingKeys: String, CodingKey{
-        case  name = "name", abbrev = "abbrev", author = "author", group = "group", chapters = "chapters", testament = "testament", version = "version"
+    private enum CodingKeys: String, CodingKey {
+        case  name, abbrev, author, group, chapters, testament, version
     }
     
 }

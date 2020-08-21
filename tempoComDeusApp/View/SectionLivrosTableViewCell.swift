@@ -8,9 +8,7 @@
 
 import UIKit
 
-
 class SectionLivrosTableViewCell: UITableViewCell {
-
     
     var rightDetail: UIImageView = {
         let imageView = UIImageView()
@@ -24,7 +22,7 @@ class SectionLivrosTableViewCell: UITableViewCell {
         super.awakeFromNib()
       
     }
-    func configure(){
+    func configure() {
    
         contentView.addSubview(rightDetail)
         rightDetail.setDimensions(width: 14, height: 14)
@@ -37,17 +35,15 @@ class SectionLivrosTableViewCell: UITableViewCell {
     }
 
 }
-extension SectionLivrosTableViewCell{
+extension SectionLivrosTableViewCell {
     func didSelected(isSelected: Bool) {
-        if isSelected{
+        if isSelected {
             rightDetail.image = UIImage(named: "arrowup")
-            textLabel?.textColor = .blueAct
-        }else{
+            textLabel?.textColor = .blueAct } else {
              rightDetail.image = UIImage(named: "arrowdown")
              textLabel?.textColor = .black
         }
         self.reloadInputViews()
     }
-    
     
 }

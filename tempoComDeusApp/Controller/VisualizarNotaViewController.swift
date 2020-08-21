@@ -13,18 +13,15 @@ class VisualizarNotaViewController: UIViewController {
 
      let backView = BackView()
     
-    
     private let notaRepository: NotaRepository
     private let notaID: UUID
     private var nota: Nota {
-        didSet{
+        didSet {
             textView.text = nota.body
             backView.backgroundColor = .getColor(name: nota.cor)
         }
     }
        
-
-    
     let textView: UITextView = {
         let text = UITextView()
         text.allowsEditingTextAttributes = false
@@ -45,10 +42,10 @@ class VisualizarNotaViewController: UIViewController {
             
        }
     
-        init(notaRepository: NotaRepository, id: UUID) {
+        init(notaRepository: NotaRepository, notaId: UUID) {
               self.notaRepository = notaRepository
-              self.notaID = id
-            self.nota = notaRepository.readItem(id: notaID) ?? Nota()
+              self.notaID = notaId
+            self.nota = notaRepository.readItem(itemId: notaID) ?? Nota()
               super.init(nibName: nil, bundle: nil)
           }
        
@@ -58,14 +55,12 @@ class VisualizarNotaViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        nota = notaRepository.readItem(id: notaID) ?? Nota()
+        nota = notaRepository.readItem(itemId: notaID) ?? Nota()
     }
        
-
-       
        // MARK: Selectors
-        @objc  func editNota(){
-             let notaViewController = EditNota(notaRepository: notaRepository, id: notaID)
+        @objc  func editNota() {
+            let notaViewController = EditNota(notaRepository: notaRepository, notaId: notaID)
              notaViewController.modalPresentationStyle = .fullScreen
             notaViewController.delegate = self
              self.present(notaViewController, animated: true)
@@ -73,28 +68,42 @@ class VisualizarNotaViewController: UIViewController {
         
         // MARK: Helpers
        
-       func configureUI(){
+       func configureUI() {
            navigationController?.navigationBar.shadowImage = UIImage()
            view.backgroundColor = .blueBackgroud
             
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editNota) )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
+                                                            target: self, action: #selector(editNota) )
         
             backView.layer.cornerRadius = 10
             backView.layer.masksToBounds = true
        }
 
-        func addTextView(){
+        func addTextView() {
             backView.addSubview(textView)
-            textView.anchor(top: backView.topAnchor, left: backView.leftAnchor, bottom: backView.bottomAnchor, right: backView.rightAnchor, paddingTop: 20, paddingLeft: 16, paddingBottom: 20, paddingRight: 16)
+            textView.anchor(top: backView.topAnchor,
+                            left: backView.leftAnchor,
+                            bottom: backView.bottomAnchor,
+                            right: backView.rightAnchor,
+                            paddingTop: 20,
+                            paddingLeft: 16,
+                            paddingBottom: 20,
+                            paddingRight: 16)
             
         }
     
-        private func addBackView(){
+        private func addBackView() {
            view.insertSubview(backView, at: 0)
-           backView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0 , paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
+           backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                           left: view.leftAnchor,
+                           bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                           right: view.rightAnchor,
+                           paddingTop: 0 ,
+                           paddingLeft: 8,
+                           paddingBottom: 0,
+                           paddingRight: 8)
        }
 
-    
 }
 
 extension VisualizarNotaViewController: NotaDelegate {

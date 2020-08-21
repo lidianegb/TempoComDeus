@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Capitulo: Decodable{
+class Capitulo: Decodable {
     let number: Int
     let verses: Int
     
@@ -16,7 +16,7 @@ class Capitulo: Decodable{
         self.verses = verses
     }
     
-    enum CodingKeys: String, CodingKey{
-        case number = "number", verses = "verses"
+    enum CodingKeys: String, CodingKey {
+        case number, verses
     }
 }

@@ -8,19 +8,18 @@
 
 import Foundation
 
-class Biblia: Decodable{
+class Biblia: Decodable {
     let verses: [Verso]
     let chapter: Capitulo
     let book: Livro
   
- 
     init(book: Livro, chapter: Capitulo, verses: [Verso]) {
         self.book = book
         self.chapter = chapter
         self.verses = verses
     }
-    enum CodingKeys: String, CodingKey{
-        case book = "book", chapter = "chapter", verses = "verses"
+    enum CodingKeys: String, CodingKey {
+        case book, chapter, verses
     }
     
 }

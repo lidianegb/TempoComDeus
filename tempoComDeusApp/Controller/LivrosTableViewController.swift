@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LivrosTableViewDelegate: class{
+protocol LivrosTableViewDelegate: class {
     func didSelectSection(abbr: String, chapter: Int)
 }
 
@@ -31,10 +31,9 @@ class LivrosTableViewController: UIViewController {
             return tableView
         }()
     
-    var delegate:LivrosTableViewDelegate?
+   weak var delegate: LivrosTableViewDelegate?
 
-    
-    let cancelButton : UIButton = {
+    let cancelButton: UIButton = {
            let button = UIButton()
            button.setTitle("Cancelar", for: .normal)
            button.setTitleColor(.blueAct, for: .normal)
@@ -50,26 +49,23 @@ class LivrosTableViewController: UIViewController {
         return label
     }()
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
        
     }
 
-    func configureUI(){
+    func configureUI() {
         view.backgroundColor = .white
         setupTableView()
         addHeader()
     }
     
-    @objc func cancelar(){
+    @objc func cancelar() {
         self.dismiss(animated: true, completion: nil)
     }
 
-    
-    func addHeader(){
+    func addHeader() {
         view.insertSubview(cancelButton, at: 1)
         cancelButton.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
         
@@ -77,51 +73,56 @@ class LivrosTableViewController: UIViewController {
         labelTitle.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: 16)
     }
     
-    func setupTableView(){
+    func setupTableView() {
         tableView.register(CapitulosTableViewCell.self, forCellReuseIdentifier: cellId)
         tableView.register(SectionLivrosTableViewCell.self, forCellReuseIdentifier: cellSection)
         view.insertSubview(tableView, at: 0)
-        tableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        tableView.anchor(top: view.topAnchor,
+                         left: view.leftAnchor,
+                         bottom: view.bottomAnchor,
+                         right: view.rightAnchor,
+                         paddingTop: 50,
+                         paddingLeft: 0,
+                         paddingBottom: 0,
+                         paddingRight: 0)
     }
     
-
 }
 
-extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource{
+extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource {
      func numberOfSections(in tableView: UITableView) -> Int {
        tableData.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if tableData[section].opened == true{
-                return 2
-            }else{
+            if tableData[section].opened == true {
+                return 2 } else {
                 return 1
             }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSection) as? SectionLivrosTableViewCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSection) as?
+                SectionLivrosTableViewCell else { return UITableViewCell()}
                 cell.textLabel?.text = tableData[indexPath.section].title
                 cell.didSelected(isSelected: tableData[indexPath.section].opened)
                 cell.configure()
             return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as? CapitulosTableViewCell else { return UITableViewCell()}
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as?
+                    CapitulosTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             cell.configure(items: tableData[indexPath.section].items)
                 return cell
             }
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableData[indexPath.section].opened == true{
+        if tableData[indexPath.section].opened == true {
             tableData[indexPath.section].opened = false
             let sections = IndexSet.init(integer: indexPath.section)
-            tableView.reloadSections(sections, with: .none)
-        }else{
+            tableView.reloadSections(sections, with: .none) } else {
             tableData[indexPath.section].opened = true
             let sections = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(sections, with: .none)
@@ -144,12 +145,11 @@ extension LivrosTableViewController: CapitulosTableViewCellDelegate {
     func didTap(chapter: Int) {
         
         self.delegate?.didSelectSection(abbr: self.abbr ?? " ", chapter: chapter)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.02){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
                 self.dismiss(animated: true, completion: nil)
         }
       
     }
-    
     
 }
    

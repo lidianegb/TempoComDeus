@@ -9,11 +9,11 @@
 import Foundation
 extension URL {
     // retorna os 66 livros da biblia
-    static var getLivros: URL{
+    static var getLivros: URL {
         URL(string: "https://bibleapi.co/api/books")!
     }
     // retorna todos os versos e detalhes de um capitulo
-    static func getCapitulo(abbrev: String, cap: Int) -> URL{
+    static func getCapitulo(abbrev: String, cap: Int) -> URL {
         URL(string: "https://bibleapi.co/api/verses/nvi/\(abbrev)/\(cap)")!
     }
    

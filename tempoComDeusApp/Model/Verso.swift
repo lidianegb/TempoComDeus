@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Verso: Decodable{
+class Verso: Decodable {
     let number: Int
     let text: String
     
@@ -17,7 +17,7 @@ class Verso: Decodable{
         self.text = text
     }
     
-    enum Codingkeys: String, CodingKey{
-        case number = "number", text = "text"
+    enum Codingkeys: String, CodingKey {
+        case number, text
     }
 }

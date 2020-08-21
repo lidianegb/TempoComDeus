@@ -19,7 +19,7 @@ struct FileHelper {
         if !directoryExists(with: name, at: path) {
             do {
                 try manager.createDirectory(at: contentPath, withIntermediateDirectories: true, attributes: nil)
-            } catch (let error) { print(error.localizedDescription) }
+            } catch let error { print(error.localizedDescription) }
         }
     }
     
@@ -29,7 +29,7 @@ struct FileHelper {
         do {
             try manager.removeItem(at: dirPath)
             return !manager.fileExists(atPath: dirPath.path)
-        } catch (let error) {
+        } catch let error {
             print(error.localizedDescription)
             return false
         }
@@ -71,7 +71,7 @@ struct FileHelper {
         do {
             try manager.removeItem(at: contentPath)
             return !manager.fileExists(atPath: contentPath.path)
-        } catch (let error) {
+        } catch let error {
             print(error.localizedDescription)
             return false
         }
@@ -83,12 +83,11 @@ struct FileHelper {
         do {
             try data.write(to: contentPath)
             return true
-        } catch (let error) {
+        } catch let error {
             print(error.localizedDescription)
             return false
         }
     }
-    
     
     func retrieveFile(at path: String) -> Data? {
         let contentPath = constructPath(named: path)

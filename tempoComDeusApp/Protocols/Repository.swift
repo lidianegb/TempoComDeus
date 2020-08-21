@@ -12,11 +12,11 @@ protocol Repository: class {
       
       var items: [Item] { get set }
       
-    func createNewItem(body:String, cor: String)
+    func createNewItem(body: String, cor: String)
       func readAllItems() -> [Item]
-      func readItem(id: UUID) -> Item?
+      func readItem(itemId: UUID) -> Item?
       func update(item: Item)
-      func delete(id: UUID)
+      func delete(itemId: UUID)
     
 }
 
@@ -27,7 +27,7 @@ extension Repository {
         newItem.cor = cor
         newItem.body = body
         if let data = try? JSONEncoder().encode(newItem) {
-            FileHelper().createFile(with: data, name: newItem.id.uuidString)
+            FileHelper().createFile(with: data, name: newItem.notaId.uuidString)
         }
     }
     
@@ -46,8 +46,8 @@ extension Repository {
         }
     }
     
-    func readItem(id: UUID) -> Item? {
-        if let data = FileHelper().retrieveFile(at: id.uuidString) {
+    func readItem(itemId: UUID) -> Item? {
+        if let data = FileHelper().retrieveFile(at: itemId.uuidString) {
             let item = try? JSONDecoder().decode(Item.self, from: data)
             return item
         }
@@ -56,13 +56,12 @@ extension Repository {
     
     func update(item: Item) {
         if let data = try? JSONEncoder().encode(item) {
-            FileHelper().updateFile(at: item.id.uuidString, data: data)
+            FileHelper().updateFile(at: item.notaId.uuidString, data: data)
         }
     }
     
-    func delete(id: UUID) {
-        FileHelper().removeFile(at: id.uuidString)
+    func delete(itemId: UUID) {
+        FileHelper().removeFile(at: itemId.uuidString)
     }
-
     
 }

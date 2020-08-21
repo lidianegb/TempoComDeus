@@ -8,10 +8,9 @@
 
 import UIKit
 
-protocol NotaDelegate: UIViewController {
+protocol NotaDelegate: class {
     func didChange(body: String, cor: String)
 }
-
 
 class NotasViewController: UIViewController {
 
@@ -50,7 +49,6 @@ class NotasViewController: UIViewController {
          }
      }
      
-    
     let initialLabel: UILabel = {
         var label = UILabel()
         label.text = "Clique + para adicionar uma nova nota."
@@ -92,32 +90,42 @@ class NotasViewController: UIViewController {
       
       // MARK: Selectors
 
-       
-    @objc  func showNewNota(){
-        let notaViewController = NovaNota(notaRepository: notaRepository, id: UUID())
+    @objc  func showNewNota() {
+        let notaViewController = NovaNota(notaRepository: notaRepository, notaId: UUID())
         notaViewController.modalPresentationStyle = .fullScreen
         self.present(notaViewController, animated: true)
     }
        // MARK: Helpers
     
-      
-      func configureUI(){
+      func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
         navigationItem.titleView = titleLabel
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showNewNota))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(showNewNota))
     
     }
 
-    func addTextInicial(){
+    func addTextInicial() {
         backView.addSubview(initialLabel)
-        initialLabel.anchor(left: backView.leftAnchor, right: backView.rightAnchor,paddingLeft: 16, paddingRight: 16)
+        initialLabel.anchor(left: backView.leftAnchor,
+                            right: backView.rightAnchor,
+                            paddingLeft: 16,
+                            paddingRight: 16)
         initialLabel.centerY(inView: backView)
     }
     
-    func addBackground(){
+    func addBackground() {
         view.addSubview(backView)
-          backView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8)
+          backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                          left: view.leftAnchor,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          right: view.rightAnchor,
+                          paddingTop: 0,
+                          paddingLeft: 8,
+                          paddingBottom: 0,
+                          paddingRight: 8)
       }
     
     func setupCollectionView() {
@@ -130,13 +138,17 @@ class NotasViewController: UIViewController {
        }
 }
 
-extension NotasViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension NotasViewController: UICollectionViewDataSource, UICollectionViewDelegate,
+UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         notas.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! NotasCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
+                                                              for: indexPath) as? NotasCollectionViewCell
+            else {return UICollectionViewCell()}
         
         myCell.nota = notas[indexPath.row]
         myCell.createCell()
@@ -144,7 +156,9 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return myCell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cellWidth =  collectionView.frame.width / 2 - 15
         let cellHeigth = collectionView.frame.height / 5 - 10
@@ -153,19 +167,18 @@ extension NotasViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let visualizarNota = VisualizarNotaViewController(notaRepository: notaRepository, id: notas[indexPath.row].id)
+        let visualizarNota = VisualizarNotaViewController(notaRepository: notaRepository,
+                                                          notaId: notas[indexPath.row].notaId)
         visualizarNota.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(visualizarNota, animated: true)
     }
 
-
-    
 }
-extension NotasViewController: NotasCellDelegate{
+extension NotasViewController: NotasCellDelegate {
     func deleteCell(cell: NotasCollectionViewCell) {
-        if let indexPath = collectionView.indexPath(for: cell){
+        if let indexPath = collectionView.indexPath(for: cell) {
             collectionView.performBatchUpdates({
-                notaRepository.delete(id: notas[indexPath.row].id)
+                notaRepository.delete(itemId: notas[indexPath.row].notaId)
                 collectionView.deleteItems(at: [indexPath])
                 notas = notaRepository.readAllItems()
             }, completion: nil)

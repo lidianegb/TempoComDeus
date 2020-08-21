@@ -61,7 +61,10 @@ extension UIView {
         }
     }
     
-    func centerY(inView view: UIView, rightAnchor: NSLayoutXAxisAnchor? = nil, paddingRight: CGFloat? = nil, constant: CGFloat? = 0) {
+    func centerY(inView view: UIView,
+                 rightAnchor: NSLayoutXAxisAnchor? = nil,
+                 paddingRight: CGFloat? = nil,
+                 constant: CGFloat? = 0) {
         translatesAutoresizingMaskIntoConstraints = false
         
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant!).isActive = true
@@ -103,8 +106,7 @@ extension UIColor {
     static let nota4 = UIColor.rgb(red: 206, green: 224, blue: 213)
     static let nota5 = UIColor.rgb(red: 255, green: 224, blue: 207)
     
-    
-    static func getColor(name:String) -> UIColor{
+    static func getColor(name: String) -> UIColor {
         switch name {
         case "nota1":
             return .nota1

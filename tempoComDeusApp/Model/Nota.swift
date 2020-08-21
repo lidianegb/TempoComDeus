@@ -8,21 +8,21 @@
 
 import Foundation
 
-class Nota : Codable{
+class Nota: Codable {
     
-    let id: UUID
+    let notaId: UUID
     var body: String
-    let date : Date
+    let date: Date
     var cor: String
     
     required init() {
-        self.id = UUID()
+        self.notaId = UUID()
         self.body = ""
         self.date  = Date()
         self.cor = "nota1"
     }
-    private enum CodingKeys: String, CodingKey{
-           case id, body, date, cor
+    private enum CodingKeys: String, CodingKey {
+           case notaId, body, date, cor
     }
     
 }

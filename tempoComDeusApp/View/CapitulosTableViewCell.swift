@@ -35,22 +35,25 @@ class CapitulosTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-  
-
-    func configure(items: Int){
+      
+    func configure(items: Int) {
         self.items = items
         setupCollection()
         self.collectionView.reloadData()
     }
     
-    func setupCollection(){
+    func setupCollection() {
         collectionView.register(CapitulosCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         contentView.addSubview(collectionView)
-        collectionView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        collectionView.anchor(top: contentView.topAnchor,
+                              left: contentView.leftAnchor,
+                              bottom: contentView.bottomAnchor,
+                              right: contentView.rightAnchor,
+                              paddingTop: 0,
+                              paddingLeft: 0,
+                              paddingBottom: 0,
+                              paddingRight: 0)
     }
-    
-    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -58,18 +61,23 @@ class CapitulosTableViewCell: UITableViewCell {
     }
 
 }
-extension CapitulosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension CapitulosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource,
+UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? CapitulosCollectionViewCell else { return UICollectionViewCell()}
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+            as? CapitulosCollectionViewCell else { return UICollectionViewCell()}
         cell.createCell(textLabel: "\(indexPath.row + 1)")
         return cell
     }
    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 40, height: 40)
     }
     

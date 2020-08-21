@@ -17,35 +17,34 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         configureViewControllers()
         configureUI()
-        
-      
     }
     
     // MARK: Selectors
     
-    
     // MARK: Helpers
-    
-    
-    func configureUI(){
+        
+    func configureUI() {
         tabBar.barStyle = .black
      //   tabBar.unselectedItemTintColor = .blueClear
         tabBar.barTintColor = .blueBackgroud
 
     }
-    func configureViewControllers(){
+    func configureViewControllers() {
         let biblia = BibliaViewController()
-        let navBiblia = templetaNavigationController(image: UIImage(named: "icon_biblia_unselected"),title: "Biblia", rootViewController: biblia)
+        let navBiblia = templetaNavigationController(image: UIImage(named: "icon_biblia_unselected"),
+                                                     title: "Biblia",
+                                                     rootViewController: biblia)
 
         let notas = NotasViewController()
-        let navNotas = templetaNavigationController(image: UIImage(named: "icon_nota_unselected"), title: "Anotações", rootViewController: notas)
+        let navNotas = templetaNavigationController(image: UIImage(named: "icon_nota_unselected"),
+                                                    title: "Anotações", rootViewController: notas)
         
-
         viewControllers = [navBiblia, navNotas]
         
     }
     
-    func templetaNavigationController(image: UIImage?, title: String, rootViewController: UIViewController) -> UINavigationController{
+    func templetaNavigationController(image: UIImage?, title: String,
+                                      rootViewController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.title = title
         nav.tabBarItem.image = image

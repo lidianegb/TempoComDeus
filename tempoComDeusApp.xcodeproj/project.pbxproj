@@ -21,6 +21,7 @@
 		AF51DF8A24EDA6D4001C352D /* CapitulosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8924EDA6D4001C352D /* CapitulosTableViewCell.swift */; };
 		AF51DF8C24EDB520001C352D /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8B24EDB520001C352D /* CellData.swift */; };
 		AF51DF8E24EDC0B9001C352D /* SectionLivrosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8D24EDC0B9001C352D /* SectionLivrosTableViewCell.swift */; };
+		AF6A1E3F24EFFB0800FF46FF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF6A1E3E24EFFB0800FF46FF /* .swiftlint.yml */; };
 		AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200024E557440058FA2C /* AppDelegate.swift */; };
 		AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200224E557440058FA2C /* SceneDelegate.swift */; };
 		AF7F200524E557440058FA2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200424E557440058FA2C /* ViewController.swift */; };
@@ -83,6 +84,7 @@
 		AF51DF8924EDA6D4001C352D /* CapitulosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitulosTableViewCell.swift; sourceTree = "<group>"; };
 		AF51DF8B24EDB520001C352D /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
 		AF51DF8D24EDC0B9001C352D /* SectionLivrosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLivrosTableViewCell.swift; sourceTree = "<group>"; };
+		AF6A1E3E24EFFB0800FF46FF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		AF7F1FFD24E557440058FA2C /* tempo com Deus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tempo com Deus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7F200024E557440058FA2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF7F200224E557440058FA2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				AF7F200924E557450058FA2C /* Assets.xcassets */,
 				AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */,
 				AF7F200E24E557450058FA2C /* Info.plist */,
+				AF6A1E3E24EFFB0800FF46FF /* .swiftlint.yml */,
 			);
 			path = tempoComDeusApp;
 			sourceTree = "<group>";
@@ -299,7 +302,6 @@
 				1BEE505222F55FA8F3FF75C4 /* Pods-tempoComDeusAppTests.debug.xcconfig */,
 				3B847CA1921DE90A32D01F3D /* Pods-tempoComDeusAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -314,6 +316,7 @@
 				AF7F1FF924E557440058FA2C /* Sources */,
 				AF7F1FFA24E557440058FA2C /* Frameworks */,
 				AF7F1FFB24E557440058FA2C /* Resources */,
+				AF6A1E3D24EFF65A00FF46FF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -410,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6A1E3F24EFFB0800FF46FF /* .swiftlint.yml in Resources */,
 				AF7F200D24E557450058FA2C /* LaunchScreen.storyboard in Resources */,
 				AF7F200A24E557450058FA2C /* Assets.xcassets in Resources */,
 				AF7F200824E557440058FA2C /* Main.storyboard in Resources */,
@@ -476,6 +480,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AF6A1E3D24EFF65A00FF46FF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    ${PODS_ROOT}/SwiftLint/swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		E5336D5B676C4839B611D14D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

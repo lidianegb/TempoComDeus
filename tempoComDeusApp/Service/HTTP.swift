@@ -8,21 +8,20 @@
 
 import Foundation
 
-enum HTTP{
+enum HTTP {
     
     case get
     
-       func request(url: URL?,
-                     header: [String : String] =
-                        ["Content-Type":"application/json",
+       func request(url: URL?, header: [String: String] =
+                        ["Content-Type": "application/json",
                          "Authentication": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlR1ZSBBdWcgMTggMjAyMCAxMzoxMzo1OCBHTVQrMDAwMC5saWRpYW5lZ29tZXNAYWx1LnVmYy5iciIsImlhdCI6MTU5Nzc1NjQzOH0.Txl9Q4BXGXoDDCuo1RVRJwMkdMQoMnUT2CRL3jB53ZM"],
-                     body: [String : Any] = [:],
-                     completion: @escaping (Data?, HTTPURLResponse?, String?) -> Void = { data, response, error in }) {
+                    body: [String: Any] = [:],
+                    completion: @escaping (Data?, HTTPURLResponse?, String?) -> Void = { data, response, error in }) {
             
-            guard let url = url else {
-                completion(nil, nil, "URL Invalida")
-                return
-            }
+                guard let url = url else {
+                    completion(nil, nil, "URL Invalida")
+                    return
+                }
             
                 switch self {
                 case .get:
@@ -30,8 +29,6 @@ enum HTTP{
                         completion(data, response as? HTTPURLResponse, error?.localizedDescription)
                     }.resume()
                     
-             
-
             }
     }
     
