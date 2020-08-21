@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		368D13DC194C6C74B20E2997 /* Pods_tempoComDeusAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3AFD92A8E1CD8935F5211B /* Pods_tempoComDeusAppTests.framework */; };
+		789A26CFFA79AE3348927990 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1CDB9FBAB76BDF26783D292 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework */; };
+		AC6091035A0BA751A9B8BE3A /* Pods_tempoComDeusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3FAD09670327E5964399A8C /* Pods_tempoComDeusApp.framework */; };
 		AF1947C024EB4B4400724B23 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1947BF24EB4B4400724B23 /* EditViewController.swift */; };
 		AF1947C424EBF02200724B23 /* Livro.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1947C324EBF02200724B23 /* Livro.swift */; };
 		AF1947C624EBF40D00724B23 /* Verso.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1947C524EBF40D00724B23 /* Verso.swift */; };
@@ -61,6 +64,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19E9D45F067F28149909F528 /* Pods-tempoComDeusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp/Pods-tempoComDeusApp.release.xcconfig"; sourceTree = "<group>"; };
+		1BEE505222F55FA8F3FF75C4 /* Pods-tempoComDeusAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusAppTests.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusAppTests/Pods-tempoComDeusAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		376DB0D253AFBE2AB93CEE18 /* Pods-tempoComDeusApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp/Pods-tempoComDeusApp.debug.xcconfig"; sourceTree = "<group>"; };
+		3B847CA1921DE90A32D01F3D /* Pods-tempoComDeusAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusAppTests.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusAppTests/Pods-tempoComDeusAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		7E3AFD92A8E1CD8935F5211B /* Pods_tempoComDeusAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A1CDB9FBAB76BDF26783D292 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusApp_tempoComDeusAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1947BF24EB4B4400724B23 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		AF1947C324EBF02200724B23 /* Livro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Livro.swift; sourceTree = "<group>"; };
 		AF1947C524EBF40D00724B23 /* Verso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verso.swift; sourceTree = "<group>"; };
@@ -101,6 +112,7 @@
 		AFFA1D1024EC1C6B00399F96 /* LivrosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosTableViewController.swift; sourceTree = "<group>"; };
 		AFFA1D1224EC1CF400399F96 /* BibliaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaTableViewCell.swift; sourceTree = "<group>"; };
 		AFFA1D1A24EC854000399F96 /* Capitulo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capitulo.swift; sourceTree = "<group>"; };
+		E3FAD09670327E5964399A8C /* Pods_tempoComDeusApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6091035A0BA751A9B8BE3A /* Pods_tempoComDeusApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				368D13DC194C6C74B20E2997 /* Pods_tempoComDeusAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,12 +136,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				789A26CFFA79AE3348927990 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		476CC5697454D0F6A0356471 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3FAD09670327E5964399A8C /* Pods_tempoComDeusApp.framework */,
+				A1CDB9FBAB76BDF26783D292 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework */,
+				7E3AFD92A8E1CD8935F5211B /* Pods_tempoComDeusAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AF1947CD24EBF96B00724B23 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +169,8 @@
 				AF7F201624E557450058FA2C /* tempoComDeusAppTests */,
 				AF7F202124E557450058FA2C /* tempoComDeusAppUITests */,
 				AF7F1FFE24E557440058FA2C /* Products */,
+				E10E9A5F1FD4DE400CCA04B4 /* Pods */,
+				476CC5697454D0F6A0356471 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -262,6 +289,20 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		E10E9A5F1FD4DE400CCA04B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				376DB0D253AFBE2AB93CEE18 /* Pods-tempoComDeusApp.debug.xcconfig */,
+				19E9D45F067F28149909F528 /* Pods-tempoComDeusApp.release.xcconfig */,
+				9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */,
+				925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */,
+				1BEE505222F55FA8F3FF75C4 /* Pods-tempoComDeusAppTests.debug.xcconfig */,
+				3B847CA1921DE90A32D01F3D /* Pods-tempoComDeusAppTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -269,6 +310,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF7F202724E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusApp" */;
 			buildPhases = (
+				E5336D5B676C4839B611D14D /* [CP] Check Pods Manifest.lock */,
 				AF7F1FF924E557440058FA2C /* Sources */,
 				AF7F1FFA24E557440058FA2C /* Frameworks */,
 				AF7F1FFB24E557440058FA2C /* Resources */,
@@ -286,6 +328,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF7F202A24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppTests" */;
 			buildPhases = (
+				00B666F4B9533D95C465F770 /* [CP] Check Pods Manifest.lock */,
 				AF7F200F24E557450058FA2C /* Sources */,
 				AF7F201024E557450058FA2C /* Frameworks */,
 				AF7F201124E557450058FA2C /* Resources */,
@@ -304,6 +347,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF7F202D24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppUITests" */;
 			buildPhases = (
+				5C369DF3B5E3B0AC0A88B371 /* [CP] Check Pods Manifest.lock */,
 				AF7F201A24E557450058FA2C /* Sources */,
 				AF7F201B24E557450058FA2C /* Frameworks */,
 				AF7F201C24E557450058FA2C /* Resources */,
@@ -387,6 +431,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00B666F4B9533D95C465F770 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tempoComDeusAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C369DF3B5E3B0AC0A88B371 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tempoComDeusApp-tempoComDeusAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5336D5B676C4839B611D14D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tempoComDeusApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AF7F1FF924E557440058FA2C /* Sources */ = {
@@ -592,6 +705,7 @@
 		};
 		AF7F202824E557450058FA2C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 376DB0D253AFBE2AB93CEE18 /* Pods-tempoComDeusApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -610,6 +724,7 @@
 		};
 		AF7F202924E557450058FA2C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19E9D45F067F28149909F528 /* Pods-tempoComDeusApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -628,6 +743,7 @@
 		};
 		AF7F202B24E557450058FA2C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BEE505222F55FA8F3FF75C4 /* Pods-tempoComDeusAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -650,6 +766,7 @@
 		};
 		AF7F202C24E557450058FA2C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B847CA1921DE90A32D01F3D /* Pods-tempoComDeusAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -672,6 +789,7 @@
 		};
 		AF7F202E24E557450058FA2C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -692,6 +810,7 @@
 		};
 		AF7F202F24E557450058FA2C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
