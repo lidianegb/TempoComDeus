@@ -7,7 +7,7 @@
 //
 
 import XCTest
-//@testable import tempoComDeusApp
+//@testable import TempoComDeusApp
 
 class TempoComDeusAppTests: XCTestCase {
 

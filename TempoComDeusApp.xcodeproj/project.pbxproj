@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		368D13DC194C6C74B20E2997 /* Pods_tempoComDeusAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3AFD92A8E1CD8935F5211B /* Pods_tempoComDeusAppTests.framework */; };
-		789A26CFFA79AE3348927990 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1CDB9FBAB76BDF26783D292 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework */; };
 		AC6091035A0BA751A9B8BE3A /* Pods_tempoComDeusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3FAD09670327E5964399A8C /* Pods_tempoComDeusApp.framework */; };
 		AF1947C024EB4B4400724B23 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1947BF24EB4B4400724B23 /* EditViewController.swift */; };
 		AF1947C424EBF02200724B23 /* Livro.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1947C324EBF02200724B23 /* Livro.swift */; };
@@ -29,7 +28,6 @@
 		AF7F200A24E557450058FA2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200924E557450058FA2C /* Assets.xcassets */; };
 		AF7F200D24E557450058FA2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */; };
 		AF7F201824E557450058FA2C /* tempoComDeusAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F201724E557450058FA2C /* tempoComDeusAppTests.swift */; };
-		AF7F202324E557450058FA2C /* tempoComDeusAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F202224E557450058FA2C /* tempoComDeusAppUITests.swift */; };
 		AF7F203524E5589C0058FA2C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203424E5589C0058FA2C /* Extensions.swift */; };
 		AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203624E5592E0058FA2C /* MainTabBarController.swift */; };
 		AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibliaViewController.swift */; };
@@ -49,13 +47,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		AF7F201424E557450058FA2C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF7F1FF524E557440058FA2C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AF7F1FFC24E557440058FA2C;
-			remoteInfo = tempoComDeusApp;
-		};
-		AF7F201F24E557450058FA2C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AF7F1FF524E557440058FA2C /* Project object */;
 			proxyType = 1;
@@ -93,12 +84,9 @@
 		AF7F200924E557450058FA2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF7F200C24E557450058FA2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF7F200E24E557450058FA2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF7F201324E557450058FA2C /* tempoComDeusAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tempoComDeusAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF7F201324E557450058FA2C /* TempoComDeusAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TempoComDeusAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7F201724E557450058FA2C /* tempoComDeusAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempoComDeusAppTests.swift; sourceTree = "<group>"; };
 		AF7F201924E557450058FA2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF7F201E24E557450058FA2C /* tempoComDeusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tempoComDeusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF7F202224E557450058FA2C /* tempoComDeusAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempoComDeusAppUITests.swift; sourceTree = "<group>"; };
-		AF7F202424E557450058FA2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF7F203424E5589C0058FA2C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AF7F203624E5592E0058FA2C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AF7F203824E55B060058FA2C /* BibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaViewController.swift; sourceTree = "<group>"; };
@@ -134,14 +122,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AF7F201B24E557450058FA2C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				789A26CFFA79AE3348927990 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -167,9 +147,8 @@
 		AF7F1FF424E557440058FA2C = {
 			isa = PBXGroup;
 			children = (
-				AF7F1FFF24E557440058FA2C /* tempoComDeusApp */,
+				AF7F1FFF24E557440058FA2C /* TempoComDeusApp */,
 				AF7F201624E557450058FA2C /* tempoComDeusAppTests */,
-				AF7F202124E557450058FA2C /* tempoComDeusAppUITests */,
 				AF7F1FFE24E557440058FA2C /* Products */,
 				E10E9A5F1FD4DE400CCA04B4 /* Pods */,
 				476CC5697454D0F6A0356471 /* Frameworks */,
@@ -180,13 +159,12 @@
 			isa = PBXGroup;
 			children = (
 				AF7F1FFD24E557440058FA2C /* tempo com Deus.app */,
-				AF7F201324E557450058FA2C /* tempoComDeusAppTests.xctest */,
-				AF7F201E24E557450058FA2C /* tempoComDeusAppUITests.xctest */,
+				AF7F201324E557450058FA2C /* TempoComDeusAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AF7F1FFF24E557440058FA2C /* tempoComDeusApp */ = {
+		AF7F1FFF24E557440058FA2C /* TempoComDeusApp */ = {
 			isa = PBXGroup;
 			children = (
 				AFF120E924EAB67F000A9B12 /* Protocols */,
@@ -205,7 +183,7 @@
 				AF7F200E24E557450058FA2C /* Info.plist */,
 				AF6A1E3E24EFFB0800FF46FF /* .swiftlint.yml */,
 			);
-			path = tempoComDeusApp;
+			path = TempoComDeusApp;
 			sourceTree = "<group>";
 		};
 		AF7F201624E557450058FA2C /* tempoComDeusAppTests */ = {
@@ -215,15 +193,6 @@
 				AF7F201924E557450058FA2C /* Info.plist */,
 			);
 			path = tempoComDeusAppTests;
-			sourceTree = "<group>";
-		};
-		AF7F202124E557450058FA2C /* tempoComDeusAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AF7F202224E557450058FA2C /* tempoComDeusAppUITests.swift */,
-				AF7F202424E557450058FA2C /* Info.plist */,
-			);
-			path = tempoComDeusAppUITests;
 			sourceTree = "<group>";
 		};
 		AF7F203024E5583B0058FA2C /* Model */ = {
@@ -308,9 +277,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AF7F1FFC24E557440058FA2C /* tempoComDeusApp */ = {
+		AF7F1FFC24E557440058FA2C /* TempoComDeusApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AF7F202724E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusApp" */;
+			buildConfigurationList = AF7F202724E557450058FA2C /* Build configuration list for PBXNativeTarget "TempoComDeusApp" */;
 			buildPhases = (
 				E5336D5B676C4839B611D14D /* [CP] Check Pods Manifest.lock */,
 				AF7F1FF924E557440058FA2C /* Sources */,
@@ -322,14 +291,14 @@
 			);
 			dependencies = (
 			);
-			name = tempoComDeusApp;
+			name = TempoComDeusApp;
 			productName = tempoComDeusApp;
 			productReference = AF7F1FFD24E557440058FA2C /* tempo com Deus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AF7F201224E557450058FA2C /* tempoComDeusAppTests */ = {
+		AF7F201224E557450058FA2C /* TempoComDeusAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AF7F202A24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppTests" */;
+			buildConfigurationList = AF7F202A24E557450058FA2C /* Build configuration list for PBXNativeTarget "TempoComDeusAppTests" */;
 			buildPhases = (
 				00B666F4B9533D95C465F770 /* [CP] Check Pods Manifest.lock */,
 				AF7F200F24E557450058FA2C /* Sources */,
@@ -341,29 +310,10 @@
 			dependencies = (
 				AF7F201524E557450058FA2C /* PBXTargetDependency */,
 			);
-			name = tempoComDeusAppTests;
+			name = TempoComDeusAppTests;
 			productName = tempoComDeusAppTests;
-			productReference = AF7F201324E557450058FA2C /* tempoComDeusAppTests.xctest */;
+			productReference = AF7F201324E557450058FA2C /* TempoComDeusAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		AF7F201D24E557450058FA2C /* tempoComDeusAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AF7F202D24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppUITests" */;
-			buildPhases = (
-				5C369DF3B5E3B0AC0A88B371 /* [CP] Check Pods Manifest.lock */,
-				AF7F201A24E557450058FA2C /* Sources */,
-				AF7F201B24E557450058FA2C /* Frameworks */,
-				AF7F201C24E557450058FA2C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AF7F202024E557450058FA2C /* PBXTargetDependency */,
-			);
-			name = tempoComDeusAppUITests;
-			productName = tempoComDeusAppUITests;
-			productReference = AF7F201E24E557450058FA2C /* tempoComDeusAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -382,13 +332,9 @@
 						CreatedOnToolsVersion = 11.6;
 						TestTargetID = AF7F1FFC24E557440058FA2C;
 					};
-					AF7F201D24E557450058FA2C = {
-						CreatedOnToolsVersion = 11.6;
-						TestTargetID = AF7F1FFC24E557440058FA2C;
-					};
 				};
 			};
-			buildConfigurationList = AF7F1FF824E557440058FA2C /* Build configuration list for PBXProject "tempoComDeusApp" */;
+			buildConfigurationList = AF7F1FF824E557440058FA2C /* Build configuration list for PBXProject "TempoComDeusApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -401,9 +347,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AF7F1FFC24E557440058FA2C /* tempoComDeusApp */,
-				AF7F201224E557450058FA2C /* tempoComDeusAppTests */,
-				AF7F201D24E557450058FA2C /* tempoComDeusAppUITests */,
+				AF7F1FFC24E557440058FA2C /* TempoComDeusApp */,
+				AF7F201224E557450058FA2C /* TempoComDeusAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -421,13 +366,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AF7F201124E557450058FA2C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AF7F201C24E557450058FA2C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -453,28 +391,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-tempoComDeusAppTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5C369DF3B5E3B0AC0A88B371 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-tempoComDeusApp-tempoComDeusAppUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -567,26 +483,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AF7F201A24E557450058FA2C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AF7F202324E557450058FA2C /* tempoComDeusAppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		AF7F201524E557450058FA2C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AF7F1FFC24E557440058FA2C /* tempoComDeusApp */;
+			target = AF7F1FFC24E557440058FA2C /* TempoComDeusApp */;
 			targetProxy = AF7F201424E557450058FA2C /* PBXContainerItemProxy */;
-		};
-		AF7F202024E557450058FA2C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AF7F1FFC24E557440058FA2C /* tempoComDeusApp */;
-			targetProxy = AF7F201F24E557450058FA2C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -736,7 +639,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.TempoComDeusApp;
 				PRODUCT_NAME = "tempo com Deus";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -755,7 +658,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.TempoComDeusApp;
 				PRODUCT_NAME = "tempo com Deus";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -781,7 +684,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tempoComDeusApp.app/tempoComDeusApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TempoComDeusApp.app/TempoComDeusApp";
 			};
 			name = Debug;
 		};
@@ -804,56 +707,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tempoComDeusApp.app/tempoComDeusApp";
-			};
-			name = Release;
-		};
-		AF7F202E24E557450058FA2C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T373QFGJQA;
-				INFOPLIST_FILE = tempoComDeusAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = tempoComDeusApp;
-			};
-			name = Debug;
-		};
-		AF7F202F24E557450058FA2C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T373QFGJQA;
-				INFOPLIST_FILE = tempoComDeusAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.tempoComDeusAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = tempoComDeusApp;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TempoComDeusApp.app/TempoComDeusApp";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AF7F1FF824E557440058FA2C /* Build configuration list for PBXProject "tempoComDeusApp" */ = {
+		AF7F1FF824E557440058FA2C /* Build configuration list for PBXProject "TempoComDeusApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AF7F202524E557450058FA2C /* Debug */,
@@ -862,7 +723,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AF7F202724E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusApp" */ = {
+		AF7F202724E557450058FA2C /* Build configuration list for PBXNativeTarget "TempoComDeusApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AF7F202824E557450058FA2C /* Debug */,
@@ -871,20 +732,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AF7F202A24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppTests" */ = {
+		AF7F202A24E557450058FA2C /* Build configuration list for PBXNativeTarget "TempoComDeusAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AF7F202B24E557450058FA2C /* Debug */,
 				AF7F202C24E557450058FA2C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AF7F202D24E557450058FA2C /* Build configuration list for PBXNativeTarget "tempoComDeusAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AF7F202E24E557450058FA2C /* Debug */,
-				AF7F202F24E557450058FA2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
