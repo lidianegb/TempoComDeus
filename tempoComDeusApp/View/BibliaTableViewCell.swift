@@ -50,4 +50,6 @@ class BibliaTableViewCell: UITableViewCell {
        translatesAutoresizingMaskIntoConstraints = false
         contentView.bottomAnchor.constraint(equalTo: verso.bottomAnchor, constant: 5).isActive = true
     }
+    
+  
 }

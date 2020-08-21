@@ -22,12 +22,11 @@ class SectionLivrosTableViewCell: UITableViewCell {
     }()
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+      
     }
     func configure(){
-    //    self.backgroundColor = .blue
+   
         contentView.addSubview(rightDetail)
-//        imageView?.setDimensions(width: 10, height: 10)
         rightDetail.setDimensions(width: 14, height: 14)
         rightDetail.centerY(inView: contentView, rightAnchor: contentView.rightAnchor, paddingRight: 16)
     }

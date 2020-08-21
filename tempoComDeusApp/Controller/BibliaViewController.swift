@@ -21,6 +21,7 @@ class BibliaViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .blueAct
         button.setTitle("", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.tintColor = .white
         button.layer.cornerRadius = 5
@@ -31,26 +32,27 @@ class BibliaViewController: UIViewController {
     }()
     
     lazy var rightButton: UIButton = {
-           let button = UIButton()
-           button.backgroundColor = .systemGray
-           button.setTitle("??", for: .normal)
-           button.titleLabel?.textAlignment = .center
-           button.titleLabel?.tintColor = .white
-           button.layer.cornerRadius = 5
-           button.layer.masksToBounds = true
-           button.setDimensions(width: 40, height: 30)
-           return button
+        let button = UIButton()
+        button.backgroundColor = .blueClear
+        button.setTitle("", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.tintColor = .white
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = true
+        button.setDimensions(width: 40, height: 30)
+        return button
        }()
     
      lazy var tableView: UITableView = {
        let tableView = UITableView(frame: .zero, style: .grouped)
            tableView.backgroundColor = .clear
             tableView.separatorStyle = .none
+            tableView.allowsSelection = false
            tableView.alwaysBounceVertical = false
            tableView.alwaysBounceHorizontal = false
            tableView.delegate = self
            tableView.dataSource = self
-            tableView.allowsSelection = false
         return tableView
        }()
 
