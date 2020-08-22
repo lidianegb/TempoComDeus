@@ -5,7 +5,7 @@
 //  Created by Lidiane Gomes Barbosa on 18/08/20.
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
 //
-
+// swiftlint:disable line_length
 import Foundation
 
 enum HTTP {
