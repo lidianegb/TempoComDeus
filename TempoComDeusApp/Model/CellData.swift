@@ -15,6 +15,7 @@ struct CellData {
     var items = Int()
 }
 
+// swiftlint:disable function_body_length
 extension CellData {
     static func data() -> [CellData] {
         return   [CellData(title: "Gênesis", abbrev: "gn", items: 50),
