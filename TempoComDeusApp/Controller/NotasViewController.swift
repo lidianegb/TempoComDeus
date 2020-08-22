@@ -159,9 +159,15 @@ UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionWidth = collectionView.frame.width
+        let collectionHeight = collectionView.frame.height
+        return calcCellWidthAndHeight(width: collectionWidth, height: collectionHeight)
+    }
+    
+    func calcCellWidthAndHeight(width: CGFloat, height: CGFloat) -> CGSize {
+        let cellWidth =  width / 2 - 15
+        let cellHeigth = height / 5 - 10
         
-        let cellWidth =  collectionView.frame.width / 2 - 15
-        let cellHeigth = collectionView.frame.height / 5 - 10
         return CGSize(width: cellWidth, height: cellHeigth)
     }
     

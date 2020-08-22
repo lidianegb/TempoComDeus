@@ -135,9 +135,14 @@ extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.row == 0 {
            return 44
         } else {
-            let heigth = ceil(Double(tableData[indexPath.section].items)/7.0)
-            return CGFloat( heigth == 1 ? 70 : heigth * 50 + 20 )
+            let items = Double(tableData[indexPath.section].items)
+            return calculaHeight(qtdItems: items)
         }
+    }
+    
+    func calculaHeight(qtdItems: Double) -> CGFloat {
+        let heigth = ceil(qtdItems / 7.0)
+        return CGFloat( heigth == 1 ? 70 : heigth * 50 + 20 )
     }
 }
 

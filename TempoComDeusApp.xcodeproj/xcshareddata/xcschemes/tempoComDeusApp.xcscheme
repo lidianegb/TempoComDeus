@@ -17,7 +17,21 @@
                BlueprintIdentifier = "AF7F1FFC24E557440058FA2C"
                BuildableName = "tempo com Deus.app"
                BlueprintName = "TempoComDeusApp"
-               ReferencedContainer = "container:tempoComDeusApp.xcodeproj">
+               ReferencedContainer = "container:TempoComDeusApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AF6A1E4324F1492300FF46FF"
+               BuildableName = "ApplicationTests.xctest"
+               BlueprintName = "ApplicationTests"
+               ReferencedContainer = "container:TempoComDeusApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,25 +42,25 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AF6A1E4324F1492300FF46FF"
+            BuildableName = "ApplicationTests.xctest"
+            BlueprintName = "ApplicationTests"
+            ReferencedContainer = "container:TempoComDeusApp.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AF7F201224E557450058FA2C"
-               BuildableName = "TempoComDeusAppTests.xctest"
-               BlueprintName = "TempoComDeusAppTests"
-               ReferencedContainer = "container:tempoComDeusApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AF7F201D24E557450058FA2C"
-               BuildableName = "TempoComDeusAppUITests.xctest"
-               BlueprintName = "TempoComDeusAppUITests"
-               ReferencedContainer = "container:tempoComDeusApp.xcodeproj">
+               BlueprintIdentifier = "AF6A1E4324F1492300FF46FF"
+               BuildableName = "ApplicationTests.xctest"
+               BlueprintName = "ApplicationTests"
+               ReferencedContainer = "container:TempoComDeusApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,7 +82,7 @@
             BlueprintIdentifier = "AF7F1FFC24E557440058FA2C"
             BuildableName = "tempo com Deus.app"
             BlueprintName = "TempoComDeusApp"
-            ReferencedContainer = "container:tempoComDeusApp.xcodeproj">
+            ReferencedContainer = "container:TempoComDeusApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -85,7 +99,7 @@
             BlueprintIdentifier = "AF7F1FFC24E557440058FA2C"
             BuildableName = "tempo com Deus.app"
             BlueprintName = "TempoComDeusApp"
-            ReferencedContainer = "container:tempoComDeusApp.xcodeproj">
+            ReferencedContainer = "container:TempoComDeusApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
