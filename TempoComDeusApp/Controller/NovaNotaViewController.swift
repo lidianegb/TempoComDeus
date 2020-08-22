@@ -16,7 +16,7 @@ class NovaNota: UIViewController, UITextViewDelegate {
    private let notaRepository: NotaRepository
       private let notaID: UUID
     private var color = "nota1"
-    
+        
     var textView: UITextView = {
         let text = UITextView()
         text.isEditable = true
@@ -32,6 +32,10 @@ class NovaNota: UIViewController, UITextViewDelegate {
         button.setTitle("Cancelar", for: .normal)
         button.setTitleColor(.blueAct, for: .normal)
         button.addTarget(self, action: #selector(cancelar), for: .touchUpInside)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 1.0
+        button.layer.shadowOpacity = 0.2
+        button.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         return button
     }()
     
@@ -42,6 +46,10 @@ class NovaNota: UIViewController, UITextViewDelegate {
         button.setTitle("", for: .disabled)
         button.isEnabled = false
         button.addTarget(self, action: #selector(salvar), for: .touchUpInside)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 1.0
+        button.layer.shadowOpacity = 0.2
+        button.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         return button
     }()
     
@@ -92,10 +100,10 @@ class NovaNota: UIViewController, UITextViewDelegate {
                         paddingBottom: 80,
                         paddingRight: 16)
         
-      addStackHeader()
+      addStackBottom()
     
        }
-    func addStackHeader() {
+    func addStackBottom() {
         let cor1 = createButtonCor(cor: "cor1")
               cor1.addTarget(self, action: #selector(changeColor1), for: .touchUpInside)
               
@@ -164,24 +172,24 @@ class NovaNota: UIViewController, UITextViewDelegate {
          }
     
         @objc func changeColor1() {
-            backView.backgroundColor = .nota1
-                color = "nota1"
-        }
-        @objc func changeColor2() {
-            backView.backgroundColor = .nota2
-            color = "nota2"
-        }
-        @objc func changeColor3() {
-            backView.backgroundColor = .nota3
-            color = "nota3"
-        }
-        @objc func changeColor4() {
-            backView.backgroundColor = .nota4
-            color = "nota4"
-        }
-        @objc func changeColor5() {
-            backView.backgroundColor = .nota5
-            color = "nota5"
+                  backView.backgroundColor = .nota1
+                      color = "nota1"
+          }
+          @objc func changeColor2() {
+              backView.backgroundColor = .nota2
+              color = "nota2"
+          }
+          @objc func changeColor3() {
+              backView.backgroundColor = .nota3
+              color = "nota3"
+          }
+          @objc func changeColor4() {
+              backView.backgroundColor = .nota4
+              color = "nota4"
+          }
+          @objc func changeColor5() {
+              backView.backgroundColor = .nota5
+              color = "nota5"
         }
     
         @objc func keyboardHiden(notification: NSNotification) {
@@ -244,7 +252,15 @@ class NovaNota: UIViewController, UITextViewDelegate {
         button.setImage(img, for: .normal)
         button.imageView?.contentMode = UIView.ContentMode.scaleToFill
         button.setDimensions(width: 32, height: 32)
+        addShadowing(view: button)
         return button
+    }
+    
+    func addShadowing(view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowRadius = 2.0
+        view.layer.shadowOpacity = 0.8
+        view.layer.shadowOffset = CGSize(width: 1, height: 1)
     }
     
 }

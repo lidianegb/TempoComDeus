@@ -41,16 +41,24 @@ class EditNota: UIViewController, UITextViewDelegate {
        button.setTitle("Cancelar", for: .normal)
        button.setTitleColor(.blueAct, for: .normal)
        button.addTarget(self, action: #selector(cancelar), for: .touchUpInside)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 1.0
+        button.layer.shadowOpacity = 0.2
+        button.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
        return button
    }()
    
    let saveButton: UIButton = {
        let button = UIButton()
        button.setTitle("Salvar", for: .normal)
-      button.setTitleColor(.blueAct, for: .normal)
+        button.setTitleColor(.blueAct, for: .normal)
        button.setTitle("", for: .disabled)
        button.isEnabled = false
        button.addTarget(self, action: #selector(salvar), for: .touchUpInside)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 1.0
+        button.layer.shadowOpacity = 0.2
+        button.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
        return button
    }()
    
@@ -260,7 +268,15 @@ class EditNota: UIViewController, UITextViewDelegate {
        button.setImage(img, for: .normal)
        button.imageView?.contentMode = UIView.ContentMode.scaleToFill
        button.setDimensions(width: 32, height: 32)
+        addShadowing(view: button)
        return button
    }
+    
+func addShadowing(view: UIView) {
+           view.layer.shadowColor = UIColor.black.cgColor
+           view.layer.shadowRadius = 2.0
+           view.layer.shadowOpacity = 0.8
+           view.layer.shadowOffset = CGSize(width: 1, height: 1)
+       }
    
 }
