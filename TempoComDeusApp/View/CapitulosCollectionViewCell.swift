@@ -12,7 +12,7 @@ class CapitulosCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            self.backgroundColor = .blueClear
+            self.backgroundColor = .blueAct
         }
     }
     
@@ -36,13 +36,14 @@ class CapitulosCollectionViewCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.blueAct.cgColor
         self.layer.borderWidth = 0.5
         
-        labelCapitulo.text = textLabel
-        addLabel()
+        setupLabel(textLabel: textLabel)
           
       }
     
-    func addLabel() {
+    func setupLabel(textLabel: String) {
+        labelCapitulo.text = textLabel
         contentView.addSubview(labelCapitulo)
         labelCapitulo.center(inView: contentView)
+      
     }
 }

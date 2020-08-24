@@ -23,9 +23,9 @@ protocol Repository: class {
 extension Repository {
     
     func createNewItem(body: String, cor: String) {
-        let newItem = Item()
-        newItem.cor = cor
+        let newItem = Nota(body: body, cor: cor)
         newItem.body = body
+        newItem.cor = cor
         if let data = try? JSONEncoder().encode(newItem) {
             FileHelper().createFile(with: data, name: newItem.notaId.uuidString)
         }

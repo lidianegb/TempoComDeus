@@ -9,6 +9,7 @@
 import Foundation
 
 class NotaRepository: Repository {
+    
     typealias Item = Nota
     var items: [Nota] = []
 }

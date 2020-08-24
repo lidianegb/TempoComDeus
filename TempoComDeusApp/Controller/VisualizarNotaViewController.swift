@@ -45,7 +45,7 @@ class VisualizarNotaViewController: UIViewController {
         init(notaRepository: NotaRepository, notaId: UUID) {
               self.notaRepository = notaRepository
               self.notaID = notaId
-            self.nota = notaRepository.readItem(itemId: notaID) ?? Nota()
+            self.nota = notaRepository.readItem(itemId: notaID) ?? Nota(body: nil, cor: nil)
               super.init(nibName: nil, bundle: nil)
           }
        
@@ -55,7 +55,7 @@ class VisualizarNotaViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        nota = notaRepository.readItem(itemId: notaID) ?? Nota()
+        nota = notaRepository.readItem(itemId: notaID) ?? Nota(body: nil, cor: nil)
     }
        
        // MARK: Selectors
