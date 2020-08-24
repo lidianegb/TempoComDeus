@@ -75,7 +75,7 @@ class LivrosTableViewController: UIViewController {
     
     func setupTableView() {
         tableView.register(CapitulosTableViewCell.self, forCellReuseIdentifier: cellId)
-        tableView.register(SectionLivrosTableViewCell.self, forCellReuseIdentifier: cellSection)
+        tableView.register(LivrosTableViewSections.self, forCellReuseIdentifier: cellSection)
         view.insertSubview(tableView, at: 0)
         tableView.anchor(top: view.topAnchor,
                          left: view.leftAnchor,
@@ -104,7 +104,7 @@ extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSection) as?
-                SectionLivrosTableViewCell else { return UITableViewCell()}
+                LivrosTableViewSections else { return UITableViewCell()}
                 cell.textLabel?.text = tableData[indexPath.section].title
                 cell.didSelected(isSelected: tableData[indexPath.section].opened)
                 cell.configure()
