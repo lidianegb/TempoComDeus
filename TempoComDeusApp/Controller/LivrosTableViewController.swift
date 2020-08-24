@@ -14,7 +14,7 @@ protocol LivrosTableViewDelegate: class {
 
 class LivrosTableViewController: UIViewController {
     
-    var tableData = CellData.data()
+    var tableData = LivrosData.data()
     var abbr: String?
       
         let cellId = "cellId"
