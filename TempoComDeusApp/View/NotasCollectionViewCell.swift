@@ -22,16 +22,11 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
            if let nota = nota {
             labelPreview.text = nota.body
             wrapperView.backgroundColor = .getColor(name: nota.cor)
-            
-            let dateFormatter = DateFormatter()
-            let date = nota.date
-            dateFormatter.locale = Locale(identifier: "pt_BR")
-            dateFormatter.setLocalizedDateFormatFromTemplate("MMMMd")
-           
-            labelDate.text = dateFormatter.string(from: date)
+            labelDate.text = calcDate(date: nota.date)
            }
        }
     }
+    
     let wrapperView = UIView()
     let labelPreview = UILabel()
     let labelDate = UILabel()
@@ -77,6 +72,13 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
                             paddingTop: 30,
                             paddingLeft: 12,
                             paddingRight: 12)
+    }
+    
+    func calcDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "pt_BR")
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMMd")
+        return dateFormatter.string(from: date)
     }
     
     private func addButtonDelete() {
