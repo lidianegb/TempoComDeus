@@ -15,7 +15,7 @@ class BibliaViewController: UIViewController {
     let backView = BackView()
     let defaults = UserDefaults.standard
     
-    let books = CellData.data()
+    let books = LivrosData.data()
     
     lazy var titleButton: UIButton = {
         let button = UIButton()
