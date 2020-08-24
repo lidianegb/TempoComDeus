@@ -22,7 +22,7 @@ class LivrosTableViewSections: UITableViewCell {
         super.awakeFromNib()
       
     }
-    func configure() {
+    func createCell() {
    
         contentView.addSubview(rightDetail)
         rightDetail.setDimensions(width: 14, height: 14)

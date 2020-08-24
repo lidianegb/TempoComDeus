@@ -36,7 +36,7 @@ class CapitulosTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
       
-    func configure(items: Int) {
+    func createCell(items: Int) {
         self.items = items
         setupCollection()
         self.collectionView.reloadData()

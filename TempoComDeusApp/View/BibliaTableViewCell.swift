@@ -10,7 +10,7 @@ import UIKit
 
 class BibliaTableViewCell: UITableViewCell {
 
-    let num: UILabel = {
+    let number: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.numberOfLines = 1
@@ -33,21 +33,24 @@ class BibliaTableViewCell: UITableViewCell {
     }
     
     func createCell(num: String, verso: String) {
-        setupNum()
-      setupVerso()
-        self.num.text = num
+        addNumberVerso()
+        addTextVerso()
+        self.number.text = num
         self.verso.text = verso
-        
     }
     
-    func setupNum() {
-        contentView.addSubview(num)
-        num.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, paddingTop: 5, paddingLeft: 5, width: 30)
+    func addNumberVerso() {
+        contentView.addSubview(number)
+        number.anchor(top: contentView.topAnchor,
+                      left: contentView.leftAnchor,
+                      paddingTop: 5,
+                      paddingLeft: 5,
+                      width: 30)
     }
-    func setupVerso() {
+    func addTextVerso() {
         contentView.addSubview(verso)
-        verso.anchor(top: num.bottomAnchor,
-                     left: num.rightAnchor,
+        verso.anchor(top: number.bottomAnchor,
+                     left: number.rightAnchor,
                      right: contentView.rightAnchor,
                      paddingTop: 1,
                      paddingLeft: 3,

@@ -36,11 +36,11 @@ class CapitulosCollectionViewCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.blueAct.cgColor
         self.layer.borderWidth = 0.5
         
-        setupLabel(textLabel: textLabel)
+        addLabel(textLabel: textLabel)
           
       }
     
-    func setupLabel(textLabel: String) {
+    func addLabel(textLabel: String) {
         labelCapitulo.text = textLabel
         contentView.addSubview(labelCapitulo)
         labelCapitulo.center(inView: contentView)

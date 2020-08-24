@@ -107,13 +107,13 @@ extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource 
                 LivrosTableViewSections else { return UITableViewCell()}
                 cell.textLabel?.text = tableData[indexPath.section].title
                 cell.didSelected(isSelected: tableData[indexPath.section].opened)
-                cell.configure()
+                cell.createCell()
             return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as?
                     CapitulosTableViewCell else { return UITableViewCell()}
             cell.delegate = self
-            cell.configure(items: tableData[indexPath.section].items)
+            cell.createCell(items: tableData[indexPath.section].items)
                 return cell
             }
     }
