@@ -10,9 +10,9 @@ import Foundation
 
 struct CellData {
     var opened = false
-    var title = String()
-    var abbrev = String()
-    var items = Int()
+    var title: String
+    var abbrev: String
+    var items: Int
 }
 
 // swiftlint:disable function_body_length
