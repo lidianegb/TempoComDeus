@@ -25,7 +25,6 @@ class MainTabBarController: UITabBarController {
         
     func configureUI() {
         tabBar.barStyle = .black
-     //   tabBar.unselectedItemTintColor = .blueClear
         tabBar.barTintColor = .blueBackgroud
 
     }

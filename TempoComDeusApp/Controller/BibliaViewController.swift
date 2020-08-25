@@ -32,7 +32,7 @@ class BibliaViewController: UIViewController {
         return button
     }()
     
-    lazy var rightButton: UIButton = {
+    lazy var versionButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blueClear
         button.setTitle("", for: .normal)
@@ -167,7 +167,7 @@ class BibliaViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
         navigationItem.titleView = titleButton
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)
     }
     
     private func setupSwipeGestures() {
@@ -213,8 +213,8 @@ class BibliaViewController: UIViewController {
     private func updateButtonTitle() {
         let buttonTitle = "\(biblia?.book.name ?? "")"  + " " + "\(biblia?.chapter.number ?? 0)"
             titleButton.setTitle(buttonTitle, for: .normal)
-            let rightButtonTitle = self.biblia?.book.version?.uppercased()
-            rightButton.setTitle(rightButtonTitle, for: .normal)
+            let versionButtonTitle = self.biblia?.book.version?.uppercased()
+            versionButton.setTitle(versionButtonTitle, for: .normal)
     }
     
     private func setupBackView() {
@@ -271,8 +271,11 @@ extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let myCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as?
             BibliaTableViewCell else { return UITableViewCell() }
-        myCell.createCell(num: "\(biblia?.verses[indexPath.row].number ?? 0)",
-            verso: "\(biblia?.verses[indexPath.row].text ?? " ")" )
+        
+        let num = "\(biblia?.verses[indexPath.row].number ?? 0)"
+        let verso =  "\(biblia?.verses[indexPath.row].text ?? " ")"
+        
+        myCell.createCell(num: num,verso: verso)
         return myCell
     }
 }

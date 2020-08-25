@@ -23,13 +23,14 @@ class NotasViewController: UIViewController {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
                        
-       let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+
         collectionView.backgroundColor = .clear
         collectionView.alwaysBounceVertical = false
-         collectionView.alwaysBounceHorizontal = false
-         collectionView.delegate = self
-         collectionView.dataSource = self
-         return collectionView
+        collectionView.alwaysBounceHorizontal = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        return collectionView
     }()
     
     private var notaRepository: NotaRepository {
@@ -72,14 +73,11 @@ class NotasViewController: UIViewController {
       // MARK: Lifecycle
       override func viewDidLoad() {
         super.viewDidLoad()
-       notas = notaRepository.readAllItems()
+        notas = notaRepository.readAllItems()
         
         configureUI()
         addBackground()
-        // Setup view
-
         addTextInicial()
-        
         setupCollectionView()
       }
     
@@ -90,14 +88,14 @@ class NotasViewController: UIViewController {
       
       // MARK: Selectors
 
-    @objc  func showNewNota() {
+    @objc func showNewNota() {
         let notaViewController = NovaNota(notaRepository: notaRepository, notaId: UUID())
         notaViewController.modalPresentationStyle = .fullScreen
         self.present(notaViewController, animated: true)
     }
        // MARK: Helpers
     
-      func configureUI() {
+    func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
         navigationItem.titleView = titleLabel
