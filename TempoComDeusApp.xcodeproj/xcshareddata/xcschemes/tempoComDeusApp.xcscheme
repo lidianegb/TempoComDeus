@@ -63,6 +63,16 @@
                ReferencedContainer = "container:TempoComDeusApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AFD310B224F561BB00A74E2E"
+               BuildableName = "tempoComDeusUITests.xctest"
+               BlueprintName = "tempoComDeusUITests"
+               ReferencedContainer = "container:TempoComDeusApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
