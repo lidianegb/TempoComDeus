@@ -1,27 +1,45 @@
 //
-//  NovaNotaViewController.swift
+//  CriarEditarNotaViewController.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 15/08/20.
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
 //
-
+//swiftlint:disable type_body_length
 import UIKit
+
+enum Acao {
+    case editar, criar
+}
 
 protocol NovaNotaDelegate: class {
     func updateNotas(notas: [Nota])
 }
 
-class NovaNota: UIViewController, UITextViewDelegate {
+class CriarEditarNota: UIViewController, UITextViewDelegate {
     // MARK: Properties
-
     let backView = BackView()
-     
     private let notaRepository: NotaRepository
     private let notaID: UUID
-    private var color = "nota1"
+    private let acao: Acao
     
+    private var nota: Nota {
+        didSet {
+            backView.backgroundColor = .getColor(name: nota.cor)
+            textView.text = nota.body
+        }
+    }
+    var color = String() {
+        didSet {
+            switch acao {
+            case .editar:
+                self.saveButton.isEnabled = !(color == nota.cor)
+            case .criar: break
+            }
+        }
+    }
     weak var delegate: NovaNotaDelegate?
+    weak var notadelegate: NotaDelegate?
         
     var textView: UITextView = {
         let text = UITextView()
@@ -30,7 +48,6 @@ class NovaNota: UIViewController, UITextViewDelegate {
         text.backgroundColor = .clear
         text.font = UIFont.systemFont(ofSize: 20)
         return text
-
     }()
         
     let cancelButton: UIButton = {
@@ -60,10 +77,11 @@ class NovaNota: UIViewController, UITextViewDelegate {
     }()
     
        // MARK: Lifecycle
-    
-    init(notaRepository: NotaRepository, notaId: UUID) {
+    init(notaRepository: NotaRepository, notaId: UUID, acao: Acao) {
         self.notaRepository = notaRepository
         self.notaID = notaId
+        self.acao = acao
+        self.nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: nil)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -93,7 +111,9 @@ class NovaNota: UIViewController, UITextViewDelegate {
                                paddingTop: 8,
                                paddingLeft: 8,
                                paddingRight: 8)
-    
+        
+        textView.text = nota.body
+        color = nota.cor
         textView.delegate = self
         backView.addSubview(textView)
             backView.backgroundColor = .getColor(name: color)
@@ -105,9 +125,7 @@ class NovaNota: UIViewController, UITextViewDelegate {
                         paddingLeft: 16,
                         paddingBottom: 80,
                         paddingRight: 16)
-        
       addStackBottom()
-    
     }
     
     func addStackBottom() {
@@ -150,19 +168,37 @@ class NovaNota: UIViewController, UITextViewDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             view.endEditing(true)
     }
-       
+    
        // MARK: Selectors
             
         @objc func cancelar() {
-           if let text = textView.text, text.isEmpty {
-               self.dismiss(animated: true, completion: nil) } else {
-               displayActionSheet()
-           }
-       }
+            switch acao {
+            case .criar:
+                if let text = textView.text, text.isEmpty {
+                self.dismiss(animated: true, completion: nil) } else {
+                displayActionSheet()
+            }
+            case .editar:
+                if  textView.text == nota.body {
+                    if color == nota.cor {
+                      self.dismiss(animated: true, completion: nil)
+                    return
+                    }
+                }
+                displayActionSheet()
+            }
+        }
+    
          @objc func salvar() {
-            notaRepository.createNewItem(body: textView.text, cor: color)
-            delegate?.updateNotas(notas: notaRepository.readAllItems())
-            self.dismiss(animated: true, completion: nil)
+            switch acao {
+            case .criar:
+                notaRepository.createNewItem(body: textView.text, cor: color)
+                delegate?.updateNotas(notas: notaRepository.readAllItems())
+                self.dismiss(animated: true, completion: nil)
+            case .editar:
+                notadelegate?.didChange(body: textView.text, cor: color, notaId: notaID)
+                self.dismiss(animated: true, completion: nil)
+            }
        }
     
         @objc func displayActionSheet() {
@@ -173,11 +209,9 @@ class NovaNota: UIViewController, UITextViewDelegate {
           )
             
           let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-                
           menu.addAction(deleteAtion)
           menu.addAction(cancelAction)
           self.present(menu, animated: true, completion: nil)
-        
          }
     
         @objc func changeColor1() {
@@ -209,6 +243,7 @@ class NovaNota: UIViewController, UITextViewDelegate {
                     }
                 }
             }
+    
         @objc func keyboardShow(notification: NSNotification) {
              if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
                 NSValue)?.cgRectValue {
@@ -223,7 +258,6 @@ class NovaNota: UIViewController, UITextViewDelegate {
                          )
                          self.view.layoutIfNeeded()
                      }
-                     
                  }
              }
          }
@@ -235,7 +269,6 @@ class NovaNota: UIViewController, UITextViewDelegate {
            view.backgroundColor = .blueBackgroud
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
-    
        }
     
     private func addBackView() {
@@ -254,7 +287,7 @@ class NovaNota: UIViewController, UITextViewDelegate {
                         paddingBottom: bottom,
                         paddingRight: 8)
     }
-
+    
     private func createButtonCor(cor: String) -> UIButton {
         let button = UIButton()
         let img = UIImage(named: cor)
@@ -271,5 +304,4 @@ class NovaNota: UIViewController, UITextViewDelegate {
         view.layer.shadowOpacity = 0.8
         view.layer.shadowOffset = CGSize(width: 1, height: 1)
     }
-    
 }

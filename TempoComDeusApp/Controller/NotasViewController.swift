@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NotaDelegate: class {
-    func didChange(body: String, cor: String)
+    func didChange(body: String, cor: String, notaId: UUID)
 }
 
 class NotasViewController: UIViewController {
@@ -84,7 +84,7 @@ class NotasViewController: UIViewController {
       // MARK: Selectors
 
     @objc func showNewNota() {
-        let notaViewController = NovaNota(notaRepository: notaRepository, notaId: UUID())
+        let notaViewController = CriarEditarNota(notaRepository: notaRepository, notaId: UUID(), acao: .criar)
         notaViewController.modalPresentationStyle = .fullScreen
         notaViewController.delegate = self
         self.present(notaViewController, animated: true)
@@ -169,6 +169,7 @@ UICollectionViewDelegateFlowLayout {
         
         let visualizarNota = VisualizarNotaViewController(notaRepository: notaRepository,
                                                           notaId: notas[indexPath.row].notaId)
+        visualizarNota.delegate = self
         visualizarNota.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(visualizarNota, animated: true)
     }
@@ -189,5 +190,13 @@ extension NotasViewController: NotasCellDelegate {
 extension NotasViewController: NovaNotaDelegate {
     func updateNotas(notas: [Nota]) {
         self.notas = notas
+    }
+}
+
+extension NotasViewController: UpdateNotaDelegate {
+    func notaIsUpdated(updated: Bool) {
+        if updated {
+            notas = notaRepository.readAllItems()
+        }
     }
 }
