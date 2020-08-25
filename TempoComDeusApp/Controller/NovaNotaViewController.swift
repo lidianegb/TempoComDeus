@@ -8,14 +8,20 @@
 
 import UIKit
 
+protocol NovaNotaDelegate: class {
+    func updateNotas(notas: [Nota])
+}
+
 class NovaNota: UIViewController, UITextViewDelegate {
     // MARK: Properties
 
-     let backView = BackView()
+    let backView = BackView()
      
-   private let notaRepository: NotaRepository
-      private let notaID: UUID
+    private let notaRepository: NotaRepository
+    private let notaID: UUID
     private var color = "nota1"
+    
+    weak var delegate: NovaNotaDelegate?
         
     var textView: UITextView = {
         let text = UITextView()
@@ -61,14 +67,14 @@ class NovaNota: UIViewController, UITextViewDelegate {
         super.init(nibName: nil, bundle: nil)
     }
     
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("We aren't using storyboards")
-        }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("We aren't using storyboards")
+    }
     
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            configureUI()
-            addBackView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+        addBackView()
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardShow),
@@ -102,7 +108,8 @@ class NovaNota: UIViewController, UITextViewDelegate {
         
       addStackBottom()
     
-       }
+    }
+    
     func addStackBottom() {
         let cor1 = createButtonCor(cor: "cor1")
               cor1.addTarget(self, action: #selector(changeColor1), for: .touchUpInside)
@@ -133,6 +140,7 @@ class NovaNota: UIViewController, UITextViewDelegate {
                                      paddingBottom: 10,
                                      paddingRight: 16)
     }
+    
      func textViewDidChange(_ textView: UITextView) {
            if textView == self.textView {
                self.saveButton.isEnabled = !textView.text.isEmpty
@@ -140,7 +148,7 @@ class NovaNota: UIViewController, UITextViewDelegate {
        }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+            view.endEditing(true)
     }
        
        // MARK: Selectors
@@ -152,8 +160,9 @@ class NovaNota: UIViewController, UITextViewDelegate {
            }
        }
          @objc func salvar() {
-           notaRepository.createNewItem(body: textView.text, cor: color)
-           self.dismiss(animated: true, completion: nil)
+            notaRepository.createNewItem(body: textView.text, cor: color)
+            delegate?.updateNotas(notas: notaRepository.readAllItems())
+            self.dismiss(animated: true, completion: nil)
        }
     
         @objc func displayActionSheet() {

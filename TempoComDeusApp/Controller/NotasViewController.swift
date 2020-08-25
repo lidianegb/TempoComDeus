@@ -80,17 +80,13 @@ class NotasViewController: UIViewController {
         addTextInicial()
         setupCollectionView()
       }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-           notas = notaRepository.readAllItems()
-       }
       
       // MARK: Selectors
 
     @objc func showNewNota() {
         let notaViewController = NovaNota(notaRepository: notaRepository, notaId: UUID())
         notaViewController.modalPresentationStyle = .fullScreen
+        notaViewController.delegate = self
         self.present(notaViewController, animated: true)
     }
        // MARK: Helpers
@@ -187,5 +183,11 @@ extension NotasViewController: NotasCellDelegate {
                 notas = notaRepository.readAllItems()
             }, completion: nil)
         }
+    }
+}
+
+extension NotasViewController: NovaNotaDelegate {
+    func updateNotas(notas: [Nota]) {
+        self.notas = notas
     }
 }

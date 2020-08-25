@@ -14,20 +14,24 @@ protocol CapitulosTableViewCellDelegate: class {
 
 class CapitulosTableViewCell: UITableViewCell {
 
-    var items: Int?
+    var items: Int? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     let cellId = "cellId"
     lazy var collectionView: UICollectionView = {
-          let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-          layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
                          
-         let collectionView = UICollectionView(frame: self.contentView.frame, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: self.contentView.frame, collectionViewLayout: layout)
         collectionView.isScrollEnabled = false
-          collectionView.backgroundColor = .clear
-          collectionView.alwaysBounceVertical = false
-           collectionView.alwaysBounceHorizontal = false
-           collectionView.delegate = self
-           collectionView.dataSource = self
-           return collectionView
+        collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceVertical = false
+        collectionView.alwaysBounceHorizontal = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        return collectionView
       }()
     
     weak var delegate: CapitulosTableViewCellDelegate?
@@ -39,7 +43,6 @@ class CapitulosTableViewCell: UITableViewCell {
     func createCell(items: Int) {
         self.items = items
         setupCollection()
-        self.collectionView.reloadData()
     }
     
     func setupCollection() {

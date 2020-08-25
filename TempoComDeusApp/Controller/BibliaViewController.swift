@@ -275,7 +275,7 @@ extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
         let num = "\(biblia?.verses[indexPath.row].number ?? 0)"
         let verso =  "\(biblia?.verses[indexPath.row].text ?? " ")"
         
-        myCell.createCell(num: num,verso: verso)
+        myCell.createCell(num: num, verso: verso)
         return myCell
     }
 }
