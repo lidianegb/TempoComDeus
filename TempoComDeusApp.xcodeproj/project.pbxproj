@@ -38,6 +38,7 @@
 		AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */; };
 		AFC2A32624E87A13001A266D /* CriarEditarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* CriarEditarNotaViewController.swift */; };
 		AFC820E224F688FE003C7B0A /* LivrosDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC820E124F688FE003C7B0A /* LivrosDataTest.swift */; };
+		AFC820E424F68F3A003C7B0A /* NotaRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */; };
 		AFD310AE24F5442500A74E2E /* NotaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD310AD24F5442500A74E2E /* NotaView.swift */; };
 		AFD310B624F561BB00A74E2E /* TempoComDeusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */; };
 		AFDB6D6124EEA80000F58A6D /* CapitulosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB6D6024EEA80000F58A6D /* CapitulosCollectionViewCell.swift */; };
@@ -110,6 +111,7 @@
 		AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* CriarEditarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarEditarNotaViewController.swift; sourceTree = "<group>"; };
 		AFC820E124F688FE003C7B0A /* LivrosDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosDataTest.swift; sourceTree = "<group>"; };
+		AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaRepositoryTest.swift; sourceTree = "<group>"; };
 		AFD310AD24F5442500A74E2E /* NotaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaView.swift; sourceTree = "<group>"; };
 		AFD310B324F561BB00A74E2E /* tempoComDeusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tempoComDeusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoComDeusUITests.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				AF6A1E4824F1492300FF46FF /* Info.plist */,
 				AF48268124F44B2000C44A46 /* CalcDateStringTest.swift */,
 				AFC820E124F688FE003C7B0A /* LivrosDataTest.swift */,
+				AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */,
 			);
 			path = ApplicationTests;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				AF6A1E4724F1492300FF46FF /* ApplicationTests.swift in Sources */,
 				AF48267A24F43E1C00C44A46 /* CreateNotaTest.swift in Sources */,
 				AF48268224F44B2000C44A46 /* CalcDateStringTest.swift in Sources */,
+				AFC820E424F68F3A003C7B0A /* NotaRepositoryTest.swift in Sources */,
 				AF10216B24F1577D0090CDC8 /* CalcCellDimensions.swift in Sources */,
 				AF48268024F4451500C44A46 /* CreateNewBibliaTest.swift in Sources */,
 			);

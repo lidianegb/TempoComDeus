@@ -8,27 +8,27 @@
 
 import Foundation
 protocol Repository: class {
-      associatedtype Item: Nota
+    associatedtype Item: Nota
       
-      var items: [Item] { get set }
+    var items: [Item] { get set }
       
-    func createNewItem(body: String, cor: String)
-      func readAllItems() -> [Item]
-      func readItem(itemId: UUID) -> Item?
-      func update(item: Item)
-      func delete(itemId: UUID)
+    func createNewItem(nota: Nota) -> Item?
+    func readAllItems() -> [Item]
+    func readItem(itemId: UUID) -> Item?
+    func update(item: Item)
+    func delete(itemId: UUID) -> Bool
     
 }
 
 extension Repository {
     
-    func createNewItem(body: String, cor: String) {
-        let newItem = Nota(body: body, cor: cor)
-        newItem.body = body
-        newItem.cor = cor
-        if let data = try? JSONEncoder().encode(newItem) {
-            FileHelper().createFile(with: data, name: newItem.notaId.uuidString)
+    func createNewItem(nota: Nota) -> Item? {
+        if !nota.body.isEmpty, let data = try? JSONEncoder().encode(nota) {
+                FileHelper().createFile(with: data, name: nota.notaId.uuidString)
+                 let item = try? JSONDecoder().decode(Item.self, from: data)
+                return item
         }
+        return nil
     }
     
     func readAllItems() -> [Item] {
@@ -60,8 +60,8 @@ extension Repository {
         }
     }
     
-    func delete(itemId: UUID) {
-        FileHelper().removeFile(at: itemId.uuidString)
+    func delete(itemId: UUID) -> Bool {
+         FileHelper().removeFile(at: itemId.uuidString)
     }
     
 }

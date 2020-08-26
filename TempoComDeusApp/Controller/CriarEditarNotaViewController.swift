@@ -192,7 +192,8 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
          @objc func salvar() {
             switch acao {
             case .criar:
-                notaRepository.createNewItem(body: textView.text, cor: color)
+                let newNota = Nota(body: textView.text, cor: color)
+                _ = notaRepository.createNewItem(nota: newNota)
                 delegate?.updateNotas(notas: notaRepository.readAllItems())
                 self.dismiss(animated: true, completion: nil)
             case .editar:

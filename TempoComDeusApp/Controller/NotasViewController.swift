@@ -179,7 +179,7 @@ extension NotasViewController: NotasCellDelegate {
     func deleteCell(cell: NotasCollectionViewCell) {
         if let indexPath = collectionView.indexPath(for: cell) {
             collectionView.performBatchUpdates({
-                notaRepository.delete(itemId: notas[indexPath.row].notaId)
+               _ = notaRepository.delete(itemId: notas[indexPath.row].notaId)
                 collectionView.deleteItems(at: [indexPath])
                 notas = notaRepository.readAllItems()
             }, completion: nil)
