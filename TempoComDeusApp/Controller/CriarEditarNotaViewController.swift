@@ -4,7 +4,6 @@
 //
 //  Created by Lidiane Gomes Barbosa on 15/08/20.
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
-//
 //swiftlint:disable type_body_length
 import UIKit
 
@@ -29,12 +28,12 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
             textView.text = nota.body
         }
     }
-    var color = String() {
+    var color: String {
         didSet {
             switch acao {
-            case .editar:
-                self.saveButton.isEnabled = !(color == nota.cor)
             case .criar: break
+            case .editar:
+               self.saveButton.isEnabled = !(self.textView.text == nota.body && color == nota.cor)
             }
         }
     }
@@ -73,7 +72,8 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         self.notaRepository = notaRepository
         self.notaID = notaId
         self.acao = acao
-        self.nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: nil)
+        self.nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: "nota1")
+        self.color = nota.cor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -85,7 +85,9 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         configureUI()
         addBackView()
-        
+        addStackHeader()
+        addTextView()
+        addStackBottom()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -94,6 +96,9 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
                                                selector: #selector(keyboardHiden),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
         
+    }
+    
+    func addStackHeader() {
         let stackViewHeader = UIStackView(arrangedSubviews: [cancelButton, saveButton])
         stackViewHeader.distribution = .equalSpacing
         view.addSubview(stackViewHeader)
@@ -103,21 +108,20 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
                                paddingTop: 0,
                                paddingLeft: 8,
                                paddingRight: 8)
-        
+    }
+    
+    func addTextView() {
         textView.text = nota.body
-        color = nota.cor
         textView.delegate = self
         backView.addSubview(textView)
-        backView.backgroundColor = .getColor(name: color)
         textView.anchor(top: backView.topAnchor,
-                        left: backView.leftAnchor,
-                        bottom: backView.bottomAnchor,
-                        right: backView.rightAnchor,
-                        paddingTop: 10,
-                        paddingLeft: 16,
-                        paddingBottom: 80,
-                        paddingRight: 16)
-      addStackBottom()
+                       left: backView.leftAnchor,
+                       bottom: backView.bottomAnchor,
+                       right: backView.rightAnchor,
+                       paddingTop: 20,
+                       paddingLeft: 16,
+                       paddingBottom: 80,
+                       paddingRight: 16)
     }
     
     func addStackBottom() {
@@ -152,10 +156,15 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     }
     
      func textViewDidChange(_ textView: UITextView) {
-           if textView == self.textView {
+        if textView == self.textView {
+           switch acao {
+           case .criar:
                self.saveButton.isEnabled = !textView.text.isEmpty
-           }
-       }
+           case .editar:
+               self.saveButton.isEnabled = !(self.textView.text == nota.body && color == nota.cor)
+            }
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             view.endEditing(true)
@@ -265,6 +274,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
        }
     
     private func addBackView() {
+        backView.backgroundColor = .getColor(name: color)
         view.insertSubview(backView, at: 0)
         backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                         left: view.leftAnchor,
