@@ -55,10 +55,6 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         button.setTitle("Cancelar", for: .normal)
         button.setTitleColor(.blueAct, for: .normal)
         button.addTarget(self, action: #selector(cancelar), for: .touchUpInside)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowRadius = 1.0
-        button.layer.shadowOpacity = 0.2
-        button.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         return button
     }()
     
@@ -69,10 +65,6 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         button.setTitle("", for: .disabled)
         button.isEnabled = false
         button.addTarget(self, action: #selector(salvar), for: .touchUpInside)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowRadius = 1.0
-        button.layer.shadowOpacity = 0.2
-        button.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         return button
     }()
     
@@ -104,11 +96,11 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         
         let stackViewHeader = UIStackView(arrangedSubviews: [cancelButton, saveButton])
         stackViewHeader.distribution = .equalSpacing
-        backView.addSubview(stackViewHeader)
-        stackViewHeader.anchor(top: backView.topAnchor,
-                               left: backView.leftAnchor,
-                               right: backView.rightAnchor,
-                               paddingTop: 8,
+        view.addSubview(stackViewHeader)
+        stackViewHeader.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                               left: view.leftAnchor,
+                               right: view.rightAnchor,
+                               paddingTop: 0,
                                paddingLeft: 8,
                                paddingRight: 8)
         
@@ -116,12 +108,12 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         color = nota.cor
         textView.delegate = self
         backView.addSubview(textView)
-            backView.backgroundColor = .getColor(name: color)
-        textView.anchor(top: stackViewHeader.bottomAnchor,
+        backView.backgroundColor = .getColor(name: color)
+        textView.anchor(top: backView.topAnchor,
                         left: backView.leftAnchor,
                         bottom: backView.bottomAnchor,
                         right: backView.rightAnchor,
-                        paddingTop: 50,
+                        paddingTop: 10,
                         paddingLeft: 16,
                         paddingBottom: 80,
                         paddingRight: 16)
@@ -273,19 +265,14 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
        }
     
     private func addBackView() {
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        let top = (window?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 0) +
-            (navigationController?.navigationBar.frame.size.height ?? 0)
-        let bottom = tabBarController?.tabBar.frame.size.height ?? 0
-   
         view.insertSubview(backView, at: 0)
-        backView.anchor(top: view.topAnchor,
+        backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                         left: view.leftAnchor,
-                        bottom: view.bottomAnchor,
+                        bottom: view.safeAreaLayoutGuide.bottomAnchor,
                         right: view.rightAnchor,
-                        paddingTop: top ,
+                        paddingTop: 40,
                         paddingLeft: 8,
-                        paddingBottom: bottom,
+                        paddingBottom: 0,
                         paddingRight: 8)
     }
     

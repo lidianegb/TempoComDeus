@@ -112,7 +112,7 @@ class NotasViewController: UIViewController {
     
     func addBackground() {
         view.addSubview(backView)
-          backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+        backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                           left: view.leftAnchor,
                           bottom: view.safeAreaLayoutGuide.bottomAnchor,
                           right: view.rightAnchor,
