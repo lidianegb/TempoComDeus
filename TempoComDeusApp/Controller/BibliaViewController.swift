@@ -62,6 +62,7 @@ class BibliaViewController: UIViewController {
         button.setImage(UIImage(named: "left"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
         button.addTarget(self, action: #selector(leftSwipe), for: .touchUpInside)
+        button.setDimensions(width: 20, height: 20)
         return button
     }()
 
@@ -70,9 +71,10 @@ class BibliaViewController: UIViewController {
         button.setImage(UIImage(named: "right"), for: .normal)
          button.imageView?.contentMode = .scaleAspectFill
         button.addTarget(self, action: #selector(rightSwipe), for: .touchUpInside)
+        button.setDimensions(width: 20, height: 20)
         return button
     }()
-    
+     
     var biblia: Biblia? {
         didSet {
             DispatchQueue.main.async {
@@ -98,8 +100,7 @@ class BibliaViewController: UIViewController {
         configureUI()
         setupBackView()
         setupTableView()
-        setupButtonsSwipe()
-        
+        setupButtonsNav()
         setupSwipeGestures()
     }
     
@@ -166,7 +167,7 @@ class BibliaViewController: UIViewController {
     private func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .blueBackgroud
-        navigationItem.titleView = titleButton
+     //   navigationItem.titleView = titleButton
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)
     }
     
@@ -243,22 +244,13 @@ class BibliaViewController: UIViewController {
         
     }
     
-    private func setupButtonsSwipe() {
-        view.addSubview(leftSwipeButton)
-        leftSwipeButton.anchor(left: view.leftAnchor,
-                                bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                                paddingLeft: 10,
-                                paddingBottom: 10,
-                                width: 20,
-                                height: 20)
-        
-        view.addSubview(rightSwipeButton)
-        rightSwipeButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                               right: view.rightAnchor,
-                               paddingBottom: 10,
-                               paddingRight: 10,
-                               width: 20,
-                               height: 20)
+    private func setupButtonsNav() {
+        let stackView = UIStackView(arrangedSubviews: [leftSwipeButton, titleButton, rightSwipeButton])
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 10
+               
+        navigationItem.titleView = stackView
     }
 
 }
