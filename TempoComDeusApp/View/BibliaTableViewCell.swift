@@ -12,7 +12,6 @@ class BibliaTableViewCell: UITableViewCell {
 
     let number: UILabel = {
         let label = UILabel()
-        label.textColor = .black
         label.numberOfLines = 1
         label.textAlignment = .right
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
@@ -20,7 +19,6 @@ class BibliaTableViewCell: UITableViewCell {
     }()
     let verso: UILabel = {
         let label = UILabel()
-        label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 17)
@@ -33,6 +31,7 @@ class BibliaTableViewCell: UITableViewCell {
     }
     
     func createCell(num: String, verso: String) {
+        backgroundColor = .backViewColor
         addNumberVerso()
         addTextVerso()
         self.number.text = num
@@ -43,8 +42,8 @@ class BibliaTableViewCell: UITableViewCell {
         contentView.addSubview(number)
         number.anchor(top: contentView.topAnchor,
                       left: contentView.leftAnchor,
-                      paddingTop: 5,
-                      paddingLeft: 5,
+                      paddingTop: 0,
+                      paddingLeft: 0,
                       width: 30)
     }
     func addTextVerso() {

@@ -24,9 +24,9 @@ class MainTabBarController: UITabBarController {
     // MARK: Helpers
         
     func configureUI() {
-        tabBar.barStyle = .black
-        tabBar.barTintColor = .blueBackgroud
-
+        tabBar.barTintColor = .backgroundColor
+        tabBar.clipsToBounds = true
+        tabBar.isTranslucent = false
     }
     func configureViewControllers() {
         let biblia = BibliaViewController()
@@ -47,7 +47,7 @@ class MainTabBarController: UITabBarController {
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.title = title
         nav.tabBarItem.image = image
-        nav.navigationBar.barTintColor = .blueBackgroud
+        nav.navigationBar.barTintColor = .backgroundColor
         return nav
     }
 

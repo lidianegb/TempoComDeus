@@ -10,15 +10,8 @@ import UIKit
 
 class CapitulosCollectionViewCell: UICollectionViewCell {
     
-    override var isSelected: Bool {
-        didSet {
-            self.backgroundColor = .blueAct
-        }
-    }
-    
     let labelCapitulo: UILabel = {
         let label = UILabel()
-        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14)
         return label
@@ -30,7 +23,7 @@ class CapitulosCollectionViewCell: UICollectionViewCell {
       }
       
     func createCell(textLabel: String) {
-        self.backgroundColor = .white
+        self.backgroundColor = .backViewColor
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = true
         self.layer.borderColor = UIColor.blueAct.cgColor

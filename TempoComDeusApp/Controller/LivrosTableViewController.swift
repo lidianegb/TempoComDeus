@@ -22,8 +22,8 @@ class LivrosTableViewController: UIViewController {
     
         lazy var tableView: UITableView = {
             let tableView = UITableView(frame: .zero, style: .plain)
-            tableView.backgroundColor = .clear
-            tableView.separatorColor = .blueBackgroud
+            tableView.backgroundColor = .backViewColor
+            tableView.separatorColor = .backgroundColor
             tableView.alwaysBounceVertical = false
             tableView.alwaysBounceHorizontal = false
             tableView.delegate = self
@@ -44,7 +44,6 @@ class LivrosTableViewController: UIViewController {
     let labelTitle: UILabel = {
         let label = UILabel()
         label.text = "Livros"
-        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         return label
     }()
@@ -56,7 +55,7 @@ class LivrosTableViewController: UIViewController {
     }
 
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .backViewColor
         setupTableView()
         addHeader()
     }
@@ -150,10 +149,7 @@ extension LivrosTableViewController: CapitulosTableViewCellDelegate {
     func didTap(chapter: Int) {
         
         self.delegate?.didSelectSection(abbr: self.abbr ?? " ", chapter: chapter)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
-                self.dismiss(animated: true, completion: nil)
-        }
-      
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

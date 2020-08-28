@@ -46,6 +46,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         text.textAlignment = .left
         text.backgroundColor = .clear
         text.font = UIFont.systemFont(ofSize: 20)
+        text.textColor = .black
         return text
     }()
         
@@ -125,27 +126,29 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     }
     
     func addStackBottom() {
-        let cor1 = createButtonCor(cor: "cor1")
-              cor1.addTarget(self, action: #selector(changeColor1), for: .touchUpInside)
+        let cor1 = createButtonCor(cor: "nota1")
+            cor1.addTarget(self, action: #selector(changeColor1), for: .touchUpInside)
+            addShadowing(view: cor1)
               
-              let cor2 = createButtonCor(cor: "cor2")
-               cor2.addTarget(self, action: #selector(changeColor2), for: .touchUpInside)
+            let cor2 = createButtonCor(cor: "nota2")
+            cor2.addTarget(self, action: #selector(changeColor2), for: .touchUpInside)
               
-              let cor3 = createButtonCor(cor: "cor3")
-               cor3.addTarget(self, action: #selector(changeColor3), for: .touchUpInside)
+            let cor3 = createButtonCor(cor: "nota3")
+            cor3.addTarget(self, action: #selector(changeColor3), for: .touchUpInside)
               
-              let cor4 = createButtonCor(cor: "cor4")
-               cor4.addTarget(self, action: #selector(changeColor4), for: .touchUpInside)
+            let cor4 = createButtonCor(cor: "nota4")
+            cor4.addTarget(self, action: #selector(changeColor4), for: .touchUpInside)
               
-              let cor5 = createButtonCor(cor: "cor5")
-               cor5.addTarget(self, action: #selector(changeColor5), for: .touchUpInside)
+            let cor5 = createButtonCor(cor: "nota5")
+            cor5.addTarget(self, action: #selector(changeColor5), for: .touchUpInside)
               
-              let stackViewBottom = UIStackView(arrangedSubviews:
+            let stackViewBottom = UIStackView(arrangedSubviews:
                   [cor1, cor2, cor3, cor4, cor5, UIView(), UIView(), UIView()])
-              stackViewBottom.alignment = .leading
-              stackViewBottom.spacing = 10
-              backView.addSubview(stackViewBottom)
-              stackViewBottom.anchor(top: textView.bottomAnchor,
+            stackViewBottom.alignment = .leading
+            stackViewBottom.spacing = 10
+            
+            backView.addSubview(stackViewBottom)
+            stackViewBottom.anchor(top: textView.bottomAnchor,
                                      left: backView.leftAnchor,
                                      bottom: backView.bottomAnchor,
                                      right: backView.rightAnchor,
@@ -209,7 +212,6 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
                 self.dismiss(animated: true, completion: nil)
               }
           )
-            
           let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
           menu.addAction(deleteAtion)
           menu.addAction(cancelAction)
@@ -268,7 +270,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
        
        private func configureUI() {
            navigationController?.navigationBar.shadowImage = UIImage()
-           view.backgroundColor = .blueBackgroud
+           view.backgroundColor = .backgroundColor
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
        }
@@ -288,10 +290,12 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     
     private func createButtonCor(cor: String) -> UIButton {
         let button = UIButton()
-        let img = UIImage(named: cor)
-        button.setImage(img, for: .normal)
-        button.imageView?.contentMode = UIView.ContentMode.scaleToFill
+        button.backgroundColor = .getColor(name: cor)
+        button.layer.borderWidth = 0.3
+        button.layer.borderColor = UIColor.black.cgColor
         button.setDimensions(width: 32, height: 32)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
         addShadowing(view: button)
         return button
     }

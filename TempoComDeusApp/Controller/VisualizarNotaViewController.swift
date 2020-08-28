@@ -60,7 +60,7 @@ class VisualizarNotaViewController: UIViewController {
        
        func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
-        view.backgroundColor = .blueBackgroud
+        view.backgroundColor = .backgroundColor
             
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
                                                             target: self, action: #selector(editNota) )

@@ -24,8 +24,9 @@ class NotasViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
                        
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-
-        collectionView.backgroundColor = .clear
+        collectionView.layer.cornerRadius = 20
+        collectionView.layer.masksToBounds = true
+        collectionView.backgroundColor = .backViewColor
         collectionView.alwaysBounceVertical = false
         collectionView.alwaysBounceHorizontal = false
         collectionView.delegate = self
@@ -53,7 +54,7 @@ class NotasViewController: UIViewController {
     let initialLabel: UILabel = {
         var label = UILabel()
         label.text = "Clique + para adicionar uma nova nota."
-        label.textColor = .myGray
+        label.textColor = .placeholderText
         label.font = .systemFont(ofSize: 17)
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -93,7 +94,8 @@ class NotasViewController: UIViewController {
     
     func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
-        view.backgroundColor = .blueBackgroud
+        navigationController?.navigationBar.isTranslucent = false
+        view.backgroundColor = .backgroundColor
         navigationItem.titleView = titleLabel
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
@@ -126,8 +128,15 @@ class NotasViewController: UIViewController {
        collectionView.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
        collectionView.delegate = self
        collectionView.dataSource = self
-     
        view.addSubview(collectionView)
+        collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                              left: view.leftAnchor,
+                              bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                              right: view.rightAnchor,
+                              paddingTop: 0,
+                              paddingLeft: 8,
+                              paddingBottom: 0,
+                              paddingRight: 8)
         
        }
 }

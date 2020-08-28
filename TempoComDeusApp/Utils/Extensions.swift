@@ -90,21 +90,123 @@ extension UIView {
 
 // MARK: - UIColor
 
+class Style {
+    static let blueActLight = UIColor.rgb(red: 6, green: 181, blue: 209)
+    static let backgroudColorLight = UIColor.rgb(red: 228, green: 246, blue: 250)
+    static let blueClearLight = UIColor.rgb(red: 148, green: 223, blue: 235)
+    static let backColorLight = UIColor.rgb(red: 255, green: 255, blue: 255)
+       
+    static let blueActDark = UIColor.rgb(red: 0, green: 188, blue: 217)
+    static let backgroudColorDark = UIColor.rgb(red: 0, green: 0, blue: 0)
+    static let blueClearDark = UIColor.rgb(red: 106, green: 138, blue: 144)
+    static let backColorDark = UIColor.rgb(red: 44, green: 44, blue: 46)
+    
+    static let nota1Light = UIColor.rgb(red: 254, green: 231, blue: 231)
+    static let nota2Light = UIColor.rgb(red: 230, green: 235, blue: 246)
+    static let nota3Light = UIColor.rgb(red: 217, green: 216, blue: 216)
+    static let nota4Light = UIColor.rgb(red: 206, green: 224, blue: 213)
+    static let nota5Light = UIColor.rgb(red: 255, green: 224, blue: 207)
+    
+    static let nota1Dark = UIColor.rgb(red: 232, green: 205, blue: 205)
+    static let nota2Dark = UIColor.rgb(red: 188, green: 199, blue: 223)
+    static let nota3Dark = UIColor.rgb(red: 142, green: 142, blue: 142)
+    static let nota4Dark = UIColor.rgb(red: 162, green: 187, blue: 172)
+    static let nota5Dark = UIColor.rgb(red: 220, green: 183, blue: 162)
+       
+}
+
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
     
-    static let blueAct = UIColor.rgb(red: 6, green: 181, blue: 209)
-    static let blueBackgroud = UIColor.rgb(red: 228, green: 246, blue: 250)
-    static let myGray = UIColor.rgb(red: 201, green: 201, blue: 201)
-    static let blueClear = UIColor.rgb(red: 148, green: 223, blue: 235)
+    static let blueAct = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return Style.blueActDark } else {
+                return Style.blueActLight
+                
+                }
+        }
+    }()
+   static let backgroundColor = {
+       return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+           if UITraitCollection.userInterfaceStyle == .dark {
+               return Style.backgroudColorDark } else {
+               return Style.backgroudColorLight
+               
+            }
+       }
+   }()
     
-    static let nota1 = UIColor.rgb(red: 254, green: 231, blue: 231)
-    static let nota2 = UIColor.rgb(red: 230, green: 235, blue: 246)
-    static let nota3 = UIColor.rgb(red: 217, green: 216, blue: 216)
-    static let nota4 = UIColor.rgb(red: 206, green: 224, blue: 213)
-    static let nota5 = UIColor.rgb(red: 255, green: 224, blue: 207)
+   static let blueOff = {
+       return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+           if UITraitCollection.userInterfaceStyle == .dark {
+               return Style.blueClearDark } else {
+               return Style.blueClearLight
+               
+            }
+       }
+   }()
+    
+    static let backViewColor = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return Style.backColorDark } else {
+                return Style.backColorLight
+                
+             }
+        }
+    }()
+        
+    static let nota1 = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return Style.nota1Dark } else {
+                return Style.nota1Light
+                
+             }
+        }
+    }()
+    
+    static let nota2 = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return Style.nota2Dark } else {
+                return Style.nota2Light
+                
+             }
+        }
+    }()
+    
+    static let nota3 = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return Style.nota3Dark } else {
+                return Style.nota3Light
+                
+             }
+        }
+    }()
+    static let nota4 = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return Style.nota4Dark } else {
+                return Style.nota4Light
+                
+             }
+        }
+    }()
+    static let nota5 = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                if UITraitCollection.userInterfaceStyle == .dark {
+                    return Style.nota5Dark } else {
+                    return Style.nota5Light
+                    
+                 }
+        }
+        
+    }()
     
     static func getColor(name: String) -> UIColor {
         switch name {

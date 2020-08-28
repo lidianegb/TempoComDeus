@@ -97,7 +97,7 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     private func addTextDate() {
         labelDate.font = UIFont.systemFont(ofSize: 14)
        labelDate.textAlignment = .left
-       labelDate.textColor = .systemGray
+       labelDate.textColor = .systemGray3
        labelDate.numberOfLines = 1
        wrapperView.addSubview(labelDate)
         labelDate.anchor(top: labelPreview.bottomAnchor,

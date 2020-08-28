@@ -13,7 +13,7 @@ class BibliaViewController: UIViewController {
     // MARK: Properties
     
     let cellId = "CellId"
-    let backView = BackView()
+
     let defaults = UserDefaults.standard
     
     let books = LivrosData.data()
@@ -34,7 +34,7 @@ class BibliaViewController: UIViewController {
     
     lazy var versionButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .blueClear
+        button.backgroundColor = .blueOff
         button.setTitle("", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         button.titleLabel?.textAlignment = .center
@@ -47,13 +47,15 @@ class BibliaViewController: UIViewController {
     
      lazy var tableView: UITableView = {
        let tableView = UITableView(frame: .zero, style: .grouped)
-           tableView.backgroundColor = .clear
-            tableView.separatorStyle = .none
-            tableView.allowsSelection = false
-           tableView.alwaysBounceVertical = false
-           tableView.alwaysBounceHorizontal = false
-           tableView.delegate = self
-           tableView.dataSource = self
+        tableView.backgroundColor = .backViewColor
+        tableView.layer.cornerRadius = 20
+        tableView.layer.masksToBounds = true
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        tableView.alwaysBounceVertical = false
+        tableView.alwaysBounceHorizontal = false
+        tableView.delegate = self
+        tableView.dataSource = self
         return tableView
        }()
 
@@ -98,7 +100,6 @@ class BibliaViewController: UIViewController {
         buscarDados(livroAbrev: livro, cap: capitulo)
         
         configureUI()
-        setupBackView()
         setupTableView()
         setupButtonsNav()
         setupSwipeGestures()
@@ -166,8 +167,9 @@ class BibliaViewController: UIViewController {
 
     private func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
-        view.backgroundColor = .blueBackgroud
-     //   navigationItem.titleView = titleButton
+        navigationController?.navigationBar.tintColor = .backgroundColor
+        navigationController?.navigationBar.isTranslucent = false
+        view.backgroundColor = .backgroundColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)
     }
     
@@ -218,25 +220,13 @@ class BibliaViewController: UIViewController {
             versionButton.setTitle(versionButtonTitle, for: .normal)
     }
     
-    private func setupBackView() {
-         view.addSubview(backView)
-        backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                        left: view.leftAnchor,
-                        bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                        right: view.rightAnchor,
-                        paddingTop: 0,
-                        paddingLeft: 8,
-                        paddingBottom: 0,
-                        paddingRight: 8)
-    }
-    
     private func setupTableView() {
         view.addSubview(tableView)
-        tableView.anchor(top: view.topAnchor,
+        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.leftAnchor,
-                         bottom: backView.bottomAnchor,
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
                          right: view.rightAnchor,
-                         paddingTop: 10,
+                         paddingTop: 0,
                          paddingLeft: 8,
                          paddingBottom: 0,
                          paddingRight: 8)

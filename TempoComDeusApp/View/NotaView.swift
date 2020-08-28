@@ -20,18 +20,18 @@ class NotaView: UIView {
     }
     
     let textView: UITextView = {
-          let text = UITextView()
-          text.allowsEditingTextAttributes = false
-          text.isEditable = false
-          text.textAlignment = .left
-          text.backgroundColor = .clear
-          text.showsVerticalScrollIndicator = false
-          text.font = UIFont.systemFont(ofSize: 20)
-          return text
+        let text = UITextView()
+        text.allowsEditingTextAttributes = false
+        text.isEditable = false
+        text.textAlignment = .left
+        text.backgroundColor = .clear
+        text.showsVerticalScrollIndicator = false
+        text.textColor = .black
+        text.font = UIFont.systemFont(ofSize: 20)
+        return text
       }()
     
     func configureUI() {
-        layer.backgroundColor = UIColor.white.cgColor
         layer.cornerRadius = 10
         clipsToBounds = true
       

@@ -26,7 +26,7 @@ class CapitulosTableViewCell: UITableViewCell {
                          
         let collectionView = UICollectionView(frame: self.contentView.frame, collectionViewLayout: layout)
         collectionView.isScrollEnabled = false
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .backViewColor
         collectionView.alwaysBounceVertical = false
         collectionView.alwaysBounceHorizontal = false
         collectionView.delegate = self

@@ -23,7 +23,7 @@ class LivrosTableViewSections: UITableViewCell {
       
     }
     func createCell() {
-   
+        contentView.backgroundColor = .backViewColor
         contentView.addSubview(rightDetail)
         rightDetail.setDimensions(width: 14, height: 14)
         rightDetail.centerY(inView: contentView, rightAnchor: contentView.rightAnchor, paddingRight: 16)
@@ -41,7 +41,7 @@ extension LivrosTableViewSections {
             rightDetail.image = UIImage(named: "arrowup")
             textLabel?.textColor = .blueAct } else {
              rightDetail.image = UIImage(named: "arrowdown")
-             textLabel?.textColor = .black
+             textLabel?.textColor = .label
         }
         self.reloadInputViews()
     }
