@@ -63,7 +63,7 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     private func addTextPreview() {
         labelPreview.font = UIFont.systemFont(ofSize: 17)
         labelPreview.textAlignment = .left
-        labelPreview.textColor = .black
+        labelPreview.textColor = .label
         labelPreview.numberOfLines = 2
         wrapperView.addSubview(labelPreview)
         labelPreview.anchor(top: wrapperView.topAnchor,
@@ -82,22 +82,26 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     }
     
     private func addButtonDelete() {
-        buttonDelete.setImage(UIImage(named: "delete"), for: .normal)
-        buttonDelete.setDimensions(width: 20, height: 22)
+        buttonDelete.setImage(UIImage(systemName: "trash"), for: .normal)
+        buttonDelete.imageView?.contentMode = .scaleAspectFill
         wrapperView.addSubview(buttonDelete)
+        buttonDelete.contentVerticalAlignment = .fill
+        buttonDelete.contentHorizontalAlignment = .fill
         buttonDelete.anchor( top: labelPreview.bottomAnchor,
                              bottom: wrapperView.bottomAnchor,
                              right: wrapperView.rightAnchor,
                              paddingTop: 10,
                              paddingBottom: 20,
-                             paddingRight: 12)
+                             paddingRight: 12,
+                             width: 20,
+                             height: 20)
         buttonDelete.addTarget(self, action: #selector(displayActionSheet), for: .touchUpInside)
     }
     
     private func addTextDate() {
         labelDate.font = UIFont.systemFont(ofSize: 14)
        labelDate.textAlignment = .left
-       labelDate.textColor = .systemGray3
+       labelDate.textColor = .secondaryLabel
        labelDate.numberOfLines = 1
        wrapperView.addSubview(labelDate)
         labelDate.anchor(top: labelPreview.bottomAnchor,

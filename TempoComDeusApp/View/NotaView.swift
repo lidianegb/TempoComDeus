@@ -26,7 +26,7 @@ class NotaView: UIView {
         text.textAlignment = .left
         text.backgroundColor = .clear
         text.showsVerticalScrollIndicator = false
-        text.textColor = .black
+        text.textColor = .label
         text.font = UIFont.systemFont(ofSize: 20)
         return text
       }()

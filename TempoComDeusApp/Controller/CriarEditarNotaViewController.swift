@@ -46,7 +46,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         text.textAlignment = .left
         text.backgroundColor = .clear
         text.font = UIFont.systemFont(ofSize: 20)
-        text.textColor = .black
+        text.textColor = .label
         return text
     }()
         
@@ -128,7 +128,6 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     func addStackBottom() {
         let cor1 = createButtonCor(cor: "nota1")
             cor1.addTarget(self, action: #selector(changeColor1), for: .touchUpInside)
-            addShadowing(view: cor1)
               
             let cor2 = createButtonCor(cor: "nota2")
             cor2.addTarget(self, action: #selector(changeColor2), for: .touchUpInside)

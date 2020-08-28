@@ -107,11 +107,11 @@ class Style {
     static let nota4Light = UIColor.rgb(red: 206, green: 224, blue: 213)
     static let nota5Light = UIColor.rgb(red: 255, green: 224, blue: 207)
     
-    static let nota1Dark = UIColor.rgb(red: 232, green: 205, blue: 205)
-    static let nota2Dark = UIColor.rgb(red: 188, green: 199, blue: 223)
+    static let nota1Dark = UIColor.rgb(red: 209, green: 169, blue: 169)
+    static let nota2Dark = UIColor.rgb(red: 153, green: 169, blue: 203)
     static let nota3Dark = UIColor.rgb(red: 142, green: 142, blue: 142)
-    static let nota4Dark = UIColor.rgb(red: 162, green: 187, blue: 172)
-    static let nota5Dark = UIColor.rgb(red: 220, green: 183, blue: 162)
+    static let nota4Dark = UIColor.rgb(red: 139, green: 172, blue: 152)
+    static let nota5Dark = UIColor.rgb(red: 220, green: 175, blue: 150)
        
 }
 

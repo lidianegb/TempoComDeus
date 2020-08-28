@@ -96,6 +96,7 @@ class NotasViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = false
         view.backgroundColor = .backgroundColor
+        backView.backgroundColor = .backViewColor
         navigationItem.titleView = titleLabel
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
