@@ -99,7 +99,7 @@ class Style {
     static let blueActDark = UIColor.rgb(red: 0, green: 188, blue: 217)
     static let backgroudColorDark = UIColor.rgb(red: 0, green: 0, blue: 0)
     static let blueClearDark = UIColor.rgb(red: 106, green: 138, blue: 144)
-    static let backColorDark = UIColor.rgb(red: 44, green: 44, blue: 46)
+    static let backColorDark = UIColor.rgb(red: 19, green: 20, blue: 21)
     
     static let nota1Light = UIColor.rgb(red: 254, green: 231, blue: 231)
     static let nota2Light = UIColor.rgb(red: 230, green: 235, blue: 246)
@@ -107,11 +107,11 @@ class Style {
     static let nota4Light = UIColor.rgb(red: 206, green: 224, blue: 213)
     static let nota5Light = UIColor.rgb(red: 255, green: 224, blue: 207)
     
-    static let nota1Dark = UIColor.rgb(red: 209, green: 169, blue: 169)
-    static let nota2Dark = UIColor.rgb(red: 153, green: 169, blue: 203)
-    static let nota3Dark = UIColor.rgb(red: 142, green: 142, blue: 142)
-    static let nota4Dark = UIColor.rgb(red: 139, green: 172, blue: 152)
-    static let nota5Dark = UIColor.rgb(red: 220, green: 175, blue: 150)
+    static let nota1Dark = UIColor.rgb(red: 184, green: 122, blue: 122)
+    static let nota2Dark = UIColor.rgb(red: 122, green: 142, blue: 184)
+    static let nota3Dark = UIColor.rgb(red: 77, green: 76, blue: 75)
+    static let nota4Dark = UIColor.rgb(red: 64, green: 99, blue: 91)
+    static let nota5Dark = UIColor.rgb(red: 133, green: 93, blue: 71)
        
 }
 

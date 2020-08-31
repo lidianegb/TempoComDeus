@@ -16,6 +16,7 @@
 		AF1947D524EC015100724B23 /* BibliaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1947D424EC015100724B23 /* BibliaRepository.swift */; };
 		AF21B47224E5D25900D44D39 /* Nota.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47124E5D25900D44D39 /* Nota.swift */; };
 		AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */; };
+		AF22DE6824FB3D99005FAB3C /* livros.json in Resources */ = {isa = PBXBuildFile; fileRef = AF22DE6724FB3D99005FAB3C /* livros.json */; };
 		AF48267A24F43E1C00C44A46 /* CreateNotaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48267924F43E1C00C44A46 /* CreateNotaTest.swift */; };
 		AF48268024F4451500C44A46 /* CreateNewBibliaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48267F24F4451500C44A46 /* CreateNewBibliaTest.swift */; };
 		AF48268224F44B2000C44A46 /* CalcDateStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48268124F44B2000C44A46 /* CalcDateStringTest.swift */; };
@@ -85,6 +86,7 @@
 		AF1947D424EC015100724B23 /* BibliaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaRepository.swift; sourceTree = "<group>"; };
 		AF21B47124E5D25900D44D39 /* Nota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nota.swift; sourceTree = "<group>"; };
 		AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF22DE6724FB3D99005FAB3C /* livros.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = livros.json; sourceTree = "<group>"; };
 		AF48267924F43E1C00C44A46 /* CreateNotaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotaTest.swift; sourceTree = "<group>"; };
 		AF48267F24F4451500C44A46 /* CreateNewBibliaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBibliaTest.swift; sourceTree = "<group>"; };
 		AF48268124F44B2000C44A46 /* CalcDateStringTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcDateStringTest.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		AF7F1FF424E557440058FA2C = {
 			isa = PBXGroup;
 			children = (
+				AF22DE6724FB3D99005FAB3C /* livros.json */,
 				AF7F1FFF24E557440058FA2C /* TempoComDeusApp */,
 				AF6A1E4524F1492300FF46FF /* ApplicationTests */,
 				AFD310B424F561BB00A74E2E /* TempoComDeusUITests */,
@@ -433,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF6A1E3F24EFFB0800FF46FF /* .swiftlint.yml in Resources */,
+				AF22DE6824FB3D99005FAB3C /* livros.json in Resources */,
 				AF7F200D24E557450058FA2C /* LaunchScreen.storyboard in Resources */,
 				AF7F200A24E557450058FA2C /* Assets.xcassets in Resources */,
 				AF7F200824E557440058FA2C /* Main.storyboard in Resources */,

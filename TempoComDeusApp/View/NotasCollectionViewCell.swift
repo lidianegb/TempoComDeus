@@ -83,6 +83,7 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
     
     private func addButtonDelete() {
         buttonDelete.setImage(UIImage(systemName: "trash"), for: .normal)
+        buttonDelete.imageView?.tintColor = .secondaryLabel
         buttonDelete.imageView?.contentMode = .scaleAspectFill
         wrapperView.addSubview(buttonDelete)
         buttonDelete.contentVerticalAlignment = .fill
