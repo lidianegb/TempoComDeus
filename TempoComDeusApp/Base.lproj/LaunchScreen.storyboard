@@ -15,18 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ampulheta" translatesAutoresizingMaskIntoConstraints="NO" id="LzP-SG-duX">
-                                <rect key="frame" x="81.5" y="367.5" width="251" height="171"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ampulheta" translatesAutoresizingMaskIntoConstraints="NO" id="jLK-fn-gGz">
+                                <rect key="frame" x="69.5" y="369" width="275" height="168"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="171" id="7Vq-ZH-0Am"/>
-                                    <constraint firstAttribute="width" constant="251" id="Ghq-LS-gpv"/>
+                                    <constraint firstAttribute="height" constant="168" id="jue-F5-BAJ"/>
+                                    <constraint firstAttribute="width" constant="275" id="rUL-2C-CiX"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.023529411764705882" green="0.70980392156862748" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LzP-SG-duX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nt6-23-T9p"/>
-                            <constraint firstItem="LzP-SG-duX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="zNQ-J3-9br"/>
+                            <constraint firstItem="jLK-fn-gGz" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="fn8-rJ-9MC"/>
+                            <constraint firstItem="jLK-fn-gGz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="skZ-FS-Xog"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -37,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ampulheta" width="647" height="1364"/>
+        <image name="ampulheta" width="555" height="1169"/>
     </resources>
 </document>
