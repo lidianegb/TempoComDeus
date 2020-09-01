@@ -27,11 +27,29 @@ class VisualizarNotaViewController: UIViewController {
         }
     }
     
+    lazy var editButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.tintColor = .blueAct
+        button.addTarget(self, action: #selector(editNota), for: .touchUpInside)
+        return button
+    }()
+    lazy var shareButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.tintColor = .blueAct
+        button.addTarget(self, action: #selector(shareNota), for: .touchUpInside)
+        return button
+    }()
+    
        // MARK: Lifecycle
        override func viewDidLoad() {
             super.viewDidLoad()
             configureUI()
             setupNotaView()
+            addStackViewButtons()
        }
     
     init(notaRepository: NotaRepository, notaId: UUID) {
@@ -55,15 +73,15 @@ class VisualizarNotaViewController: UIViewController {
             notaViewController.notadelegate = self
             self.present(notaViewController, animated: true)
          }
-        
+        @objc func shareNota() {
+            let viewActivity = UIActivityViewController(activityItems: [nota.body], applicationActivities: [])
+            self.present(viewActivity, animated: true)
+        }
         // MARK: Helpers
        
        func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .backgroundColor
-            
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
-                                                            target: self, action: #selector(editNota) )
        }
     
     private func setupNotaView() {
@@ -76,6 +94,13 @@ class VisualizarNotaViewController: UIViewController {
                       paddingLeft: 8,
                       paddingBottom: 0,
                       paddingRight: 8)
+    }
+    
+    private func addStackViewButtons() {
+        let stackButtons = UIStackView(arrangedSubviews: [editButton, shareButton])
+        stackButtons.distribution = .equalSpacing
+        stackButtons.spacing = 20
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: stackButtons)
     }
 }
 
