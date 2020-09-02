@@ -17,15 +17,27 @@ class VisualizarNotaViewController: UIViewController {
     
     weak var delegate: UpdateNotaDelegate?
     
-    var notaView = NotaView()
+    var backView = BackView()
     private let notaRepository: NotaRepository
     private let notaID: UUID
     private var nota: Nota {
         didSet {
-            notaView.textView.text = nota.body
-            notaView.backgroundColor = .getColor(name: nota.cor)
+            textView.text = nota.body
+            backView.backgroundColor = .getColor(name: nota.cor)
         }
     }
+        
+    let textView: UITextView = {
+           let text = UITextView()
+           text.allowsEditingTextAttributes = false
+           text.isEditable = false
+           text.textAlignment = .left
+           text.backgroundColor = .clear
+           text.showsVerticalScrollIndicator = false
+           text.textColor = .label
+           text.font = UIFont.systemFont(ofSize: 20)
+           return text
+         }()
     
     lazy var editButton: UIButton = {
         let button = UIButton()
@@ -48,7 +60,8 @@ class VisualizarNotaViewController: UIViewController {
        override func viewDidLoad() {
             super.viewDidLoad()
             configureUI()
-            setupNotaView()
+            addBackView()
+            addTextView()
             addStackViewButtons()
        }
     
@@ -56,8 +69,8 @@ class VisualizarNotaViewController: UIViewController {
         self.notaRepository = notaRepository
         self.notaID = notaId
         self.nota = notaRepository.readItem(itemId: notaID) ?? Nota(body: nil, cor: nil)
-        notaView.textView.text = nota.body
-        notaView.backgroundColor = .getColor(name: nota.cor)
+        textView.text = nota.body
+        backView.backgroundColor = .getColor(name: nota.cor)
               
         super.init(nibName: nil, bundle: nil)
     }
@@ -84,9 +97,9 @@ class VisualizarNotaViewController: UIViewController {
         view.backgroundColor = .backgroundColor
        }
     
-    private func setupNotaView() {
-        view.insertSubview(notaView, at: 0)
-      notaView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+    private func addBackView() {
+        view.insertSubview(backView, at: 0)
+      backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                       left: view.leftAnchor,
                       bottom: view.safeAreaLayoutGuide.bottomAnchor,
                       right: view.rightAnchor,
@@ -101,6 +114,19 @@ class VisualizarNotaViewController: UIViewController {
         stackButtons.distribution = .equalSpacing
         stackButtons.spacing = 20
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: stackButtons)
+    }
+    
+    func addTextView() {
+        backView.addSubview(textView)
+        textView.anchor(top: backView.topAnchor,
+                        left: backView.leftAnchor,
+                        bottom: backView.bottomAnchor,
+                        right: backView.rightAnchor,
+                        paddingTop: 20,
+                        paddingLeft: 16,
+                        paddingBottom: 20,
+                        paddingRight: 16)
+        
     }
 }
 
