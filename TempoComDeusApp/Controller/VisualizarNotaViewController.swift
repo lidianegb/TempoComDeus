@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol UpdateNotaDelegate: class {
-    func notaIsUpdated(updated: Bool)
-}
-
 class VisualizarNotaViewController: UIViewController {
     // MARK: Properties
     

@@ -32,7 +32,7 @@ class NotaRepositoryTest: XCTestCase {
 
         let input = sut.readAllItems().count
         let nota = Nota(body: "teste", cor: "azul")
-        if let notaTest = sut.createNewItem(nota: nota) {
+        if let notaTest = sut.createNewItem(item: nota) {
             let output = sut.readAllItems().count
             XCTAssertEqual(output, input + 1)
             _ = sut.delete(itemId: notaTest.notaId)
@@ -51,13 +51,13 @@ class NotaRepositoryTest: XCTestCase {
     
     func test_createItemNill() {
         let nota = Nota(body: nil, cor: nil)
-        let output = sut.createNewItem(nota: nota)
+        let output = sut.createNewItem(item: nota)
         XCTAssertNil(output)
     }
     
     func test_readItem() {
        let nota = Nota(body: "teste", cor: "azul")
-        guard let notaTest = sut.createNewItem(nota: nota) else { return }
+        guard let notaTest = sut.createNewItem(item: nota) else { return }
         let notaRead = notaTest
         XCTAssertEqual(notaRead.notaId, notaTest.notaId)
         _ = sut.delete(itemId: notaTest.notaId)
@@ -74,7 +74,7 @@ class NotaRepositoryTest: XCTestCase {
     func test_updateItem() {
         let input = "teste_update"
         let nota = Nota(body: "teste", cor: "azul")
-        guard let notaTest = sut.createNewItem(nota: nota) else {return}
+        guard let notaTest = sut.createNewItem(item: nota) else {return}
         notaTest.body = input
         sut.update(item: notaTest)
         

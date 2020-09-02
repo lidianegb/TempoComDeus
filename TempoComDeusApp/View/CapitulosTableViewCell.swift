@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol CapitulosTableViewCellDelegate: class {
-    func didTap(chapter: Int)
-}
-
 class CapitulosTableViewCell: UITableViewCell {
 
     var items: Int? {

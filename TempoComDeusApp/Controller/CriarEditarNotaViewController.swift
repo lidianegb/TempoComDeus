@@ -11,10 +11,6 @@ enum Acao {
     case editar, criar
 }
 
-protocol NovaNotaDelegate: class {
-    func updateNotas(notas: [Nota])
-}
-
 class CriarEditarNota: UIViewController, UITextViewDelegate {
     // MARK: Properties
     let backView = BackView()
@@ -196,7 +192,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
             switch acao {
             case .criar:
                 let newNota = Nota(body: textView.text, cor: color)
-                _ = notaRepository.createNewItem(nota: newNota)
+                _ = notaRepository.createNewItem(item: newNota)
                 delegate?.updateNotas(notas: notaRepository.readAllItems())
                 self.dismiss(animated: true, completion: nil)
             case .editar:

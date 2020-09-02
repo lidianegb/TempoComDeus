@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol NotaDelegate: class {
-    func didChange(body: String, cor: String, notaId: UUID)
-}
-
 class NotasViewController: UIViewController {
 
     // MARK: Properties

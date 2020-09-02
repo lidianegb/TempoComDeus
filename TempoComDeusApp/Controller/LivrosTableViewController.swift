@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol LivrosTableViewDelegate: class {
-    func didSelectSection(abbr: String, chapter: Int)
-}
-
 class LivrosTableViewController: UIViewController {
     
     var tableData = LivrosData.data()

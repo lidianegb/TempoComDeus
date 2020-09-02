@@ -9,10 +9,6 @@
 import UIKit
 import Foundation
 
-protocol NotasCellDelegate: class {
-    func deleteCell(cell: NotasCollectionViewCell)
-}
-
 class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
 
     weak var delegate: NotasCellDelegate?
@@ -127,8 +123,9 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
             
         menu.addAction(deleteAtion)
         menu.addAction(cancelAction)
-        let dell = self.delegate as? UIViewController
-        dell?.present(menu, animated: true, completion: nil)
+    
+        let view = self.delegate as? UIViewController
+        view?.present(menu, animated: true, completion: nil)
   
    }
 }
