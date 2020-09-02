@@ -23,7 +23,7 @@
 		AF34F40C2500328000BFAB2D /* NotaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40B2500328000BFAB2D /* NotaDelegate.swift */; };
 		AF34F40E250032AC00BFAB2D /* UpdateNotaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40D250032AC00BFAB2D /* UpdateNotaDelegate.swift */; };
 		AF34F410250032C700BFAB2D /* NovaNotaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40F250032C700BFAB2D /* NovaNotaDelegate.swift */; };
-		AF34F4122500331200BFAB2D /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4112500331200BFAB2D /* ExtensionUIView.swift */; };
+		AF34F4122500331200BFAB2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4112500331200BFAB2D /* UIView.swift */; };
 		AF34F4142500334E00BFAB2D /* MyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4132500334E00BFAB2D /* MyColors.swift */; };
 		AF48267A24F43E1C00C44A46 /* CreateNotaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48267924F43E1C00C44A46 /* CreateNotaTest.swift */; };
 		AF48268024F4451500C44A46 /* CreateNewBibliaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48267F24F4451500C44A46 /* CreateNewBibliaTest.swift */; };
@@ -39,7 +39,7 @@
 		AF7F200824E557440058FA2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200624E557440058FA2C /* Main.storyboard */; };
 		AF7F200A24E557450058FA2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200924E557450058FA2C /* Assets.xcassets */; };
 		AF7F200D24E557450058FA2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */; };
-		AF7F203524E5589C0058FA2C /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203424E5589C0058FA2C /* ExtensionUIColor.swift */; };
+		AF7F203524E5589C0058FA2C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203424E5589C0058FA2C /* UIColor.swift */; };
 		AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203624E5592E0058FA2C /* MainTabBarController.swift */; };
 		AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibliaViewController.swift */; };
 		AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */; };
@@ -100,7 +100,7 @@
 		AF34F40B2500328000BFAB2D /* NotaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaDelegate.swift; sourceTree = "<group>"; };
 		AF34F40D250032AC00BFAB2D /* UpdateNotaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNotaDelegate.swift; sourceTree = "<group>"; };
 		AF34F40F250032C700BFAB2D /* NovaNotaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaNotaDelegate.swift; sourceTree = "<group>"; };
-		AF34F4112500331200BFAB2D /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		AF34F4112500331200BFAB2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		AF34F4132500334E00BFAB2D /* MyColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColors.swift; sourceTree = "<group>"; };
 		AF48267924F43E1C00C44A46 /* CreateNotaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotaTest.swift; sourceTree = "<group>"; };
 		AF48267F24F4451500C44A46 /* CreateNewBibliaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBibliaTest.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		AF7F200924E557450058FA2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF7F200C24E557450058FA2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF7F200E24E557450058FA2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF7F203424E5589C0058FA2C /* ExtensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
+		AF7F203424E5589C0058FA2C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		AF7F203624E5592E0058FA2C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AF7F203824E55B060058FA2C /* BibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaViewController.swift; sourceTree = "<group>"; };
 		AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				AFF120E924EAB67F000A9B12 /* Protocols */,
-				AFC2A32024E6B8B3001A266D /* Service */,
+				AFC2A32024E6B8B3001A266D /* Extensions */,
 				AF1947CD24EBF96B00724B23 /* Repository */,
 				AF7F203324E558770058FA2C /* Utils */,
 				AF7F203024E5583B0058FA2C /* Model */,
@@ -290,21 +290,21 @@
 		AF7F203324E558770058FA2C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AF7F203424E5589C0058FA2C /* ExtensionUIColor.swift */,
+				AF1947C924EBF91000724B23 /* HTTP.swift */,
 				AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */,
-				AF34F4112500331200BFAB2D /* ExtensionUIView.swift */,
 				AF34F4132500334E00BFAB2D /* MyColors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		AFC2A32024E6B8B3001A266D /* Service */ = {
+		AFC2A32024E6B8B3001A266D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AF1947C924EBF91000724B23 /* HTTP.swift */,
 				AF1947CE24EBFA3500724B23 /* URL.swift */,
+				AF7F203424E5589C0058FA2C /* UIColor.swift */,
+				AF34F4112500331200BFAB2D /* UIView.swift */,
 			);
-			path = Service;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AFD310B424F561BB00A74E2E /* TempoComDeusUITests */ = {
@@ -541,7 +541,7 @@
 				AF34F40E250032AC00BFAB2D /* UpdateNotaDelegate.swift in Sources */,
 				AF1947D524EC015100724B23 /* BibliaRepository.swift in Sources */,
 				AF1947CF24EBFA3500724B23 /* URL.swift in Sources */,
-				AF34F4122500331200BFAB2D /* ExtensionUIView.swift in Sources */,
+				AF34F4122500331200BFAB2D /* UIView.swift in Sources */,
 				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
 				AF21B47224E5D25900D44D39 /* Nota.swift in Sources */,
 				AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */,
@@ -552,7 +552,7 @@
 				AF34F410250032C700BFAB2D /* NovaNotaDelegate.swift in Sources */,
 				AF51DF8A24EDA6D4001C352D /* CapitulosTableViewCell.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
-				AF7F203524E5589C0058FA2C /* ExtensionUIColor.swift in Sources */,
+				AF7F203524E5589C0058FA2C /* UIColor.swift in Sources */,
 				AF51DF8E24EDC0B9001C352D /* LivrosTableViewSections.swift in Sources */,
 				AFF120EF24EABBAB000A9B12 /* NotaRepository.swift in Sources */,
 				AFFA1D0F24EC199500399F96 /* Biblia.swift in Sources */,

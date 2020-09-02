@@ -1,5 +1,5 @@
 //
-//  ExtensionUIColor.swift
+//  UIColor.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 13/08/20.
