@@ -9,7 +9,7 @@
 import Foundation
 protocol Repository: class {
     associatedtype Item: Nota
-      
+   
     var items: [Item] { get set }
       
     func createNewItem(item: Item) -> Item?

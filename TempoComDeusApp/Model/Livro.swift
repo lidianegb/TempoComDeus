@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Livro: Decodable {
+class Livro: Codable {
 
     var abbrev: [String: String]
     var name: String
@@ -16,6 +16,7 @@ class Livro: Decodable {
     let group: String?
     let testament: String?
     let version: String?
+    var opened: Bool?
    
     init(abbrev: [String: String],
          name: String,
@@ -32,9 +33,10 @@ class Livro: Decodable {
         self.group = group
         self.chapters = chapters
         self.version = version
+        self.opened = false
     }
     private enum CodingKeys: String, CodingKey {
-        case  name, abbrev, author, group, chapters, testament, version
+        case  name, abbrev, author, group, chapters, testament, version, opened
     }
     
 }

@@ -16,7 +16,9 @@ class BibliaViewController: UIViewController {
 
     let defaults = UserDefaults.standard
     
-    let books = LivrosData.data()
+    let books: Biblia? = nil
+    var version = NVI
+    var chapter = 0
     
     lazy var titleButton: UIButton = {
         let button = UIButton()
@@ -87,7 +89,7 @@ class BibliaViewController: UIViewController {
             }
         }
     }
-    
+
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -97,14 +99,15 @@ class BibliaViewController: UIViewController {
         
         let livro = defaults.string(forKey: "abbr") ?? ""
         let capitulo = defaults.integer(forKey: "chapter")
-        buscarDados(livroAbrev: livro, cap: capitulo)
+        biblia = File().readBiblia(abbrev: livro, version: NVI)
+        chapter = capitulo
         
         configureUI()
         setupTableView()
         setupButtonsNav()
         setupSwipeGestures()
     }
-    
+        
     // MARK: Selectors
     @objc func showLivros() {
         let livrosTableView = LivrosTableViewController()
@@ -126,40 +129,28 @@ class BibliaViewController: UIViewController {
     }
     
     @objc func rightSwipe() {
-        for (ind, book) in books.enumerated() {
-          let abbrev = biblia?.book.abbrev["pt"] ?? ""
-           let chapter = biblia?.chapter.number ?? 0
-            if book.abbrev == abbrev {
-              
-                if chapter > 1 {
-                    buscarDados(livroAbrev: abbrev, cap: chapter + 1)
-                    return
-                }
-                
-                if ind > 0 {
-                    buscarDados(livroAbrev: books[ind + 1].abbrev, cap: books[ind + 1].items)
-                    return
-                }
-            }
+        let abbrev = biblia?.abbrev ?? ""
+        if chapter > 1 {
+            biblia = File().readBiblia(abbrev: abbrev, version: version)
+                return
         }
+        for ind in biblia!.chapters[chapter].indices where ind > 0 {
+           
+                biblia = File().readBiblia(abbrev: abbrev, version: version)
+                return
+        }
+       
     }
-    
+        
     @objc func leftSwipe() {
-        for (ind, book) in books.enumerated() {
-          let abbrev = biblia?.book.abbrev["pt"] ?? ""
-           let chapter = biblia?.chapter.number ?? 0
-            if book.abbrev == abbrev {
-              
-                if chapter > 1 {
-                    buscarDados(livroAbrev: abbrev, cap: chapter - 1)
-                    return
-                }
-                
-                if ind > 0 {
-                    buscarDados(livroAbrev: books[ind - 1].abbrev, cap: books[ind - 1].items)
-                    return
-                }
-            }
+         let abbrev = biblia?.abbrev ?? ""
+           if chapter > 1 {
+               biblia = File().readBiblia(abbrev: abbrev, version: version)
+                   return
+           }
+        for ind in biblia!.chapters[chapter].indices where ind > 0 {
+            biblia = File().readBiblia(abbrev: abbrev, version: version)
+            return
         }
     }
     
@@ -192,31 +183,26 @@ class BibliaViewController: UIViewController {
     }
     
     private func updateDefaultsValues() {
-        defaults.set(biblia?.book.abbrev["pt"] ?? "", forKey: "abbr")
-        defaults.set(biblia?.chapter.number, forKey: "chapter")
+        defaults.set(biblia?.abbrev ?? "", forKey: "abbr")
+        defaults.set(chapter, forKey: "chapter")
     }
     
     private func showHiddenArrowsLeftRight() {
-        if biblia?.book.abbrev["pt"] == "gn" && biblia?.chapter.number == 1 {
+        if biblia?.abbrev == "gn" && chapter == 1 {
             leftSwipeButton.isHidden = true } else {
             leftSwipeButton.isHidden = false
         }
         
-        if biblia?.book.abbrev["pt"] == "ap" && biblia?.chapter.number == 22 {
+        if biblia?.abbrev == "ap" && chapter == 22 {
            rightSwipeButton.isHidden = true } else {
            rightSwipeButton.isHidden = false
        }
     }
     
-    private func buscarDados(livroAbrev: String, cap: Int) {
-        BibliaRepository().getCapitulo(
-           livro: livroAbrev, cap: cap) {[weak self] (biblia) in self?.biblia = biblia }
-    }
-    
     private func updateButtonTitle() {
-        let buttonTitle = "\(biblia?.book.name ?? "")"  + " " + "\(biblia?.chapter.number ?? 0)"
+        let buttonTitle = "\(biblia?.abbrev ?? "")"  + " " + "\(chapter)"
             titleButton.setTitle(buttonTitle, for: .normal)
-            let versionButtonTitle = self.biblia?.book.version?.uppercased()
+            let versionButtonTitle = version.uppercased()
             versionButton.setTitle(versionButtonTitle, for: .normal)
     }
     
@@ -247,15 +233,15 @@ class BibliaViewController: UIViewController {
 
 extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        biblia?.verses.count ?? 0
+        biblia?.chapters[chapter].count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let myCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as?
             BibliaTableViewCell else { return UITableViewCell() }
         
-        let num = "\(biblia?.verses[indexPath.row].number ?? 0)"
-        let verso =  "\(biblia?.verses[indexPath.row].text ?? " ")"
+        let num = "\(indexPath.row + 1)"
+        let verso =  "\(biblia?.chapters[chapter][indexPath.row] ?? "")"
         
         myCell.createCell(num: num, verso: verso)
         return myCell
@@ -264,6 +250,6 @@ extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension BibliaViewController: LivrosTableViewDelegate {
     func didSelectSection(abbr: String, chapter: Int) {
-         buscarDados(livroAbrev: abbr, cap: chapter)
+        biblia = File().readBiblia(abbrev: abbr, version: version)
     }
 }
