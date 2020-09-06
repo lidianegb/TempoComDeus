@@ -12,6 +12,8 @@ class BibliaViewController: UIViewController {
     
     // MARK: Properties
     
+    let dataPicker = [NVI, AA, ACF]
+    
     let cellId = "CellId"
     let defaults = UserDefaults.standard
     var version: String = NVI
@@ -51,13 +53,14 @@ class BibliaViewController: UIViewController {
     
     lazy var versionButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .blueOff
+        button.backgroundColor = .blueAct
         button.setTitle("", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.tintColor = .white
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(showPicker), for: .touchUpInside)
         button.setDimensions(width: 40, height: 30)
         return button
     }()
@@ -94,14 +97,20 @@ class BibliaViewController: UIViewController {
         return button
     }()
     
+    let picker: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.backgroundColor = .backViewColor
+        pickerView.showsLargeContentViewer = true
+        return pickerView
+    }()
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupDefaultsValues()
-        print(abbrev)
         abbrev = getDefaultAbbrev()
-        print(abbrev)
         version = getDefaultVersion()
         chapter = getDefaultChapter()
         
@@ -110,12 +119,16 @@ class BibliaViewController: UIViewController {
         livroAtual = getLivroAtual(abreviacao: abbrev)
         
         configureUI()
+      
         setupTableView()
+        setupPicker()
+        picker.isHidden = true
         setupButtonsNav()
         setupSwipeGestures()
     }
     
     // MARK: Selectors
+  
     @objc func showLivros() {
         let livrosTableView = LivrosTableViewController()
         livrosTableView.delegate = self
@@ -165,9 +178,11 @@ class BibliaViewController: UIViewController {
         }
     }
     
-    @objc func updateVersion() {
-        allLivros = File().readBibleByVersion(version: version)
-        livroAtual = getLivroAtual(abreviacao: abbrev)
+    @objc func showPicker() {
+        picker.isHidden = false
+    }
+    func dmissPicker() {
+        picker.isHidden = true
     }
     
     // MARK: Helpers
@@ -179,8 +194,15 @@ class BibliaViewController: UIViewController {
         view.backgroundColor = .backgroundColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)
     }
+    private func setupPicker() {
+        
+        picker.delegate = self
+        picker.dataSource = self
+        view.insertSubview(picker, at: 1)
+        picker.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
+    }
     
-    private func getLivroAtual(abreviacao: String) -> Livro? {
+    func getLivroAtual(abreviacao: String) -> Livro? {
         allLivros.filter {$0.abbrev == abreviacao}.first ?? nil
     }
     private func setupSwipeGestures() {
@@ -242,7 +264,7 @@ class BibliaViewController: UIViewController {
     }
     
     private func setupTableView() {
-        view.addSubview(tableView)
+        view.insertSubview(tableView, at: 0)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.leftAnchor,
                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
