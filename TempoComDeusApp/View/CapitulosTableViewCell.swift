@@ -82,6 +82,6 @@ UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        self.delegate?.didTap(chapter: indexPath.row + 1)
+        self.delegate?.didTap(chapter: indexPath.row)
     }
 }

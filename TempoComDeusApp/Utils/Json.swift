@@ -40,21 +40,21 @@ class Json {
        return jsonString
     }
      
-    func decodeLivro(jsonString: String) throws -> [Livro] {
+    func decodeBiblia(jsonString: String) throws -> [Biblia] {
        
         guard let jsonData = jsonString.data(using: .utf8) else {
             throw JsonDetailError.failedToDecoder
         }
-        let livro = try JSONDecoder().decode([Livro].self, from: jsonData)
-        return livro
+        let biblia = try JSONDecoder().decode([Biblia].self, from: jsonData)
+        return biblia
     }
     
-    func decodeBiblia(jsonString: String) throws -> [Biblia] {
+    func decodeLivro(jsonString: String) throws -> [Livro] {
           
            guard let jsonData = jsonString.data(using: .utf8) else {
                throw JsonDetailError.failedToDecoder
            }
-           let biblia = try JSONDecoder().decode([Biblia].self, from: jsonData)
-           return biblia
+           let livro = try JSONDecoder().decode([Livro].self, from: jsonData)
+           return livro
     }
 }

@@ -30,19 +30,19 @@ class MainTabBarController: UITabBarController {
     }
     func configureViewControllers() {
         let biblia = BibliaViewController()
-        let navBiblia = templetaNavigationController(image: UIImage(named: "icon_biblia_unselected"),
+        let navBiblia = templeteNavigationController(image: UIImage(named: "icon_biblia_unselected"),
                                                      title: "Biblia",
                                                      rootViewController: biblia)
 
         let notas = NotasViewController()
-        let navNotas = templetaNavigationController(image: UIImage(named: "icon_nota_unselected"),
+        let navNotas = templeteNavigationController(image: UIImage(named: "icon_nota_unselected"),
                                                     title: "Anotações", rootViewController: notas)
         
         viewControllers = [navBiblia, navNotas]
         
     }
     
-    func templetaNavigationController(image: UIImage?, title: String,
+    func templeteNavigationController(image: UIImage?, title: String,
                                       rootViewController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.title = title

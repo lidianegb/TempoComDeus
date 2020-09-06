@@ -9,16 +9,31 @@
 import UIKit
 
 class BibliaViewController: UIViewController {
-
+    
     // MARK: Properties
     
     let cellId = "CellId"
-
     let defaults = UserDefaults.standard
-    
-    let books: Biblia? = nil
-    var version = NVI
-    var chapter = 0
+    var version: String = NVI
+    var abbrev: String = "gn"
+    let biblia = File().readBiblia()
+    var chapter: Int = 0 {
+        didSet {
+            showHiddenArrowsLeftRight()
+            updateDefaultValues()
+            updateButtonTitle()
+            tableView.reloadData()
+        }
+    }
+    var allLivros: [Livro] = []
+    var livroAtual: Livro? {
+        didSet {
+            updateDefaultValues()
+            updateButtonTitle()
+            showHiddenArrowsLeftRight()
+            tableView.reloadData()
+        }
+    }
     
     lazy var titleButton: UIButton = {
         let button = UIButton()
@@ -45,10 +60,10 @@ class BibliaViewController: UIViewController {
         button.layer.masksToBounds = true
         button.setDimensions(width: 40, height: 30)
         return button
-       }()
+    }()
     
-     lazy var tableView: UITableView = {
-       let tableView = UITableView(frame: .zero, style: .grouped)
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .backViewColor
         tableView.layer.cornerRadius = 20
         tableView.layer.masksToBounds = true
@@ -59,8 +74,8 @@ class BibliaViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
-       }()
-
+    }()
+    
     lazy var leftSwipeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "left"), for: .normal)
@@ -69,45 +84,37 @@ class BibliaViewController: UIViewController {
         button.setDimensions(width: 20, height: 20)
         return button
     }()
-
+    
     lazy var rightSwipeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "right"), for: .normal)
-         button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.contentMode = .scaleAspectFill
         button.addTarget(self, action: #selector(rightSwipe), for: .touchUpInside)
         button.setDimensions(width: 20, height: 20)
         return button
     }()
-     
-    var biblia: Biblia? {
-        didSet {
-            DispatchQueue.main.async {
-               self.tableView.reloadData()
-                self.updateDefaultsValues()
-                self.updateButtonTitle()
-                self.showHiddenArrowsLeftRight()
-            }
-        }
-    }
-
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupDefaultsValues()
+        print(abbrev)
+        abbrev = getDefaultAbbrev()
+        print(abbrev)
+        version = getDefaultVersion()
+        chapter = getDefaultChapter()
         
-        let livro = defaults.string(forKey: "abbr") ?? ""
-        let capitulo = defaults.integer(forKey: "chapter")
-        biblia = File().readBiblia(abbrev: livro, version: NVI)
-        chapter = capitulo
+        allLivros = File().readBibleByVersion(version: version)
+        
+        livroAtual = getLivroAtual(abreviacao: abbrev)
         
         configureUI()
         setupTableView()
         setupButtonsNav()
         setupSwipeGestures()
     }
-        
+    
     // MARK: Selectors
     @objc func showLivros() {
         let livrosTableView = LivrosTableViewController()
@@ -119,7 +126,7 @@ class BibliaViewController: UIViewController {
         if sender.state == .ended {
             switch sender.direction {
             case .right:
-               leftSwipe()
+                leftSwipe()
             case .left:
                 rightSwipe()
             default:
@@ -128,34 +135,43 @@ class BibliaViewController: UIViewController {
         }
     }
     
+    //next
     @objc func rightSwipe() {
-        let abbrev = biblia?.abbrev ?? ""
-        if chapter > 1 {
-            biblia = File().readBiblia(abbrev: abbrev, version: version)
+        for (ind, book) in biblia.enumerated() where abbrev == book.abbrev["pt"] {
+            if chapter <  (book.chapters ?? 0) - 1 {
+                chapter += 1
                 return
-        }
-        for ind in biblia!.chapters[chapter].indices where ind > 0 {
-           
-                biblia = File().readBiblia(abbrev: abbrev, version: version)
+            } else if ind < (biblia.count - 1) {
+                self.chapter = 0
+                abbrev = allLivros[ind + 1].abbrev
+                livroAtual = getLivroAtual(abreviacao: abbrev)
                 return
-        }
-       
-    }
-        
-    @objc func leftSwipe() {
-         let abbrev = biblia?.abbrev ?? ""
-           if chapter > 1 {
-               biblia = File().readBiblia(abbrev: abbrev, version: version)
-                   return
-           }
-        for ind in biblia!.chapters[chapter].indices where ind > 0 {
-            biblia = File().readBiblia(abbrev: abbrev, version: version)
-            return
+            }
         }
     }
     
-     // MARK: Helpers
-
+    //voltar
+    @objc func leftSwipe() {
+        for (ind, book) in biblia.enumerated() where abbrev == book.abbrev["pt"] {
+            if chapter > 0 {
+                chapter -= 1
+                return
+            } else if ind > 0 {
+                abbrev = allLivros[ind - 1].abbrev
+                livroAtual = getLivroAtual(abreviacao: abbrev)
+                chapter = (livroAtual?.chapters.count ?? 0) - 1
+                return
+            }
+        }
+    }
+    
+    @objc func updateVersion() {
+        allLivros = File().readBibleByVersion(version: version)
+        livroAtual = getLivroAtual(abreviacao: abbrev)
+    }
+    
+    // MARK: Helpers
+    
     private func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .backgroundColor
@@ -164,6 +180,9 @@ class BibliaViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)
     }
     
+    private func getLivroAtual(abreviacao: String) -> Livro? {
+        allLivros.filter {$0.abbrev == abreviacao}.first ?? nil
+    }
     private func setupSwipeGestures() {
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
         view.addGestureRecognizer(rightSwipe)
@@ -173,37 +192,53 @@ class BibliaViewController: UIViewController {
     }
     
     private func setupDefaultsValues() {
-      
-        if defaults.value(forKey: "abbr") as? String != nil { } else {
+        if defaults.object(forKey: "abbr") != nil { } else {
             defaults.set("gn", forKey: "abbr")
         }
-        if defaults.value(forKey: "chapter") as? Int != nil { } else {
-            defaults.set(1, forKey: "chapter")
+        
+        if defaults.object(forKey: "version") != nil { } else {
+            defaults.set(NVI, forKey: "version")
         }
+        
+        if defaults.object(forKey: "chapter") != nil { } else {
+            defaults.set(0, forKey: "chapter")
+        }
+        
     }
     
-    private func updateDefaultsValues() {
-        defaults.set(biblia?.abbrev ?? "", forKey: "abbr")
+    private func getDefaultChapter() -> Int {
+        defaults.integer(forKey: "chapter")
+    }
+    private func getDefaultAbbrev() -> String {
+        defaults.string(forKey: "abbr") ?? "gn"
+    }
+    private func getDefaultVersion() -> String {
+        defaults.string(forKey: "version") ?? NVI
+    }
+    
+    private func updateDefaultValues() {
+        defaults.set(abbrev, forKey: "abbr")
         defaults.set(chapter, forKey: "chapter")
+        defaults.set(version, forKey: "version")
     }
     
     private func showHiddenArrowsLeftRight() {
-        if biblia?.abbrev == "gn" && chapter == 1 {
-            leftSwipeButton.isHidden = true } else {
-            leftSwipeButton.isHidden = false
+        if livroAtual?.abbrev == "gn" && chapter == 0 {
+            leftSwipeButton.isEnabled = false } else {
+            leftSwipeButton.isEnabled = true
         }
         
-        if biblia?.abbrev == "ap" && chapter == 22 {
-           rightSwipeButton.isHidden = true } else {
-           rightSwipeButton.isHidden = false
-       }
+        if livroAtual?.abbrev == "ap" && chapter == 21 {
+            rightSwipeButton.isEnabled = false} else {
+            rightSwipeButton.isEnabled = true
+        }
     }
     
     private func updateButtonTitle() {
-        let buttonTitle = "\(biblia?.abbrev ?? "")"  + " " + "\(chapter)"
-            titleButton.setTitle(buttonTitle, for: .normal)
-            let versionButtonTitle = version.uppercased()
-            versionButton.setTitle(versionButtonTitle, for: .normal)
+        let buttonTitle = "\(livroAtual?.name ?? "")"  + " " + "\((self.chapter ) + 1)"
+        titleButton.setTitle(buttonTitle, for: .normal)
+        let versionButtonTitle = version.uppercased()
+        versionButton.setTitle(versionButtonTitle, for: .normal)
     }
     
     private func setupTableView() {
@@ -225,15 +260,19 @@ class BibliaViewController: UIViewController {
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         stackView.spacing = 10
-               
+        
         navigationItem.titleView = stackView
     }
-
+    
 }
 
 extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        biblia?.chapters[chapter].count ?? 0
+        
+        if chapter < livroAtual?.chapters.count ?? 0 {
+            return livroAtual?.chapters[chapter].count ?? 0
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -241,7 +280,7 @@ extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
             BibliaTableViewCell else { return UITableViewCell() }
         
         let num = "\(indexPath.row + 1)"
-        let verso =  "\(biblia?.chapters[chapter][indexPath.row] ?? "")"
+        let verso =  "\(livroAtual?.chapters[chapter ][indexPath.row] ?? "")"
         
         myCell.createCell(num: num, verso: verso)
         return myCell
@@ -250,6 +289,8 @@ extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension BibliaViewController: LivrosTableViewDelegate {
     func didSelectSection(abbr: String, chapter: Int) {
-        biblia = File().readBiblia(abbrev: abbr, version: version)
+        self.chapter = chapter
+        self.abbrev = abbr
+        livroAtual = getLivroAtual(abreviacao: abbr)
     }
 }

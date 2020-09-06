@@ -16,54 +16,55 @@ enum FileDetailError: Error {
 
 extension FileDetailError: LocalizedError {
     public var errorDescription: String? {
-           switch self {
-           case .failedToWriteFile:
-               return NSLocalizedString("Erro ao tentar escrever no arquivo", comment: "Decoder")
-           case .failedToReadFile:
-               return NSLocalizedString("Erro ao tentar ler o arquivo", comment: "Encoder")
-           case .failedToCreateFile:
+        switch self {
+        case .failedToWriteFile:
+            return NSLocalizedString("Erro ao tentar escrever no arquivo", comment: "Decoder")
+        case .failedToReadFile:
+            return NSLocalizedString("Erro ao tentar ler o arquivo", comment: "Encoder")
+        case .failedToCreateFile:
             return NSLocalizedString("Erro ao tentar criar o arquivo", comment: "CreateFile")
         }
-       }
+    }
 }
 
 class File {
-
+    
     func readFromFile(fileName: String) throws -> String? {
-      var fileContent: String?
-      if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
-          do {
+        var fileContent: String?
+        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
+            do {
                 let fileUrl = URL(fileURLWithPath: path)
-              let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
-              fileContent = String(data: data, encoding: .utf8)
-               
+                let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
+                fileContent = String(data: data, encoding: .utf8)
+                
             } catch { throw FileDetailError.failedToReadFile }
-          }
+        }
         return fileContent
     }
     
-    func readLivros() -> [Livro]? {
-        var livros: [Livro]?
+    func readBiblia() -> [Biblia] {
+        var biblia: [Biblia] = []
         do {
-            guard let livrosString = try readFromFile(fileName: LIVROS) else { return [] }
+            guard let bibliaString =
+                try readFromFile(fileName: LIVROS) else { return [] }
+            
+            biblia = try Json().decodeBiblia(jsonString: bibliaString)
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        return biblia
+    }
+
+    func readBibleByVersion(version: String) -> [Livro] {
+        var livros: [Livro] = []
+        do {
+            guard let livrosString =
+                try readFromFile(fileName: version) else { return [] }
             livros = try Json().decodeLivro(jsonString: livrosString)
         } catch {
             print(error.localizedDescription)
         }
         return livros
-    }
-    
-    func readBiblia(abbrev: String, version: String) -> Biblia? {
-        var livroBiblia: Biblia?
-        do {
-            guard let bibliaString =
-                try readFromFile(fileName: version) else { return Biblia(abbrev: abbrev, chapters: [[]])}
-                     
-            let biblia = try Json().decodeBiblia(jsonString: bibliaString)
-            livroBiblia = biblia.filter {$0.abbrev == abbrev}.first!
-        } catch {
-            print(error.localizedDescription)
-        }
-        return livroBiblia
     }
 }
