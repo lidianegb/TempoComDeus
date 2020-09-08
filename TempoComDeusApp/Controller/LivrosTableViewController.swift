@@ -12,30 +12,30 @@ class LivrosTableViewController: UIViewController {
     
     var tableData: [Biblia] = File().readBiblia() 
     var abbr: String?
-      
-        let cellId = "cellId"
-        let cellSection = "cellSection"
     
-        lazy var tableView: UITableView = {
-            let tableView = UITableView(frame: .zero, style: .plain)
-            tableView.backgroundColor = .backViewColor
-            tableView.separatorColor = .backgroundColor
-            tableView.alwaysBounceVertical = false
-            tableView.alwaysBounceHorizontal = false
-            tableView.delegate = self
-            tableView.dataSource = self
-            return tableView
-        }()
+    let cellId = "cellId"
+    let cellSection = "cellSection"
     
-   weak var delegate: LivrosTableViewDelegate?
-
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.backgroundColor = .backViewColor
+        tableView.separatorColor = .backgroundColor
+        tableView.alwaysBounceVertical = false
+        tableView.alwaysBounceHorizontal = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
+    
+    weak var delegate: LivrosTableViewDelegate?
+    
     let cancelButton: UIButton = {
-           let button = UIButton()
-           button.setTitle("Cancelar", for: .normal)
-           button.setTitleColor(.blueAct, for: .normal)
-           button.addTarget(self, action: #selector(cancelar), for: .touchUpInside)
-           return button
-       }()
+        let button = UIButton()
+        button.setTitle("Cancelar", for: .normal)
+        button.setTitleColor(.blueAct, for: .normal)
+        button.addTarget(self, action: #selector(cancelar), for: .touchUpInside)
+        return button
+    }()
     
     let labelTitle: UILabel = {
         let label = UILabel()
@@ -47,9 +47,9 @@ class LivrosTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-       
+        
     }
-
+    
     func configureUI() {
         view.backgroundColor = .backViewColor
         setupTableView()
@@ -59,7 +59,7 @@ class LivrosTableViewController: UIViewController {
     @objc func cancelar() {
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     func addHeader() {
         view.insertSubview(cancelButton, at: 1)
         cancelButton.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
@@ -85,15 +85,15 @@ class LivrosTableViewController: UIViewController {
 }
 
 extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource {
-     func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         tableData.count
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableData[section].opened == true {
-                return 2 } else {
-                return 1
-            }
+            return 2 } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,15 +102,15 @@ extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource 
                 LivrosTableViewSections else { return UITableViewCell()}
             cell.textLabel?.text = tableData[indexPath.section].name
             cell.didSelected(isSelected: tableData[indexPath.section].opened ?? false)
-                cell.createCell()
+            cell.createCell()
             return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as?
-                    CapitulosTableViewCell else { return UITableViewCell()}
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as?
+                CapitulosTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             cell.createCell(items: tableData[indexPath.section].chapters ?? 0)
-                return cell
-            }
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -121,14 +121,14 @@ extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource 
             tableData[indexPath.section].opened = true
             let sections = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(sections, with: .none)
-         
+            
         }
         self.abbr = tableData[indexPath.section].abbrev["pt"]
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-           return 44
+            return 44
         } else {
             let items = Double(tableData[indexPath.section].chapters ?? 0)
             return calculaHeight(qtdItems: items)
@@ -149,4 +149,4 @@ extension LivrosTableViewController: CapitulosTableViewCellDelegate {
     }
     
 }
-   
+
