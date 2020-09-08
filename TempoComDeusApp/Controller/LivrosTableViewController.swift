@@ -149,4 +149,3 @@ extension LivrosTableViewController: CapitulosTableViewCellDelegate {
     }
     
 }
-
