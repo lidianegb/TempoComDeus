@@ -16,6 +16,7 @@ class ConfigViewController: UIViewController {
         tableView.layer.cornerRadius = 20
         tableView.layer.masksToBounds = true
         tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
         tableView.allowsSelection = false
         return tableView
     }()
@@ -68,31 +69,31 @@ extension ConfigViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-       
+        cell.backgroundColor = .backViewColor
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 40
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerSectionView = UIView()
         headerSectionView.backgroundColor = .blueOff
         let titleHeaderSection = UILabel()
         titleHeaderSection.textColor = .label
-        titleHeaderSection.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        titleHeaderSection.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleHeaderSection.textAlignment = .left
         titleHeaderSection.text = section == 0 ? "Tema" : "Tamanho da fonte"
         headerSectionView.addSubview(titleHeaderSection)
         titleHeaderSection.anchor(top: headerSectionView.topAnchor,
                           left: headerSectionView.leftAnchor,
-                          paddingTop: 5,
+                          paddingTop: 8,
                           paddingLeft: 16)
         return headerSectionView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 100
     }
 }
