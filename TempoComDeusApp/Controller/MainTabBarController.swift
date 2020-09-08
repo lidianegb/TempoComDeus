@@ -37,8 +37,11 @@ class MainTabBarController: UITabBarController {
         let notas = NotasViewController()
         let navNotas = templeteNavigationController(image: UIImage(named: "icon_nota_unselected"),
                                                     title: "Anotações", rootViewController: notas)
+        let config = ConfigViewController()
+        let navConfig = templeteNavigationController(image: UIImage(systemName: "gear"),
+                                                     title: "Ajustes", rootViewController: config)
         
-        viewControllers = [navBiblia, navNotas]
+        viewControllers = [navBiblia, navNotas, navConfig]
         
     }
     

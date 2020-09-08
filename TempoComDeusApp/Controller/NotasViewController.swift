@@ -60,7 +60,7 @@ class NotasViewController: UIViewController {
     let titleLabel: UILabel = {
         var label = UILabel()
         label.text = "Anotações"
-        label.textColor = .blueAct
+        label.textColor = .label
         label.font = .systemFont(ofSize: 17, weight: .bold)
         label.numberOfLines = 0
         label.textAlignment = .center
