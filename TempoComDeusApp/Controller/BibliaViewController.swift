@@ -11,14 +11,14 @@ import UIKit
 class BibliaViewController: UIViewController {
     
     // MARK: Properties
-    
     let dataPicker = [NVI, AA, ACF]
-    
     let cellId = "CellId"
     let defaults = UserDefaults.standard
     var version: String = NVI
     var abbrev: String = "gn"
     let biblia = File().readBiblia()
+    var allLivros: [Livro] = []
+    
     var chapter: Int = 0 {
         didSet {
             showHiddenArrowsLeftRight()
@@ -27,7 +27,7 @@ class BibliaViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    var allLivros: [Livro] = []
+    
     var livroAtual: Livro? {
         didSet {
             updateDefaultValues()
@@ -51,16 +51,15 @@ class BibliaViewController: UIViewController {
         return button
     }()
     
-    lazy var versionButton: UIButton = {
-        let button = UIButton()
+    lazy var versionButton: UITextField = {
+        let button = UITextField()
         button.backgroundColor = .blueAct
-        button.setTitle("", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        button.titleLabel?.textAlignment = .center
-        button.titleLabel?.tintColor = .white
+        button.text = ""
+        button.textColor = .white
+        button.tintColor = .clear
+        button.textAlignment = .center
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(showPicker), for: .touchUpInside)
         button.setDimensions(width: 40, height: 30)
         return button
     }()
@@ -97,18 +96,18 @@ class BibliaViewController: UIViewController {
         return button
     }()
     
-    let picker: UIPickerView = {
+    lazy var picker: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.backgroundColor = .backViewColor
         pickerView.showsLargeContentViewer = true
+        pickerView.isUserInteractionEnabled = true
         return pickerView
     }()
-    
+
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupDefaultsValues()
         abbrev = getDefaultAbbrev()
         version = getDefaultVersion()
@@ -119,10 +118,8 @@ class BibliaViewController: UIViewController {
         livroAtual = getLivroAtual(abreviacao: abbrev)
         
         configureUI()
-      
         setupTableView()
         setupPicker()
-        picker.isHidden = true
         setupButtonsNav()
         setupSwipeGestures()
     }
@@ -178,13 +175,6 @@ class BibliaViewController: UIViewController {
         }
     }
     
-    @objc func showPicker() {
-        picker.isHidden = false
-    }
-    func dmissPicker() {
-        picker.isHidden = true
-    }
-    
     // MARK: Helpers
     
     private func configureUI() {
@@ -194,17 +184,11 @@ class BibliaViewController: UIViewController {
         view.backgroundColor = .backgroundColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)
     }
-    private func setupPicker() {
-        
-        picker.delegate = self
-        picker.dataSource = self
-        view.insertSubview(picker, at: 1)
-        picker.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
-    }
     
     func getLivroAtual(abreviacao: String) -> Livro? {
         allLivros.filter {$0.abbrev == abreviacao}.first ?? nil
     }
+    
     private func setupSwipeGestures() {
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
         view.addGestureRecognizer(rightSwipe)
@@ -225,7 +209,6 @@ class BibliaViewController: UIViewController {
         if defaults.object(forKey: "chapter") != nil { } else {
             defaults.set(0, forKey: "chapter")
         }
-        
     }
     
     private func getDefaultChapter() -> Int {
@@ -260,23 +243,9 @@ class BibliaViewController: UIViewController {
         let buttonTitle = "\(livroAtual?.name ?? "")"  + " " + "\((self.chapter ) + 1)"
         titleButton.setTitle(buttonTitle, for: .normal)
         let versionButtonTitle = version.uppercased()
-        versionButton.setTitle(versionButtonTitle, for: .normal)
+        versionButton.text = versionButtonTitle
     }
-    
-    private func setupTableView() {
-        view.insertSubview(tableView, at: 0)
-        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                         left: view.leftAnchor,
-                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                         right: view.rightAnchor,
-                         paddingTop: 0,
-                         paddingLeft: 8,
-                         paddingBottom: 0,
-                         paddingRight: 8)
-        tableView.register(BibliaTableViewCell.self, forCellReuseIdentifier: cellId)
-        
-    }
-    
+
     private func setupButtonsNav() {
         let stackView = UIStackView(arrangedSubviews: [leftSwipeButton, titleButton, rightSwipeButton])
         stackView.alignment = .center
@@ -284,35 +253,5 @@ class BibliaViewController: UIViewController {
         stackView.spacing = 10
         
         navigationItem.titleView = stackView
-    }
-    
-}
-
-extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if chapter < livroAtual?.chapters.count ?? 0 {
-            return livroAtual?.chapters[chapter].count ?? 0
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard  let myCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as?
-            BibliaTableViewCell else { return UITableViewCell() }
-        
-        let num = "\(indexPath.row + 1)"
-        let verso =  "\(livroAtual?.chapters[chapter ][indexPath.row] ?? "")"
-        
-        myCell.createCell(num: num, verso: verso)
-        return myCell
-    }
-}
-
-extension BibliaViewController: LivrosTableViewDelegate {
-    func didSelectSection(abbr: String, chapter: Int) {
-        self.chapter = chapter
-        self.abbrev = abbr
-        livroAtual = getLivroAtual(abreviacao: abbr)
     }
 }
