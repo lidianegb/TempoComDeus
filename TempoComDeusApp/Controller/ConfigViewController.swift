@@ -12,9 +12,7 @@ class ConfigViewController: UIViewController {
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .backViewColor
-        tableView.layer.cornerRadius = 20
-        tableView.layer.masksToBounds = true
+        tableView.backgroundColor = .backgroundColor
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
         tableView.allowsSelection = false
@@ -30,7 +28,7 @@ class ConfigViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -58,52 +56,50 @@ class ConfigViewController: UIViewController {
         tableView.register(ConfigSectionOneTableViewCell.self, forCellReuseIdentifier: "sectionOne")
         tableView.register(ConfigSectionTwoTableViewCell.self, forCellReuseIdentifier: "sectionTwo")
     }
-
+    
 }
 
 extension ConfigViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-           guard let cell = tableView.dequeueReusableCell(withIdentifier: "sectionOne", for: indexPath)
-            as? ConfigSectionOneTableViewCell else { return UITableViewCell() }
-            cell.createCell()
+        if indexPath.row % 2 == 0 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = indexPath.row == 0 ? "Tema" : "Fonte"
+            cell.textLabel?.textColor = .label
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+            cell.backgroundColor = .backViewColor
+            cell.layer.cornerRadius = 8
+            cell.layer.masksToBounds = true
             return cell
         }
+        if indexPath.row == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "sectionOne", for: indexPath)
+                as? ConfigSectionOneTableViewCell else { return UITableViewCell() }
+            return cell
+            
+        }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "sectionTwo", for: indexPath)
-        as? ConfigSectionTwoTableViewCell else { return UITableViewCell() }
-      
+            as? ConfigSectionTwoTableViewCell else { return UITableViewCell() }
+        
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerSectionView = UIView()
-        headerSectionView.backgroundColor = .blueOff
-        let titleHeaderSection = UILabel()
-        titleHeaderSection.textColor = .label
-        titleHeaderSection.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        titleHeaderSection.textAlignment = .left
-        titleHeaderSection.text = section == 0 ? "Tema" : "Tamanho da fonte"
-        headerSectionView.addSubview(titleHeaderSection)
-        titleHeaderSection.anchor(top: headerSectionView.topAnchor,
-                          left: headerSectionView.leftAnchor,
-                          paddingTop: 8,
-                          paddingLeft: 16)
-        return headerSectionView
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row % 2 == 0 {
+            return 40
+        }
         return 100
     }
 }

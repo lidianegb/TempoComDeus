@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController =  MainTabBarController()
         window?.tintColor = .blueAct
         window?.makeKeyAndVisible()
-        UserDefaults.standard.removeObject(forKey: DARK)
+     //   UserDefaults.standard.removeObject(forKey: DARK)
         if UserDefaults.standard.object(forKey: DARK) != nil { } else {
             let isDark = window?.overrideUserInterfaceStyle.rawValue
             if let isDark = isDark, isDark == 0 {

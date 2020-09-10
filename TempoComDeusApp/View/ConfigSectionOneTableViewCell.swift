@@ -30,6 +30,11 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupUISwitch()
+    }
+    
     @objc func changeMode() {
         if uiSwitch.isOn {
               window?.overrideUserInterfaceStyle = .dark
@@ -42,11 +47,8 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
         self.reloadInputViews()
     }
     
-    func createCell() {
-        setupUISwitch()
-    }
-    
     func setupUISwitch() {
+        contentView.backgroundColor = .backgroundColor
         contentView.addSubview(uiSwitch)
         uiSwitch.translatesAutoresizingMaskIntoConstraints = false
         uiSwitch.anchor(top: contentView.topAnchor,
