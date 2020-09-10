@@ -54,6 +54,9 @@ class ConfigViewController: UIViewController {
                          paddingLeft: 8,
                          paddingBottom: 0,
                          paddingRight: 8)
+        
+        tableView.register(ConfigSectionOneTableViewCell.self, forCellReuseIdentifier: "sectionOne")
+        tableView.register(ConfigSectionTwoTableViewCell.self, forCellReuseIdentifier: "sectionTwo")
     }
 
 }
@@ -68,8 +71,15 @@ extension ConfigViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.backgroundColor = .backViewColor
+        if indexPath.section == 0 {
+           guard let cell = tableView.dequeueReusableCell(withIdentifier: "sectionOne", for: indexPath)
+            as? ConfigSectionOneTableViewCell else { return UITableViewCell() }
+            cell.createCell()
+            return cell
+        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "sectionTwo", for: indexPath)
+        as? ConfigSectionTwoTableViewCell else { return UITableViewCell() }
+      
         return cell
     }
     

@@ -20,6 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController =  MainTabBarController()
         window?.tintColor = .blueAct
         window?.makeKeyAndVisible()
+        
+        if UserDefaults.standard.object(forKey: DARK) != nil { } else {
+            UserDefaults.standard.set(false, forKey: DARK)
+        }
+        
+        let darkMode = UserDefaults.standard.bool(forKey: DARK)
+        if darkMode {
+            window?.overrideUserInterfaceStyle = .dark
+        } else {
+            window?.overrideUserInterfaceStyle = .light
+        }
        
     }
 
