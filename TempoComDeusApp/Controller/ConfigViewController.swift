@@ -10,6 +10,9 @@ import UIKit
 
 class ConfigViewController: UIViewController {
     
+    let sectionOne = "sectionOne"
+    let sectionTwo = "sectionTwo"
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .backgroundColor
@@ -53,8 +56,8 @@ class ConfigViewController: UIViewController {
                          paddingBottom: 0,
                          paddingRight: 8)
         
-        tableView.register(ConfigSectionOneTableViewCell.self, forCellReuseIdentifier: "sectionOne")
-        tableView.register(ConfigSectionTwoTableViewCell.self, forCellReuseIdentifier: "sectionTwo")
+        tableView.register(ConfigSectionOneTableViewCell.self, forCellReuseIdentifier: sectionOne)
+        tableView.register(ConfigSectionTwoTableViewCell.self, forCellReuseIdentifier: sectionTwo)
     }
     
 }
@@ -65,41 +68,45 @@ extension ConfigViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 2 == 0 {
-            let cell = UITableViewCell()
-            cell.textLabel?.text = indexPath.row == 0 ? "Tema" : "Fonte"
-            cell.textLabel?.textColor = .label
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-            cell.backgroundColor = .backViewColor
-            cell.layer.cornerRadius = 8
-            cell.layer.masksToBounds = true
-            return cell
-        }
-        if indexPath.row == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "sectionOne", for: indexPath)
+
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: sectionOne, for: indexPath)
                 as? ConfigSectionOneTableViewCell else { return UITableViewCell() }
             return cell
             
         }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "sectionTwo", for: indexPath)
-            as? ConfigSectionTwoTableViewCell else { return UITableViewCell() }
+        if indexPath.row == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: sectionTwo, for: indexPath)
+                as? ConfigSectionTwoTableViewCell else { return UITableViewCell() }
+            return cell
+        }
         
+        let cell = UITableViewCell()
+        cell.layer.cornerRadius = 8
+        cell.layer.masksToBounds = true
+        cell.backgroundColor = .backViewColor
         return cell
-        
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+      UIView()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row % 2 == 0 {
-            return 40
+        if indexPath.row == 0 {
+            return 50
         }
-        return 100
+        if indexPath.row == 1 {
+            return 100
+        }
+        
+        return view.frame.height
     }
 }
