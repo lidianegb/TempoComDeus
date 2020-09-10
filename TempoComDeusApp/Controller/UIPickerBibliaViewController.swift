@@ -18,6 +18,7 @@ extension BibliaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
         
         toolBar.barStyle = UIBarStyle.default
+        toolBar.backgroundColor = .blueOff
         toolBar.isTranslucent = true
         toolBar.tintColor = .blueAct
         toolBar.sizeToFit()
@@ -25,7 +26,7 @@ extension BibliaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         let doneButton = UIBarButtonItem(title: "Done",
                                          style: UIBarButtonItem.Style.plain,
                                          target: self, action: #selector(dmissPicker))
-        toolBar.setItems([doneButton], animated: false)
+        toolBar.setItems([doneButton], animated: true)
         
         versionButton.inputView = picker
         versionButton.inputAccessoryView = toolBar
@@ -38,13 +39,16 @@ extension BibliaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         dataPicker.count
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataPicker[row].uppercased()
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int,
+                    forComponent component: Int) -> NSAttributedString? {
+        let attributedString =
+            NSAttributedString(string: dataPicker[row].name + " - " + dataPicker[row].abbrev.uppercased(),
+                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueAct])
+           return attributedString
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        version = dataPicker[row]
+        version = dataPicker[row].abbrev
         allLivros = File().readBibleByVersion(version: version)
         livroAtual = getLivroAtual(abreviacao: abbrev)
     }

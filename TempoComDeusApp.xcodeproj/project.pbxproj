@@ -29,6 +29,7 @@
 		AF34F41E250044A200BFAB2D /* aa.json in Resources */ = {isa = PBXBuildFile; fileRef = AF34F41B250044A100BFAB2D /* aa.json */; };
 		AF34F41F250044A200BFAB2D /* acf.json in Resources */ = {isa = PBXBuildFile; fileRef = AF34F41C250044A100BFAB2D /* acf.json */; };
 		AF34F420250044A200BFAB2D /* nvi.json in Resources */ = {isa = PBXBuildFile; fileRef = AF34F41D250044A200BFAB2D /* nvi.json */; };
+		AF3C21F9250AA46000F81685 /* DataPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C21F8250AA46000F81685 /* DataPicker.swift */; };
 		AF3EB88B2508432A003F988F /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EB88A2508432A003F988F /* ConfigViewController.swift */; };
 		AF4717602501B03900DDC69A /* Livro.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47175F2501B03900DDC69A /* Livro.swift */; };
 		AF4717622501B25000DDC69A /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4717612501B25000DDC69A /* Constantes.swift */; };
@@ -110,6 +111,7 @@
 		AF34F41B250044A100BFAB2D /* aa.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = aa.json; sourceTree = "<group>"; };
 		AF34F41C250044A100BFAB2D /* acf.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = acf.json; sourceTree = "<group>"; };
 		AF34F41D250044A200BFAB2D /* nvi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nvi.json; sourceTree = "<group>"; };
+		AF3C21F8250AA46000F81685 /* DataPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPicker.swift; sourceTree = "<group>"; };
 		AF3EB88A2508432A003F988F /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		AF47175F2501B03900DDC69A /* Livro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Livro.swift; sourceTree = "<group>"; };
 		AF4717612501B25000DDC69A /* Constantes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constantes.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				AF21B47124E5D25900D44D39 /* Nota.swift */,
 				AF1947C324EBF02200724B23 /* Biblia.swift */,
 				AF47175F2501B03900DDC69A /* Livro.swift */,
+				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFFA1D1324EC1CF400399F96 /* BibliaTableViewCell.swift in Sources */,
+				AF3C21F9250AA46000F81685 /* DataPicker.swift in Sources */,
 				AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */,
 				AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */,
 				AFF120EB24EAB6A1000A9B12 /* Repository.swift in Sources */,

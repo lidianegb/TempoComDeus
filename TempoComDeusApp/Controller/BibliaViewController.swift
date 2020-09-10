@@ -8,10 +8,10 @@
 
 import UIKit
 
-class BibliaViewController: UIViewController {
+class BibliaViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
-    let dataPicker = [NVI, AA, ACF]
+    let dataPicker = DataPicker.data()
     let cellId = "CellId"
     let defaults = UserDefaults.standard
     var version: String = NVI
@@ -99,11 +99,11 @@ class BibliaViewController: UIViewController {
     lazy var picker: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.backgroundColor = .backViewColor
-        pickerView.showsLargeContentViewer = true
         pickerView.isUserInteractionEnabled = true
+        pickerView.backgroundColor = .backViewColor
         return pickerView
     }()
-
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -116,7 +116,7 @@ class BibliaViewController: UIViewController {
         allLivros = File().readBibleByVersion(version: version)
         
         livroAtual = getLivroAtual(abreviacao: abbrev)
-        
+        versionButton.delegate = self
         configureUI()
         setupTableView()
         setupPicker()
@@ -125,7 +125,7 @@ class BibliaViewController: UIViewController {
     }
     
     // MARK: Selectors
-  
+    
     @objc func showLivros() {
         let livrosTableView = LivrosTableViewController()
         livrosTableView.delegate = self
@@ -178,11 +178,18 @@ class BibliaViewController: UIViewController {
     // MARK: Helpers
     
     private func configureUI() {
+        
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .backgroundColor
         navigationController?.navigationBar.isTranslucent = false
         view.backgroundColor = .backgroundColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)
+    }
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        false
     }
     
     func getLivroAtual(abreviacao: String) -> Livro? {
@@ -245,7 +252,7 @@ class BibliaViewController: UIViewController {
         let versionButtonTitle = version.uppercased()
         versionButton.text = versionButtonTitle
     }
-
+    
     private func setupButtonsNav() {
         let stackView = UIStackView(arrangedSubviews: [leftSwipeButton, titleButton, rightSwipeButton])
         stackView.alignment = .center
