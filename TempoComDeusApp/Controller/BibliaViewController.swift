@@ -98,9 +98,8 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     
     lazy var picker: UIPickerView = {
         let pickerView = UIPickerView()
-        pickerView.backgroundColor = .backViewColor
+        pickerView.backgroundColor = .backgroundColor
         pickerView.isUserInteractionEnabled = true
-        pickerView.backgroundColor = .backViewColor
         return pickerView
     }()
     

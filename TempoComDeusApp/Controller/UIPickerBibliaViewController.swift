@@ -43,7 +43,7 @@ extension BibliaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                     forComponent component: Int) -> NSAttributedString? {
         let attributedString =
             NSAttributedString(string: dataPicker[row].name + " - " + dataPicker[row].abbrev.uppercased(),
-                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueAct])
+                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.label])
            return attributedString
     }
     
