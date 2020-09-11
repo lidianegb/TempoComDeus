@@ -204,33 +204,33 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupDefaultsValues() {
-        if defaults.object(forKey: "abbr") != nil { } else {
-            defaults.set("gn", forKey: "abbr")
+        if defaults.object(forKey: ABBR) != nil { } else {
+            defaults.set("gn", forKey: ABBR)
         }
         
-        if defaults.object(forKey: "version") != nil { } else {
-            defaults.set(NVI, forKey: "version")
+        if defaults.object(forKey: VERSION) != nil { } else {
+            defaults.set(NVI, forKey: VERSION)
         }
         
-        if defaults.object(forKey: "chapter") != nil { } else {
-            defaults.set(0, forKey: "chapter")
+        if defaults.object(forKey: CHAPTER) != nil { } else {
+            defaults.set(0, forKey: CHAPTER)
         }
     }
     
     private func getDefaultChapter() -> Int {
-        defaults.integer(forKey: "chapter")
+        defaults.integer(forKey: CHAPTER)
     }
     private func getDefaultAbbrev() -> String {
-        defaults.string(forKey: "abbr") ?? "gn"
+        defaults.string(forKey: ABBR) ?? "gn"
     }
     private func getDefaultVersion() -> String {
-        defaults.string(forKey: "version") ?? NVI
+        defaults.string(forKey: VERSION) ?? NVI
     }
     
     private func updateDefaultValues() {
-        defaults.set(abbrev, forKey: "abbr")
-        defaults.set(chapter, forKey: "chapter")
-        defaults.set(version, forKey: "version")
+        defaults.set(abbrev, forKey: ABBR)
+        defaults.set(chapter, forKey: CHAPTER)
+        defaults.set(version, forKey: VERSION)
     }
     
     private func showHiddenArrowsLeftRight() {

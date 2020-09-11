@@ -12,7 +12,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
     
     var fonteSize: Int? {
         didSet {
-             UserDefaults.standard.set(stepperControl.value, forKey: "fontSize")
+             UserDefaults.standard.set(stepperControl.value, forKey: FONTSIZE)
         }
     }
     
@@ -75,11 +75,11 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
         super.layoutSubviews()
         self.backgroundColor = .backgroundColor
         
-        if UserDefaults.standard.object(forKey: "fontSize") != nil {} else {
-            UserDefaults.standard.set(17, forKey: "fontSize")
+        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
+            UserDefaults.standard.set(17, forKey: FONTSIZE)
         }
         
-        fonteSize = UserDefaults.standard.integer(forKey: "fontSize")
+        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
         exampleLabel.font = .systemFont(ofSize: CGFloat(fonteSize ?? 17))
         stepperControl.value = Double(fonteSize ?? 17)
         setupWrapperView()
