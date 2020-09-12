@@ -9,11 +9,11 @@
 import UIKit
 
 class BibliaTableViewCell: UITableViewCell {
-
+    
     let number: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textAlignment = .right
+        label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
         return label
     }()
@@ -27,15 +27,16 @@ class BibliaTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
+        
     }
     
     func createCell(num: String, verso: String) {
         backgroundColor = .backViewColor
-        addNumberVerso()
+        setFonteSize()
+        //self.number.text = num
+        self.verso.text = num + ".  " + verso
+        //addNumberVerso()
         addTextVerso()
-        self.number.text = num
-        self.verso.text = verso
     }
     
     func addNumberVerso() {
@@ -43,19 +44,28 @@ class BibliaTableViewCell: UITableViewCell {
         number.anchor(top: contentView.topAnchor,
                       left: contentView.leftAnchor,
                       paddingTop: 0,
-                      paddingLeft: 0,
-                      width: 30)
+                      paddingLeft: 16)
     }
     func addTextVerso() {
         contentView.addSubview(verso)
-        verso.anchor(top: number.bottomAnchor,
-                     left: number.rightAnchor,
+        verso.anchor(top: contentView.topAnchor,
+                     left: contentView.leftAnchor,
                      right: contentView.rightAnchor,
-                     paddingTop: 1,
-                     paddingLeft: 3,
+                     paddingTop: 8,
+                     paddingLeft: 8,
                      paddingRight: 16)
-       translatesAutoresizingMaskIntoConstraints = false
-        contentView.bottomAnchor.constraint(equalTo: verso.bottomAnchor, constant: 5).isActive = true
+        translatesAutoresizingMaskIntoConstraints = false
+        contentView.bottomAnchor.constraint(equalTo: verso.bottomAnchor, constant: 8).isActive = true
     }
     
+    func setFonteSize() {
+        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
+            UserDefaults.standard.set(17, forKey: FONTSIZE)
+        }
+        let fonteSize: Int? = UserDefaults.standard.integer(forKey: FONTSIZE)
+        if let fonteSize = fonteSize {
+            //number.font = UIFont.systemFont(ofSize: CGFloat(fonteSize - 5))
+            verso.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
+        }
+    }
 }

@@ -123,6 +123,11 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         setupSwipeGestures()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
+    
     // MARK: Selectors
     
     @objc func showLivros() {

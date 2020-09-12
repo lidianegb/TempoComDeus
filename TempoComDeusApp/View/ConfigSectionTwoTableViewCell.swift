@@ -10,12 +10,6 @@ import UIKit
 
 class ConfigSectionTwoTableViewCell: UITableViewCell {
     
-    var fonteSize: Int? {
-        didSet {
-             UserDefaults.standard.set(stepperControl.value, forKey: FONTSIZE)
-        }
-    }
-    
     let wrapperView: UIView = {
          let wrapper = UIView()
          wrapper.backgroundColor = .backViewColor
@@ -50,8 +44,9 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
     lazy var stepperControl: UIStepper = {
         let stepper = UIStepper()
         stepper.minimumValue = 17
-        stepper.maximumValue = 28
+        stepper.maximumValue = 24
         stepper.stepValue = 1
+        stepper.value = Double(UserDefaults.standard.integer(forKey: FONTSIZE))
         stepper.setDecrementImage(UIImage(systemName: "minus"), for: .normal)
         stepper.setIncrementImage(UIImage(systemName: "plus"), for: .normal)
         stepper.layer.cornerRadius = 8
@@ -66,26 +61,28 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
     }
     
     @objc func changeFontValue() {
-        fonteSize = Int(stepperControl.value)
-        exampleLabel.font = UIFont.systemFont(ofSize: CGFloat(fonteSize ?? 17))
+        let fonteSize = Int(stepperControl.value)
+        UserDefaults.standard.set(fonteSize, forKey: FONTSIZE)
+        exampleLabel.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
         self.layoutIfNeeded()
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         self.backgroundColor = .backgroundColor
-        
-        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
-            UserDefaults.standard.set(17, forKey: FONTSIZE)
-        }
-        
-        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
-        exampleLabel.font = .systemFont(ofSize: CGFloat(fonteSize ?? 17))
-        stepperControl.value = Double(fonteSize ?? 17)
         setupWrapperView()
         setupTitleLabel()
         setupStepper()
         setupExampleLabel()
+    }
+    
+    func setupFonteSize() {
+        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
+            UserDefaults.standard.set(17, forKey: FONTSIZE)
+        }
+        let fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
+        stepperControl.value = Double(fonteSize)
+        exampleLabel.font = .systemFont(ofSize: CGFloat(fonteSize))
     }
     
     func setupWrapperView() {

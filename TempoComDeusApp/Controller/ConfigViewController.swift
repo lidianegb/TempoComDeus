@@ -82,6 +82,7 @@ extension ConfigViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: sectionTwo, for: indexPath)
                 as? ConfigSectionTwoTableViewCell else { return UITableViewCell() }
+            cell.setupFonteSize()
             return cell
         }
         
