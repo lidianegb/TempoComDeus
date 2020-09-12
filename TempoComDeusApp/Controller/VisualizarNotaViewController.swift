@@ -59,6 +59,7 @@ class VisualizarNotaViewController: UIViewController {
             addBackView()
             addTextView()
             addStackViewButtons()
+            setFonteSize()
        }
     
     init(notaRepository: NotaRepository, notaId: UUID) {
@@ -123,6 +124,16 @@ class VisualizarNotaViewController: UIViewController {
                         paddingBottom: 20,
                         paddingRight: 16)
         
+    }
+    
+    func setFonteSize() {
+        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
+            UserDefaults.standard.set(17, forKey: FONTSIZE)
+        }
+        let fonteSize: Int? = UserDefaults.standard.integer(forKey: FONTSIZE)
+        if let fonteSize = fonteSize {
+            textView.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
+        }
     }
 }
 

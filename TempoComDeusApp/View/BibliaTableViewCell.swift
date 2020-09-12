@@ -33,9 +33,7 @@ class BibliaTableViewCell: UITableViewCell {
     func createCell(num: String, verso: String) {
         backgroundColor = .backViewColor
         setFonteSize()
-        //self.number.text = num
         self.verso.text = num + ".  " + verso
-        //addNumberVerso()
         addTextVerso()
     }
     
@@ -64,7 +62,6 @@ class BibliaTableViewCell: UITableViewCell {
         }
         let fonteSize: Int? = UserDefaults.standard.integer(forKey: FONTSIZE)
         if let fonteSize = fonteSize {
-            //number.font = UIFont.systemFont(ofSize: CGFloat(fonteSize - 5))
             verso.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
         }
     }

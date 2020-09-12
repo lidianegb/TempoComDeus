@@ -44,7 +44,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
     lazy var stepperControl: UIStepper = {
         let stepper = UIStepper()
         stepper.minimumValue = 17
-        stepper.maximumValue = 24
+        stepper.maximumValue = 28
         stepper.stepValue = 1
         stepper.value = Double(UserDefaults.standard.integer(forKey: FONTSIZE))
         stepper.setDecrementImage(UIImage(systemName: "minus"), for: .normal)

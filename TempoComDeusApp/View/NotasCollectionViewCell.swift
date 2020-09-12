@@ -38,6 +38,7 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
         addTextPreview()
         addButtonDelete()
         addTextDate()
+        setFonteSize()
         
     }
     
@@ -60,12 +61,12 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
         labelPreview.font = UIFont.systemFont(ofSize: 17)
         labelPreview.textAlignment = .left
         labelPreview.textColor = .label
-        labelPreview.numberOfLines = 2
+        labelPreview.numberOfLines = 0
         wrapperView.addSubview(labelPreview)
         labelPreview.anchor(top: wrapperView.topAnchor,
                             left: wrapperView.leftAnchor,
                             right: wrapperView.rightAnchor,
-                            paddingTop: 30,
+                            paddingTop: 10,
                             paddingLeft: 12,
                             paddingRight: 12)
     }
@@ -88,7 +89,7 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
                              bottom: wrapperView.bottomAnchor,
                              right: wrapperView.rightAnchor,
                              paddingTop: 10,
-                             paddingBottom: 20,
+                             paddingBottom: 10,
                              paddingRight: 12,
                              width: 20,
                              height: 20)
@@ -107,8 +108,18 @@ class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
                          right: buttonDelete.leftAnchor,
                          paddingTop: 10,
                          paddingLeft: 12,
-                         paddingBottom: 20,
+                         paddingBottom: 10,
                          paddingRight: 12)
+    }
+    
+    func setFonteSize() {
+        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
+            UserDefaults.standard.set(17, forKey: FONTSIZE)
+        }
+        let fonteSize: Int? = UserDefaults.standard.integer(forKey: FONTSIZE)
+        if let fonteSize = fonteSize {
+            labelPreview.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
+        }
     }
     
    @objc func displayActionSheet() {

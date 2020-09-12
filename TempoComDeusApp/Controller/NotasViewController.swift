@@ -14,6 +14,11 @@ class NotasViewController: UIViewController {
     
     let cellId = "CellId"
     let backView = BackView()
+    var fonteSize: Int? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     lazy var collectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -71,12 +76,16 @@ class NotasViewController: UIViewController {
       override func viewDidLoad() {
         super.viewDidLoad()
         notas = notaRepository.readAllItems()
-        
+        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
         configureUI()
         addBackground()
         addTextInicial()
         setupCollectionView()
       }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
+    }
       
       // MARK: Selectors
 

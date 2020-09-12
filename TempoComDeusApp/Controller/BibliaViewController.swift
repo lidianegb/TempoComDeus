@@ -18,7 +18,11 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     var abbrev: String = "gn"
     let biblia = File().readBiblia()
     var allLivros: [Livro] = []
-    
+    var fonteSize: Int? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     var chapter: Int = 0 {
         didSet {
             showHiddenArrowsLeftRight()
@@ -114,6 +118,8 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         
         allLivros = File().readBibleByVersion(version: version)
         
+        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
+        
         livroAtual = getLivroAtual(abreviacao: abbrev)
         versionButton.delegate = self
         configureUI()
@@ -125,7 +131,7 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        tableView.reloadData()
+        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
     }
     
     // MARK: Selectors

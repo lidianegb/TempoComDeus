@@ -85,6 +85,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         addStackHeader()
         addTextView()
         addStackBottom()
+        setFonteSize()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -119,6 +120,16 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
                        paddingLeft: 16,
                        paddingBottom: 80,
                        paddingRight: 16)
+    }
+    
+    func setFonteSize() {
+        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
+            UserDefaults.standard.set(17, forKey: FONTSIZE)
+        }
+        let fonteSize: Int? = UserDefaults.standard.integer(forKey: FONTSIZE)
+        if let fonteSize = fonteSize {
+            textView.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
+        }
     }
     
     func addStackBottom() {
