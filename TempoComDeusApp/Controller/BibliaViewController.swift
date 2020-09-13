@@ -18,6 +18,8 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     var abbrev: String = "gn"
     let biblia = File().readBiblia()
     var allLivros: [Livro] = []
+    var widthTitleButtonConstraint: NSLayoutConstraint?
+    
     var fonteSize: Int? {
         didSet {
             tableView.reloadData()
@@ -50,7 +52,7 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         button.titleLabel?.tintColor = .white
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.setDimensions(width: 150, height: 30)
+     //   button.setDimensions(width: 150, height: 30)
         button.addTarget(self, action: #selector(showLivros), for: .touchUpInside)
         return button
     }()
@@ -119,9 +121,10 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         allLivros = File().readBibleByVersion(version: version)
         
         fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
-        
+       
         livroAtual = getLivroAtual(abreviacao: abbrev)
         versionButton.delegate = self
+        updateTitleWidthConstraint()
         configureUI()
         setupTableView()
         setupPicker()
@@ -196,6 +199,23 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)
     }
     
+    func updateTitleWidthConstraint() {
+        titleButton.translatesAutoresizingMaskIntoConstraints = false
+        widthTitleButtonConstraint?.isActive = false
+        let buttonTitle = "\(getTitleName())"  + " " + "\((self.chapter ) + 1)"
+        widthTitleButtonConstraint =
+            titleButton.widthAnchor.constraint(equalToConstant: CGFloat(buttonTitle.count * 10 + 20))
+        widthTitleButtonConstraint?.isActive = true
+    }
+    
+    func getTitleName() -> String {
+        for data in biblia where data.abbrev["pt"] == livroAtual?.abbrev {
+            return data.name
+        }
+        
+        return ""
+    }
+    
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
@@ -257,13 +277,16 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func updateButtonTitle() {
-        let buttonTitle = "\(livroAtual?.name ?? "")"  + " " + "\((self.chapter ) + 1)"
+        let buttonTitle = "\(getTitleName())"  + " " + "\((self.chapter ) + 1)"
         titleButton.setTitle(buttonTitle, for: .normal)
         let versionButtonTitle = version.uppercased()
         versionButton.text = versionButtonTitle
+        updateTitleWidthConstraint()
     }
     
     private func setupButtonsNav() {
+        titleButton.translatesAutoresizingMaskIntoConstraints = false
+        titleButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         let stackView = UIStackView(arrangedSubviews: [leftSwipeButton, titleButton, rightSwipeButton])
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
