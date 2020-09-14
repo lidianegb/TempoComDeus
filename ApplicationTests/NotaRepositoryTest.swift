@@ -49,11 +49,11 @@ class NotaRepositoryTest: XCTestCase {
         XCTAssertEqual(output, false)
     }
     
-    func test_createItemNill() {
-        let nota = Nota(body: nil, cor: nil)
-        let output = sut.createNewItem(item: nota)
-        XCTAssertNil(output)
-    }
+//    func test_createItemNill() {
+//        let nota = Nota(body: nil, cor: nil)
+//        let output = sut.createNewItem(item: nota)
+//        XCTAssertNil(output)
+//    }
     
     func test_readItem() {
        let nota = Nota(body: "teste", cor: "azul")
