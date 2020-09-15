@@ -51,6 +51,8 @@
 		AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibliaViewController.swift */; };
 		AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */; };
 		AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203C24E583DA0058FA2C /* BackView.swift */; };
+		AF89E0072511573500B5FEDB /* BibliaPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89E0062511573500B5FEDB /* BibliaPageViewController.swift */; };
+		AF89E00D2511662600B5FEDB /* Verso.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89E00C2511662600B5FEDB /* Verso.swift */; };
 		AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */; };
 		AFC2A32624E87A13001A266D /* CriarEditarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* CriarEditarNotaViewController.swift */; };
 		AFC820E424F68F3A003C7B0A /* NotaRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */; };
@@ -137,6 +139,8 @@
 		AF7F203824E55B060058FA2C /* BibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaViewController.swift; sourceTree = "<group>"; };
 		AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
 		AF7F203C24E583DA0058FA2C /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
+		AF89E0062511573500B5FEDB /* BibliaPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaPageViewController.swift; sourceTree = "<group>"; };
+		AF89E00C2511662600B5FEDB /* Verso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verso.swift; sourceTree = "<group>"; };
 		AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* CriarEditarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarEditarNotaViewController.swift; sourceTree = "<group>"; };
 		AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaRepositoryTest.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				AF1947C324EBF02200724B23 /* Biblia.swift */,
 				AF47175F2501B03900DDC69A /* Livro.swift */,
 				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
+				AF89E00C2511662600B5FEDB /* Verso.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */,
 				AF1868B32506E494001731AA /* UITableBibliaViewController.swift */,
 				AF3EB88A2508432A003F988F /* ConfigViewController.swift */,
+				AF89E0062511573500B5FEDB /* BibliaPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -567,6 +573,7 @@
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
 				AF34F40C2500328000BFAB2D /* NotaDelegate.swift in Sources */,
 				AF34F410250032C700BFAB2D /* NovaNotaDelegate.swift in Sources */,
+				AF89E0072511573500B5FEDB /* BibliaPageViewController.swift in Sources */,
 				AF4717602501B03900DDC69A /* Livro.swift in Sources */,
 				AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */,
 				AF51DF8A24EDA6D4001C352D /* CapitulosTableViewCell.swift in Sources */,
@@ -583,6 +590,7 @@
 				AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */,
 				AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */,
 				AF34F4162500370A00BFAB2D /* Json.swift in Sources */,
+				AF89E00D2511662600B5FEDB /* Verso.swift in Sources */,
 				AF34F406250031DF00BFAB2D /* NotasCellDelegate.swift in Sources */,
 				AF34F40A2500326700BFAB2D /* LivrosTableViewDelegate.swift in Sources */,
 				AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */,
