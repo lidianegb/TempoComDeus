@@ -52,7 +52,6 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         button.titleLabel?.tintColor = .white
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-     //   button.setDimensions(width: 150, height: 30)
         button.addTarget(self, action: #selector(showLivros), for: .touchUpInside)
         return button
     }()
