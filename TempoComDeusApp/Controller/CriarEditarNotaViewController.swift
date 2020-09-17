@@ -7,10 +7,6 @@
 //swiftlint:disable type_body_length
 import UIKit
 
-enum Acao {
-    case editar, criar
-}
-
 class CriarEditarNota: UIViewController, UITextViewDelegate {
     // MARK: Properties
     let backView = BackView()
