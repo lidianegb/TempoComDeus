@@ -20,7 +20,12 @@ class NewNotaViewController: UIViewController {
     private let notaID: UUID
     private let acao: Acao
     weak var delegate: NovaNotaDelegate?
-    
+    private var nota: Nota? {
+        didSet {
+            saveButton.isEnabled = !(nota?.body.isEmpty ?? true)
+        }
+    }
+
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .backViewColor
@@ -47,8 +52,8 @@ class NewNotaViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Salvar", for: .normal)
         button.setTitleColor(.blueAct, for: .normal)
-      //  button.setTitle("", for: .disabled)
-      //  button.isEnabled = false
+        button.setTitle("", for: .disabled)
+        button.isEnabled = false
         button.addTarget(self, action: #selector(salvar), for: .touchUpInside)
         return button
     }()
@@ -73,20 +78,29 @@ class NewNotaViewController: UIViewController {
     }
     
     @objc func salvar() {
-        switch acao {
-        case .criar:
-            delegate?.updateNotas(notas: notaRepository.readAllItems())
-            self.dismiss(animated: true, completion: nil)
-        case .editar:
-            self.dismiss(animated: true, completion: nil)
-        }
+        _ = notaRepository.createNewItem(item: nota ?? Nota(body: nil, cor: nil))
+        delegate?.updateNotas(notas: notaRepository.readAllItems())
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func cancelar() {
-        
-        self.dismiss(animated: true, completion: nil)
-        
+        if let text = nota?.body, text.isEmpty {
+            self.dismiss(animated: true, completion: nil) } else {
+            displayActionSheet()
+        }
     }
+    
+    @objc func displayActionSheet() {
+      let menu = UIAlertController(title: nil, message: "Descartar alterações?", preferredStyle: .actionSheet)
+      let deleteAtion = UIAlertAction(title: "Descartar", style: .destructive, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+          }
+      )
+      let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+      menu.addAction(deleteAtion)
+      menu.addAction(cancelAction)
+      self.present(menu, animated: true, completion: nil)
+     }
     
     private func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -103,7 +117,7 @@ class NewNotaViewController: UIViewController {
                          right: view.rightAnchor,
                          paddingTop: 0,
                          paddingLeft: 8,
-                         paddingBottom: 0,
+                         paddingBottom: 8,
                          paddingRight: 8)
         tableView.register(VersiculoTableViewCell.self, forCellReuseIdentifier: sectionOne)
         tableView.register(NotaTableViewCell.self, forCellReuseIdentifier: sectionTwo)
@@ -129,7 +143,7 @@ extension NewNotaViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,7 +155,21 @@ extension NewNotaViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: sectionTwo, for: indexPath)
                 as? NotaTableViewCell else { return UITableViewCell() }
+        cell.createCell()
+        cell.delegate = self
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 100
+        }
+        return tableView.frame.height - 210
+    }
+    
+}
+extension NewNotaViewController: NewNotaDelegate {
+    func getNota(nota: Nota) {
+        self.nota = nota
+    }
 }

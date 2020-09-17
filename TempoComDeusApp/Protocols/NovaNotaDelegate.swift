@@ -11,3 +11,7 @@ import Foundation
 protocol NovaNotaDelegate: class {
     func updateNotas(notas: [Nota])
 }
+
+protocol NewNotaDelegate: class {
+    func getNota(nota: Nota)
+}
