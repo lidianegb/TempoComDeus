@@ -35,6 +35,7 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
         super.awakeFromNib()
     }
     func createCell() {
+        contentView.backgroundColor = .backgroundColor
         addBackView()
         addTextView()
         addStackBottom()
@@ -90,8 +91,8 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
                         left: contentView.leftAnchor,
                         right: contentView.rightAnchor,
                         paddingTop: 0,
-                        paddingLeft: 8,
-                        paddingRight: 8)
+                        paddingLeft: 0,
+                        paddingRight: 0)
     }
     
     func addStackBottom() {
@@ -122,7 +123,7 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
                                      right: contentView.rightAnchor,
                                      paddingTop: 8,
                                      paddingLeft: 16,
-                                     paddingBottom: 0,
+                                     paddingBottom: 8,
                                      paddingRight: 16)
     }
     private func createButtonCor(cor: String) -> UIButton {

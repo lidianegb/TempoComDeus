@@ -40,7 +40,7 @@ class NewNotaViewController: UIViewController {
 
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .backViewColor
+        tableView.backgroundColor = .backgroundColor
         tableView.layer.cornerRadius = 20
         tableView.layer.masksToBounds = true
         tableView.tableFooterView = nil
@@ -138,12 +138,12 @@ class NewNotaViewController: UIViewController {
         view.addSubview(tableView)
         tableView.anchor(top: adicionarVersiculo.bottomAnchor,
                          left: view.leftAnchor,
-                       
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
                          right: view.rightAnchor,
                          paddingTop: 8,
                          paddingLeft: 8,
-                       
-                         paddingRight: 0)
+                         paddingBottom: 0,
+                         paddingRight: 8)
         tableView.register(VersiculoTableViewCell.self, forCellReuseIdentifier: sectionOne)
         tableView.register(NotaTableViewCell.self, forCellReuseIdentifier: sectionTwo)
     }
