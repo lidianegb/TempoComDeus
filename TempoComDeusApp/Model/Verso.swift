@@ -7,20 +7,28 @@
 //
 
 import Foundation
-class Verso {
+class Verso: Codable {
     let livro: String
     let capitulo: Int
-    let verso: Int
+    let versiculos: [Int: String]
     let versao: String
     
-    init(livro: String, capitulo: Int, verso: Int, versao: String) {
+    init(livro: String, capitulo: Int, versiculos: [Int: String], versao: String) {
         self.livro = livro
         self.capitulo = capitulo
-        self.verso = verso
+        self.versiculos = versiculos
         self.versao = versao
     }
     
     func formatedTitle() -> String {
-        return "\(livro) \(capitulo):\(verso) \(versao.uppercased())"
+        return " \(versao.uppercased()) - \(livro) \(capitulo)"
+    }
+    
+    func getVersiculos() -> [String] {
+        var versos: [String] = []
+        for (key, value) in versiculos {
+            versos.append("\(key) \(value)")
+        }
+        return versos
     }
 }

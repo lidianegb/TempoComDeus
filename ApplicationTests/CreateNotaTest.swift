@@ -15,7 +15,7 @@ class CreateNotaTest: XCTestCase {
         // given
         let text = "Nota 1"
         let cor = "azul"
-        let sut = Nota(body: text, cor: cor)
+        let sut = Nota(body: text, cor: cor, versos: [])
        //when
        let output1 = sut.body
        let output2 = sut.cor
@@ -28,7 +28,7 @@ class CreateNotaTest: XCTestCase {
     func test_create_newNota_withoutValues() {
            // given
 
-           let sut = Nota(body: nil, cor: nil)
+        let sut = Nota(body: nil, cor: nil, versos: [])
            
           //when
           let output1 = sut.body

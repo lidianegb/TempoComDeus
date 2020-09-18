@@ -10,7 +10,7 @@ import UIKit
 
 class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
     let backView = BackView()
-    var nota: Nota = Nota(body: nil, cor: nil)
+    var nota: Nota = Nota(body: nil, cor: nil, versos: [])
     
     var color: String? {
         didSet {

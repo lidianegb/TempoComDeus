@@ -65,7 +65,7 @@ class VisualizarNotaViewController: UIViewController {
     init(notaRepository: NotaRepository, notaId: UUID) {
         self.notaRepository = notaRepository
         self.notaID = notaId
-        self.nota = notaRepository.readItem(itemId: notaID) ?? Nota(body: nil, cor: nil)
+        self.nota = notaRepository.readItem(itemId: notaID) ?? Nota(body: nil, cor: nil, versos: [])
         textView.text = nota.body
         backView.backgroundColor = .getColor(name: nota.cor)
               
@@ -143,7 +143,7 @@ extension VisualizarNotaViewController: NotaDelegate {
         nota.body = body
         nota.cor = cor
         notaRepository.update(item: nota)
-        nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: nil)
+        nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: nil, versos: [])
         self.delegate?.notaIsUpdated(updated: true)
     }
 

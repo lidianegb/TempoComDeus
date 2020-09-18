@@ -65,7 +65,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         self.notaRepository = notaRepository
         self.notaID = notaId
         self.acao = acao
-        self.nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: "nota1")
+        self.nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: "nota1", versos: [])
         self.color = nota.cor
         super.init(nibName: nil, bundle: nil)
     }
@@ -198,7 +198,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
          @objc func salvar() {
             switch acao {
             case .criar:
-                let newNota = Nota(body: textView.text, cor: color)
+                let newNota = Nota(body: textView.text, cor: color, versos: [])
                 _ = notaRepository.createNewItem(item: newNota)
                 delegate?.updateNotas(notas: notaRepository.readAllItems())
                 self.dismiss(animated: true, completion: nil)

@@ -22,7 +22,7 @@ class NewNotaViewController: UIViewController {
     weak var delegate: NovaNotaDelegate?
     private var nota: Nota? {
         didSet {
-            saveButton.isEnabled = !(nota?.body.isEmpty ?? true)
+            saveButton.isEnabled = !(nota?.body.isEmpty ?? true || nota?.versos.isEmpty ?? true)
         }
     }
 
@@ -78,7 +78,7 @@ class NewNotaViewController: UIViewController {
     }
     
     @objc func salvar() {
-        _ = notaRepository.createNewItem(item: nota ?? Nota(body: nil, cor: nil))
+        _ = notaRepository.createNewItem(item: nota ?? Nota(body: nil, cor: nil, versos: []))
         delegate?.updateNotas(notas: notaRepository.readAllItems())
         self.dismiss(animated: true, completion: nil)
     }
@@ -143,6 +143,9 @@ extension NewNotaViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return nota?.versos.count ?? 0
+        }
         return 1
     }
     
@@ -150,6 +153,8 @@ extension NewNotaViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: sectionOne, for: indexPath)
                     as? VersiculoTableViewCell else { return UITableViewCell() }
+            cell.createCell()
+            cell.delegate = self
             return cell
         }
         
@@ -162,13 +167,17 @@ extension NewNotaViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 100
+            return 50
         }
         return tableView.frame.height - 210
     }
     
 }
 extension NewNotaViewController: NewNotaDelegate {
+    func getVersos(versos: [Verso]) {
+        self.nota?.versos = versos
+    }
+    
     func getNota(nota: Nota) {
         self.nota = nota
     }

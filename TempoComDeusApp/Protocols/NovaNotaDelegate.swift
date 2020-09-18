@@ -14,4 +14,5 @@ protocol NovaNotaDelegate: class {
 
 protocol NewNotaDelegate: class {
     func getNota(nota: Nota)
+    func getVersos(versos: [Verso])
 }
