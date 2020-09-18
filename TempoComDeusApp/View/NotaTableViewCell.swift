@@ -20,9 +20,10 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
         }
     }
     weak var delegate: NewNotaDelegate?
+    
     var textView: UITextView = {
         let text = UITextView()
-        text.isEditable = true
+        text.isScrollEnabled = false
         text.textAlignment = .left
         text.backgroundColor = .clear
         text.font = UIFont.systemFont(ofSize: 20)
@@ -34,7 +35,6 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
         super.awakeFromNib()
     }
     func createCell() {
-        contentView.backgroundColor = .backViewColor
         addBackView()
         addTextView()
         addStackBottom()
@@ -42,22 +42,48 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         nota.body = textView.text
         delegate?.getNota(nota: nota)
+        delegate?.updateHeightOfRow(self, textView)
+      
     }
 
     func addTextView() {
+        textView.text = "O que está no seu coração"
+        textView.textColor = .secondaryLabel
         textView.delegate = self
         backView.addSubview(textView)
         textView.anchor(top: backView.topAnchor,
                        left: backView.leftAnchor,
                        bottom: backView.bottomAnchor,
                        right: backView.rightAnchor,
-                       paddingTop: 8,
+                       paddingTop: 0,
                        paddingLeft: 16,
-                       paddingBottom: 8,
+                       paddingBottom: 0,
                        paddingRight: 16)
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .secondaryLabel {
+            textView.text = nil
+            textView.textColor = .label
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "O que está no seu coração"
+            textView.textColor = .secondaryLabel
+        }
+    }
+ 
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+        return updatedText.count <= 25000
+    }
+    
     private func addBackView() {
+        backView.layer.cornerRadius = 8
         backView.backgroundColor = .getColor(name: color ?? "")
         contentView.insertSubview(backView, at: 0)
         backView.anchor(top: contentView.topAnchor,
@@ -96,7 +122,7 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
                                      right: contentView.rightAnchor,
                                      paddingTop: 8,
                                      paddingLeft: 16,
-                                     paddingBottom: 8,
+                                     paddingBottom: 0,
                                      paddingRight: 16)
     }
     private func createButtonCor(cor: String) -> UIButton {

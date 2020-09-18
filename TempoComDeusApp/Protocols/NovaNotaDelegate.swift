@@ -7,12 +7,13 @@
 //
 
 import Foundation
-
+import UIKit
 protocol NovaNotaDelegate: class {
     func updateNotas(notas: [Nota])
 }
 
 protocol NewNotaDelegate: class {
     func getNota(nota: Nota)
+    func updateHeightOfRow(_ cell: NotaTableViewCell, _ textView: UITextView)
     func getVersos(versos: [Verso])
 }
