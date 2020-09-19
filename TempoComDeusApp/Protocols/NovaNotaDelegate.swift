@@ -17,3 +17,7 @@ protocol NewNotaDelegate: class {
     func updateHeightOfRow(_ cell: NotaTableViewCell, _ textView: UITextView)
     func getVersos(versos: [Verso])
 }
+
+protocol ChangeColorDelegate: class {
+    func didChangeColor(color: String)
+}

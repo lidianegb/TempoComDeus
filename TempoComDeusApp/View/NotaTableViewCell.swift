@@ -102,3 +102,9 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
     }
 
 }
+
+extension NotaTableViewCell: ChangeColorDelegate {
+    func didChangeColor(color: String) {
+        self.color = color
+    }
+}

@@ -25,8 +25,7 @@ class NewNotaViewController: UIViewController {
             saveButton.isEnabled = !(nota?.body.isEmpty ?? true)
         }
     }
-    
-    private var color: String?
+    weak var colorDelegate: ChangeColorDelegate?
     
     var stackViewBottom = UIStackView()
     
@@ -217,19 +216,19 @@ class NewNotaViewController: UIViewController {
     }
     
     @objc func changeColor1() {
-        color = "nota1"
+        colorDelegate?.didChangeColor(color: "nota1")
     }
     @objc func changeColor2() {
-        color = "nota2"
+        colorDelegate?.didChangeColor(color: "nota2")
     }
     @objc func changeColor3() {
-        color = "nota3"
+        colorDelegate?.didChangeColor(color: "nota3")
     }
     @objc func changeColor4() {
-        color = "nota4"
+        colorDelegate?.didChangeColor(color: "nota4")
     }
     @objc func changeColor5() {
-        color = "nota5"
+        colorDelegate?.didChangeColor(color: "nota5")
     }
     
     @objc func keyboardHiden(notification: NSNotification) {
@@ -286,6 +285,7 @@ extension NewNotaViewController: UITableViewDelegate, UITableViewDataSource {
                 as? NotaTableViewCell else { return UITableViewCell() }
         cell.createCell()
         cell.delegate = self
+        self.colorDelegate = cell
         cell.textView.sizeToFit()
         return cell
     }
