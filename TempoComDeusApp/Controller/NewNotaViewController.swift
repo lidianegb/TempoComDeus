@@ -26,6 +26,10 @@ class NewNotaViewController: UIViewController {
         }
     }
     
+    private var color: String?
+    
+    var stackViewBottom = UIStackView()
+    
     lazy var adicionarVersiculo: UILabel  = {
         let field = UILabel()
         field.text = "  Adicionar versículo"
@@ -37,7 +41,7 @@ class NewNotaViewController: UIViewController {
         field.clipsToBounds = true
         return field
     }()
-
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .backgroundColor
@@ -86,12 +90,13 @@ class NewNotaViewController: UIViewController {
         configureUI()
         addStackHeader()
         addVersiculo()
+        addStackBottom()
         setupTableView()
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
-               
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardHiden),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -99,7 +104,7 @@ class NewNotaViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            view.endEditing(true)
+        view.endEditing(true)
     }
     
     @objc func salvar() {
@@ -111,21 +116,21 @@ class NewNotaViewController: UIViewController {
     @objc func cancelar() {
         if let text = nota?.body, text.isEmpty {
             self.dismiss(animated: true, completion: nil) } else {
-            displayActionSheet()
-        }
+                displayActionSheet()
+            }
     }
     
     @objc func displayActionSheet() {
-      let menu = UIAlertController(title: nil, message: "Descartar alterações?", preferredStyle: .actionSheet)
-      let deleteAtion = UIAlertAction(title: "Descartar", style: .destructive, handler: { _ in
+        let menu = UIAlertController(title: nil, message: "Descartar alterações?", preferredStyle: .actionSheet)
+        let deleteAtion = UIAlertAction(title: "Descartar", style: .destructive, handler: { _ in
             self.dismiss(animated: true, completion: nil)
-          }
-      )
-      let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-      menu.addAction(deleteAtion)
-      menu.addAction(cancelAction)
-      self.present(menu, animated: true, completion: nil)
-     }
+        }
+        )
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        menu.addAction(deleteAtion)
+        menu.addAction(cancelAction)
+        self.present(menu, animated: true, completion: nil)
+    }
     
     private func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -138,7 +143,7 @@ class NewNotaViewController: UIViewController {
         view.addSubview(tableView)
         tableView.anchor(top: adicionarVersiculo.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                         bottom: stackViewBottom.topAnchor,
                          right: view.rightAnchor,
                          paddingTop: 8,
                          paddingLeft: 8,
@@ -170,32 +175,89 @@ class NewNotaViewController: UIViewController {
                                   paddingRight: 8, height: 40)
     }
     
+    func addStackBottom() {
+        let cor1 = createButtonCor(cor: "nota1")
+        cor1.addTarget(self, action: #selector(changeColor1), for: .touchUpInside)
+        
+        let cor2 = createButtonCor(cor: "nota2")
+        cor2.addTarget(self, action: #selector(changeColor2), for: .touchUpInside)
+        
+        let cor3 = createButtonCor(cor: "nota3")
+        cor3.addTarget(self, action: #selector(changeColor3), for: .touchUpInside)
+        
+        let cor4 = createButtonCor(cor: "nota4")
+        cor4.addTarget(self, action: #selector(changeColor4), for: .touchUpInside)
+        
+        let cor5 = createButtonCor(cor: "nota5")
+        cor5.addTarget(self, action: #selector(changeColor5), for: .touchUpInside)
+        
+        stackViewBottom = UIStackView(arrangedSubviews:
+                                        [cor1, cor2, cor3, cor4, cor5, UIView(), UIView(), UIView()])
+        stackViewBottom.alignment = .leading
+        stackViewBottom.spacing = 10
+       
+        view.addSubview(stackViewBottom)
+        stackViewBottom.anchor(
+            left: view.leftAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            right: view.rightAnchor,
+            paddingLeft: 16,
+            paddingBottom: 8,
+            paddingRight: 16)
+    }
+    private func createButtonCor(cor: String) -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = .getColor(name: cor)
+        button.layer.borderWidth = 0.3
+        button.layer.borderColor = UIColor.black.cgColor
+        button.setDimensions(width: 32, height: 32)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        return button
+    }
+    
+    @objc func changeColor1() {
+        color = "nota1"
+    }
+    @objc func changeColor2() {
+        color = "nota2"
+    }
+    @objc func changeColor3() {
+        color = "nota3"
+    }
+    @objc func changeColor4() {
+        color = "nota4"
+    }
+    @objc func changeColor5() {
+        color = "nota5"
+    }
+    
     @objc func keyboardHiden(notification: NSNotification) {
-            if let duracao =  notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+        if let duracao =  notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+            UIView.animate(withDuration: duracao) {
+                self.view.frame = UIScreen.main.bounds
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
+                                NSValue)?.cgRectValue {
+            if let duracao = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+                
                 UIView.animate(withDuration: duracao) {
-                    self.view.frame = UIScreen.main.bounds
+                    self.view.frame = CGRect(
+                        x: UIScreen.main.bounds.origin.x,
+                        y: UIScreen.main.bounds.origin.y,
+                        width: UIScreen.main.bounds.width,
+                        height: UIScreen.main.bounds.height - keyboardSize.height
+                    )
                     self.view.layoutIfNeeded()
                 }
             }
         }
-
-    @objc func keyboardShow(notification: NSNotification) {
-         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
-            NSValue)?.cgRectValue {
-             if let duracao = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-                 
-                 UIView.animate(withDuration: duracao) {
-                     self.view.frame = CGRect(
-                         x: UIScreen.main.bounds.origin.x,
-                         y: UIScreen.main.bounds.origin.y,
-                         width: UIScreen.main.bounds.width,
-                         height: UIScreen.main.bounds.height - keyboardSize.height
-                     )
-                     self.view.layoutIfNeeded()
-                 }
-             }
-         }
-     }
+    }
     
 }
 extension NewNotaViewController: UITableViewDelegate, UITableViewDataSource {
@@ -237,7 +299,7 @@ extension NewNotaViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-
+        
     }
     
 }
@@ -256,11 +318,11 @@ extension NewNotaViewController: NewNotaDelegate {
             }
         }
     }
-
+    
     func getVersos(versos: [Verso]) {
         self.nota?.versos = versos
     }
-  
+    
     func getNota(nota: Nota) {
         self.nota = nota
     }
