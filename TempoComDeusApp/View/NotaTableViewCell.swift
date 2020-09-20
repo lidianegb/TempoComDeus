@@ -47,7 +47,8 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
     }
 
     func addTextView() {
-        textView.text = "O que está no seu coração"
+        textView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+        textView.text = "O que está no seu coração?"
         textView.textColor = .secondaryLabel
         textView.delegate = self
         backView.addSubview(textView)
@@ -70,7 +71,7 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "O que está no seu coração"
+            textView.text = "O que está no seu coração?"
             textView.textColor = .secondaryLabel
         }
     }
@@ -100,6 +101,10 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
         super.setSelected(selected, animated: animated)
 
     }
+    
+    @objc func tapDone(sender: Any) {
+          self.endEditing(true)
+      }
 
 }
 
