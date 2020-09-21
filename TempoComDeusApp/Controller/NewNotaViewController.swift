@@ -113,7 +113,7 @@ class NewNotaViewController: UIViewController {
     }
     
     @objc func cancelar() {
-        if let text = nota?.body, text.isEmpty {
+        if saveButton.isEnabled == false {
             self.dismiss(animated: true, completion: nil) } else {
                 displayActionSheet()
             }
