@@ -53,13 +53,13 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
         textView.delegate = self
         backView.addSubview(textView)
         textView.anchor(top: backView.topAnchor,
-                       left: backView.leftAnchor,
-                       bottom: backView.bottomAnchor,
-                       right: backView.rightAnchor,
-                       paddingTop: 0,
-                       paddingLeft: 16,
-                       paddingBottom: 0,
-                       paddingRight: 16)
+                        left: backView.leftAnchor,
+                        bottom: backView.bottomAnchor,
+                        right: backView.rightAnchor,
+                        paddingTop: 0,
+                        paddingLeft: 16,
+                        paddingBottom: 0,
+                        paddingRight: 16)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -99,13 +99,13 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
  
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
-    @objc func tapDone(sender: Any) {
-          self.endEditing(true)
-      }
-
+    @objc func tapDone(sender: UITextView) {
+        textView.resignFirstResponder()
+    }
+    
 }
 
 extension NotaTableViewCell: ChangeColorDelegate {

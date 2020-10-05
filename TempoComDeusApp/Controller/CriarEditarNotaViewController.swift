@@ -106,6 +106,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     }
     
     func addTextView() {
+        textView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         textView.text = nota.body
         textView.delegate = self
         backView.addSubview(textView)
@@ -178,8 +179,8 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     
     // MARK: Selectors
     
-    @objc func tapDone(sender: Any) {
-        view.endEditing(true)
+    @objc func tapDone(sender: UITextView) {
+        textView.resignFirstResponder()
     }
     
     @objc func cancelar() {
