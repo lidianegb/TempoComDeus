@@ -276,7 +276,6 @@
 			children = (
 				AF21B47124E5D25900D44D39 /* Nota.swift */,
 				AF1947C324EBF02200724B23 /* Biblia.swift */,
-				AF47175F2501B03900DDC69A /* Livro.swift */,
 				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
 				AF89E00C2511662600B5FEDB /* Verso.swift */,
 			);
@@ -288,6 +287,7 @@
 			children = (
 				AF7F203C24E583DA0058FA2C /* BackView.swift */,
 				AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */,
+				AF47175F2501B03900DDC69A /* Livro.swift */,
 				AFDB6D6024EEA80000F58A6D /* CapitulosCollectionViewCell.swift */,
 				AF51DF8924EDA6D4001C352D /* CapitulosTableViewCell.swift */,
 				AFFA1D1224EC1CF400399F96 /* BibliaTableViewCell.swift */,

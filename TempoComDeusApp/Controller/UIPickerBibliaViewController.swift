@@ -23,10 +23,11 @@ extension BibliaViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         toolBar.tintColor = .blueAct
         toolBar.sizeToFit()
         toolBar.isUserInteractionEnabled = true
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(title: "Done",
                                          style: UIBarButtonItem.Style.plain,
                                          target: self, action: #selector(dmissPicker))
-        toolBar.setItems([doneButton], animated: true)
+        toolBar.setItems([flexible, doneButton], animated: true)
         
         versionButton.inputView = picker
         versionButton.inputAccessoryView = toolBar
