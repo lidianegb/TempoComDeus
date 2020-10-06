@@ -27,7 +27,7 @@ class NewNotaViewController: UIViewController {
     }
     weak var colorDelegate: ChangeColorDelegate?
     
-    var stackViewBottom = UIStackView()
+    var stackViewBottom: UIStackView!
     
     lazy var adicionarVersiculo: UILabel  = {
         let field = UILabel()
@@ -191,7 +191,8 @@ class NewNotaViewController: UIViewController {
         cor5.addTarget(self, action: #selector(changeColor5), for: .touchUpInside)
         
         stackViewBottom = UIStackView(arrangedSubviews:
-                                        [cor1, cor2, cor3, cor4, cor5, UIView(), UIView(), UIView()])
+                                            [cor1, cor2, cor3, cor4, cor5,
+                                             UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))])
         stackViewBottom.alignment = .leading
         stackViewBottom.spacing = 10
        
@@ -312,10 +313,24 @@ extension NewNotaViewController: NewNotaDelegate {
             UIView.setAnimationsEnabled(false)
             tableView.beginUpdates()
             tableView.endUpdates()
+
             UIView.setAnimationsEnabled(true)
-            if let thisIndexPath = tableView.indexPath(for: cell) {
-                tableView.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
+            if let thisIndexPath = tableView.indexPath(for: cell),
+               let selectedRange = textView.selectedTextRange {
+                let cursorPosition = textView.offset(from: textView.beginningOfDocument, to: selectedRange.start)
+                let endPosition = textView.offset(from: textView.beginningOfDocument, to: textView.endOfDocument)
+                let beginPosition = textView.offset(from: textView.beginningOfDocument,
+                                                    to: textView.beginningOfDocument)
+
+                if cursorPosition == beginPosition {
+                    tableView.scrollToRow(at: thisIndexPath,
+                                          at: .top, animated: false)
+                } else if cursorPosition == endPosition {
+                    tableView.scrollToRow(at: thisIndexPath,
+                                          at: .bottom, animated: false)
+                }
             }
+            self.view.layoutIfNeeded()
         }
     }
     
