@@ -226,11 +226,6 @@
 		AF7F1FF424E557440058FA2C = {
 			isa = PBXGroup;
 			children = (
-				AF4E6C7425030FA400C53EF0 /* livrosResumo.json */,
-				AF34F41B250044A100BFAB2D /* aa.json */,
-				AF34F41C250044A100BFAB2D /* acf.json */,
-				AF34F41D250044A200BFAB2D /* nvi.json */,
-				AF22DE6724FB3D99005FAB3C /* biblia.json */,
 				AF7F1FFF24E557440058FA2C /* TempoComDeusApp */,
 				AF6A1E4524F1492300FF46FF /* ApplicationTests */,
 				AFD310B424F561BB00A74E2E /* TempoComDeusUITests */,
@@ -253,6 +248,10 @@
 		AF7F1FFF24E557440058FA2C /* TempoComDeusApp */ = {
 			isa = PBXGroup;
 			children = (
+				AF6A1E3E24EFFB0800FF46FF /* .swiftlint.yml */,
+				AF7F200E24E557450058FA2C /* Info.plist */,
+				AFF7C7D425A35F35002694B3 /* Shared */,
+				AFF7C7D025A35E8A002694B3 /* Books */,
 				AFF120E924EAB67F000A9B12 /* Protocols */,
 				AFC2A32024E6B8B3001A266D /* Extensions */,
 				AF1947CD24EBF96B00724B23 /* Repository */,
@@ -260,13 +259,6 @@
 				AF7F203024E5583B0058FA2C /* Model */,
 				AF7F203124E558430058FA2C /* View */,
 				AF7F203224E5584F0058FA2C /* Controller */,
-				AF7F200024E557440058FA2C /* AppDelegate.swift */,
-				AF7F200224E557440058FA2C /* SceneDelegate.swift */,
-				AF7F200624E557440058FA2C /* Main.storyboard */,
-				AF7F200924E557450058FA2C /* Assets.xcassets */,
-				AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */,
-				AF7F200E24E557450058FA2C /* Info.plist */,
-				AF6A1E3E24EFFB0800FF46FF /* .swiftlint.yml */,
 			);
 			path = TempoComDeusApp;
 			sourceTree = "<group>";
@@ -361,6 +353,30 @@
 				AF34F40F250032C700BFAB2D /* NovaNotaDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AFF7C7D025A35E8A002694B3 /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				AF34F41B250044A100BFAB2D /* aa.json */,
+				AF22DE6724FB3D99005FAB3C /* biblia.json */,
+				AF34F41D250044A200BFAB2D /* nvi.json */,
+				AF34F41C250044A100BFAB2D /* acf.json */,
+				AF4E6C7425030FA400C53EF0 /* livrosResumo.json */,
+			);
+			path = Books;
+			sourceTree = "<group>";
+		};
+		AFF7C7D425A35F35002694B3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */,
+				AF7F200924E557450058FA2C /* Assets.xcassets */,
+				AF7F200624E557440058FA2C /* Main.storyboard */,
+				AF7F200224E557440058FA2C /* SceneDelegate.swift */,
+				AF7F200024E557440058FA2C /* AppDelegate.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		E10E9A5F1FD4DE400CCA04B4 /* Pods */ = {
