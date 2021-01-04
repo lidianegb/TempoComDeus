@@ -108,6 +108,6 @@ extension ConfigViewController: UITableViewDelegate, UITableViewDataSource {
             return 100
         }
         
-        return view.frame.height
+        return CGFloat(tableView.frame.height - 150)
     }
 }
