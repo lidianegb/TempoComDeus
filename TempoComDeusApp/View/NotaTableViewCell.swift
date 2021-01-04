@@ -25,7 +25,7 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
         let text = UITextView()
         text.isScrollEnabled = false
         text.textAlignment = .left
-        text.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        text.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         text.font = UIFont.systemFont(ofSize: 20)
         text.textColor = .label
         text.layer.cornerRadius = 8
