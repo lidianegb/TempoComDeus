@@ -146,7 +146,7 @@ class NewNotaViewController: UIViewController {
                          right: view.rightAnchor,
                          paddingTop: 8,
                          paddingLeft: 8,
-                         paddingBottom: 8,
+                         paddingBottom: 4,
                          paddingRight: 8)
         tableView.register(VersiculoTableViewCell.self, forCellReuseIdentifier: sectionOne)
         tableView.register(NotaTableViewCell.self, forCellReuseIdentifier: sectionTwo)
