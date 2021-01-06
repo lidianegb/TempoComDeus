@@ -72,7 +72,7 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .backViewColor
-        tableView.layer.cornerRadius = 20
+        tableView.layer.cornerRadius = 8
         tableView.layer.masksToBounds = true
         tableView.separatorStyle = .none
         tableView.allowsSelection = false

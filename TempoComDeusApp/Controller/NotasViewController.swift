@@ -25,7 +25,7 @@ class NotasViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
                        
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.layer.cornerRadius = 20
+        collectionView.layer.cornerRadius = 8
         collectionView.layer.masksToBounds = true
         collectionView.backgroundColor = .backViewColor
         collectionView.alwaysBounceVertical = false

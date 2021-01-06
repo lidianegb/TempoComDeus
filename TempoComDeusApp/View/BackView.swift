@@ -14,7 +14,7 @@ class BackView: UIView {
         super.init(frame: frame)
         
         layer.backgroundColor = UIColor.backViewColor.cgColor
-        layer.cornerRadius = 20
+        layer.cornerRadius = 8
         clipsToBounds = true
     }
     
