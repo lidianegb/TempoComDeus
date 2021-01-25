@@ -12,7 +12,8 @@ class VisualizarNotaViewController: UIViewController {
     // MARK: Properties
     
     weak var delegate: UpdateNotaDelegate?
-    var stackButtons: UIStackView!
+    var stackTopButtons: UIStackView!
+    var stackViewBottom: UIStackView!
     var backView = BackView()
     var color: String
     private let notaRepository: NotaRepository
@@ -69,11 +70,12 @@ class VisualizarNotaViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         addBackView()
-        addTextView()
         addStackViewButtons()
+        addTextView()
         setFonteSize()
         saveButton.isHidden = true
         addStackBottom()
+        stackViewBottom.isHidden = true
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardShow),
@@ -99,6 +101,7 @@ class VisualizarNotaViewController: UIViewController {
     
     // MARK: Selectors
     @objc  func editNota() {
+        stackViewBottom.isHidden = false
         saveButton.isHidden = false
         shareButton.isHidden = true
         editButton.isHidden = true
@@ -118,6 +121,7 @@ class VisualizarNotaViewController: UIViewController {
         textView.isSelectable = false
         shareButton.isHidden = false
         editButton.isHidden = false
+        stackViewBottom.isHidden = true
     }
     
     @objc func tapDone(sender: UITextView) {
@@ -190,10 +194,10 @@ class VisualizarNotaViewController: UIViewController {
     }
     
     private func addStackViewButtons() {
-        stackButtons = UIStackView(arrangedSubviews: [editButton, shareButton, saveButton])
-        stackButtons.distribution = .equalSpacing
-        stackButtons.spacing = 20
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: stackButtons)
+        stackTopButtons = UIStackView(arrangedSubviews: [editButton, shareButton, saveButton])
+        stackTopButtons.distribution = .equalSpacing
+        stackTopButtons.spacing = 20
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: stackTopButtons)
     }
     
     func addTextView() {
@@ -244,7 +248,7 @@ class VisualizarNotaViewController: UIViewController {
         let cor5 = createButtonCor(cor: "nota5")
         cor5.addTarget(self, action: #selector(changeColor5), for: .touchUpInside)
         
-        let stackViewBottom = UIStackView(arrangedSubviews:
+        stackViewBottom = UIStackView(arrangedSubviews:
                                             [cor1, cor2, cor3, cor4, cor5,
                                              UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))])
         stackViewBottom.alignment = .leading
