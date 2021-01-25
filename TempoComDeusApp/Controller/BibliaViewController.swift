@@ -162,14 +162,15 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         for (ind, book) in biblia.enumerated() where abbrev == book.abbrev["pt"] {
             if chapter <  (book.chapters ?? 0) - 1 {
                 chapter += 1
-                return
+                break
             } else if ind < (biblia.count - 1) {
                 self.chapter = 0
                 abbrev = allLivros[ind + 1].abbrev
                 livroAtual = getLivroAtual(abreviacao: abbrev)
-                return
+                break
             }
         }
+        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
     }
     
     // voltar
@@ -177,14 +178,15 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         for (ind, book) in biblia.enumerated() where abbrev == book.abbrev["pt"] {
             if chapter > 0 {
                 chapter -= 1
-                return
+                break
             } else if ind > 0 {
                 abbrev = allLivros[ind - 1].abbrev
                 livroAtual = getLivroAtual(abreviacao: abbrev)
                 chapter = (livroAtual?.chapters.count ?? 0) - 1
-                return
+                break
             }
         }
+        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
     }
     
     // MARK: Helpers

@@ -48,5 +48,6 @@ extension BibliaViewController: LivrosTableViewDelegate {
         self.chapter = chapter
         self.abbrev = abbr
         livroAtual = getLivroAtual(abreviacao: abbr)
+        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
     }
 }
