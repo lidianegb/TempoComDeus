@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC6091035A0BA751A9B8BE3A /* Pods_tempoComDeusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3FAD09670327E5964399A8C /* Pods_tempoComDeusApp.framework */; };
+		60114059C86EF0970045B7A4 /* Pods_TempoComDeusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4374D5D46BF8F458C5DB5F23 /* Pods_TempoComDeusApp.framework */; };
 		AF10216B24F1577D0090CDC8 /* CalcCellDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10216A24F1577D0090CDC8 /* CalcCellDimensions.swift */; };
 		AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */; };
 		AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */; };
@@ -93,8 +93,10 @@
 /* Begin PBXFileReference section */
 		19E9D45F067F28149909F528 /* Pods-tempoComDeusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp/Pods-tempoComDeusApp.release.xcconfig"; sourceTree = "<group>"; };
 		1BEE505222F55FA8F3FF75C4 /* Pods-tempoComDeusAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusAppTests.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusAppTests/Pods-tempoComDeusAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		358E921D2685D2CE0E27706F /* Pods-TempoComDeusApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempoComDeusApp.debug.xcconfig"; path = "Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp.debug.xcconfig"; sourceTree = "<group>"; };
 		376DB0D253AFBE2AB93CEE18 /* Pods-tempoComDeusApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp/Pods-tempoComDeusApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3B847CA1921DE90A32D01F3D /* Pods-tempoComDeusAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusAppTests.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusAppTests/Pods-tempoComDeusAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		4374D5D46BF8F458C5DB5F23 /* Pods_TempoComDeusApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TempoComDeusApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3AFD92A8E1CD8935F5211B /* Pods_tempoComDeusAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -168,7 +170,7 @@
 		AFFA1D1024EC1C6B00399F96 /* LivrosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosTableViewController.swift; sourceTree = "<group>"; };
 		AFFA1D1224EC1CF400399F96 /* BibliaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaTableViewCell.swift; sourceTree = "<group>"; };
 		AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerBibliaViewController.swift; sourceTree = "<group>"; };
-		E3FAD09670327E5964399A8C /* Pods_tempoComDeusApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4171B03F0493A5F705E0A78 /* Pods-TempoComDeusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempoComDeusApp.release.xcconfig"; path = "Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC6091035A0BA751A9B8BE3A /* Pods_tempoComDeusApp.framework in Frameworks */,
+				60114059C86EF0970045B7A4 /* Pods_TempoComDeusApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,9 +202,9 @@
 		476CC5697454D0F6A0356471 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E3FAD09670327E5964399A8C /* Pods_tempoComDeusApp.framework */,
 				A1CDB9FBAB76BDF26783D292 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework */,
 				7E3AFD92A8E1CD8935F5211B /* Pods_tempoComDeusAppTests.framework */,
+				4374D5D46BF8F458C5DB5F23 /* Pods_TempoComDeusApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -397,6 +399,8 @@
 				925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */,
 				1BEE505222F55FA8F3FF75C4 /* Pods-tempoComDeusAppTests.debug.xcconfig */,
 				3B847CA1921DE90A32D01F3D /* Pods-tempoComDeusAppTests.release.xcconfig */,
+				358E921D2685D2CE0E27706F /* Pods-TempoComDeusApp.debug.xcconfig */,
+				F4171B03F0493A5F705E0A78 /* Pods-TempoComDeusApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -568,7 +572,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-tempoComDeusApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TempoComDeusApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -846,7 +850,7 @@
 		};
 		AF7F202824E557450058FA2C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 376DB0D253AFBE2AB93CEE18 /* Pods-tempoComDeusApp.debug.xcconfig */;
+			baseConfigurationReference = 358E921D2685D2CE0E27706F /* Pods-TempoComDeusApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -866,7 +870,7 @@
 		};
 		AF7F202924E557450058FA2C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19E9D45F067F28149909F528 /* Pods-tempoComDeusApp.release.xcconfig */;
+			baseConfigurationReference = F4171B03F0493A5F705E0A78 /* Pods-TempoComDeusApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -16,12 +16,12 @@ class HeightTests: XCTestCase {
         let input2 = 7.0
         let input3 = 150.0
         
-        //when
+        // when
         let output1 = sut.calculaHeight(qtdItems: input1)
         let output2 = sut.calculaHeight(qtdItems: input2)
         let output3 = sut.calculaHeight(qtdItems: input3)
         
-        //Then
+        // Then
         XCTAssertEqual(output1, 70.0)
         XCTAssertEqual(output2, 70.0)
         XCTAssertEqual(output3, 1120.0)

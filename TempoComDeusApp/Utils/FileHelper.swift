@@ -13,7 +13,7 @@ struct FileHelper {
     let manager = FileManager.default
     let mainPath  = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
-    //Create a new directory on the documents by default, or on the choosen path
+    // Create a new directory on the documents by default, or on the choosen path
     func createDirectory(with name: String, at path: String? = nil) {
         let contentPath = constructPath(named: name, from: path)
         if !directoryExists(with: name, at: path) {
@@ -23,7 +23,7 @@ struct FileHelper {
         }
     }
     
-    //Remove directory and all of it's contents
+    // Remove directory and all of it's contents
     func removeDirectory(named: String, at path: String? = nil) -> Bool {
         let dirPath = constructPath(named: named, from: path)
         do {
@@ -35,7 +35,7 @@ struct FileHelper {
         }
     }
     
-    //Check if the directory exists
+    // Check if the directory exists
     func directoryExists(with name: String, at path: String? = nil) -> Bool {
         let dirPath = constructPath(named: name, from: path)
         var isDirectory = ObjCBool(true)

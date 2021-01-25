@@ -15,10 +15,10 @@ class CalcCellDimensions: XCTestCase {
        let width = 300.0
        let height = 700.0
         
-        //when
+        // when
         let output1 = sut.calcCellWidthAndHeight(width: CGFloat(width), height: CGFloat(height))
         
-        //Then
+        // Then
         XCTAssertEqual(output1, CGSize(width: 135, height: 130))          
     }
 }

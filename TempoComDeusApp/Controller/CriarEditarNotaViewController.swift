@@ -4,7 +4,7 @@
 //
 //  Created by Lidiane Gomes Barbosa on 15/08/20.
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
-//swiftlint:disable type_body_length
+// swiftlint:disable type_body_length
 import UIKit
 
 class CriarEditarNota: UIViewController, UITextViewDelegate {

@@ -157,7 +157,7 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //next
+    // next
     @objc func rightSwipe() {
         for (ind, book) in biblia.enumerated() where abbrev == book.abbrev["pt"] {
             if chapter <  (book.chapters ?? 0) - 1 {
@@ -172,7 +172,7 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //voltar
+    // voltar
     @objc func leftSwipe() {
         for (ind, book) in biblia.enumerated() where abbrev == book.abbrev["pt"] {
             if chapter > 0 {

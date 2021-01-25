@@ -5,10 +5,10 @@
 //  Created by Lidiane Gomes Barbosa on 03/09/20.
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
 //
-//swiftlint:disable identifier_name
+// swiftlint:disable identifier_name
 import Foundation
 
-//FilesName
+// FilesName
 let NVI = "nvi"
 let ACF = "acf"
 let AA = "aa"

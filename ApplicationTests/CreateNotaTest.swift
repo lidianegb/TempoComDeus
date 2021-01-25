@@ -16,11 +16,11 @@ class CreateNotaTest: XCTestCase {
         let text = "Nota 1"
         let cor = "azul"
         let sut = Nota(body: text, cor: cor, versos: [])
-       //when
+       // when
        let output1 = sut.body
        let output2 = sut.cor
        
-       //Then
+       // Then
        XCTAssertEqual(output1, text)
        XCTAssertEqual(output2, cor)
     }
@@ -30,11 +30,11 @@ class CreateNotaTest: XCTestCase {
 
         let sut = Nota(body: nil, cor: nil, versos: [])
            
-          //when
+          // when
           let output1 = sut.body
           let output2 = sut.cor
           
-          //Then
+          // Then
           XCTAssertEqual(output1, "")
           XCTAssertEqual(output2, "")
        }
