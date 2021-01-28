@@ -13,7 +13,6 @@ class VisualizarNotaViewController: UIViewController {
     
     weak var delegate: UpdateNotaDelegate?
     var stackTopButtons: UIStackView!
-    var stackViewBottom: UIStackView!
     var backView = BackView()
     var color: String
     private let notaRepository: NotaRepository
@@ -25,14 +24,6 @@ class VisualizarNotaViewController: UIViewController {
         }
     }
     
-    let saveButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Salvar", for: .normal)
-        button.setTitleColor(.blueAct, for: .normal)
-        button.addTarget(self, action: #selector(salvar), for: .touchUpInside)
-        return button
-    }()
-    
     lazy var textView: UITextView = {
         let text = UITextView()
         text.isEditable = false
@@ -42,7 +33,6 @@ class VisualizarNotaViewController: UIViewController {
         text.textColor = .label
         text.layer.cornerRadius = 20
         text.layer.masksToBounds = true
-        text.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         text.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         text.font = UIFont.systemFont(ofSize: 20)
         return text
@@ -73,9 +63,6 @@ class VisualizarNotaViewController: UIViewController {
         addStackViewButtons()
         addTextView()
         setFonteSize()
-        saveButton.isHidden = true
-        addStackBottom()
-        stackViewBottom.isHidden = true
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardShow),
@@ -101,52 +88,16 @@ class VisualizarNotaViewController: UIViewController {
     
     // MARK: Selectors
     @objc  func editNota() {
-        stackViewBottom.isHidden = false
-        saveButton.isHidden = false
-        shareButton.isHidden = true
-        editButton.isHidden = true
-        textView.isEditable = true
-        textView.isSelectable = true
-        textView.becomeFirstResponder()
+        let editarNotaViewController = CriarEditarNota(notaRepository: notaRepository, notaId: notaID, acao: .editar)
+        editarNotaViewController.notadelegate = self
+        editarNotaViewController.modalPresentationStyle = .fullScreen
+        editarNotaViewController.modalTransitionStyle = .crossDissolve
+        self.present(editarNotaViewController, animated: true)
     }
+    
     @objc func shareNota() {
         let viewActivity = UIActivityViewController(activityItems: [nota.body], applicationActivities: [])
         self.present(viewActivity, animated: true)
-    }
-    
-    @objc func salvar() {
-        didChange(body: textView.text, cor: color, notaId: notaID)
-        saveButton.isHidden = true
-        textView.isEditable = false
-        textView.isSelectable = false
-        shareButton.isHidden = false
-        editButton.isHidden = false
-        stackViewBottom.isHidden = true
-    }
-    
-    @objc func tapDone(sender: UITextView) {
-        textView.resignFirstResponder()
-    }
-    
-    @objc func changeColor1() {
-        textView.backgroundColor = .nota1
-        color = "nota1"
-    }
-    @objc func changeColor2() {
-        textView.backgroundColor = .nota2
-        color = "nota2"
-    }
-    @objc func changeColor3() {
-        textView.backgroundColor = .nota3
-        color = "nota3"
-    }
-    @objc func changeColor4() {
-        textView.backgroundColor = .nota4
-        color = "nota4"
-    }
-    @objc func changeColor5() {
-        textView.backgroundColor = .nota5
-        color = "nota5"
     }
     
     @objc func keyboardHiden(notification: NSNotification) {
@@ -194,7 +145,7 @@ class VisualizarNotaViewController: UIViewController {
     }
     
     private func addStackViewButtons() {
-        stackTopButtons = UIStackView(arrangedSubviews: [editButton, shareButton, saveButton])
+        stackTopButtons = UIStackView(arrangedSubviews: [editButton, shareButton])
         stackTopButtons.distribution = .equalSpacing
         stackTopButtons.spacing = 20
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: stackTopButtons)
@@ -207,11 +158,8 @@ class VisualizarNotaViewController: UIViewController {
         backView.addSubview(textView)
         textView.anchor(top: backView.topAnchor,
                         left: backView.leftAnchor,
+                        bottom: backView.bottomAnchor,
                         right: backView.rightAnchor)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
     }
     
     func setFonteSize() {
@@ -223,57 +171,15 @@ class VisualizarNotaViewController: UIViewController {
             textView.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
         }
     }
-    
+}
+
+extension VisualizarNotaViewController: NotaDelegate {
     func didChange(body: String, cor: String, notaId: UUID) {
         nota.body = body
         nota.cor = cor
         notaRepository.update(item: nota)
         nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: nil, versos: [])
         self.delegate?.notaIsUpdated(updated: true)
-    }
-    
-    func addStackBottom() {
-        let cor1 = createButtonCor(cor: "nota1")
-        cor1.addTarget(self, action: #selector(changeColor1), for: .touchUpInside)
-        
-        let cor2 = createButtonCor(cor: "nota2")
-        cor2.addTarget(self, action: #selector(changeColor2), for: .touchUpInside)
-        
-        let cor3 = createButtonCor(cor: "nota3")
-        cor3.addTarget(self, action: #selector(changeColor3), for: .touchUpInside)
-        
-        let cor4 = createButtonCor(cor: "nota4")
-        cor4.addTarget(self, action: #selector(changeColor4), for: .touchUpInside)
-        
-        let cor5 = createButtonCor(cor: "nota5")
-        cor5.addTarget(self, action: #selector(changeColor5), for: .touchUpInside)
-        
-        stackViewBottom = UIStackView(arrangedSubviews:
-                                            [cor1, cor2, cor3, cor4, cor5,
-                                             UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))])
-        stackViewBottom.alignment = .leading
-        stackViewBottom.spacing = 10
-        
-        backView.addSubview(stackViewBottom)
-        stackViewBottom.anchor(top: textView.bottomAnchor,
-                               left: backView.leftAnchor,
-                               bottom: backView.bottomAnchor,
-                               right: backView.rightAnchor,
-                               paddingTop: 20,
-                               paddingLeft: 16,
-                               paddingBottom: 10,
-                               paddingRight: 16)
-    }
-    
-    private func createButtonCor(cor: String) -> UIButton {
-        let button = UIButton()
-        button.backgroundColor = .getColor(name: cor)
-        button.layer.borderWidth = 0.3
-        button.layer.borderColor = UIColor.black.cgColor
-        button.setDimensions(width: 32, height: 32)
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 16
-        return button
     }
     
 }
