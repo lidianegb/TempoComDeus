@@ -90,9 +90,10 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardHiden),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
-        if acao == .criar {
-            textView.becomeFirstResponder()
-        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.textView.becomeFirstResponder()
     }
     
     func addStackHeader() {
