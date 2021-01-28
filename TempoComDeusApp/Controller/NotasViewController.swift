@@ -90,7 +90,7 @@ class NotasViewController: UIViewController {
       // MARK: Selectors
 
     @objc func showNewNota() {
-        let notaViewController = NewNotaViewController(notaRepository: notaRepository, notaId: UUID(), acao: .criar)
+        let notaViewController = CriarEditarNota(notaRepository: notaRepository, notaId: UUID(), acao: .criar)
         notaViewController.modalPresentationStyle = .fullScreen
         notaViewController.delegate = self
         self.present(notaViewController, animated: true)
