@@ -13,7 +13,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     private let notaRepository: NotaRepository
     private let notaID: UUID
     private let acao: Acao
-    
+    var stackViewBottom: UIStackView!
     private var nota: Nota {
         didSet {
             backView.backgroundColor = .getColor(name: nota.cor)
@@ -78,10 +78,11 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        addBackView()
         addStackHeader()
-        addTextView()
         addStackBottom()
+        addBackView()
+        addTextView()
+       
         setFonteSize()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardShow),
@@ -149,19 +150,19 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
         let cor5 = createButtonCor(cor: "nota5")
         cor5.addTarget(self, action: #selector(changeColor5), for: .touchUpInside)
         
-        let stackViewBottom = UIStackView(arrangedSubviews:
-                                            [cor1, cor2, cor3, cor4, cor5, UIView(), UIView(), UIView()])
+         stackViewBottom = UIStackView(arrangedSubviews:
+                                            [cor1, cor2, cor3, cor4, cor5, UIView()])
         stackViewBottom.alignment = .leading
         stackViewBottom.spacing = 10
-        
-        backView.addSubview(stackViewBottom)
-        stackViewBottom.anchor(top: textView.bottomAnchor,
-                               left: backView.leftAnchor,
-                               bottom: backView.bottomAnchor,
-                               right: backView.rightAnchor,
-                               paddingTop: 20,
+      
+        view.addSubview(stackViewBottom)
+        stackViewBottom.anchor(
+                               left: view.leftAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                               right: view.rightAnchor,
+                               
                                paddingLeft: 16,
-                               paddingBottom: 10,
+                               paddingBottom: 16,
                                paddingRight: 16)
     }
     
@@ -174,10 +175,6 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
                 self.saveButton.isEnabled = !(self.textView.text == nota.body && color == nota.cor)
             }
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
     }
     
     // MARK: Selectors
@@ -288,14 +285,14 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     
     private func addBackView() {
         backView.backgroundColor = .getColor(name: color)
-        view.insertSubview(backView, at: 0)
+        view.addSubview(backView)
         backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                         left: view.leftAnchor,
-                        bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                        bottom: stackViewBottom.topAnchor,
                         right: view.rightAnchor,
                         paddingTop: 40,
                         paddingLeft: 8,
-                        paddingBottom: 0,
+                        paddingBottom: 16,
                         paddingRight: 8)
     }
     
