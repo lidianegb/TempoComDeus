@@ -89,11 +89,11 @@ class NotasViewController: UIViewController {
       
       // MARK: Selectors
 
-    @objc func showNewNota() {
-        let notaViewController = CriarEditarNota(notaRepository: notaRepository, notaId: UUID(), acao: .criar)
-        notaViewController.modalPresentationStyle = .fullScreen
-        notaViewController.delegate = self
-        self.present(notaViewController, animated: true)
+    @objc func createNewNota() {
+        let novaNotaViewController = CriarEditarNota(notaRepository: notaRepository, notaId: UUID(), acao: .criar)
+        novaNotaViewController.modalPresentationStyle = .fullScreen
+        novaNotaViewController.delegate = self
+        self.present(novaNotaViewController, animated: true)
     }
        // MARK: Helpers
     
@@ -105,7 +105,7 @@ class NotasViewController: UIViewController {
         navigationItem.titleView = titleLabel
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
-                                                            action: #selector(showNewNota))
+                                                            action: #selector(createNewNota))
     
     }
 
