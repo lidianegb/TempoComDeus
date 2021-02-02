@@ -30,7 +30,7 @@ class ChaptersTableViewCell: UITableViewCell {
         return collectionView
       }()
     
-    weak var delegate: ChaptersTableViewCellDelegate?
+    var onDidTap: ((_ chapter: Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -81,7 +81,6 @@ UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        self.delegate?.didTap(chapter: indexPath.row)
+        self.onDidTap?(indexPath.row)
     }
 }

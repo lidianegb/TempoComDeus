@@ -32,7 +32,11 @@ extension BooksTableViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as?
                 ChaptersTableViewCell else { return UITableViewCell()}
-            cell.delegate = self
+            
+            cell.onDidTap = { chapter in
+                self.didTap(chapter: chapter)
+            }
+            
             cell.createCell(items: tableData[indexPath.section].chapters ?? 0)
             return cell
         }

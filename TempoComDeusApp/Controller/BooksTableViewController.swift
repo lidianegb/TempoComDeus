@@ -82,11 +82,7 @@ class BooksTableViewController: UIViewController {
                          paddingRight: 0)
     }
     
-}
-
-extension BooksTableViewController: ChaptersTableViewCellDelegate {
     func didTap(chapter: Int) {
-        
         self.delegate?.didSelectSection(abbr: self.abbr ?? " ", chapter: chapter)
         self.dismiss(animated: true, completion: nil)
     }
