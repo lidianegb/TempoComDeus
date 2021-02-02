@@ -8,10 +8,6 @@
 
 import Foundation
 import UIKit
-protocol NewNoteDelegate: class {
-    func updateNotas(notes: [Note])
-}
-
 protocol NewNotaDelegate: class {
     func getNote(note: Note)
     func updateHeightOfRow(_ cell: NoteTableViewCell, _ textView: UITextView)

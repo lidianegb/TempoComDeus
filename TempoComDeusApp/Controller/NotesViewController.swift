@@ -94,7 +94,9 @@ class NotesViewController: UIViewController {
                                                                       noteId: UUID(),
                                                                       action: .create)
         novaNotaViewController.modalPresentationStyle = .fullScreen
-        novaNotaViewController.delegate = self
+        novaNotaViewController.onUpdateNotes = { notes in
+            self.updateNotes(notes: notes)
+        }
         self.present(novaNotaViewController, animated: true)
     }
        // MARK: Helpers
@@ -184,10 +186,8 @@ class NotesViewController: UIViewController {
             notes = noteRepository.readAllItems()
         }
     }
-}
-
-extension NotesViewController: NewNoteDelegate {
-    func updateNotas(notes: [Note]) {
+    
+    func updateNotes(notes: [Note]) {
         self.notes = notes
     }
 }
