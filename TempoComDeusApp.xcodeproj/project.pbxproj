@@ -303,12 +303,12 @@
 		AF7F203024E5583B0058FA2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AF21B47124E5D25900D44D39 /* Note.swift */,
 				AF1947C324EBF02200724B23 /* Bible.swift */,
-				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
 				AF89E00C2511662600B5FEDB /* Chapter.swift */,
 				AF4A206125C8949000F6F14E /* Book.swift */,
 				AF47175F2501B03900DDC69A /* BookResume.swift */,
+				AF21B47124E5D25900D44D39 /* Note.swift */,
+				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
