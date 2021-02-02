@@ -27,7 +27,7 @@ class BooksTableViewController: UIViewController {
         return tableView
     }()
     
-    var onDidSelectSection: ((_ abbreviation: String, _ chapter: Int) -> Void)!
+    var onDidSelectSection: ((_ abbreviation: String, _ chapter: Int) -> Void)?
     
     let cancelButton: UIButton = {
         let button = UIButton()
@@ -83,7 +83,7 @@ class BooksTableViewController: UIViewController {
     }
     
     func didTap(chapter: Int) {
-        onDidSelectSection(self.abbr ?? " ", chapter)
+        onDidSelectSection?(self.abbr ?? " ", chapter)
         self.dismiss(animated: true, completion: nil)
     }
     
