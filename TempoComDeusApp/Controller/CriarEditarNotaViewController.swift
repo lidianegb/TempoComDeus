@@ -32,7 +32,7 @@ class CrieateAndEditNoteViewController: UIViewController, UITextViewDelegate {
         }
     }
     weak var delegate: NewNoteDelegate?
-    weak var notedelegate: NoteDelegate?
+    var onDidChange:((_ body: String, _ color: String, _ noteId: UUID) -> Void)?
     
     var textView: UITextView = {
         let text = UITextView()
@@ -216,7 +216,7 @@ class CrieateAndEditNoteViewController: UIViewController, UITextViewDelegate {
             delegate?.updateNotas(notes: noteRepository.readAllItems())
             self.dismiss(animated: true, completion: nil)
         case .edit:
-            notedelegate?.didChange(body: textView.text, color: color, noteId: noteID)
+            onDidChange?(textView.text, color, noteID)
             self.dismiss(animated: true, completion: nil)
         }
     }

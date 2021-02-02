@@ -91,7 +91,10 @@ class ViewNoteViewController: UIViewController {
         let editNoteViewController = CrieateAndEditNoteViewController(noteRepository: noteRepository,
                                                                       noteId: noteID,
                                                                       action: .edit)
-        editNoteViewController.notedelegate = self
+        editNoteViewController.onDidChange = {body, color, noteId in
+            self.didChange(body: body, color: color, noteId: noteId)
+        }
+        
         editNoteViewController.modalPresentationStyle = .fullScreen
         editNoteViewController.modalTransitionStyle = .crossDissolve
         self.present(editNoteViewController, animated: true)
@@ -173,9 +176,7 @@ class ViewNoteViewController: UIViewController {
             textView.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
         }
     }
-}
-
-extension ViewNoteViewController: NoteDelegate {
+    
     func didChange(body: String, color: String, noteId: UUID) {
         note.body = body
         note.color = color
@@ -183,5 +184,4 @@ extension ViewNoteViewController: NoteDelegate {
         note = noteRepository.readItem(itemId: noteId) ?? Note(body: nil, color: nil, versos: [])
         self.delegate?.notaIsUpdated(updated: true)
     }
-    
 }
