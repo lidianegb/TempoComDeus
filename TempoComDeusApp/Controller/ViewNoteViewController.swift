@@ -11,7 +11,7 @@ import UIKit
 class ViewNoteViewController: UIViewController {
     // MARK: Properties
     
-    weak var delegate: UpdateNoteDelegate?
+    var noteIsUpdated: ((_ updated: Bool) -> Void)?
     var stackTopButtons: UIStackView!
     var backView = BackView()
     var color: String
@@ -182,6 +182,6 @@ class ViewNoteViewController: UIViewController {
         note.color = color
         noteRepository.update(item: note)
         note = noteRepository.readItem(itemId: noteId) ?? Note(body: nil, color: nil, versos: [])
-        self.delegate?.notaIsUpdated(updated: true)
+        noteIsUpdated?(true)
     }
 }

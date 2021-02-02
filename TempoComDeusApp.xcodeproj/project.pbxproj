@@ -18,7 +18,6 @@
 		AF21B47224E5D25900D44D39 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47124E5D25900D44D39 /* Note.swift */; };
 		AF21B47424E5D2EB00D44D39 /* NotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47324E5D2EB00D44D39 /* NotesCollectionViewCell.swift */; };
 		AF22DE6824FB3D99005FAB3C /* biblia.json in Resources */ = {isa = PBXBuildFile; fileRef = AF22DE6724FB3D99005FAB3C /* biblia.json */; };
-		AF34F40E250032AC00BFAB2D /* UpdateNoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40D250032AC00BFAB2D /* UpdateNoteDelegate.swift */; };
 		AF34F410250032C700BFAB2D /* NewNoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40F250032C700BFAB2D /* NewNoteDelegate.swift */; };
 		AF34F4122500331200BFAB2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4112500331200BFAB2D /* UIView.swift */; };
 		AF34F4142500334E00BFAB2D /* MyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4132500334E00BFAB2D /* MyColors.swift */; };
@@ -106,7 +105,6 @@
 		AF21B47124E5D25900D44D39 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		AF21B47324E5D2EB00D44D39 /* NotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF22DE6724FB3D99005FAB3C /* biblia.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = biblia.json; sourceTree = "<group>"; };
-		AF34F40D250032AC00BFAB2D /* UpdateNoteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNoteDelegate.swift; sourceTree = "<group>"; };
 		AF34F40F250032C700BFAB2D /* NewNoteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDelegate.swift; sourceTree = "<group>"; };
 		AF34F4112500331200BFAB2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		AF34F4132500334E00BFAB2D /* MyColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColors.swift; sourceTree = "<group>"; };
@@ -353,7 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				AFF120EA24EAB6A1000A9B12 /* Repository.swift */,
-				AF34F40D250032AC00BFAB2D /* UpdateNoteDelegate.swift */,
 				AF34F40F250032C700BFAB2D /* NewNoteDelegate.swift */,
 			);
 			path = Protocols;
@@ -597,7 +594,6 @@
 				AF21B47424E5D2EB00D44D39 /* NotesCollectionViewCell.swift in Sources */,
 				AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */,
 				AFF120EB24EAB6A1000A9B12 /* Repository.swift in Sources */,
-				AF34F40E250032AC00BFAB2D /* UpdateNoteDelegate.swift in Sources */,
 				AF34F4122500331200BFAB2D /* UIView.swift in Sources */,
 				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
 				AF21B47224E5D25900D44D39 /* Note.swift in Sources */,

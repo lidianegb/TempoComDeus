@@ -170,26 +170,24 @@ class NotesViewController: UIViewController {
        }
     
     func deleteCell(cell: NotesCollectionViewCell) {
-            if let indexPath = collectionView.indexPath(for: cell) {
-                collectionView.performBatchUpdates({
-                   _ = noteRepository.delete(itemId: notes[indexPath.row].notaId)
-                    collectionView.deleteItems(at: [indexPath])
-                    notes = noteRepository.readAllItems()
-                }, completion: nil)
-            }
+        if let indexPath = collectionView.indexPath(for: cell) {
+            collectionView.performBatchUpdates({
+                _ = noteRepository.delete(itemId: notes[indexPath.row].notaId)
+                collectionView.deleteItems(at: [indexPath])
+                notes = noteRepository.readAllItems()
+            }, completion: nil)
         }
+    }
+    
+    func notaIsUpdated(updated: Bool) {
+        if updated {
+            notes = noteRepository.readAllItems()
+        }
+    }
 }
 
 extension NotesViewController: NewNoteDelegate {
     func updateNotas(notes: [Note]) {
         self.notes = notes
-    }
-}
-
-extension NotesViewController: UpdateNoteDelegate {
-    func notaIsUpdated(updated: Bool) {
-        if updated {
-            notes = noteRepository.readAllItems()
-        }
     }
 }

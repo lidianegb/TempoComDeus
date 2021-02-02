@@ -48,7 +48,10 @@ UICollectionViewDelegateFlowLayout {
     
         let viewNote = ViewNoteViewController(notaRepository: noteRepository,
                                                           notaId: notes[indexPath.row].notaId)
-        viewNote.delegate = self
+        viewNote.noteIsUpdated = { updated in
+            self.notaIsUpdated(updated: updated)
+        }
+        
         viewNote.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(viewNote, animated: true)
     }
