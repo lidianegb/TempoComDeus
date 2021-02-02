@@ -101,17 +101,17 @@ extension UIColor {
         
     }()
     
-    static func getColor(name: String) -> UIColor {
-        switch name {
-        case "nota1":
+    static func getColor(number: Int) -> UIColor {
+        switch number {
+        case 1:
             return .noteColor1
-        case "nota2":
+        case 2:
             return .noteColor2
-        case "nota3":
+        case 3:
             return .noteColor3
-        case "nota4":
+        case 4:
             return .noteColor4
-        case "nota5":
+        case 5:
             return .noteColor5
         default:
             return .noteColor1

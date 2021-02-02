@@ -17,7 +17,7 @@ class NotesCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
        didSet {
            if let note = nota {
             labelPreview.text = note.body
-            wrapperView.backgroundColor = .getColor(name: note.color)
+            wrapperView.backgroundColor = .getColor(number: note.color)
             labelDate.text = calcDate(date: note.date)
            }
        }

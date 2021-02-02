@@ -31,5 +31,17 @@ class MyColors {
     static let noteColor3Dark = UIColor.rgb(red: 77, green: 76, blue: 75)
     static let noteColor4Dark = UIColor.rgb(red: 64, green: 99, blue: 91)
     static let noteColor5Dark = UIColor.rgb(red: 222, green: 126, blue: 74)
-       
+    
+    private static let allNoteColors = [UIColor.noteColor1,
+                                UIColor.noteColor2,
+                                UIColor.noteColor3,
+                                UIColor.noteColor4,
+                                UIColor.noteColor5]
+    
+    static func getColorNumber(color: CGColor) -> Int {
+        for (indice, note) in allNoteColors.enumerated() where note.cgColor == color {
+                return indice + 1
+        }
+        return 0
+    }
 }

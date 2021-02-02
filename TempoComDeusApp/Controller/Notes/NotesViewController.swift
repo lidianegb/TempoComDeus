@@ -13,7 +13,6 @@ class NotesViewController: UIViewController {
     // MARK: Properties
     
     let cellId = "CellId"
-    let backView = BackView()
     var fonteSize: Int? {
         didSet {
             collectionView.reloadData()
@@ -78,7 +77,6 @@ class NotesViewController: UIViewController {
         notes = noteRepository.readAllItems()
         fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
         configureUI()
-        addBackground()
         addTextInicial()
         setupCollectionView()
       }
@@ -94,8 +92,8 @@ class NotesViewController: UIViewController {
                                                                       noteId: UUID(),
                                                                       action: .create)
         novaNotaViewController.modalPresentationStyle = .fullScreen
-        novaNotaViewController.onUpdateNotes = { notes in
-            self.updateNotes(notes: notes)
+        novaNotaViewController.onUpdateNotes = {
+            self.updateNotes(notes: self.noteRepository.readAllItems())
         }
         self.present(novaNotaViewController, animated: true)
     }
@@ -105,7 +103,6 @@ class NotesViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = false
         view.backgroundColor = .backgroundColor
-        backView.backgroundColor = .backViewColor
         navigationItem.titleView = titleLabel
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
@@ -114,25 +111,13 @@ class NotesViewController: UIViewController {
     }
 
     func addTextInicial() {
-        backView.addSubview(initialLabel)
-        initialLabel.anchor(left: backView.leftAnchor,
-                            right: backView.rightAnchor,
+        view.addSubview(initialLabel)
+        initialLabel.anchor(left: view.leftAnchor,
+                            right: view.rightAnchor,
                             paddingLeft: 16,
                             paddingRight: 16)
-        initialLabel.centerY(inView: backView)
+        initialLabel.centerY(inView: view)
     }
-    
-    func addBackground() {
-        view.addSubview(backView)
-        backView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                          left: view.leftAnchor,
-                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                          right: view.rightAnchor,
-                          paddingTop: 0,
-                          paddingLeft: 8,
-                          paddingBottom: 0,
-                          paddingRight: 8)
-      }
     
     func setupCollectionView() {
        collectionView.register(NotesCollectionViewCell.self, forCellWithReuseIdentifier: cellId)

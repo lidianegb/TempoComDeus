@@ -13,18 +13,21 @@ class Note: Codable {
     let notaId: UUID
     var body: String
     let date: Date
-    var color: String
-    var verses: [Chapter]
+    var color: Int
         
-    init(body: String?, color: String?, versos: [Chapter]) {
+    init(body: String?, color: Int) {
         self.notaId = UUID()
         self.body = body ?? String()
         self.date  = Date()
-        self.color = color ?? String()
-        self.verses = versos
+        self.color = color
     }
+    
     private enum CodingKeys: String, CodingKey {
-        case notaId, body, date, color, verses
+        case notaId, body, date, color
+    }
+    
+    func updateColor(_ newColorNumber: Int) {
+        self.color = newColorNumber
     }
         
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		60114059C86EF0970045B7A4 /* Pods_TempoComDeusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4374D5D46BF8F458C5DB5F23 /* Pods_TempoComDeusApp.framework */; };
+		AF015F9825C9BEE800F6861E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF015F9725C9BEE800F6861E /* Action.swift */; };
 		AF10216B24F1577D0090CDC8 /* CalcCellDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10216A24F1577D0090CDC8 /* CalcCellDimensions.swift */; };
 		AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */; };
 		AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */; };
@@ -48,7 +49,6 @@
 		AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203624E5592E0058FA2C /* MainTabBarController.swift */; };
 		AF7F203924E55B060058FA2C /* BibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibleViewController.swift */; };
 		AF7F203B24E55B1D0058FA2C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */; };
-		AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203C24E583DA0058FA2C /* BackView.swift */; };
 		AF89E00D2511662600B5FEDB /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89E00C2511662600B5FEDB /* Chapter.swift */; };
 		AFBB37162516D428004B7105 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB37152516D428004B7105 /* UITextView.swift */; };
 		AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */; };
@@ -92,6 +92,7 @@
 		925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1CDB9FBAB76BDF26783D292 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusApp_tempoComDeusAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF015F9725C9BEE800F6861E /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		AF10216A24F1577D0090CDC8 /* CalcCellDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcCellDimensions.swift; sourceTree = "<group>"; };
 		AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionOneTableViewCell.swift; sourceTree = "<group>"; };
 		AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionTwoTableViewCell.swift; sourceTree = "<group>"; };
@@ -136,7 +137,6 @@
 		AF7F203624E5592E0058FA2C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AF7F203824E55B060058FA2C /* BibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleViewController.swift; sourceTree = "<group>"; };
 		AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
-		AF7F203C24E583DA0058FA2C /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
 		AF89E00C2511662600B5FEDB /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		AFBB37152516D428004B7105 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNoteViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +309,7 @@
 				AF47175F2501B03900DDC69A /* BookResume.swift */,
 				AF21B47124E5D25900D44D39 /* Note.swift */,
 				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
+				AF015F9725C9BEE800F6861E /* Action.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,7 +317,6 @@
 		AF7F203124E558430058FA2C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AF7F203C24E583DA0058FA2C /* BackView.swift */,
 				AF21B47324E5D2EB00D44D39 /* NotesCollectionViewCell.swift */,
 				AFDB6D6024EEA80000F58A6D /* ChaptersCollectionViewCell.swift */,
 				AF51DF8924EDA6D4001C352D /* ChaptersTableViewCell.swift */,
@@ -613,6 +613,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFFA1D1324EC1CF400399F96 /* BibleTableViewCell.swift in Sources */,
+				AF015F9825C9BEE800F6861E /* Action.swift in Sources */,
 				AF3C21F9250AA46000F81685 /* DataPicker.swift in Sources */,
 				AF21B47424E5D2EB00D44D39 /* NotesCollectionViewCell.swift in Sources */,
 				AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */,
@@ -642,7 +643,6 @@
 				AF3EB88B2508432A003F988F /* ConfigViewController.swift in Sources */,
 				AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */,
 				AF5D36A125A600EA00DE3487 /* BooksTableViewDelegates.swift in Sources */,
-				AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */,
 				AF34F4162500370A00BFAB2D /* Json.swift in Sources */,
 				AF89E00D2511662600B5FEDB /* Chapter.swift in Sources */,
 				AF7F203924E55B060058FA2C /* BibleViewController.swift in Sources */,
