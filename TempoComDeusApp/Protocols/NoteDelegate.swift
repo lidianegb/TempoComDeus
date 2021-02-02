@@ -1,5 +1,5 @@
 //
-//  CapitulosTableViewCellDelegate.swift
+//  NoteDelegate.swift
 //  TempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 02/09/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol CapitulosTableViewCellDelegate: class {
-    func didTap(chapter: Int)
+protocol NoteDelegate: class {
+    func didChange(body: String, color: String, noteId: UUID)
 }

@@ -1,13 +1,13 @@
 //
-//  Biblia.swift
-//  tempoComDeusApp
+//  Book.swift
+//  TempoComDeusApp
 //
-//  Created by Lidiane Gomes Barbosa on 18/08/20.
-//  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
+//  Created by Lidiane Gomes Barbosa on 01/02/21.
+//  Copyright © 2021 Lidiane Gomes Barbosa. All rights reserved.
 //
 
 import Foundation
-class Biblia: Codable {
+class Book: Codable {
 
     var abbrev: [String: String]
     var name: String
@@ -38,5 +38,4 @@ class Biblia: Codable {
     private enum CodingKeys: String, CodingKey {
         case  name, abbrev, author, group, chapters, testament, version, opened
     }
-    
 }

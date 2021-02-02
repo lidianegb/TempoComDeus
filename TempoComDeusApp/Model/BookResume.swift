@@ -1,5 +1,5 @@
 //
-//  Livro.swift
+//  BookResume.swift
 //  TempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 03/09/20.
@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Livro: Codable {
+class BookResume: Codable {
     let abbrev: String
     let chapters: [[String]]
     let name: String

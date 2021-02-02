@@ -20,16 +20,16 @@ class MyColors {
     static let blueClearDark = UIColor.rgb(red: 106, green: 138, blue: 144)
     static let backColorDark = UIColor.rgb(red: 19, green: 20, blue: 21)
     
-    static let nota1Light = UIColor.rgb(red: 254, green: 231, blue: 231)
-    static let nota2Light = UIColor.rgb(red: 230, green: 235, blue: 246)
-    static let nota3Light = UIColor.rgb(red: 217, green: 216, blue: 216)
-    static let nota4Light = UIColor.rgb(red: 206, green: 224, blue: 213)
-    static let nota5Light = UIColor.rgb(red: 255, green: 224, blue: 207)
+    static let noteColor1Light = UIColor.rgb(red: 254, green: 231, blue: 231)
+    static let noteColor2Light = UIColor.rgb(red: 230, green: 235, blue: 246)
+    static let noteColor3Light = UIColor.rgb(red: 217, green: 216, blue: 216)
+    static let noteColor4Light = UIColor.rgb(red: 206, green: 224, blue: 213)
+    static let noteColor5Light = UIColor.rgb(red: 255, green: 224, blue: 207)
     
-    static let nota1Dark = UIColor.rgb(red: 184, green: 122, blue: 122)
-    static let nota2Dark = UIColor.rgb(red: 122, green: 142, blue: 184)
-    static let nota3Dark = UIColor.rgb(red: 77, green: 76, blue: 75)
-    static let nota4Dark = UIColor.rgb(red: 64, green: 99, blue: 91)
-    static let nota5Dark = UIColor.rgb(red: 222, green: 126, blue: 74)
+    static let noteColor1Dark = UIColor.rgb(red: 184, green: 122, blue: 122)
+    static let noteColor2Dark = UIColor.rgb(red: 122, green: 142, blue: 184)
+    static let noteColor3Dark = UIColor.rgb(red: 77, green: 76, blue: 75)
+    static let noteColor4Dark = UIColor.rgb(red: 64, green: 99, blue: 91)
+    static let noteColor5Dark = UIColor.rgb(red: 222, green: 126, blue: 74)
        
 }

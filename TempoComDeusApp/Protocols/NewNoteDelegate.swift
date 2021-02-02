@@ -1,5 +1,5 @@
 //
-//  NovaNotaDelegate.swift
+//  NewNoteDelegate.swift
 //  TempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 02/09/20.
@@ -8,14 +8,14 @@
 
 import Foundation
 import UIKit
-protocol NovaNotaDelegate: class {
-    func updateNotas(notas: [Nota])
+protocol NewNoteDelegate: class {
+    func updateNotas(notes: [Note])
 }
 
 protocol NewNotaDelegate: class {
-    func getNota(nota: Nota)
-    func updateHeightOfRow(_ cell: NotaTableViewCell, _ textView: UITextView)
-    func getVersos(versos: [Verso])
+    func getNote(note: Note)
+    func updateHeightOfRow(_ cell: NoteTableViewCell, _ textView: UITextView)
+    func getVerses(verses: [Chapter])
 }
 
 protocol ChangeColorDelegate: class {

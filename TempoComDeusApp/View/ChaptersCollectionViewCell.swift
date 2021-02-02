@@ -1,5 +1,5 @@
 //
-//  CapitulosCollectionViewCell.swift
+//  ChaptersCollectionViewCell.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 20/08/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CapitulosCollectionViewCell: UICollectionViewCell {
+class ChaptersCollectionViewCell: UICollectionViewCell {
     
     let labelCapitulo: UILabel = {
         let label = UILabel()

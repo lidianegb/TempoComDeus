@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource {
+extension BooksTableViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         tableData.count
     }
@@ -24,14 +24,14 @@ extension LivrosTableViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSection) as?
-                LivrosTableViewSections else { return UITableViewCell()}
+                BooksTableViewSections else { return UITableViewCell()}
             cell.textLabel?.text = tableData[indexPath.section].name
             cell.didSelected(isSelected: tableData[indexPath.section].opened ?? false)
             cell.createCell()
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId)  as?
-                CapitulosTableViewCell else { return UITableViewCell()}
+                ChaptersTableViewCell else { return UITableViewCell()}
             cell.delegate = self
             cell.createCell(items: tableData[indexPath.section].chapters ?? 0)
             return cell

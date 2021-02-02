@@ -1,5 +1,5 @@
 //
-//  BibliaTableViewCell.swift
+//  BibleTableViewCell.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 18/08/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BibliaTableViewCell: UITableViewCell {
+class BibleTableViewCell: UITableViewCell {
     
     let number: UILabel = {
         let label = UILabel()

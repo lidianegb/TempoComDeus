@@ -1,5 +1,5 @@
 //
-//  VersiculoTableViewCell.swift
+//  VersicleTableViewCell.swift
 //  TempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 17/09/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VersiculoTableViewCell: UITableViewCell {
+class VersicleTableViewCell: UITableViewCell {
     let backView = BackView()
     weak var delegate: NewNotaDelegate?
     

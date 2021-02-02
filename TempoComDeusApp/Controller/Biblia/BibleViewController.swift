@@ -1,5 +1,5 @@
 //
-//  BibliaViewController.swift
+//  BibleViewController.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 13/08/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BibliaViewController: UIViewController, UITextFieldDelegate {
+class BibleViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
     let dataPicker = DataPicker.data()
@@ -16,8 +16,8 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     let defaults = UserDefaults.standard
     var version: String = NVI
     var abbrev: String = "gn"
-    let biblia = File().readBiblia()
-    var allLivros: [Livro] = []
+    let bible = Bible()
+    var allBooks: [BookResume] = []
     var widthTitleButtonConstraint: NSLayoutConstraint?
     
     var fonteSize: Int? {
@@ -34,7 +34,7 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    var livroAtual: Livro? {
+    var actualBook: BookResume? {
         didSet {
             updateDefaultValues()
             updateButtonTitle()
@@ -52,7 +52,7 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         button.titleLabel?.tintColor = .white
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(showLivros), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showBooks), for: .touchUpInside)
         return button
     }()
     
@@ -117,11 +117,12 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         version = getDefaultVersion()
         chapter = getDefaultChapter()
         
-        allLivros = File().readBibleByVersion(version: version)
-        
+        allBooks = File().readBibleByVersion(version: version)
+        bible.books = File().readBiblia()
+       
         fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
        
-        livroAtual = getLivroAtual(abreviacao: abbrev)
+        actualBook = getActualBook(abbreviation: abbrev)
         versionButton.delegate = self
         updateTitleWidthConstraint()
         configureUI()
@@ -138,8 +139,8 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Selectors
     
-    @objc func showLivros() {
-        let livrosTableView = LivrosTableViewController()
+    @objc func showBooks() {
+        let livrosTableView = BooksTableViewController()
         livrosTableView.delegate = self
         self.present(livrosTableView, animated: true)
     }
@@ -159,14 +160,14 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     
     // next
     @objc func rightSwipe() {
-        for (ind, book) in biblia.enumerated() where abbrev == book.abbrev["pt"] {
+        for (ind, book) in bible.books.enumerated() where abbrev == book.abbrev["pt"] {
             if chapter <  (book.chapters ?? 0) - 1 {
                 chapter += 1
                 break
-            } else if ind < (biblia.count - 1) {
+            } else if ind < (bible.books.count - 1) {
                 self.chapter = 0
-                abbrev = allLivros[ind + 1].abbrev
-                livroAtual = getLivroAtual(abreviacao: abbrev)
+                abbrev = allBooks[ind + 1].abbrev
+                actualBook = getActualBook(abbreviation: abbrev)
                 break
             }
         }
@@ -175,14 +176,14 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     
     // voltar
     @objc func leftSwipe() {
-        for (ind, book) in biblia.enumerated() where abbrev == book.abbrev["pt"] {
+        for (ind, book) in bible.books.enumerated() where abbrev == book.abbrev["pt"] {
             if chapter > 0 {
                 chapter -= 1
                 break
             } else if ind > 0 {
-                abbrev = allLivros[ind - 1].abbrev
-                livroAtual = getLivroAtual(abreviacao: abbrev)
-                chapter = (livroAtual?.chapters.count ?? 0) - 1
+                abbrev = allBooks[ind - 1].abbrev
+                actualBook = getActualBook(abbreviation: abbrev)
+                chapter = (actualBook?.chapters.count ?? 0) - 1
                 break
             }
         }
@@ -210,7 +211,7 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getTitleName() -> String {
-        for data in biblia where data.abbrev["pt"] == livroAtual?.abbrev {
+        for data in bible.books where data.abbrev["pt"] == actualBook?.abbrev {
             return data.name
         }
         
@@ -223,8 +224,8 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
         false
     }
     
-    func getLivroAtual(abreviacao: String) -> Livro? {
-        allLivros.filter {$0.abbrev == abreviacao}.first ?? nil
+    func getActualBook(abbreviation: String) -> BookResume? {
+        allBooks.filter {$0.abbrev == abbreviation}.first ?? nil
     }
     
     private func setupSwipeGestures() {
@@ -266,12 +267,12 @@ class BibliaViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func showHiddenArrowsLeftRight() {
-        if livroAtual?.abbrev == "gn" && chapter == 0 {
+        if actualBook?.abbrev == "gn" && chapter == 0 {
             leftSwipeButton.isEnabled = false } else {
             leftSwipeButton.isEnabled = true
         }
         
-        if livroAtual?.abbrev == "ap" && chapter == 21 {
+        if actualBook?.abbrev == "ap" && chapter == 21 {
             rightSwipeButton.isEnabled = false} else {
             rightSwipeButton.isEnabled = true
         }

@@ -52,49 +52,49 @@ extension UIColor {
         }
     }()
         
-    static let nota1 = {
+    static let noteColor1 = {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
             if UITraitCollection.userInterfaceStyle == .dark {
-                return MyColors.nota1Dark } else {
-                return MyColors.nota1Light
+                return MyColors.noteColor1Dark } else {
+                return MyColors.noteColor1Light
                 
              }
         }
     }()
     
-    static let nota2 = {
+    static let noteColor2 = {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
             if UITraitCollection.userInterfaceStyle == .dark {
-                return MyColors.nota2Dark } else {
-                return MyColors.nota2Light
+                return MyColors.noteColor2Dark } else {
+                return MyColors.noteColor2Light
                 
              }
         }
     }()
     
-    static let nota3 = {
+    static let noteColor3 = {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
             if UITraitCollection.userInterfaceStyle == .dark {
-                return MyColors.nota3Dark } else {
-                return MyColors.nota3Light
+                return MyColors.noteColor3Dark } else {
+                return MyColors.noteColor3Light
                 
              }
         }
     }()
-    static let nota4 = {
+    static let noteColor4 = {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
             if UITraitCollection.userInterfaceStyle == .dark {
-                return MyColors.nota4Dark } else {
-                return MyColors.nota4Light
+                return MyColors.noteColor4Dark } else {
+                return MyColors.noteColor4Light
                 
              }
         }
     }()
-    static let nota5 = {
+    static let noteColor5 = {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
                 if UITraitCollection.userInterfaceStyle == .dark {
-                    return MyColors.nota5Dark } else {
-                    return MyColors.nota5Light
+                    return MyColors.noteColor5Dark } else {
+                    return MyColors.noteColor5Light
                     
                  }
         }
@@ -104,17 +104,17 @@ extension UIColor {
     static func getColor(name: String) -> UIColor {
         switch name {
         case "nota1":
-            return .nota1
+            return .noteColor1
         case "nota2":
-            return .nota2
+            return .noteColor2
         case "nota3":
-            return .nota3
+            return .noteColor3
         case "nota4":
-            return .nota4
+            return .noteColor4
         case "nota5":
-            return .nota5
+            return .noteColor5
         default:
-            return .nota1
+            return .noteColor1
         }
     }
 }

@@ -18,11 +18,11 @@ extension FileDetailError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .failedToWriteFile:
-            return NSLocalizedString("Erro ao tentar escrever no arquivo", comment: "Decoder")
+            return NSLocalizedString("Error trying to write to the file", comment: "Decoder")
         case .failedToReadFile:
-            return NSLocalizedString("Erro ao tentar ler o arquivo", comment: "Encoder")
+            return NSLocalizedString("Error trying to read file", comment: "Encoder")
         case .failedToCreateFile:
-            return NSLocalizedString("Erro ao tentar criar o arquivo", comment: "CreateFile")
+            return NSLocalizedString("Error trying to create file", comment: "CreateFile")
         }
     }
 }
@@ -42,11 +42,11 @@ class File {
         return fileContent
     }
     
-    func readBiblia() -> [Biblia] {
-        var biblia: [Biblia] = []
+    func readBiblia() -> [Book] {
+        var biblia: [Book] = []
         do {
             guard let bibliaString =
-                try readFromFile(fileName: LIVROS) else { return [] }
+                try readFromFile(fileName: BIBLE) else { return [] }
             
             biblia = try Json().decodeBiblia(jsonString: bibliaString)
             
@@ -56,8 +56,8 @@ class File {
         return biblia
     }
 
-    func readBibleByVersion(version: String) -> [Livro] {
-        var livros: [Livro] = []
+    func readBibleByVersion(version: String) -> [BookResume] {
+        var livros: [BookResume] = []
         do {
             guard let livrosString =
                 try readFromFile(fileName: version) else { return [] }

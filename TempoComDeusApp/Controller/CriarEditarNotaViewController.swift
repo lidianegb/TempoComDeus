@@ -1,36 +1,38 @@
 //
-//  CriarEditarNotaViewController.swift
+//  CrieateAndEditNoteViewController.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 15/08/20.
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
 // swiftlint:disable type_body_length
 import UIKit
-
-class CriarEditarNota: UIViewController, UITextViewDelegate {
+enum Action {
+    case edit, create
+}
+class CrieateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     // MARK: Properties
     let backView = BackView()
-    private let notaRepository: NotaRepository
-    private let notaID: UUID
-    private let acao: Acao
+    private let noteRepository: NoteRepository
+    private let noteID: UUID
+    private let action: Action
     var stackViewBottom: UIStackView!
-    private var nota: Nota {
+    private var note: Note {
         didSet {
-            backView.backgroundColor = .getColor(name: nota.cor)
-            textView.text = nota.body
+            backView.backgroundColor = .getColor(name: note.color)
+            textView.text = note.body
         }
     }
     var color: String {
         didSet {
-            switch acao {
-            case .criar: break
-            case .editar:
-                self.saveButton.isEnabled = !(self.textView.text == nota.body && color == nota.cor)
+            switch action {
+            case .create: break
+            case .edit:
+                self.saveButton.isEnabled = !(self.textView.text == note.body && color == note.color)
             }
         }
     }
-    weak var delegate: NovaNotaDelegate?
-    weak var notadelegate: NotaDelegate?
+    weak var delegate: NewNoteDelegate?
+    weak var notedelegate: NoteDelegate?
     
     var textView: UITextView = {
         let text = UITextView()
@@ -62,12 +64,12 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     }()
     
     // MARK: Lifecycle
-    init(notaRepository: NotaRepository, notaId: UUID, acao: Acao) {
-        self.notaRepository = notaRepository
-        self.notaID = notaId
-        self.acao = acao
-        self.nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: "nota1", versos: [])
-        self.color = nota.cor
+    init(noteRepository: NoteRepository, noteId: UUID, action: Action) {
+        self.noteRepository = noteRepository
+        self.noteID = noteId
+        self.action = action
+        self.note = noteRepository.readItem(itemId: noteId) ?? Note(body: nil, color: "nota1", versos: [])
+        self.color = note.color
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -111,7 +113,7 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     
     func addTextView() {
         textView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
-        textView.text = nota.body
+        textView.text = note.body
         textView.delegate = self
         backView.addSubview(textView)
         textView.anchor(top: backView.topAnchor,
@@ -135,23 +137,28 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     }
     
     func addStackBottom() {
-        let cor1 = createButtonCor(cor: "nota1")
-        cor1.addTarget(self, action: #selector(changeColor1), for: .touchUpInside)
+        let buttonColor1 = createButtonCor(cor: "nota1")
+        buttonColor1.addTarget(self, action: #selector(changeColor1), for: .touchUpInside)
         
-        let cor2 = createButtonCor(cor: "nota2")
-        cor2.addTarget(self, action: #selector(changeColor2), for: .touchUpInside)
+        let buttonColor2 = createButtonCor(cor: "nota2")
+        buttonColor2.addTarget(self, action: #selector(changeColor2), for: .touchUpInside)
         
-        let cor3 = createButtonCor(cor: "nota3")
-        cor3.addTarget(self, action: #selector(changeColor3), for: .touchUpInside)
+        let buttonColor3 = createButtonCor(cor: "nota3")
+        buttonColor3.addTarget(self, action: #selector(changeColor3), for: .touchUpInside)
         
-        let cor4 = createButtonCor(cor: "nota4")
-        cor4.addTarget(self, action: #selector(changeColor4), for: .touchUpInside)
+        let buttonColor4 = createButtonCor(cor: "nota4")
+        buttonColor4.addTarget(self, action: #selector(changeColor4), for: .touchUpInside)
         
-        let cor5 = createButtonCor(cor: "nota5")
-        cor5.addTarget(self, action: #selector(changeColor5), for: .touchUpInside)
+        let buttonColor5 = createButtonCor(cor: "nota5")
+        buttonColor5.addTarget(self, action: #selector(changeColor5), for: .touchUpInside)
         
          stackViewBottom = UIStackView(arrangedSubviews:
-                                            [cor1, cor2, cor3, cor4, cor5, UIView()])
+                                            [buttonColor1,
+                                             buttonColor2,
+                                             buttonColor3,
+                                             buttonColor4,
+                                             buttonColor5,
+                                             UIView()])
         stackViewBottom.alignment = .leading
         stackViewBottom.spacing = 10
       
@@ -168,11 +175,11 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         if textView == self.textView {
-            switch acao {
-            case .criar:
+            switch action {
+            case .create:
                 self.saveButton.isEnabled = !textView.text.isEmpty
-            case .editar:
-                self.saveButton.isEnabled = !(self.textView.text == nota.body && color == nota.cor)
+            case .edit:
+                self.saveButton.isEnabled = !(self.textView.text == note.body && color == note.color)
             }
         }
     }
@@ -184,15 +191,15 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     }
     
     @objc func cancelar() {
-        switch acao {
-        case .criar:
+        switch action {
+        case .create:
             if let text = textView.text, text.isEmpty {
                 self.dismiss(animated: true, completion: nil) } else {
                     displayActionSheet()
                 }
-        case .editar:
-            if  textView.text == nota.body {
-                if color == nota.cor {
+        case .edit:
+            if  textView.text == note.body {
+                if color == note.color {
                     self.dismiss(animated: true, completion: nil)
                     return
                 }
@@ -202,14 +209,14 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     }
     
     @objc func salvar() {
-        switch acao {
-        case .criar:
-            let newNota = Nota(body: textView.text, cor: color, versos: [])
-            _ = notaRepository.createNewItem(item: newNota)
-            delegate?.updateNotas(notas: notaRepository.readAllItems())
+        switch action {
+        case .create:
+            let newNota = Note(body: textView.text, color: color, versos: [])
+            _ = noteRepository.createNewItem(item: newNota)
+            delegate?.updateNotas(notes: noteRepository.readAllItems())
             self.dismiss(animated: true, completion: nil)
-        case .editar:
-            notadelegate?.didChange(body: textView.text, cor: color, notaId: notaID)
+        case .edit:
+            notedelegate?.didChange(body: textView.text, color: color, noteId: noteID)
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -231,29 +238,29 @@ class CriarEditarNota: UIViewController, UITextViewDelegate {
     }
     
     @objc func changeColor1() {
-        backView.backgroundColor = .nota1
+        backView.backgroundColor = .noteColor1
         color = "nota1"
     }
     @objc func changeColor2() {
-        backView.backgroundColor = .nota2
+        backView.backgroundColor = .noteColor2
         color = "nota2"
     }
     @objc func changeColor3() {
-        backView.backgroundColor = .nota3
+        backView.backgroundColor = .noteColor3
         color = "nota3"
     }
     @objc func changeColor4() {
-        backView.backgroundColor = .nota4
+        backView.backgroundColor = .noteColor4
         color = "nota4"
     }
     @objc func changeColor5() {
-        backView.backgroundColor = .nota5
+        backView.backgroundColor = .noteColor5
         color = "nota5"
     }
     
     @objc func keyboardHiden(notification: NSNotification) {
-        if let duracao =  notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-            UIView.animate(withDuration: duracao) {
+        if let duration =  notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+            UIView.animate(withDuration: duration) {
                 self.view.frame = UIScreen.main.bounds
                 self.view.layoutIfNeeded()
             }

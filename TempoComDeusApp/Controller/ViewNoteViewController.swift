@@ -1,5 +1,5 @@
 //
-//  VisualizarNotaViewController.swift
+//  ViewNoteViewController.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 14/08/20.
@@ -8,19 +8,19 @@
 
 import UIKit
 
-class VisualizarNotaViewController: UIViewController {
+class ViewNoteViewController: UIViewController {
     // MARK: Properties
     
-    weak var delegate: UpdateNotaDelegate?
+    weak var delegate: UpdateNoteDelegate?
     var stackTopButtons: UIStackView!
     var backView = BackView()
     var color: String
-    private let notaRepository: NotaRepository
-    private let notaID: UUID
-    private var nota: Nota {
+    private let noteRepository: NoteRepository
+    private let noteID: UUID
+    private var note: Note {
         didSet {
-            textView.text = nota.body
-            textView.backgroundColor = .getColor(name: nota.cor)
+            textView.text = note.body
+            textView.backgroundColor = .getColor(name: note.color)
         }
     }
     
@@ -74,11 +74,11 @@ class VisualizarNotaViewController: UIViewController {
         
     }
     
-    init(notaRepository: NotaRepository, notaId: UUID) {
-        self.notaRepository = notaRepository
-        self.notaID = notaId
-        self.nota = notaRepository.readItem(itemId: notaID) ?? Nota(body: nil, cor: nil, versos: [])
-        self.color = nota.cor
+    init(notaRepository: NoteRepository, notaId: UUID) {
+        self.noteRepository = notaRepository
+        self.noteID = notaId
+        self.note = notaRepository.readItem(itemId: noteID) ?? Note(body: nil, color: nil, versos: [])
+        self.color = note.color
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -88,21 +88,23 @@ class VisualizarNotaViewController: UIViewController {
     
     // MARK: Selectors
     @objc  func editNota() {
-        let editarNotaViewController = CriarEditarNota(notaRepository: notaRepository, notaId: notaID, acao: .editar)
-        editarNotaViewController.notadelegate = self
-        editarNotaViewController.modalPresentationStyle = .fullScreen
-        editarNotaViewController.modalTransitionStyle = .crossDissolve
-        self.present(editarNotaViewController, animated: true)
+        let editNoteViewController = CrieateAndEditNoteViewController(noteRepository: noteRepository,
+                                                                      noteId: noteID,
+                                                                      action: .edit)
+        editNoteViewController.notedelegate = self
+        editNoteViewController.modalPresentationStyle = .fullScreen
+        editNoteViewController.modalTransitionStyle = .crossDissolve
+        self.present(editNoteViewController, animated: true)
     }
     
     @objc func shareNota() {
-        let viewActivity = UIActivityViewController(activityItems: [nota.body], applicationActivities: [])
+        let viewActivity = UIActivityViewController(activityItems: [note.body], applicationActivities: [])
         self.present(viewActivity, animated: true)
     }
     
     @objc func keyboardHiden(notification: NSNotification) {
-        if let duracao =  notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-            UIView.animate(withDuration: duracao) {
+        if let duration =  notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+            UIView.animate(withDuration: duration) {
                 self.view.frame = UIScreen.main.bounds
               
                 self.view.layoutIfNeeded()
@@ -152,8 +154,8 @@ class VisualizarNotaViewController: UIViewController {
     }
     
     func addTextView() {
-        textView.text = nota.body
-        textView.backgroundColor = .getColor(name: nota.cor)
+        textView.text = note.body
+        textView.backgroundColor = .getColor(name: note.color)
         
         backView.addSubview(textView)
         textView.anchor(top: backView.topAnchor,
@@ -173,12 +175,12 @@ class VisualizarNotaViewController: UIViewController {
     }
 }
 
-extension VisualizarNotaViewController: NotaDelegate {
-    func didChange(body: String, cor: String, notaId: UUID) {
-        nota.body = body
-        nota.cor = cor
-        notaRepository.update(item: nota)
-        nota = notaRepository.readItem(itemId: notaId) ?? Nota(body: nil, cor: nil, versos: [])
+extension ViewNoteViewController: NoteDelegate {
+    func didChange(body: String, color: String, noteId: UUID) {
+        note.body = body
+        note.color = color
+        noteRepository.update(item: note)
+        note = noteRepository.readItem(itemId: noteId) ?? Note(body: nil, color: nil, versos: [])
         self.delegate?.notaIsUpdated(updated: true)
     }
     

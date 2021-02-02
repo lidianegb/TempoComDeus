@@ -12,7 +12,7 @@ import Foundation
 let NVI = "nvi"
 let ACF = "acf"
 let AA = "aa"
-let LIVROS = "biblia"
+let BIBLE = "biblia"
 
 // UserDefaults
 let DARK = "darkMode"

@@ -1,5 +1,5 @@
 //
-//  LivrosTableViewController.swift
+//  BooksTableViewController.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 18/08/20.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class LivrosTableViewController: UIViewController {
+class BooksTableViewController: UIViewController {
     
-    var tableData: [Biblia] = File().readBiblia() 
+    var tableData: [Book] = File().readBiblia() 
     var abbr: String?
     
     let cellId = "cellId"
@@ -27,7 +27,7 @@ class LivrosTableViewController: UIViewController {
         return tableView
     }()
     
-    weak var delegate: LivrosTableViewDelegate?
+    weak var delegate: BooksTableViewDelegate?
     
     let cancelButton: UIButton = {
         let button = UIButton()
@@ -69,8 +69,8 @@ class LivrosTableViewController: UIViewController {
     }
     
     func setupTableView() {
-        tableView.register(CapitulosTableViewCell.self, forCellReuseIdentifier: cellId)
-        tableView.register(LivrosTableViewSections.self, forCellReuseIdentifier: cellSection)
+        tableView.register(ChaptersTableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(BooksTableViewSections.self, forCellReuseIdentifier: cellSection)
         view.insertSubview(tableView, at: 0)
         tableView.anchor(top: view.topAnchor,
                          left: view.leftAnchor,
@@ -84,7 +84,7 @@ class LivrosTableViewController: UIViewController {
     
 }
 
-extension LivrosTableViewController: CapitulosTableViewCellDelegate {
+extension BooksTableViewController: ChaptersTableViewCellDelegate {
     func didTap(chapter: Int) {
         
         self.delegate?.didSelectSection(abbr: self.abbr ?? " ", chapter: chapter)

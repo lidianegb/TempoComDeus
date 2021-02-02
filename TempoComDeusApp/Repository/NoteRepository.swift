@@ -1,5 +1,5 @@
 //
-//  NotaRepository.swift
+//  NoteRepository.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 17/08/20.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class NotaRepository: Repository {
+class NoteRepository: Repository {
     
-    typealias Item = Nota
-    var items: [Nota] = []
+    typealias Item = Note
+    var items: [Note] = []
 }

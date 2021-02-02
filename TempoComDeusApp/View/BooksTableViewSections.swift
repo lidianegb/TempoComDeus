@@ -1,5 +1,5 @@
 //
-//  LivrosTableViewSections.swift
+//  BooksTableViewSections.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 19/08/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LivrosTableViewSections: UITableViewCell {
+class BooksTableViewSections: UITableViewCell {
     
     var rightDetail: UIImageView = {
         let imageView = UIImageView()
@@ -35,7 +35,7 @@ class LivrosTableViewSections: UITableViewCell {
     }
 
 }
-extension LivrosTableViewSections {
+extension BooksTableViewSections {
     func didSelected(isSelected: Bool) {
         if isSelected {
             rightDetail.image = UIImage(named: "arrowup")

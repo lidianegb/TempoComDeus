@@ -1,5 +1,5 @@
 //
-//  NotasModel.swift
+//  Note.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 13/08/20.
@@ -8,23 +8,23 @@
 
 import Foundation
 
-class Nota: Codable {
+class Note: Codable {
     
     let notaId: UUID
     var body: String
     let date: Date
-    var cor: String
-    var versos: [Verso]
+    var color: String
+    var verses: [Chapter]
         
-    init(body: String?, cor: String?, versos: [Verso]) {
+    init(body: String?, color: String?, versos: [Chapter]) {
         self.notaId = UUID()
         self.body = body ?? String()
         self.date  = Date()
-        self.cor = cor ?? String()
-        self.versos = versos
+        self.color = color ?? String()
+        self.verses = versos
     }
     private enum CodingKeys: String, CodingKey {
-        case notaId, body, date, cor, versos
+        case notaId, body, date, color, verses
     }
         
 }

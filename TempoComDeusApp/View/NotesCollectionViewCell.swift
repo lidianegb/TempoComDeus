@@ -9,16 +9,16 @@
 import UIKit
 import Foundation
 
-class NotasCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
+class NotesCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
 
-    weak var delegate: NotasCellDelegate?
+    weak var delegate: NotesCellDelegate?
     
-    var nota: Nota? {
+    var nota: Note? {
        didSet {
-           if let nota = nota {
-            labelPreview.text = nota.body
-            wrapperView.backgroundColor = .getColor(name: nota.cor)
-            labelDate.text = calcDate(date: nota.date)
+           if let note = nota {
+            labelPreview.text = note.body
+            wrapperView.backgroundColor = .getColor(name: note.color)
+            labelDate.text = calcDate(date: note.date)
            }
        }
     }

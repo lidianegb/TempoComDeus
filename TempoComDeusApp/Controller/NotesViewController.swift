@@ -1,5 +1,5 @@
 //
-//  NotasViewController.swift
+//  NotesViewController.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 13/08/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NotasViewController: UIViewController {
+class NotesViewController: UIViewController {
 
     // MARK: Properties
     
@@ -35,13 +35,13 @@ class NotasViewController: UIViewController {
         return collectionView
     }()
     
-    var notaRepository: NotaRepository {
-          NotaRepository()
+    var noteRepository: NoteRepository {
+          NoteRepository()
     }
     
-    var notas: [Nota] = [] {
+    var notes: [Note] = [] {
          didSet {
-             if notas.isEmpty {
+             if notes.isEmpty {
                 initialLabel.isHidden = false
                 collectionView.isHidden = true
              } else {
@@ -75,7 +75,7 @@ class NotasViewController: UIViewController {
       // MARK: Lifecycle
       override func viewDidLoad() {
         super.viewDidLoad()
-        notas = notaRepository.readAllItems()
+        notes = noteRepository.readAllItems()
         fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
         configureUI()
         addBackground()
@@ -90,7 +90,9 @@ class NotasViewController: UIViewController {
       // MARK: Selectors
 
     @objc func createNewNota() {
-        let novaNotaViewController = CriarEditarNota(notaRepository: notaRepository, notaId: UUID(), acao: .criar)
+        let novaNotaViewController = CrieateAndEditNoteViewController(noteRepository: noteRepository,
+                                                                      noteId: UUID(),
+                                                                      action: .create)
         novaNotaViewController.modalPresentationStyle = .fullScreen
         novaNotaViewController.delegate = self
         self.present(novaNotaViewController, animated: true)
@@ -131,7 +133,7 @@ class NotasViewController: UIViewController {
       }
     
     func setupCollectionView() {
-       collectionView.register(NotasCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+       collectionView.register(NotesCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
        collectionView.delegate = self
        collectionView.dataSource = self
        view.addSubview(collectionView)
@@ -147,28 +149,28 @@ class NotasViewController: UIViewController {
        }
 }
 
-extension NotasViewController: NotasCellDelegate {
-    func deleteCell(cell: NotasCollectionViewCell) {
+extension NotesViewController: NotesCellDelegate {
+    func deleteCell(cell: NotesCollectionViewCell) {
         if let indexPath = collectionView.indexPath(for: cell) {
             collectionView.performBatchUpdates({
-               _ = notaRepository.delete(itemId: notas[indexPath.row].notaId)
+               _ = noteRepository.delete(itemId: notes[indexPath.row].notaId)
                 collectionView.deleteItems(at: [indexPath])
-                notas = notaRepository.readAllItems()
+                notes = noteRepository.readAllItems()
             }, completion: nil)
         }
     }
 }
 
-extension NotasViewController: NovaNotaDelegate {
-    func updateNotas(notas: [Nota]) {
-        self.notas = notas
+extension NotesViewController: NewNoteDelegate {
+    func updateNotas(notes: [Note]) {
+        self.notes = notes
     }
 }
 
-extension NotasViewController: UpdateNotaDelegate {
+extension NotesViewController: UpdateNoteDelegate {
     func notaIsUpdated(updated: Bool) {
         if updated {
-            notas = notaRepository.readAllItems()
+            notes = noteRepository.readAllItems()
         }
     }
 }

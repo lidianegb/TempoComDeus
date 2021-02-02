@@ -15,10 +15,10 @@ class CreateNotaTest: XCTestCase {
         // given
         let text = "Nota 1"
         let cor = "azul"
-        let sut = Nota(body: text, cor: cor, versos: [])
+        let sut = Note(body: text, color: cor, versos: [])
        // when
        let output1 = sut.body
-       let output2 = sut.cor
+       let output2 = sut.color
        
        // Then
        XCTAssertEqual(output1, text)
@@ -28,11 +28,11 @@ class CreateNotaTest: XCTestCase {
     func test_create_newNota_withoutValues() {
            // given
 
-        let sut = Nota(body: nil, cor: nil, versos: [])
+        let sut = Note(body: nil, color: nil, versos: [])
            
           // when
           let output1 = sut.body
-          let output2 = sut.cor
+          let output2 = sut.color
           
           // Then
           XCTAssertEqual(output1, "")

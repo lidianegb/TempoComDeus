@@ -11,7 +11,7 @@ import XCTest
 class CalcCellDimensions: XCTestCase {
     func test_cell_width_height() {
         // given
-       let sut = NotasViewController()
+       let sut = NotesViewController()
        let width = 300.0
        let height = 700.0
         

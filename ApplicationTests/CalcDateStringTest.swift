@@ -12,7 +12,7 @@ class CalcDateStringTest: XCTestCase {
 
     func test_calculate_data_String() {
         // given
-        let sut  = NotasCollectionViewCell()
+        let sut  = NotesCollectionViewCell()
         let input = "20 de agosto"
         
         let dateFormatter = DateFormatter()

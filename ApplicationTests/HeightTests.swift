@@ -11,7 +11,7 @@ import XCTest
 class HeightTests: XCTestCase {
     func test_one_row_height() {
         // given
-        let sut = LivrosTableViewController()
+        let sut = BooksTableViewController()
         let input1 = 1.0
         let input2 = 7.0
         let input3 = 150.0

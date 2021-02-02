@@ -1,5 +1,5 @@
 //
-//  UpdateNotaDelegate.swift
+//  BooksTableViewDelegate.swift
 //  TempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 02/09/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol UpdateNotaDelegate: class {
-    func notaIsUpdated(updated: Bool)
+protocol BooksTableViewDelegate: class {
+    func didSelectSection(abbr: String, chapter: Int)
 }

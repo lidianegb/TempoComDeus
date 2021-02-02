@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
+extension BibleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTableView() {
         view.insertSubview(tableView, at: 0)
@@ -20,34 +20,34 @@ extension BibliaViewController: UITableViewDelegate, UITableViewDataSource {
                          paddingLeft: 8,
                          paddingBottom: 0,
                          paddingRight: 8)
-        tableView.register(BibliaTableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(BibleTableViewCell.self, forCellReuseIdentifier: cellId)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if chapter < livroAtual?.chapters.count ?? 0 {
-            return livroAtual?.chapters[chapter].count ?? 0
+        if chapter < actualBook?.chapters.count ?? 0 {
+            return actualBook?.chapters[chapter].count ?? 0
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let myCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as?
-            BibliaTableViewCell else { return UITableViewCell() }
+            BibleTableViewCell else { return UITableViewCell() }
         
         let num = "\(indexPath.row + 1)"
-        let verso =  "\(livroAtual?.chapters[chapter ][indexPath.row] ?? "")"
+        let verso =  "\(actualBook?.chapters[chapter ][indexPath.row] ?? "")"
         
         myCell.createCell(num: num, verso: verso)
         return myCell
     }
 }
 
-extension BibliaViewController: LivrosTableViewDelegate {
+extension BibleViewController: BooksTableViewDelegate {
     func didSelectSection(abbr: String, chapter: Int) {
         self.chapter = chapter
         self.abbrev = abbr
-        livroAtual = getLivroAtual(abreviacao: abbr)
+        actualBook = getActualBook(abbreviation: abbr)
         tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
     }
 }

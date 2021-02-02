@@ -12,19 +12,18 @@
 		AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */; };
 		AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */; };
 		AF1868B42506E494001731AA /* ExtensionBibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1868B32506E494001731AA /* ExtensionBibliaViewController.swift */; };
-		AF18F8E0251400890009617A /* NewNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF18F8DF251400890009617A /* NewNotaViewController.swift */; };
-		AF18F8E5251401ED0009617A /* VersiculoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF18F8E4251401ED0009617A /* VersiculoTableViewCell.swift */; };
-		AF18F8EA251401FD0009617A /* NotaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF18F8E9251401FD0009617A /* NotaTableViewCell.swift */; };
-		AF1947C424EBF02200724B23 /* Biblia.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1947C324EBF02200724B23 /* Biblia.swift */; };
-		AF21B47224E5D25900D44D39 /* Nota.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47124E5D25900D44D39 /* Nota.swift */; };
-		AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */; };
+		AF18F8E5251401ED0009617A /* VersicleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF18F8E4251401ED0009617A /* VersicleTableViewCell.swift */; };
+		AF18F8EA251401FD0009617A /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF18F8E9251401FD0009617A /* NoteTableViewCell.swift */; };
+		AF1947C424EBF02200724B23 /* Bible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1947C324EBF02200724B23 /* Bible.swift */; };
+		AF21B47224E5D25900D44D39 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47124E5D25900D44D39 /* Note.swift */; };
+		AF21B47424E5D2EB00D44D39 /* NotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21B47324E5D2EB00D44D39 /* NotesCollectionViewCell.swift */; };
 		AF22DE6824FB3D99005FAB3C /* biblia.json in Resources */ = {isa = PBXBuildFile; fileRef = AF22DE6724FB3D99005FAB3C /* biblia.json */; };
-		AF34F406250031DF00BFAB2D /* NotasCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F405250031DF00BFAB2D /* NotasCellDelegate.swift */; };
-		AF34F4082500322700BFAB2D /* CapitulosTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4072500322700BFAB2D /* CapitulosTableViewCellDelegate.swift */; };
-		AF34F40A2500326700BFAB2D /* LivrosTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4092500326700BFAB2D /* LivrosTableViewDelegate.swift */; };
-		AF34F40C2500328000BFAB2D /* NotaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40B2500328000BFAB2D /* NotaDelegate.swift */; };
-		AF34F40E250032AC00BFAB2D /* UpdateNotaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40D250032AC00BFAB2D /* UpdateNotaDelegate.swift */; };
-		AF34F410250032C700BFAB2D /* NovaNotaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40F250032C700BFAB2D /* NovaNotaDelegate.swift */; };
+		AF34F406250031DF00BFAB2D /* NotesCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F405250031DF00BFAB2D /* NotesCellDelegate.swift */; };
+		AF34F4082500322700BFAB2D /* ChaptersTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4072500322700BFAB2D /* ChaptersTableViewCellDelegate.swift */; };
+		AF34F40A2500326700BFAB2D /* BooksTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4092500326700BFAB2D /* BooksTableViewDelegate.swift */; };
+		AF34F40C2500328000BFAB2D /* NoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40B2500328000BFAB2D /* NoteDelegate.swift */; };
+		AF34F40E250032AC00BFAB2D /* UpdateNoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40D250032AC00BFAB2D /* UpdateNoteDelegate.swift */; };
+		AF34F410250032C700BFAB2D /* NewNoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F40F250032C700BFAB2D /* NewNoteDelegate.swift */; };
 		AF34F4122500331200BFAB2D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4112500331200BFAB2D /* UIView.swift */; };
 		AF34F4142500334E00BFAB2D /* MyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4132500334E00BFAB2D /* MyColors.swift */; };
 		AF34F4162500370A00BFAB2D /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34F4152500370A00BFAB2D /* Json.swift */; };
@@ -34,13 +33,14 @@
 		AF34F420250044A200BFAB2D /* nvi.json in Resources */ = {isa = PBXBuildFile; fileRef = AF34F41D250044A200BFAB2D /* nvi.json */; };
 		AF3C21F9250AA46000F81685 /* DataPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C21F8250AA46000F81685 /* DataPicker.swift */; };
 		AF3EB88B2508432A003F988F /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EB88A2508432A003F988F /* ConfigViewController.swift */; };
-		AF4717602501B03900DDC69A /* Livro.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47175F2501B03900DDC69A /* Livro.swift */; };
+		AF4717602501B03900DDC69A /* BookResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47175F2501B03900DDC69A /* BookResume.swift */; };
 		AF4717622501B25000DDC69A /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4717612501B25000DDC69A /* Constantes.swift */; };
 		AF48267A24F43E1C00C44A46 /* CreateNotaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48267924F43E1C00C44A46 /* CreateNotaTest.swift */; };
 		AF48268224F44B2000C44A46 /* CalcDateStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48268124F44B2000C44A46 /* CalcDateStringTest.swift */; };
+		AF4A206225C8949000F6F14E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A206125C8949000F6F14E /* Book.swift */; };
 		AF4E6C7525030FA400C53EF0 /* livrosResumo.json in Resources */ = {isa = PBXBuildFile; fileRef = AF4E6C7425030FA400C53EF0 /* livrosResumo.json */; };
-		AF51DF8A24EDA6D4001C352D /* CapitulosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8924EDA6D4001C352D /* CapitulosTableViewCell.swift */; };
-		AF51DF8E24EDC0B9001C352D /* LivrosTableViewSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8D24EDC0B9001C352D /* LivrosTableViewSections.swift */; };
+		AF51DF8A24EDA6D4001C352D /* ChaptersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8924EDA6D4001C352D /* ChaptersTableViewCell.swift */; };
+		AF51DF8E24EDC0B9001C352D /* BooksTableViewSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8D24EDC0B9001C352D /* BooksTableViewSections.swift */; };
 		AF5D369425A5EC4E00DE3487 /* NotasCollectionDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5D369325A5EC4E00DE3487 /* NotasCollectionDelegates.swift */; };
 		AF5D369925A5F0C800DE3487 /* ConfigTableDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5D369825A5F0C800DE3487 /* ConfigTableDelegates.swift */; };
 		AF5D36A125A600EA00DE3487 /* LivrosTableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5D36A025A600EA00DE3487 /* LivrosTableViewDelegates.swift */; };
@@ -54,21 +54,21 @@
 		AF7F200D24E557450058FA2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200B24E557450058FA2C /* LaunchScreen.storyboard */; };
 		AF7F203524E5589C0058FA2C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203424E5589C0058FA2C /* UIColor.swift */; };
 		AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203624E5592E0058FA2C /* MainTabBarController.swift */; };
-		AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibliaViewController.swift */; };
-		AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */; };
+		AF7F203924E55B060058FA2C /* BibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibleViewController.swift */; };
+		AF7F203B24E55B1D0058FA2C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */; };
 		AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203C24E583DA0058FA2C /* BackView.swift */; };
-		AF89E00D2511662600B5FEDB /* Verso.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89E00C2511662600B5FEDB /* Verso.swift */; };
+		AF89E00D2511662600B5FEDB /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89E00C2511662600B5FEDB /* Chapter.swift */; };
 		AFBB37162516D428004B7105 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB37152516D428004B7105 /* UITextView.swift */; };
-		AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */; };
+		AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */; };
 		AFC2A32624E87A13001A266D /* CriarEditarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* CriarEditarNotaViewController.swift */; };
 		AFC820E424F68F3A003C7B0A /* NotaRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */; };
 		AFD310B624F561BB00A74E2E /* TempoComDeusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */; };
-		AFDB6D6124EEA80000F58A6D /* CapitulosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB6D6024EEA80000F58A6D /* CapitulosCollectionViewCell.swift */; };
+		AFDB6D6124EEA80000F58A6D /* ChaptersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB6D6024EEA80000F58A6D /* ChaptersCollectionViewCell.swift */; };
 		AFF120EB24EAB6A1000A9B12 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EA24EAB6A1000A9B12 /* Repository.swift */; };
 		AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */; };
-		AFF120EF24EABBAB000A9B12 /* NotaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EE24EABBAB000A9B12 /* NotaRepository.swift */; };
-		AFFA1D1124EC1C6B00399F96 /* LivrosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1024EC1C6B00399F96 /* LivrosTableViewController.swift */; };
-		AFFA1D1324EC1CF400399F96 /* BibliaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1224EC1CF400399F96 /* BibliaTableViewCell.swift */; };
+		AFF120EF24EABBAB000A9B12 /* NoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EE24EABBAB000A9B12 /* NoteRepository.swift */; };
+		AFFA1D1124EC1C6B00399F96 /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1024EC1C6B00399F96 /* BooksTableViewController.swift */; };
+		AFFA1D1324EC1CF400399F96 /* BibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1224EC1CF400399F96 /* BibleTableViewCell.swift */; };
 		AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,19 +104,18 @@
 		AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionOneTableViewCell.swift; sourceTree = "<group>"; };
 		AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionTwoTableViewCell.swift; sourceTree = "<group>"; };
 		AF1868B32506E494001731AA /* ExtensionBibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionBibliaViewController.swift; sourceTree = "<group>"; };
-		AF18F8DF251400890009617A /* NewNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotaViewController.swift; sourceTree = "<group>"; };
-		AF18F8E4251401ED0009617A /* VersiculoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersiculoTableViewCell.swift; sourceTree = "<group>"; };
-		AF18F8E9251401FD0009617A /* NotaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaTableViewCell.swift; sourceTree = "<group>"; };
-		AF1947C324EBF02200724B23 /* Biblia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biblia.swift; sourceTree = "<group>"; };
-		AF21B47124E5D25900D44D39 /* Nota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nota.swift; sourceTree = "<group>"; };
-		AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF18F8E4251401ED0009617A /* VersicleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersicleTableViewCell.swift; sourceTree = "<group>"; };
+		AF18F8E9251401FD0009617A /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		AF1947C324EBF02200724B23 /* Bible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bible.swift; sourceTree = "<group>"; };
+		AF21B47124E5D25900D44D39 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		AF21B47324E5D2EB00D44D39 /* NotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF22DE6724FB3D99005FAB3C /* biblia.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = biblia.json; sourceTree = "<group>"; };
-		AF34F405250031DF00BFAB2D /* NotasCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCellDelegate.swift; sourceTree = "<group>"; };
-		AF34F4072500322700BFAB2D /* CapitulosTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitulosTableViewCellDelegate.swift; sourceTree = "<group>"; };
-		AF34F4092500326700BFAB2D /* LivrosTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosTableViewDelegate.swift; sourceTree = "<group>"; };
-		AF34F40B2500328000BFAB2D /* NotaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaDelegate.swift; sourceTree = "<group>"; };
-		AF34F40D250032AC00BFAB2D /* UpdateNotaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNotaDelegate.swift; sourceTree = "<group>"; };
-		AF34F40F250032C700BFAB2D /* NovaNotaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaNotaDelegate.swift; sourceTree = "<group>"; };
+		AF34F405250031DF00BFAB2D /* NotesCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCellDelegate.swift; sourceTree = "<group>"; };
+		AF34F4072500322700BFAB2D /* ChaptersTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		AF34F4092500326700BFAB2D /* BooksTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewDelegate.swift; sourceTree = "<group>"; };
+		AF34F40B2500328000BFAB2D /* NoteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDelegate.swift; sourceTree = "<group>"; };
+		AF34F40D250032AC00BFAB2D /* UpdateNoteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNoteDelegate.swift; sourceTree = "<group>"; };
+		AF34F40F250032C700BFAB2D /* NewNoteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDelegate.swift; sourceTree = "<group>"; };
 		AF34F4112500331200BFAB2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		AF34F4132500334E00BFAB2D /* MyColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColors.swift; sourceTree = "<group>"; };
 		AF34F4152500370A00BFAB2D /* Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
@@ -126,13 +125,14 @@
 		AF34F41D250044A200BFAB2D /* nvi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nvi.json; sourceTree = "<group>"; };
 		AF3C21F8250AA46000F81685 /* DataPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPicker.swift; sourceTree = "<group>"; };
 		AF3EB88A2508432A003F988F /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
-		AF47175F2501B03900DDC69A /* Livro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Livro.swift; sourceTree = "<group>"; };
+		AF47175F2501B03900DDC69A /* BookResume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResume.swift; sourceTree = "<group>"; };
 		AF4717612501B25000DDC69A /* Constantes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constantes.swift; sourceTree = "<group>"; };
 		AF48267924F43E1C00C44A46 /* CreateNotaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotaTest.swift; sourceTree = "<group>"; };
 		AF48268124F44B2000C44A46 /* CalcDateStringTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcDateStringTest.swift; sourceTree = "<group>"; };
+		AF4A206125C8949000F6F14E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		AF4E6C7425030FA400C53EF0 /* livrosResumo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = livrosResumo.json; sourceTree = "<group>"; };
-		AF51DF8924EDA6D4001C352D /* CapitulosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitulosTableViewCell.swift; sourceTree = "<group>"; };
-		AF51DF8D24EDC0B9001C352D /* LivrosTableViewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosTableViewSections.swift; sourceTree = "<group>"; };
+		AF51DF8924EDA6D4001C352D /* ChaptersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersTableViewCell.swift; sourceTree = "<group>"; };
+		AF51DF8D24EDC0B9001C352D /* BooksTableViewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewSections.swift; sourceTree = "<group>"; };
 		AF5D369325A5EC4E00DE3487 /* NotasCollectionDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCollectionDelegates.swift; sourceTree = "<group>"; };
 		AF5D369825A5F0C800DE3487 /* ConfigTableDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTableDelegates.swift; sourceTree = "<group>"; };
 		AF5D36A025A600EA00DE3487 /* LivrosTableViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosTableViewDelegates.swift; sourceTree = "<group>"; };
@@ -150,23 +150,23 @@
 		AF7F200E24E557450058FA2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF7F203424E5589C0058FA2C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		AF7F203624E5592E0058FA2C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		AF7F203824E55B060058FA2C /* BibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaViewController.swift; sourceTree = "<group>"; };
-		AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
+		AF7F203824E55B060058FA2C /* BibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleViewController.swift; sourceTree = "<group>"; };
+		AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		AF7F203C24E583DA0058FA2C /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
-		AF89E00C2511662600B5FEDB /* Verso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verso.swift; sourceTree = "<group>"; };
+		AF89E00C2511662600B5FEDB /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		AFBB37152516D428004B7105 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
-		AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
+		AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNoteViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* CriarEditarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarEditarNotaViewController.swift; sourceTree = "<group>"; };
 		AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaRepositoryTest.swift; sourceTree = "<group>"; };
 		AFD310B324F561BB00A74E2E /* tempoComDeusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tempoComDeusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoComDeusUITests.swift; sourceTree = "<group>"; };
 		AFD310B724F561BB00A74E2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AFDB6D6024EEA80000F58A6D /* CapitulosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitulosCollectionViewCell.swift; sourceTree = "<group>"; };
+		AFDB6D6024EEA80000F58A6D /* ChaptersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersCollectionViewCell.swift; sourceTree = "<group>"; };
 		AFF120EA24EAB6A1000A9B12 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
-		AFF120EE24EABBAB000A9B12 /* NotaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaRepository.swift; sourceTree = "<group>"; };
-		AFFA1D1024EC1C6B00399F96 /* LivrosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosTableViewController.swift; sourceTree = "<group>"; };
-		AFFA1D1224EC1CF400399F96 /* BibliaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaTableViewCell.swift; sourceTree = "<group>"; };
+		AFF120EE24EABBAB000A9B12 /* NoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepository.swift; sourceTree = "<group>"; };
+		AFFA1D1024EC1C6B00399F96 /* BooksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewController.swift; sourceTree = "<group>"; };
+		AFFA1D1224EC1CF400399F96 /* BibleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleTableViewCell.swift; sourceTree = "<group>"; };
 		AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerBibliaViewController.swift; sourceTree = "<group>"; };
 		F4171B03F0493A5F705E0A78 /* Pods-TempoComDeusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempoComDeusApp.release.xcconfig"; path = "Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,9 +210,17 @@
 		AF1947CD24EBF96B00724B23 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				AFF120EE24EABBAB000A9B12 /* NotaRepository.swift */,
+				AFF120EE24EABBAB000A9B12 /* NoteRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		AF4A205D25C8934000F6F14E /* Biblia */ = {
+			isa = PBXGroup;
+			children = (
+				AF7F203824E55B060058FA2C /* BibleViewController.swift */,
+			);
+			path = Biblia;
 			sourceTree = "<group>";
 		};
 		AF6A1E4524F1492300FF46FF /* ApplicationTests */ = {
@@ -272,10 +280,12 @@
 		AF7F203024E5583B0058FA2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AF21B47124E5D25900D44D39 /* Nota.swift */,
-				AF1947C324EBF02200724B23 /* Biblia.swift */,
+				AF21B47124E5D25900D44D39 /* Note.swift */,
+				AF1947C324EBF02200724B23 /* Bible.swift */,
 				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
-				AF89E00C2511662600B5FEDB /* Verso.swift */,
+				AF89E00C2511662600B5FEDB /* Chapter.swift */,
+				AF4A206125C8949000F6F14E /* Book.swift */,
+				AF47175F2501B03900DDC69A /* BookResume.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,16 +294,15 @@
 			isa = PBXGroup;
 			children = (
 				AF7F203C24E583DA0058FA2C /* BackView.swift */,
-				AF21B47324E5D2EB00D44D39 /* NotasCollectionViewCell.swift */,
-				AF47175F2501B03900DDC69A /* Livro.swift */,
-				AFDB6D6024EEA80000F58A6D /* CapitulosCollectionViewCell.swift */,
-				AF51DF8924EDA6D4001C352D /* CapitulosTableViewCell.swift */,
-				AFFA1D1224EC1CF400399F96 /* BibliaTableViewCell.swift */,
-				AF51DF8D24EDC0B9001C352D /* LivrosTableViewSections.swift */,
+				AF21B47324E5D2EB00D44D39 /* NotesCollectionViewCell.swift */,
+				AFDB6D6024EEA80000F58A6D /* ChaptersCollectionViewCell.swift */,
+				AF51DF8924EDA6D4001C352D /* ChaptersTableViewCell.swift */,
+				AFFA1D1224EC1CF400399F96 /* BibleTableViewCell.swift */,
+				AF51DF8D24EDC0B9001C352D /* BooksTableViewSections.swift */,
 				AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */,
 				AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */,
-				AF18F8E4251401ED0009617A /* VersiculoTableViewCell.swift */,
-				AF18F8E9251401FD0009617A /* NotaTableViewCell.swift */,
+				AF18F8E4251401ED0009617A /* VersicleTableViewCell.swift */,
+				AF18F8E9251401FD0009617A /* NoteTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,16 +310,15 @@
 		AF7F203224E5584F0058FA2C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A205D25C8934000F6F14E /* Biblia */,
 				AF7F203624E5592E0058FA2C /* MainTabBarController.swift */,
-				AF7F203824E55B060058FA2C /* BibliaViewController.swift */,
-				AFFA1D1024EC1C6B00399F96 /* LivrosTableViewController.swift */,
-				AF7F203A24E55B1D0058FA2C /* NotasViewController.swift */,
-				AFC2A32124E6C70C001A266D /* VisualizarNotaViewController.swift */,
+				AFFA1D1024EC1C6B00399F96 /* BooksTableViewController.swift */,
+				AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */,
+				AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */,
 				AFC2A32524E87A13001A266D /* CriarEditarNotaViewController.swift */,
 				AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */,
 				AF1868B32506E494001731AA /* ExtensionBibliaViewController.swift */,
 				AF3EB88A2508432A003F988F /* ConfigViewController.swift */,
-				AF18F8DF251400890009617A /* NewNotaViewController.swift */,
 				AF5D369325A5EC4E00DE3487 /* NotasCollectionDelegates.swift */,
 				AF5D369825A5F0C800DE3487 /* ConfigTableDelegates.swift */,
 				AF5D36A025A600EA00DE3487 /* LivrosTableViewDelegates.swift */,
@@ -353,12 +361,12 @@
 			isa = PBXGroup;
 			children = (
 				AFF120EA24EAB6A1000A9B12 /* Repository.swift */,
-				AF34F405250031DF00BFAB2D /* NotasCellDelegate.swift */,
-				AF34F4072500322700BFAB2D /* CapitulosTableViewCellDelegate.swift */,
-				AF34F4092500326700BFAB2D /* LivrosTableViewDelegate.swift */,
-				AF34F40B2500328000BFAB2D /* NotaDelegate.swift */,
-				AF34F40D250032AC00BFAB2D /* UpdateNotaDelegate.swift */,
-				AF34F40F250032C700BFAB2D /* NovaNotaDelegate.swift */,
+				AF34F405250031DF00BFAB2D /* NotesCellDelegate.swift */,
+				AF34F4072500322700BFAB2D /* ChaptersTableViewCellDelegate.swift */,
+				AF34F4092500326700BFAB2D /* BooksTableViewDelegate.swift */,
+				AF34F40B2500328000BFAB2D /* NoteDelegate.swift */,
+				AF34F40D250032AC00BFAB2D /* UpdateNoteDelegate.swift */,
+				AF34F40F250032C700BFAB2D /* NewNoteDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -596,52 +604,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFFA1D1324EC1CF400399F96 /* BibliaTableViewCell.swift in Sources */,
+				AFFA1D1324EC1CF400399F96 /* BibleTableViewCell.swift in Sources */,
 				AF3C21F9250AA46000F81685 /* DataPicker.swift in Sources */,
-				AF21B47424E5D2EB00D44D39 /* NotasCollectionViewCell.swift in Sources */,
+				AF21B47424E5D2EB00D44D39 /* NotesCollectionViewCell.swift in Sources */,
 				AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */,
 				AFF120EB24EAB6A1000A9B12 /* Repository.swift in Sources */,
-				AF34F40E250032AC00BFAB2D /* UpdateNotaDelegate.swift in Sources */,
-				AF18F8E0251400890009617A /* NewNotaViewController.swift in Sources */,
+				AF34F40E250032AC00BFAB2D /* UpdateNoteDelegate.swift in Sources */,
 				AF34F4122500331200BFAB2D /* UIView.swift in Sources */,
 				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
-				AF21B47224E5D25900D44D39 /* Nota.swift in Sources */,
-				AFC2A32224E6C70C001A266D /* VisualizarNotaViewController.swift in Sources */,
+				AF21B47224E5D25900D44D39 /* Note.swift in Sources */,
+				AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */,
 				AFC2A32624E87A13001A266D /* CriarEditarNotaViewController.swift in Sources */,
 				AF34F418250037D900BFAB2D /* File.swift in Sources */,
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
-				AF34F40C2500328000BFAB2D /* NotaDelegate.swift in Sources */,
-				AF34F410250032C700BFAB2D /* NovaNotaDelegate.swift in Sources */,
-				AF4717602501B03900DDC69A /* Livro.swift in Sources */,
-				AF18F8EA251401FD0009617A /* NotaTableViewCell.swift in Sources */,
+				AF34F40C2500328000BFAB2D /* NoteDelegate.swift in Sources */,
+				AF34F410250032C700BFAB2D /* NewNoteDelegate.swift in Sources */,
+				AF4717602501B03900DDC69A /* BookResume.swift in Sources */,
+				AF18F8EA251401FD0009617A /* NoteTableViewCell.swift in Sources */,
 				AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */,
-				AF51DF8A24EDA6D4001C352D /* CapitulosTableViewCell.swift in Sources */,
+				AF4A206225C8949000F6F14E /* Book.swift in Sources */,
+				AF51DF8A24EDA6D4001C352D /* ChaptersTableViewCell.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
 				AF7F203524E5589C0058FA2C /* UIColor.swift in Sources */,
-				AF51DF8E24EDC0B9001C352D /* LivrosTableViewSections.swift in Sources */,
-				AFF120EF24EABBAB000A9B12 /* NotaRepository.swift in Sources */,
+				AF51DF8E24EDC0B9001C352D /* BooksTableViewSections.swift in Sources */,
+				AFF120EF24EABBAB000A9B12 /* NoteRepository.swift in Sources */,
 				AF5D369425A5EC4E00DE3487 /* NotasCollectionDelegates.swift in Sources */,
 				AFBB37162516D428004B7105 /* UITextView.swift in Sources */,
 				AF5D369925A5F0C800DE3487 /* ConfigTableDelegates.swift in Sources */,
 				AF1868B42506E494001731AA /* ExtensionBibliaViewController.swift in Sources */,
-				AF1947C424EBF02200724B23 /* Biblia.swift in Sources */,
+				AF1947C424EBF02200724B23 /* Bible.swift in Sources */,
 				AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */,
-				AF34F4082500322700BFAB2D /* CapitulosTableViewCellDelegate.swift in Sources */,
-				AFFA1D1124EC1C6B00399F96 /* LivrosTableViewController.swift in Sources */,
+				AF34F4082500322700BFAB2D /* ChaptersTableViewCellDelegate.swift in Sources */,
+				AFFA1D1124EC1C6B00399F96 /* BooksTableViewController.swift in Sources */,
 				AF3EB88B2508432A003F988F /* ConfigViewController.swift in Sources */,
 				AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */,
 				AF5D36A125A600EA00DE3487 /* LivrosTableViewDelegates.swift in Sources */,
 				AF7F203D24E583DA0058FA2C /* BackView.swift in Sources */,
 				AF34F4162500370A00BFAB2D /* Json.swift in Sources */,
-				AF89E00D2511662600B5FEDB /* Verso.swift in Sources */,
-				AF34F406250031DF00BFAB2D /* NotasCellDelegate.swift in Sources */,
-				AF34F40A2500326700BFAB2D /* LivrosTableViewDelegate.swift in Sources */,
-				AF7F203924E55B060058FA2C /* BibliaViewController.swift in Sources */,
+				AF89E00D2511662600B5FEDB /* Chapter.swift in Sources */,
+				AF34F406250031DF00BFAB2D /* NotesCellDelegate.swift in Sources */,
+				AF34F40A2500326700BFAB2D /* BooksTableViewDelegate.swift in Sources */,
+				AF7F203924E55B060058FA2C /* BibleViewController.swift in Sources */,
 				AF34F4142500334E00BFAB2D /* MyColors.swift in Sources */,
-				AF7F203B24E55B1D0058FA2C /* NotasViewController.swift in Sources */,
+				AF7F203B24E55B1D0058FA2C /* NotesViewController.swift in Sources */,
 				AF4717622501B25000DDC69A /* Constantes.swift in Sources */,
-				AF18F8E5251401ED0009617A /* VersiculoTableViewCell.swift in Sources */,
-				AFDB6D6124EEA80000F58A6D /* CapitulosCollectionViewCell.swift in Sources */,
+				AF18F8E5251401ED0009617A /* VersicleTableViewCell.swift in Sources */,
+				AFDB6D6124EEA80000F58A6D /* ChaptersCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

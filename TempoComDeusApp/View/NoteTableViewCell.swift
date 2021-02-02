@@ -1,5 +1,5 @@
 //
-//  NotaTableViewCell.swift
+//  NoteTableViewCell.swift
 //  TempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 17/09/20.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
+class NoteTableViewCell: UITableViewCell, UITextViewDelegate {
    
-    var nota: Nota = Nota(body: nil, cor: nil, versos: [])
+    var nota: Note = Note(body: nil, color: nil, versos: [])
     
     var color: String? {
         didSet {
-            nota.cor = color ?? ""
-            delegate?.getNota(nota: nota)
+            nota.color = color ?? ""
+            delegate?.getNote(note: nota)
             textView.backgroundColor = .getColor(name: color ?? "nota1")
         }
     }
@@ -43,7 +43,7 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     func textViewDidChange(_ textView: UITextView) {
         nota.body = textView.text
-        delegate?.getNota(nota: nota)
+        delegate?.getNote(note: nota)
         delegate?.updateHeightOfRow(self, textView)
       
     }
@@ -94,7 +94,7 @@ class NotaTableViewCell: UITableViewCell, UITextViewDelegate {
     
 }
 
-extension NotaTableViewCell: ChangeColorDelegate {
+extension NoteTableViewCell: ChangeColorDelegate {
     func didChangeColor(color: String) {
         self.color = color
     }

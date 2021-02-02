@@ -1,5 +1,5 @@
 //
-//  CapitulosTableViewCell.swift
+//  ChaptersTableViewCell.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 19/08/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CapitulosTableViewCell: UITableViewCell {
+class ChaptersTableViewCell: UITableViewCell {
 
     var items: Int? {
         didSet {
@@ -30,7 +30,7 @@ class CapitulosTableViewCell: UITableViewCell {
         return collectionView
       }()
     
-    weak var delegate: CapitulosTableViewCellDelegate?
+    weak var delegate: ChaptersTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,7 +42,7 @@ class CapitulosTableViewCell: UITableViewCell {
     }
     
     func setupCollection() {
-        collectionView.register(CapitulosCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(ChaptersCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         contentView.addSubview(collectionView)
         collectionView.anchor(top: contentView.topAnchor,
                               left: contentView.leftAnchor,
@@ -60,7 +60,7 @@ class CapitulosTableViewCell: UITableViewCell {
     }
 
 }
-extension CapitulosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource,
+extension ChaptersTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items ?? 0
@@ -69,7 +69,7 @@ UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-            as? CapitulosCollectionViewCell else { return UICollectionViewCell()}
+            as? ChaptersCollectionViewCell else { return UICollectionViewCell()}
         cell.createCell(textLabel: "\(indexPath.row + 1)")
         return cell
     }

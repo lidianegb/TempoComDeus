@@ -9,8 +9,6 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-
-    // MARK: Properties
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -18,9 +16,7 @@ class MainTabBarController: UITabBarController {
         configureViewControllers()
         configureUI()
     }
-    
-    // MARK: Selectors
-    
+ 
     // MARK: Helpers
         
     func configureUI() {
@@ -28,20 +24,21 @@ class MainTabBarController: UITabBarController {
         tabBar.clipsToBounds = true
         tabBar.isTranslucent = false
     }
+    
     func configureViewControllers() {
-        let biblia = BibliaViewController()
-        let navBiblia = templeteNavigationController(image: UIImage(named: "icon_biblia_unselected"),
+        let bible = BibleViewController()
+        let navBible = templeteNavigationController(image: UIImage(named: "icon_biblia_unselected"),
                                                      title: "Biblia",
-                                                     rootViewController: biblia)
+                                                     rootViewController: bible)
 
-        let notas = NotasViewController()
-        let navNotas = templeteNavigationController(image: UIImage(named: "icon_nota_unselected"),
-                                                    title: "Anotações", rootViewController: notas)
+        let notes = NotesViewController()
+        let navNotes = templeteNavigationController(image: UIImage(named: "icon_nota_unselected"),
+                                                    title: "Anotações", rootViewController: notes)
         let config = ConfigViewController()
         let navConfig = templeteNavigationController(image: UIImage(systemName: "gear"),
                                                      title: "Ajustes", rootViewController: config)
         
-        viewControllers = [navBiblia, navNotas, navConfig]
+        viewControllers = [navBible, navNotes, navConfig]
         
     }
     

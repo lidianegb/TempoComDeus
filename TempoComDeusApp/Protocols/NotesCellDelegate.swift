@@ -1,5 +1,5 @@
 //
-//  LivrosTableViewDelegate.swift
+//  NotesCellDelegate.swift
 //  TempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 02/09/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol LivrosTableViewDelegate: class {
-    func didSelectSection(abbr: String, chapter: Int)
+protocol NotesCellDelegate: class {
+    func deleteCell(cell: NotesCollectionViewCell)
 }

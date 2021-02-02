@@ -25,14 +25,16 @@ extension JsonDetailError: LocalizedError {
 }
 
 class Json {
-    func encodeLivro(list: [Livro]) throws -> String {
+    
+    func encodeLivro(list: [BookResume]) throws -> String {
         let jsonData = try JSONEncoder().encode(list)
         guard let jsonString = String(data: jsonData, encoding: .utf8) else {
             throw JsonDetailError.failedToEncoder
         }
         return jsonString
      }
-    func encodeBiblia(list: [Biblia]) throws -> String {
+    
+    func encodeBiblia(list: [Book]) throws -> String {
        let jsonData = try JSONEncoder().encode(list)
        guard let jsonString = String(data: jsonData, encoding: .utf8) else {
            throw JsonDetailError.failedToEncoder
@@ -40,21 +42,20 @@ class Json {
        return jsonString
     }
      
-    func decodeBiblia(jsonString: String) throws -> [Biblia] {
+    func decodeBiblia(jsonString: String) throws -> [Book] {
        
         guard let jsonData = jsonString.data(using: .utf8) else {
             throw JsonDetailError.failedToDecoder
         }
-        let biblia = try JSONDecoder().decode([Biblia].self, from: jsonData)
-        return biblia
+        return try JSONDecoder().decode([Book].self, from: jsonData)
     }
     
-    func decodeLivro(jsonString: String) throws -> [Livro] {
+    func decodeLivro(jsonString: String) throws -> [BookResume] {
           
            guard let jsonData = jsonString.data(using: .utf8) else {
                throw JsonDetailError.failedToDecoder
            }
-           let livro = try JSONDecoder().decode([Livro].self, from: jsonData)
-           return livro
+        
+          return try JSONDecoder().decode([BookResume].self, from: jsonData)
     }
 }

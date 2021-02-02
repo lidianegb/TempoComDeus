@@ -10,7 +10,7 @@ import XCTest
 @testable import tempo_com_Deus
 class NotaRepositoryTest: XCTestCase {
         
-    let sut = NotaRepository()
+    let sut = NoteRepository()
     
     func test_criarNotaRepository_with_itemsEmpty() {
         let input = sut.items.count
@@ -31,7 +31,7 @@ class NotaRepositoryTest: XCTestCase {
     func test_createAndRemoveItem() {
 
         let input = sut.readAllItems().count
-        let nota = Nota(body: "teste", cor: "azul", versos: [])
+        let nota = Note(body: "teste", color: "azul", versos: [])
         if let notaTest = sut.createNewItem(item: nota) {
             let output = sut.readAllItems().count
             XCTAssertEqual(output, input + 1)
@@ -44,7 +44,7 @@ class NotaRepositoryTest: XCTestCase {
     }
     
     func test_deleteItemNill() {
-        let nota = Nota(body: "teste", cor: "teste", versos: [])
+        let nota = Note(body: "teste", color: "teste", versos: [])
         let output = sut.delete(itemId: nota.notaId)
         XCTAssertEqual(output, false)
     }
@@ -56,7 +56,7 @@ class NotaRepositoryTest: XCTestCase {
 //    }
     
     func test_readItem() {
-        let nota = Nota(body: "teste", cor: "azul", versos: [])
+        let nota = Note(body: "teste", color: "azul", versos: [])
         guard let notaTest = sut.createNewItem(item: nota) else { return }
         let notaRead = notaTest
         XCTAssertEqual(notaRead.notaId, notaTest.notaId)
@@ -65,7 +65,7 @@ class NotaRepositoryTest: XCTestCase {
     
     func test_readItemNil() {
          
-        let notaTest = Nota(body: "teste", cor: "azul", versos: [])
+        let notaTest = Note(body: "teste", color: "azul", versos: [])
         let notaRead = sut.readItem(itemId: notaTest.notaId)
         XCTAssertNil(notaRead)
         
@@ -73,7 +73,7 @@ class NotaRepositoryTest: XCTestCase {
         
     func test_updateItem() {
         let input = "teste_update"
-        let nota = Nota(body: "teste", cor: "azul", versos: [])
+        let nota = Note(body: "teste", color: "azul", versos: [])
         guard let notaTest = sut.createNewItem(item: nota) else {return}
         notaTest.body = input
         sut.update(item: notaTest)

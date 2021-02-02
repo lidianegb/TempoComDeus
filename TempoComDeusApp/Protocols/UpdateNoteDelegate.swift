@@ -1,5 +1,5 @@
 //
-//  NotaDelegate.swift
+//  UpdateNoteDelegate.swift
 //  TempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 02/09/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol NotaDelegate: class {
-    func didChange(body: String, cor: String, notaId: UUID)
+protocol UpdateNoteDelegate: class {
+    func notaIsUpdated(updated: Bool)
 }

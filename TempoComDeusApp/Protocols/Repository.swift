@@ -8,7 +8,7 @@
 
 import Foundation
 protocol Repository: class {
-    associatedtype Item: Nota
+    associatedtype Item: Note
    
     var items: [Item] { get set }
       
