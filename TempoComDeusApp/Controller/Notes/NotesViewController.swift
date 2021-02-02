@@ -90,7 +90,7 @@ class NotesViewController: UIViewController {
       // MARK: Selectors
 
     @objc func createNewNota() {
-        let novaNotaViewController = CrieateAndEditNoteViewController(noteRepository: noteRepository,
+        let novaNotaViewController = CreateAndEditNoteViewController(noteRepository: noteRepository,
                                                                       noteId: UUID(),
                                                                       action: .create)
         novaNotaViewController.modalPresentationStyle = .fullScreen

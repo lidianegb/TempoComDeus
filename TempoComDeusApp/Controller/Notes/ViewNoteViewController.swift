@@ -88,7 +88,7 @@ class ViewNoteViewController: UIViewController {
     
     // MARK: Selectors
     @objc  func editNota() {
-        let editNoteViewController = CrieateAndEditNoteViewController(noteRepository: noteRepository,
+        let editNoteViewController = CreateAndEditNoteViewController(noteRepository: noteRepository,
                                                                       noteId: noteID,
                                                                       action: .edit)
         editNoteViewController.onDidChange = {body, color, noteId in

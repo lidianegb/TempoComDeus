@@ -1,5 +1,5 @@
 //
-//  NotasCollectionDelegates.swift
+//  NotesCollectionDelegates.swift
 //  TempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 06/01/21.

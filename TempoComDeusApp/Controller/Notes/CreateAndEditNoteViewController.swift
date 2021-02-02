@@ -1,5 +1,5 @@
 //
-//  CrieateAndEditNoteViewController.swift
+//  CreateAndEditNoteViewController.swift
 //  tempoComDeusApp
 //
 //  Created by Lidiane Gomes Barbosa on 15/08/20.
@@ -9,7 +9,7 @@ import UIKit
 enum Action {
     case edit, create
 }
-class CrieateAndEditNoteViewController: UIViewController, UITextViewDelegate {
+class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     // MARK: Properties
     let backView = BackView()
     private let noteRepository: NoteRepository
