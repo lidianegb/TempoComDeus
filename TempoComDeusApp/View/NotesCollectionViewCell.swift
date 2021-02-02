@@ -11,7 +11,7 @@ import Foundation
 
 class NotesCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
 
-    weak var delegate: NotesCellDelegate?
+    var onDeleteCell: ((_ cell: NotesCollectionViewCell) -> Void)?
     
     var nota: Note? {
        didSet {
@@ -93,7 +93,7 @@ class NotesCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
                              paddingRight: 12,
                              width: 20,
                              height: 20)
-        buttonDelete.addTarget(self, action: #selector(displayActionSheet), for: .touchUpInside)
+        buttonDelete.addTarget(self, action: #selector(deleteCell), for: .touchUpInside)
     }
     
     private func addTextDate() {
@@ -122,25 +122,7 @@ class NotesCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
         }
     }
     
-   @objc func displayActionSheet() {
-        let menu = UIAlertController(title: nil, message: "Deletar nota?", preferredStyle: .actionSheet)
-        let deleteAtion = UIAlertAction(title: "Deletar", style: .destructive, handler: { _ in
-                    self.delegate?.deleteCell(cell: self)
-                }
-           
-            )
-
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-            
-        menu.addAction(deleteAtion)
-        menu.addAction(cancelAction)
-    
-        let view = self.delegate as? UIViewController
-        view?.present(menu, animated: true, completion: nil)
-    
-        menu.view.subviews.flatMap({$0.constraints}).filter { (one: NSLayoutConstraint) -> (Bool)  in
-        return (one.constant < 0) && (one.secondItem == nil) &&  (one.firstAttribute == .width)
-        }.first?.isActive = false
-  
-   }
+    @objc func deleteCell() {
+        onDeleteCell?(self)
+    }
 }

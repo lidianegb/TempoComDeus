@@ -23,7 +23,9 @@ UICollectionViewDelegateFlowLayout {
          
         myCell.nota = notes[indexPath.row]
         myCell.createCell()
-        myCell.delegate = self
+        myCell.onDeleteCell = { cell in
+            self.displayActionSheet(cell: cell)
+        }
         return myCell
     }
     

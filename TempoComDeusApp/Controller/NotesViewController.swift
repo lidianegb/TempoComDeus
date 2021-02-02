@@ -147,18 +147,37 @@ class NotesViewController: UIViewController {
                               paddingRight: 8)
         
        }
-}
-
-extension NotesViewController: NotesCellDelegate {
+    
+    func displayActionSheet(cell: NotesCollectionViewCell) {
+            let menu = UIAlertController(title: nil, message: "Deletar nota?", preferredStyle: .actionSheet)
+            let deleteAtion = UIAlertAction(title: "Deletar", style: .destructive, handler: { _ in
+                self.deleteCell(cell: cell)
+                    }
+    
+                )
+    
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+    
+            menu.addAction(deleteAtion)
+            menu.addAction(cancelAction)
+    
+            self.present(menu, animated: true, completion: nil)
+    
+            menu.view.subviews.flatMap({$0.constraints}).filter { (one: NSLayoutConstraint) -> (Bool)  in
+            return (one.constant < 0) && (one.secondItem == nil) &&  (one.firstAttribute == .width)
+            }.first?.isActive = false
+    
+       }
+    
     func deleteCell(cell: NotesCollectionViewCell) {
-        if let indexPath = collectionView.indexPath(for: cell) {
-            collectionView.performBatchUpdates({
-               _ = noteRepository.delete(itemId: notes[indexPath.row].notaId)
-                collectionView.deleteItems(at: [indexPath])
-                notes = noteRepository.readAllItems()
-            }, completion: nil)
+            if let indexPath = collectionView.indexPath(for: cell) {
+                collectionView.performBatchUpdates({
+                   _ = noteRepository.delete(itemId: notes[indexPath.row].notaId)
+                    collectionView.deleteItems(at: [indexPath])
+                    notes = noteRepository.readAllItems()
+                }, completion: nil)
+            }
         }
-    }
 }
 
 extension NotesViewController: NewNoteDelegate {
