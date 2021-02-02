@@ -13,7 +13,3 @@ protocol NewNoteDelegate: class {
     func updateHeightOfRow(_ cell: NoteTableViewCell, _ textView: UITextView)
     func getVerses(verses: [Chapter])
 }
-
-protocol ChangeColorDelegate: class {
-    func didChangeColor(color: String)
-}

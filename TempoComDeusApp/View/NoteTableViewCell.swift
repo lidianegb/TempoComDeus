@@ -93,9 +93,3 @@ class NoteTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
 }
-
-extension NoteTableViewCell: ChangeColorDelegate {
-    func didChangeColor(color: String) {
-        self.color = color
-    }
-}
