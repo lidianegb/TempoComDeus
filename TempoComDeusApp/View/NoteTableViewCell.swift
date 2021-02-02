@@ -19,7 +19,7 @@ class NoteTableViewCell: UITableViewCell, UITextViewDelegate {
             textView.backgroundColor = .getColor(name: color ?? "nota1")
         }
     }
-    weak var delegate: NewNotaDelegate?
+    weak var delegate: NewNoteDelegate?
     
     var textView: UITextView = {
         let text = UITextView()

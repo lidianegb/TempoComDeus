@@ -10,7 +10,7 @@ import UIKit
 
 class VersicleTableViewCell: UITableViewCell {
     let backView = BackView()
-    weak var delegate: NewNotaDelegate?
+    weak var delegate: NewNoteDelegate?
     
     var versoLabel: UILabel = {
         let text = UILabel()

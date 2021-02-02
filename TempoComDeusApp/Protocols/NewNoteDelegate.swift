@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-protocol NewNotaDelegate: class {
+protocol NewNoteDelegate: class {
     func getNote(note: Note)
     func updateHeightOfRow(_ cell: NoteTableViewCell, _ textView: UITextView)
     func getVerses(verses: [Chapter])
