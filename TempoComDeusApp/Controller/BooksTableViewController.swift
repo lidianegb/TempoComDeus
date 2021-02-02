@@ -27,7 +27,7 @@ class BooksTableViewController: UIViewController {
         return tableView
     }()
     
-    weak var delegate: BooksTableViewDelegate?
+    var onDidSelectSection: ((_ abbreviation: String, _ chapter: Int) -> Void)!
     
     let cancelButton: UIButton = {
         let button = UIButton()
@@ -83,7 +83,7 @@ class BooksTableViewController: UIViewController {
     }
     
     func didTap(chapter: Int) {
-        self.delegate?.didSelectSection(abbr: self.abbr ?? " ", chapter: chapter)
+        onDidSelectSection(self.abbr ?? " ", chapter)
         self.dismiss(animated: true, completion: nil)
     }
     

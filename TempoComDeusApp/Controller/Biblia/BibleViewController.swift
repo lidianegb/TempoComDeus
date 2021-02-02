@@ -141,7 +141,9 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     
     @objc func showBooks() {
         let livrosTableView = BooksTableViewController()
-        livrosTableView.delegate = self
+        livrosTableView.onDidSelectSection = { abbrev, chapter in
+            self.didSelectSection(abbr: abbrev, chapter: chapter)
+        }
         self.present(livrosTableView, animated: true)
     }
     

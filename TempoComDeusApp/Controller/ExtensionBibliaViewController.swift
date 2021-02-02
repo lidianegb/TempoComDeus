@@ -41,9 +41,7 @@ extension BibleViewController: UITableViewDelegate, UITableViewDataSource {
         myCell.createCell(num: num, verso: verso)
         return myCell
     }
-}
-
-extension BibleViewController: BooksTableViewDelegate {
+    
     func didSelectSection(abbr: String, chapter: Int) {
         self.chapter = chapter
         self.abbrev = abbr
