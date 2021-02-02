@@ -50,8 +50,8 @@ extension BibleViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         version = dataPicker[row].abbrev
-        allBooks = File().readBibleByVersion(version: version)
-        actualBook = getActualBook(abbreviation: abbrev)
+        bible.booksResume = File().readBibleByVersion(version: version)
+        actualBook = bible.getActualBook(abbreviation: abbrev)
     }
     
     @objc func dmissPicker() {

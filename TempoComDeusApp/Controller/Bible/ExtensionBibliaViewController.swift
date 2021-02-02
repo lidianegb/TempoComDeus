@@ -45,7 +45,7 @@ extension BibleViewController: UITableViewDelegate, UITableViewDataSource {
     func didSelectSection(abbr: String, chapter: Int) {
         self.chapter = chapter
         self.abbrev = abbr
-        actualBook = getActualBook(abbreviation: abbr)
+        actualBook = bible.getActualBook(abbreviation: abbr)
         tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
     }
 }

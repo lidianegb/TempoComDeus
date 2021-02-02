@@ -9,15 +9,10 @@
 import Foundation
 
 class Bible {
-
+    var booksResume = [BookResume]()
     var books = [Book]()
     
-    func getBookName(bookResume: BookResume) -> String {
-        for book in books where book.abbrev["pt"] == bookResume.abbrev {
-            return book.name
-        }
-        
-        return ""
+    func getActualBook(abbreviation: String) -> BookResume? {
+        booksResume.filter {$0.abbrev == abbreviation}.first ?? nil
     }
-    
 }

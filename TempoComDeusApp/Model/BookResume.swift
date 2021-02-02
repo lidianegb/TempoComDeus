@@ -21,4 +21,7 @@ class BookResume: Codable {
         case abbrev, chapters, name
     }
     
+    func getVersesByChapter(chapter: Int) -> [String] {
+        return chapters[chapter]
+    }
 }

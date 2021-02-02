@@ -8,12 +8,17 @@
 
 import Foundation
 class Chapter: Codable {
-    let bookName: String
-    let number: Int
-    let versicles: [Int: String]
-    let version: String
+    var bookName: String
+    var abbreviation: String
+    var number: Int
+    var versicles: [String]
+    var version: String
     
-    init(book: String, number: Int, versicles: [Int: String], version: String) {
+    init(book: String = "",
+         abbreviation: String = ABBR,
+         number: Int = 0, versicles: [String] = [],
+         version: String = VERSION) {
+        self.abbreviation = abbreviation
         self.bookName = book
         self.number = number
         self.versicles = versicles
@@ -21,14 +26,10 @@ class Chapter: Codable {
     }
     
     func formatedTitle() -> String {
-        return " \(version.uppercased()) - \(bookName) \(number)"
+        "\(bookName) \(number)"
     }
     
-    func getVersiculos() -> [String] {
-        var versos: [String] = []
-        for (key, value) in versicles {
-            versos.append("\(key) \(value)")
-        }
-        return versos
+    func formatedVersion() -> String {
+        version.uppercased()
     }
 }
