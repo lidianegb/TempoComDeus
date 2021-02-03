@@ -12,7 +12,7 @@ import UIKit
 extension NotesViewController: UICollectionViewDataSource, UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         notes.count
+        notesViewModel.numberOfNotes()
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -21,7 +21,7 @@ UICollectionViewDelegateFlowLayout {
                                                               for: indexPath) as? NotesCollectionViewCell
             else {return UICollectionViewCell()}
          
-        myCell.nota = notes[indexPath.row]
+        myCell.note = notesViewModel.noteAtIndex(indexPath.row)
         myCell.createCell()
         myCell.onDeleteCell = { cell in
             self.displayActionSheet(cell: cell)
@@ -47,9 +47,9 @@ UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
         let viewNote = ViewNoteViewController(notaRepository: noteRepository,
-                                                          notaId: notes[indexPath.row].notaId)
-        viewNote.noteIsUpdated = { updated in
-            self.notaIsUpdated(updated: updated)
+                                              notaId: notesViewModel.noteIdAtIndex(indexPath.row))
+        viewNote.noteIsUpdated = { 
+            self.notaIsUpdated()
         }
         
         viewNote.modalPresentationStyle = .fullScreen

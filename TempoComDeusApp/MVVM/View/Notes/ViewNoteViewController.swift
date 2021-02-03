@@ -11,15 +11,15 @@ import UIKit
 class ViewNoteViewController: UIViewController {
     // MARK: Properties
     
-    var noteIsUpdated: ((_ updated: Bool) -> Void)?
+    var noteIsUpdated: (() -> Void)?
     var stackTopButtons: UIStackView!
     var color: Int
     private let noteRepository: NoteRepository
     private let noteID: UUID
-    private var note: Note {
+    private var noteViewModel: NoteViewModel {
         didSet {
-            textView.text = note.body
-            textView.backgroundColor = .getColor(number: note.color)
+            textView.text = noteViewModel.body
+            textView.backgroundColor = .getColor(number: noteViewModel.color)
         }
     }
     
@@ -68,8 +68,9 @@ class ViewNoteViewController: UIViewController {
     init(notaRepository: NoteRepository, notaId: UUID) {
         self.noteRepository = notaRepository
         self.noteID = notaId
-        self.note = notaRepository.readItem(itemId: noteID) ?? Note(body: nil, color: 1)
-        self.color = note.color
+        let note = noteRepository.readItem(itemId: noteID)
+        self.noteViewModel = NoteViewModel(note: note)
+        self.color = noteViewModel.color
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -92,7 +93,7 @@ class ViewNoteViewController: UIViewController {
     }
     
     @objc func shareNota() {
-        let viewActivity = UIActivityViewController(activityItems: [note.body], applicationActivities: [])
+        let viewActivity = UIActivityViewController(activityItems: [noteViewModel.body], applicationActivities: [])
         self.present(viewActivity, animated: true)
     }
     
@@ -111,8 +112,8 @@ class ViewNoteViewController: UIViewController {
     }
     
     func addTextView() {
-        textView.text = note.body
-        textView.backgroundColor = .getColor(number: note.color)
+        textView.text = noteViewModel.body
+        textView.backgroundColor = .getColor(number: noteViewModel.color)
         
         view.addSubview(textView)
         textView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
@@ -131,7 +132,7 @@ class ViewNoteViewController: UIViewController {
     }
     
     func didChange(noteId: UUID) {
-        note = noteRepository.readItem(itemId: noteId) ?? Note(body: nil, color: 1)
-        noteIsUpdated?(true)
+        noteViewModel = NoteViewModel(note: noteRepository.readItem(itemId: noteID))
+        noteIsUpdated?()
     }
 }

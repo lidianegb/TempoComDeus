@@ -24,7 +24,7 @@ extension Repository {
     
     func createNewItem(item: Item) -> Item? {
         if let data = try? JSONEncoder().encode(item) {
-            FileHelper().createFile(with: data, name: item.notaId.uuidString)
+            FileHelper().createFile(with: data, name: item.noteId.uuidString)
                  let item = try? JSONDecoder().decode(Item.self, from: data)
                 return item
         }
@@ -56,7 +56,7 @@ extension Repository {
     
     func update(item: Item) {
         if let data = try? JSONEncoder().encode(item) {
-            FileHelper().updateFile(at: item.notaId.uuidString, data: data)
+            FileHelper().updateFile(at: item.noteId.uuidString, data: data)
         }
     }
     

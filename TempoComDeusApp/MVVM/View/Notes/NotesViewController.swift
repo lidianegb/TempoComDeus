@@ -38,18 +38,11 @@ class NotesViewController: UIViewController {
           NoteRepository()
     }
     
-    var notes: [Note] = [] {
-         didSet {
-             if notes.isEmpty {
-                initialLabel.isHidden = false
-                collectionView.isHidden = true
-             } else {
-                collectionView.isHidden = false
-                initialLabel.isHidden = true
-            }
-            collectionView.reloadData()
-         }
-     }
+    var notesViewModel: NotesViewModel! {
+        didSet {
+            self.updateUI()
+        }
+    }
      
     let initialLabel: UILabel = {
         var label = UILabel()
@@ -74,7 +67,7 @@ class NotesViewController: UIViewController {
       // MARK: Lifecycle
       override func viewDidLoad() {
         super.viewDidLoad()
-        notes = noteRepository.readAllItems()
+        notesViewModel = NotesViewModel(noteRepository: noteRepository)
         fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
         configureUI()
         addTextInicial()
@@ -93,7 +86,10 @@ class NotesViewController: UIViewController {
                                                                       action: .create)
         novaNotaViewController.modalPresentationStyle = .fullScreen
         novaNotaViewController.onUpdateNotes = {
-            self.updateNotes(notes: self.noteRepository.readAllItems())
+            self.notesViewModel.updateNotes()
+            DispatchQueue.main.async {
+                self.updateUI()
+            }
         }
         self.present(novaNotaViewController, animated: true)
     }
@@ -152,20 +148,27 @@ class NotesViewController: UIViewController {
     func deleteCell(cell: NotesCollectionViewCell) {
         if let indexPath = collectionView.indexPath(for: cell) {
             collectionView.performBatchUpdates({
-                _ = noteRepository.delete(itemId: notes[indexPath.row].notaId)
+                _ = noteRepository.delete(itemId: notesViewModel.noteIdAtIndex(indexPath.row))
                 collectionView.deleteItems(at: [indexPath])
-                notes = noteRepository.readAllItems()
+                notesViewModel.updateNotes()
+                updateUI()
             }, completion: nil)
         }
     }
     
-    func notaIsUpdated(updated: Bool) {
-        if updated {
-            notes = noteRepository.readAllItems()
+    func updateUI() {
+        if notesViewModel.isEmpty() {
+            initialLabel.isHidden = false
+            collectionView.isHidden = true
+        } else {
+            collectionView.isHidden = false
+            initialLabel.isHidden = true
         }
+        collectionView.reloadData()
     }
     
-    func updateNotes(notes: [Note]) {
-        self.notes = notes
+    func notaIsUpdated() {
+        notesViewModel.updateNotes()
+        updateUI()
     }
 }

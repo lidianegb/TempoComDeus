@@ -52,6 +52,8 @@
 		AF89E00D2511662600B5FEDB /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89E00C2511662600B5FEDB /* Chapter.swift */; };
 		AF8E2C3B25CB1065008A1CC7 /* UserDefaultsPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */; };
 		AF8E2C4325CB1DF3008A1CC7 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C4225CB1DF3008A1CC7 /* UIAlertController.swift */; };
+		AF8E2C4C25CB21D2008A1CC7 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */; };
+		AF8E2C5425CB21F1008A1CC7 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */; };
 		AFBB37162516D428004B7105 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB37152516D428004B7105 /* UITextView.swift */; };
 		AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */; };
 		AFC2A32624E87A13001A266D /* CreateAndEditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */; };
@@ -142,6 +144,8 @@
 		AF89E00C2511662600B5FEDB /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPersistence.swift; sourceTree = "<group>"; };
 		AF8E2C4225CB1DF3008A1CC7 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 		AFBB37152516D428004B7105 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNoteViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndEditNoteViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 		AF7F1FFF24E557440058FA2C /* TempoComDeusApp */ = {
 			isa = PBXGroup;
 			children = (
+				AF8E2C4725CB2113008A1CC7 /* MVVM */,
 				AF6A1E3E24EFFB0800FF46FF /* .swiftlint.yml */,
 				AF7F200E24E557450058FA2C /* Info.plist */,
 				AFF7C7D425A35F35002694B3 /* Shared */,
@@ -311,7 +316,6 @@
 				AF89E00C2511662600B5FEDB /* Chapter.swift */,
 				AF4A206125C8949000F6F14E /* Book.swift */,
 				AF47175F2501B03900DDC69A /* BookResume.swift */,
-				AF21B47124E5D25900D44D39 /* Note.swift */,
 				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
 				AF015F9725C9BEE800F6861E /* Action.swift */,
 				AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */,
@@ -339,7 +343,6 @@
 				AF45FC7025C9A320000EE4C6 /* MainTabBar */,
 				AF4A205D25C8934000F6F14E /* Bible */,
 				AF45FC6825C9A2B9000EE4C6 /* Books */,
-				AF45FC6725C9A28F000EE4C6 /* Notes */,
 				AF45FC6F25C9A2FE000EE4C6 /* Configuration */,
 			);
 			path = Controller;
@@ -355,6 +358,41 @@
 				AF4717612501B25000DDC69A /* Constantes.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AF8E2C4725CB2113008A1CC7 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				AF8E2C4A25CB2131008A1CC7 /* ViewModel */,
+				AF8E2C4925CB212B008A1CC7 /* View */,
+				AF8E2C4825CB2124008A1CC7 /* Model */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		AF8E2C4825CB2124008A1CC7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AF21B47124E5D25900D44D39 /* Note.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AF8E2C4925CB212B008A1CC7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF45FC6725C9A28F000EE4C6 /* Notes */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF8E2C4A25CB2131008A1CC7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */,
+				AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AFC2A32024E6B8B3001A266D /* Extensions */ = {
@@ -626,6 +664,8 @@
 				AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */,
 				AFF120EB24EAB6A1000A9B12 /* Repository.swift in Sources */,
 				AF34F4122500331200BFAB2D /* UIView.swift in Sources */,
+				AF8E2C5425CB21F1008A1CC7 /* NotesViewModel.swift in Sources */,
+				AF8E2C4C25CB21D2008A1CC7 /* NoteViewModel.swift in Sources */,
 				AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */,
 				AF21B47224E5D25900D44D39 /* Note.swift in Sources */,
 				AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */,

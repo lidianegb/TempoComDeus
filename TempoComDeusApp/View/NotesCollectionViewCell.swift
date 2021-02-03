@@ -13,9 +13,9 @@ class NotesCollectionViewCell: UICollectionViewCell {
 
     var onDeleteCell: ((_ cell: NotesCollectionViewCell) -> Void)?
     
-    var nota: Note? {
+    var note: NoteViewModel? {
        didSet {
-           if let note = nota {
+           if let note = note {
             labelPreview.text = note.body
             wrapperView.backgroundColor = .getColor(number: note.color)
             labelDate.text = calcDate(date: note.date)

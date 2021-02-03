@@ -16,10 +16,10 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     private var stackViewBottom: UIStackView!
     var onUpdateNotes: (() -> Void)?
 
-    private var note: Note {
+    private var noteViewModel: NoteViewModel! {
         didSet {
-            textView.text = note.body
-            textView.backgroundColor = .getColor(number: note.color)
+            textView.text = noteViewModel.body
+            textView.backgroundColor = .getColor(number: noteViewModel.color)
         }
     }
     
@@ -28,7 +28,7 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
             switch action {
             case .create: break
             case .edit:
-                self.saveButton.isEnabled = !(self.textView.text == note.body && color == note.color)
+                self.saveButton.isEnabled = !(self.textView.text == noteViewModel.body && color == noteViewModel.color)
             }
         }
     }
@@ -69,8 +69,8 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
         self.noteRepository = noteRepository
         self.noteID = noteId
         self.action = action
-        self.note = noteRepository.readItem(itemId: noteId) ?? Note(body: nil, color: 1)
-        self.color = note.color
+        noteViewModel = NoteViewModel(note: noteRepository.readItem(itemId: noteId))
+        self.color = noteViewModel.color
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -107,16 +107,14 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
                 self.dismiss(animated: true, completion: nil)
             } else { displayActionSheet() }
         case .edit:
-            if  textView.text == note.body && color == note.color {
+            if  textView.text == noteViewModel.body && color == noteViewModel.color {
                     self.dismiss(animated: true, completion: nil)
             } else { displayActionSheet() }
         }
     }
     
     @objc func salvar() {
-        note.body = textView.text
-        note.color = color
-        noteRepository.update(item: note)
+        noteViewModel.updateNote(text: textView.text, color: color, noteRepository: noteRepository)
         onUpdateNotes?()
         self.dismiss(animated: true, completion: nil)
     }
@@ -200,8 +198,8 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     
     func addTextView() {
         textView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
-        textView.text = note.body
-        textView.backgroundColor = .getColor(number: note.color)
+        textView.text = noteViewModel.body
+        textView.backgroundColor = .getColor(number: noteViewModel.color)
         textView.delegate = self
         view.addSubview(textView)
         textView.anchor(top: stackViewHeader.bottomAnchor,
@@ -248,7 +246,7 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
             case .create:
                 self.saveButton.isEnabled = !textView.text.isEmpty
             case .edit:
-                self.saveButton.isEnabled = !(self.textView.text == note.body && color == note.color)
+                self.saveButton.isEnabled = !(self.textView.text == noteViewModel.body && color == noteViewModel.color)
             }
         }
     }
