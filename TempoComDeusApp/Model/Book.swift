@@ -8,34 +8,35 @@
 
 import Foundation
 class Book: Codable {
-
-    var abbrev: [String: String]
+    var abbreviation: [String: String]
     var name: String
     let author: String
-    let chapters: Int?
+    let totalChapters: Int?
     let group: String?
     let testament: String?
     let version: String?
     var opened: Bool?
+    var chapters: [[String]] = []
    
-    init(abbrev: [String: String],
+    init(abbreviation: [String: String],
          name: String,
          author: String,
-         chapters: Int,
+         totalChapters: Int,
          group: String,
          testament: String,
          version: String) {
    
-        self.abbrev = abbrev
+        self.abbreviation = abbreviation
         self.name = name
         self.author = author
         self.testament = testament
         self.group = group
-        self.chapters = chapters
+        self.totalChapters = totalChapters
         self.version = version
         self.opened = false
     }
+    
     private enum CodingKeys: String, CodingKey {
-        case  name, abbrev, author, group, chapters, testament, version, opened
+        case  name, abbreviation = "abbrev", author, group, totalChapters = "chapters", testament, version, opened
     }
 }

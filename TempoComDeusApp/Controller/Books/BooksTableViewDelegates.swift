@@ -37,7 +37,7 @@ extension BooksTableViewController: UITableViewDelegate, UITableViewDataSource {
                 self.didTap(chapter: chapter)
             }
             
-            cell.createCell(items: tableData[indexPath.section].chapters ?? 0)
+            cell.createCell(items: tableData[indexPath.section].totalChapters ?? 0)
             return cell
         }
     }
@@ -47,24 +47,24 @@ extension BooksTableViewController: UITableViewDelegate, UITableViewDataSource {
             tableData[indexPath.section].opened = false
             let sections = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(sections, with: .none) } else {
-            tableData[indexPath.section].opened = true
+                tableData[indexPath.section].opened = true
             let sections = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(sections, with: .none)
             
         }
-        self.abbr = tableData[indexPath.section].abbrev["pt"]
+        self.abbreviation = tableData[indexPath.section].abbreviation["pt"]
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 44
         } else {
-            let items = Double(tableData[indexPath.section].chapters ?? 0)
-            return calculaHeight(qtdItems: items)
+            let items = Double(tableData[indexPath.section].totalChapters ?? 0)
+            return calcCellHeight(qtdItems: items)
         }
     }
     
-    func calculaHeight(qtdItems: Double) -> CGFloat {
+    func calcCellHeight(qtdItems: Double) -> CGFloat {
         let heigth = ceil(qtdItems / 7.0)
         return CGFloat( heigth == 1 ? 70 : heigth * 50 + 20 )
     }

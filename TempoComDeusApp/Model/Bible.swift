@@ -9,10 +9,38 @@
 import Foundation
 
 class Bible {
-    var booksResume = [BookResume]()
-    var books = [Book]()
+    private var booksResume = [BookResume]()
+    var actualBook: BookResume?
+    var version: String {
+        didSet {
+            self.booksResume = File().readBibleByVersion(version: version)
+            actualBook = getActualBook(abbreviation: abbreviation)
+        }
+    }
+    var abbreviation: String {
+        didSet {
+            self.actualBook = getActualBook(abbreviation: abbreviation)
+        }
+    }
+    var allBooks = [Book]()
     
-    func getActualBook(abbreviation: String) -> BookResume? {
-        booksResume.filter {$0.abbrev == abbreviation}.first ?? nil
+    init(version: String, abbreviation: String) {
+        self.version = version
+        self.abbreviation = abbreviation
+        self.allBooks = File().readBiblia()
+        self.booksResume = File().readBibleByVersion(version: version)
+        self.actualBook = getActualBook(abbreviation: abbreviation)
+    }
+    
+    func updateActualVersion(version: String) {
+        self.version = version
+    }
+    
+    func updateActualBook(abbreviation: String) {
+        self.abbreviation = abbreviation
+    }
+    
+    private func getActualBook(abbreviation: String) -> BookResume? {
+        booksResume.filter {$0.abbreviation == abbreviation}.first
     }
 }

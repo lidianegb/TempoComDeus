@@ -24,28 +24,17 @@ extension BibleViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if chapter < actualBook?.chapters.count ?? 0 {
-            return actualBook?.chapters[chapter].count ?? 0
-        }
-        return 0
+        actualChapter?.totalVerses ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let myCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as?
-            BibleTableViewCell else { return UITableViewCell() }
-        
-        let num = "\(indexPath.row + 1)"
-        let verso =  "\(actualBook?.chapters[chapter ][indexPath.row] ?? "")"
-        
-        myCell.createCell(num: num, verso: verso)
+                BibleTableViewCell else { return UITableViewCell() }
+        if let actualChapter = actualChapter {
+            let num = "\(indexPath.row + 1)"
+            let verso =  actualChapter.versicles[indexPath.row]
+            myCell.createCell(num: num, verso: verso)
+        }
         return myCell
-    }
-    
-    func didSelectSection(abbr: String, chapter: Int) {
-        self.chapter = chapter
-        self.abbrev = abbr
-        actualBook = bible.getActualBook(abbreviation: abbr)
-        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
     }
 }

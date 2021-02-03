@@ -13,6 +13,9 @@ class Chapter: Codable {
     var number: Int
     var versicles: [String]
     var version: String
+    var totalVerses: Int {
+        versicles.count
+    }
     
     init(book: String = "",
          abbreviation: String = ABBR,
@@ -25,11 +28,30 @@ class Chapter: Codable {
         self.version = version
     }
     
+    init(bible: Bible, number: Int) {
+        self.bookName = bible.actualBook?.name ?? ""
+        self.abbreviation = bible.actualBook?.abbreviation ?? "gn"
+        self.number = number
+        self.versicles = bible.actualBook?.getVersesByChapter(chapter: number) ?? []
+        self.version = bible.version 
+    }
+    
+    func update(bible: Bible) {
+        self.bookName = bible.actualBook?.name ?? ""
+        self.abbreviation = bible.actualBook?.abbreviation ?? "gn"
+        self.versicles = bible.actualBook?.getVersesByChapter(chapter: number) ?? []
+        self.version = bible.version
+    }
+    
     func formatedTitle() -> String {
-        "\(bookName) \(number)"
+        "\(bookName) \(number + 1)"
     }
     
     func formatedVersion() -> String {
         version.uppercased()
+    }
+    
+    func getTextVerse(verseNumber: Int) -> String {
+        versicles[verseNumber]
     }
 }

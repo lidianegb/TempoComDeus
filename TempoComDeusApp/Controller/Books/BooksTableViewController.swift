@@ -10,8 +10,8 @@ import UIKit
 
 class BooksTableViewController: UIViewController {
     
-    var tableData: [Book] = File().readBiblia() 
-    var abbr: String?
+    var tableData = File().readBiblia()
+    var abbreviation: String?
     
     let cellId = "cellId"
     let cellSection = "cellSection"
@@ -83,7 +83,7 @@ class BooksTableViewController: UIViewController {
     }
     
     func didTap(chapter: Int) {
-        onDidSelectSection?(self.abbr ?? " ", chapter)
+        onDidSelectSection?(self.abbreviation ?? "gn", chapter)
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -14,31 +14,16 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     let dataPicker = DataPicker.data()
     let cellId = "CellId"
     let defaults = UserDefaults.standard
-    var actualChapter = Chapter()
-    var version: String = NVI
-    var abbrev: String = "gn"
-    let bible = Bible()
+    var bible: Bible?
+    var actualChapter: Chapter? {
+        didSet {
+            updateUI()
+        }
+    }
     var widthTitleButtonConstraint: NSLayoutConstraint?
     
     var fonteSize: Int? {
         didSet {
-            tableView.reloadData()
-        }
-    }
-    var chapter: Int = 0 {
-        didSet {
-            showHiddenArrowsLeftRight()
-            updateDefaultValues()
-            updateButtonTitle()
-            tableView.reloadData()
-        }
-    }
-    
-    var actualBook: BookResume? {
-        didSet {
-            updateDefaultValues()
-            updateButtonTitle()
-            showHiddenArrowsLeftRight()
             tableView.reloadData()
         }
     }
@@ -113,27 +98,21 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDefaultsValues()
-        abbrev = getDefaultAbbrev()
-        version = getDefaultVersion()
-        chapter = getDefaultChapter()
-        bible.booksResume = File().readBibleByVersion(version: version)
-        bible.books = File().readBiblia()
-        actualBook = bible.getActualBook(abbreviation: abbrev)
-        
-        if let actualBook = actualBook {
-            actualChapter.bookName = actualBook.name
-            actualChapter.version = getDefaultVersion()
-            actualChapter.number = getDefaultChapter()
-            actualChapter.versicles = actualBook.getVersesByChapter(chapter: chapter)
-        }
-      
+        setupData()
         fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
-      
         versionButton.delegate = self
-
         configureUI()
     }
     
+    func setupData() {
+        let abbrev = getDefaultAbbrev()
+        let version = getDefaultVersion()
+        let chapter = getDefaultChapter()
+        self.bible = Bible(version: version, abbreviation: abbrev)
+        if let bible = bible {
+            self.actualChapter = Chapter(bible: bible, number: chapter)
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
@@ -164,14 +143,18 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     
     // next
     @objc func rightSwipe() {
-        for (ind, book) in bible.books.enumerated() where abbrev == book.abbrev["pt"] {
-            if chapter <  (book.chapters ?? 0) - 1 {
-                chapter += 1
+        guard let bible = bible, let actualChapter = actualChapter else { return }
+        for (ind, book) in bible.allBooks.enumerated()
+        where actualChapter.abbreviation == book.abbreviation["pt"] {
+            let totalChapters = book.totalChapters ?? 0
+            let actualChapterNumber = actualChapter.number
+            if actualChapterNumber <  totalChapters - 1 {
+                self.actualChapter = Chapter(bible: bible, number: actualChapterNumber + 1)
                 break
-            } else if ind < (bible.books.count - 1) {
-                self.chapter = 0
-                abbrev = bible.booksResume[ind + 1].abbrev
-                actualBook = bible.getActualBook(abbreviation: abbrev)
+            } else if ind < (bible.allBooks.count - 1) {
+                guard let abbrev = bible.allBooks[ind + 1].abbreviation["pt"] else { return }
+                bible.updateActualBook(abbreviation: abbrev)
+                self.actualChapter = Chapter(bible: bible, number: 0)
                 break
             }
         }
@@ -180,14 +163,17 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     
     // voltar
     @objc func leftSwipe() {
-        for (ind, book) in bible.books.enumerated() where abbrev == book.abbrev["pt"] {
-            if chapter > 0 {
-                chapter -= 1
+        guard let bible = bible, let actualChapter = actualChapter else { return }
+        for (ind, book) in bible.allBooks.enumerated()
+        where actualChapter.abbreviation == book.abbreviation["pt"] {
+            let actualChapterNumber = actualChapter.number
+            if actualChapterNumber > 0 {
+                self.actualChapter = Chapter(bible: bible, number: actualChapterNumber - 1)
                 break
             } else if ind > 0 {
-                abbrev = bible.booksResume[ind - 1].abbrev
-                actualBook = bible.getActualBook(abbreviation: abbrev)
-                chapter = (actualBook?.chapters.count ?? 0) - 1
+                guard let abbrev = bible.allBooks[ind - 1].abbreviation["pt"] else { return }
+                bible.updateActualBook(abbreviation: abbrev)
+                self.actualChapter = Chapter(bible: bible, number: (bible.actualBook?.totalChapters ?? 0) - 1)
                 break
             }
         }
@@ -210,18 +196,24 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         setupSwipeGestures()
     }
     
+    func didSelectSection(abbr: String, chapter: Int) {
+        guard let bible = bible else { return }
+        bible.updateActualBook(abbreviation: abbr)
+        self.actualChapter = Chapter(bible: bible, number: chapter)
+        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+    }
+    
     func updateTitleWidthConstraint() {
         titleButton.translatesAutoresizingMaskIntoConstraints = false
         widthTitleButtonConstraint?.isActive = false
-        if let actualBook = actualBook {
-            let buttonTitle = "\(actualBook.name)"  + " " + "\((self.chapter ) + 1)"
-        
-        widthTitleButtonConstraint =
-            titleButton.widthAnchor.constraint(equalToConstant: CGFloat(buttonTitle.count * 10 + 20))
-        widthTitleButtonConstraint?.isActive = true
+        if let actualChapter = actualChapter {
+            let buttonTitle = actualChapter.formatedTitle()
+            widthTitleButtonConstraint =
+                titleButton.widthAnchor.constraint(equalToConstant: CGFloat(buttonTitle.count * 10 + 20))
+            widthTitleButtonConstraint?.isActive = true
         }
     }
-
+    
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
@@ -260,36 +252,44 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         defaults.string(forKey: VERSION) ?? NVI
     }
     
-    private func updateDefaultValues() {
-        defaults.set(abbrev, forKey: ABBR)
-        defaults.set(chapter, forKey: CHAPTER)
-        defaults.set(version, forKey: VERSION)
+    func updateUI() {
+        showHiddenArrowsLeftRight()
+        updateDefaultValues()
+        updateButtonTitle()
+        tableView.reloadData()
     }
     
-    private func showHiddenArrowsLeftRight() {
-        if actualBook?.abbrev == "gn" && chapter == 0 {
+    func updateDefaultValues() {
+        guard let actualChapter = actualChapter else { return }
+        defaults.set(actualChapter.abbreviation, forKey: ABBR)
+        defaults.set(actualChapter.number, forKey: CHAPTER)
+        defaults.set(actualChapter.version, forKey: VERSION)
+    }
+    
+    func showHiddenArrowsLeftRight() {
+        guard let actualChapter = actualChapter else { return }
+        if actualChapter.abbreviation == "gn" && actualChapter.number == 0 {
             leftSwipeButton.isEnabled = false } else {
-            leftSwipeButton.isEnabled = true
-        }
+                leftSwipeButton.isEnabled = true
+            }
         
-        if actualBook?.abbrev == "ap" && chapter == 21 {
+        if actualChapter.abbreviation == "ap" && actualChapter.number == 21 {
             rightSwipeButton.isEnabled = false} else {
-            rightSwipeButton.isEnabled = true
-        }
+                rightSwipeButton.isEnabled = true
+            }
     }
     
-    private func updateButtonTitle() {
-        if let actualBook = actualBook {
-            let buttonTitle = "\(String(describing: actualBook.name))"  + " " + "\((self.chapter ) + 1)"
-            titleButton.setTitle(buttonTitle, for: .normal)
-            let versionButtonTitle = version.uppercased()
-            versionButton.text = versionButtonTitle
-            updateTitleWidthConstraint()
-        }
-      
+    func updateButtonTitle() {
+        guard let actualChapter = actualChapter else { return }
+        let buttonTitle = actualChapter.formatedTitle()
+        titleButton.setTitle(buttonTitle, for: .normal)
+        let versionButtonTitle = actualChapter.formatedVersion()
+        versionButton.text = versionButtonTitle
+        updateTitleWidthConstraint()
+        
     }
     
-    private func setupButtonsNav() {
+    func setupButtonsNav() {
         titleButton.translatesAutoresizingMaskIntoConstraints = false
         titleButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         let stackView = UIStackView(arrangedSubviews: [leftSwipeButton, titleButton, rightSwipeButton])
