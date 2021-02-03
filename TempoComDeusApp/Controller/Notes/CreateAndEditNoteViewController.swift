@@ -262,9 +262,6 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
         menu.addAction(deleteAtion)
         menu.addAction(cancelAction)
         self.present(menu, animated: true, completion: nil)
-        
-        menu.view.subviews.flatMap({$0.constraints}).filter { (one: NSLayoutConstraint) -> (Bool)  in
-        return (one.constant < 0) && (one.secondItem == nil) &&  (one.firstAttribute == .width)
-        }.first?.isActive = false
+        menu.removeErrorConstraints()
     }
 }

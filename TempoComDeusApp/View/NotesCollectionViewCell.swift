@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class NotesCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
+class NotesCollectionViewCell: UICollectionViewCell {
 
     var onDeleteCell: ((_ cell: NotesCollectionViewCell) -> Void)?
     
