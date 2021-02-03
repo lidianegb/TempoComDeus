@@ -38,8 +38,8 @@ class NotesCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
         addTextPreview()
         addButtonDelete()
         addTextDate()
-        setFonteSize()
-        
+        let fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
+        labelPreview.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
     }
     
     private func addWrapperView() {
@@ -110,16 +110,6 @@ class NotesCollectionViewCell: UICollectionViewCell, UIActionSheetDelegate {
                          paddingLeft: 12,
                          paddingBottom: 10,
                          paddingRight: 12)
-    }
-    
-    func setFonteSize() {
-        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
-            UserDefaults.standard.set(17, forKey: FONTSIZE)
-        }
-        let fonteSize: Int? = UserDefaults.standard.integer(forKey: FONTSIZE)
-        if let fonteSize = fonteSize {
-            labelPreview.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
-        }
     }
     
     @objc func deleteCell() {

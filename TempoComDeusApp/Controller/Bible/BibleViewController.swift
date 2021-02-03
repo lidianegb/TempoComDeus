@@ -13,7 +13,6 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     // MARK: Properties
     let dataPicker = DataPicker.data()
     let cellId = "CellId"
-    let defaults = UserDefaults.standard
     var bible: Bible?
     var actualChapter: Chapter? {
         didSet {
@@ -97,17 +96,16 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDefaultsValues()
+        UserDefaultsPersistence.shared.setupDefaultsValues()
         setupData()
-        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
         versionButton.delegate = self
         configureUI()
     }
     
     func setupData() {
-        let abbrev = getDefaultAbbrev()
-        let version = getDefaultVersion()
-        let chapter = getDefaultChapter()
+        let abbrev = UserDefaultsPersistence.shared.getDefaultAbbrev()
+        let version = UserDefaultsPersistence.shared.getDefaultVersion()
+        let chapter = UserDefaultsPersistence.shared.getDefaultChapter()
         self.bible = Bible(version: version, abbreviation: abbrev)
         if let bible = bible {
             self.actualChapter = Chapter(bible: bible, number: chapter)
@@ -115,7 +113,7 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
+        fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
     }
     
     // MARK: Selectors
@@ -227,43 +225,12 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         leftSwipe.direction = .left
         view.addGestureRecognizer(leftSwipe)
     }
-    
-    private func setupDefaultsValues() {
-        if defaults.object(forKey: ABBR) != nil { } else {
-            defaults.set("gn", forKey: ABBR)
-        }
-        
-        if defaults.object(forKey: VERSION) != nil { } else {
-            defaults.set(NVI, forKey: VERSION)
-        }
-        
-        if defaults.object(forKey: CHAPTER) != nil { } else {
-            defaults.set(0, forKey: CHAPTER)
-        }
-    }
-    
-    private func getDefaultChapter() -> Int {
-        defaults.integer(forKey: CHAPTER)
-    }
-    private func getDefaultAbbrev() -> String {
-        defaults.string(forKey: ABBR) ?? "gn"
-    }
-    private func getDefaultVersion() -> String {
-        defaults.string(forKey: VERSION) ?? NVI
-    }
-    
+
     func updateUI() {
         showHiddenArrowsLeftRight()
-        updateDefaultValues()
+        UserDefaultsPersistence.shared.updateDefaultValues(actualChapter: actualChapter)
         updateButtonTitle()
         tableView.reloadData()
-    }
-    
-    func updateDefaultValues() {
-        guard let actualChapter = actualChapter else { return }
-        defaults.set(actualChapter.abbreviation, forKey: ABBR)
-        defaults.set(actualChapter.number, forKey: CHAPTER)
-        defaults.set(actualChapter.version, forKey: VERSION)
     }
     
     func showHiddenArrowsLeftRight() {

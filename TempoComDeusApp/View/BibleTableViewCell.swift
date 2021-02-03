@@ -32,8 +32,9 @@ class BibleTableViewCell: UITableViewCell {
     
     func createCell(num: String, verso: String) {
         backgroundColor = .backViewColor
-        setFonteSize()
         self.verso.text = num + ".  " + verso
+        let fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
+        self.verso.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
         addTextVerso()
     }
     
@@ -54,15 +55,5 @@ class BibleTableViewCell: UITableViewCell {
                      paddingRight: 16)
         translatesAutoresizingMaskIntoConstraints = false
         contentView.bottomAnchor.constraint(equalTo: verso.bottomAnchor, constant: 8).isActive = true
-    }
-    
-    func setFonteSize() {
-        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
-            UserDefaults.standard.set(17, forKey: FONTSIZE)
-        }
-        let fonteSize: Int? = UserDefaults.standard.integer(forKey: FONTSIZE)
-        if let fonteSize = fonteSize {
-            verso.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
-        }
     }
 }

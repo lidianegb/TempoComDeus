@@ -50,6 +50,7 @@
 		AF7F203924E55B060058FA2C /* BibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibleViewController.swift */; };
 		AF7F203B24E55B1D0058FA2C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */; };
 		AF89E00D2511662600B5FEDB /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89E00C2511662600B5FEDB /* Chapter.swift */; };
+		AF8E2C3B25CB1065008A1CC7 /* UserDefaultsPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */; };
 		AFBB37162516D428004B7105 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB37152516D428004B7105 /* UITextView.swift */; };
 		AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */; };
 		AFC2A32624E87A13001A266D /* CreateAndEditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */; };
@@ -138,6 +139,7 @@
 		AF7F203824E55B060058FA2C /* BibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleViewController.swift; sourceTree = "<group>"; };
 		AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		AF89E00C2511662600B5FEDB /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPersistence.swift; sourceTree = "<group>"; };
 		AFBB37152516D428004B7105 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNoteViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndEditNoteViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				AF21B47124E5D25900D44D39 /* Note.swift */,
 				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
 				AF015F9725C9BEE800F6861E /* Action.swift */,
+				AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */,
 				AF4A206225C8949000F6F14E /* Book.swift in Sources */,
 				AF51DF8A24EDA6D4001C352D /* ChaptersTableViewCell.swift in Sources */,
+				AF8E2C3B25CB1065008A1CC7 /* UserDefaultsPersistence.swift in Sources */,
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
 				AF7F203524E5589C0058FA2C /* UIColor.swift in Sources */,
 				AF51DF8E24EDC0B9001C352D /* BooksTableViewSections.swift in Sources */,

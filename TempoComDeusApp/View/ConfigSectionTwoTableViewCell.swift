@@ -46,7 +46,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
         stepper.minimumValue = 17
         stepper.maximumValue = 28
         stepper.stepValue = 1
-        stepper.value = Double(UserDefaults.standard.integer(forKey: FONTSIZE))
+        stepper.value = Double(UserDefaultsPersistence.shared.getDefaultFontSize())
         stepper.setDecrementImage(UIImage(systemName: "minus"), for: .normal)
         stepper.setIncrementImage(UIImage(systemName: "plus"), for: .normal)
         stepper.layer.cornerRadius = 8
@@ -61,9 +61,9 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
     }
     
     @objc func changeFontValue() {
-        let fonteSize = Int(stepperControl.value)
-        UserDefaults.standard.set(fonteSize, forKey: FONTSIZE)
-        exampleLabel.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
+        let fontSize = Int(stepperControl.value)
+        UserDefaultsPersistence.shared.updateFontSize(size: fontSize)
+        exampleLabel.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
         self.layoutIfNeeded()
     }
 
@@ -77,12 +77,9 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
     }
     
     func setupFonteSize() {
-        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
-            UserDefaults.standard.set(17, forKey: FONTSIZE)
-        }
-        let fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
-        stepperControl.value = Double(fonteSize)
-        exampleLabel.font = .systemFont(ofSize: CGFloat(fonteSize))
+        let fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
+        stepperControl.value = Double(fontSize)
+        exampleLabel.font = .systemFont(ofSize: CGFloat(fontSize))
     }
     
     func setupWrapperView() {

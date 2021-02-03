@@ -75,14 +75,14 @@ class NotesViewController: UIViewController {
       override func viewDidLoad() {
         super.viewDidLoad()
         notes = noteRepository.readAllItems()
-        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
+        fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
         configureUI()
         addTextInicial()
         setupCollectionView()
       }
     
     override func viewWillAppear(_ animated: Bool) {
-        fonteSize = UserDefaults.standard.integer(forKey: FONTSIZE)
+        fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
     }
       
       // MARK: Selectors

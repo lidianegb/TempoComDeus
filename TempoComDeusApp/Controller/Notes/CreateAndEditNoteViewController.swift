@@ -215,13 +215,8 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     }
     
     func setFonteSize() {
-        if UserDefaults.standard.object(forKey: FONTSIZE) != nil {} else {
-            UserDefaults.standard.set(17, forKey: FONTSIZE)
-        }
-        let fonteSize: Int? = UserDefaults.standard.integer(forKey: FONTSIZE)
-        if let fonteSize = fonteSize {
-            textView.font = UIFont.systemFont(ofSize: CGFloat(fonteSize))
-        }
+        let fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
+        textView.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
     }
     
     func addStackBottom() {
