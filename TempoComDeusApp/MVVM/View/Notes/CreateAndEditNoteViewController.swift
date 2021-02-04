@@ -89,7 +89,11 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
                                                selector: #selector(keyboardHiden),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        view.layoutIfNeeded()
+    }
+   
     override func viewDidAppear(_ animated: Bool) {
         self.textView.becomeFirstResponder()
     }
@@ -116,6 +120,7 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     @objc func salvar() {
         noteViewModel.updateNote(text: textView.text, color: color, noteRepository: noteRepository)
         onUpdateNotes?()
+        textView.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)
     }
     

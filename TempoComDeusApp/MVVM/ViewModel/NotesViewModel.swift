@@ -8,20 +8,24 @@
 import Foundation
 class NotesViewModel {
     private var notes = [NoteViewModel]()
-    var noteRepository: NoteRepository
     
-    init(noteRepository: NoteRepository) {
-        self.noteRepository = noteRepository
-        updateNotes()
+    init(notes: [Note]) {
+        self.notes = fillNotes(notes: notes)
     }
     
-    func updateNotes() {
-        notes.removeAll()
-        let notes = noteRepository.readAllItems()
+    func updateNotes(notes: [Note]) {
+        self.notes.removeAll()
+        self.notes = fillNotes(notes: notes)
+        
+    }
+    
+    private func fillNotes(notes: [Note]) -> [NoteViewModel] {
+        var notesViewModel = [NoteViewModel]()
         for note in notes {
             let noteViewModel = NoteViewModel(note: note)
-            self.notes.append(noteViewModel)
+            notesViewModel.append(noteViewModel)
         }
+        return notesViewModel
     }
     
     func isEmpty() -> Bool {

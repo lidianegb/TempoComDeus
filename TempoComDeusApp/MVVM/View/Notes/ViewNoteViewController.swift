@@ -58,10 +58,6 @@ class ViewNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        addStackViewButtons()
-        addTextView()
-        setFonteSize()
-        
     }
     
     init(notaRepository: NoteRepository, notaId: UUID) {
@@ -101,6 +97,9 @@ class ViewNoteViewController: UIViewController {
     func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .backgroundColor
+        addStackViewButtons()
+        addTextView()
+        setFonteSize()
     }
 
     private func addStackViewButtons() {

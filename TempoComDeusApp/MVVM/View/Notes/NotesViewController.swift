@@ -66,7 +66,7 @@ class NotesViewController: UIViewController {
       // MARK: Lifecycle
       override func viewDidLoad() {
         super.viewDidLoad()
-        notesViewModel = NotesViewModel(noteRepository: noteRepository)
+        notesViewModel = NotesViewModel(notes: noteRepository.readAllItems())
         configureUI()
       }
     
@@ -82,7 +82,7 @@ class NotesViewController: UIViewController {
                                                                       action: .create)
         novaNotaViewController.modalPresentationStyle = .fullScreen
         novaNotaViewController.onUpdateNotes = {
-            self.notesViewModel.updateNotes()
+            self.notesViewModel.updateNotes(notes: self.noteRepository.readAllItems())
             DispatchQueue.main.async {
                 self.updateUI()
             }
@@ -147,7 +147,7 @@ class NotesViewController: UIViewController {
             collectionView.performBatchUpdates({
                 _ = noteRepository.delete(itemId: notesViewModel.noteIdAtIndex(indexPath.row))
                 collectionView.deleteItems(at: [indexPath])
-                notesViewModel.updateNotes()
+                notesViewModel.updateNotes(notes: noteRepository.readAllItems())
                 updateUI()
             }, completion: nil)
         }
@@ -164,7 +164,7 @@ class NotesViewController: UIViewController {
     }
     
     func notaIsUpdated() {
-        notesViewModel.updateNotes()
+        notesViewModel.updateNotes(notes: noteRepository.readAllItems())
         updateUI()
     }
 }
