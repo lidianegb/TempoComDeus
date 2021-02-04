@@ -4,7 +4,6 @@
 //
 //  Created by Lidiane Gomes Barbosa on 01/02/21.
 //  Copyright © 2021 Lidiane Gomes Barbosa. All rights reserved.
-//
 
 import Foundation
 class Book: Codable {
