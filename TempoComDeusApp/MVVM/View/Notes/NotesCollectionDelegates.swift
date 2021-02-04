@@ -10,6 +10,7 @@ import UIKit
 
 extension NotesViewController: UICollectionViewDataSource, UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         notesViewModel.numberOfNotes()
     }
@@ -31,16 +32,14 @@ UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionWidth = collectionView.frame.width
-        let collectionHeight = collectionView.frame.height
-        return calcCellWidthAndHeight(width: collectionWidth, height: collectionHeight)
-    }
-    
-    func calcCellWidthAndHeight(width: CGFloat, height: CGFloat) -> CGSize {
-        let cellWidth =  width / 2 - 15
-        let cellHeigth = height / 5 - 10
         
-        return CGSize(width: cellWidth, height: cellHeigth)
+        let collectionWidth = Float(collectionView.frame.width)
+        let collectionHeight = Float(collectionView.frame.height)
+        
+        let size = (notesViewModel.calculeCellSize(width: collectionWidth,
+                                                          height: collectionHeight))
+        
+        return CGSize(width: CGFloat(size.width), height: CGFloat(size.height))
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -50,8 +49,7 @@ UICollectionViewDelegateFlowLayout {
         viewNote.noteIsUpdated = { 
             self.notaIsUpdated()
         }
-        
-        viewNote.modalPresentationStyle = .fullScreen
+
         self.navigationController?.pushViewController(viewNote, animated: true)
     }
 
