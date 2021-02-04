@@ -140,20 +140,18 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     
     // next
     @objc func rightSwipe() {
-        guard let bible = bible, let actualChapter = actualChapter else { return }
-        for (ind, book) in bible.allBooks.enumerated()
-        where actualChapter.abbreviation == book.abbreviation["pt"] {
-            let totalChapters = book.totalChapters ?? 0
-            let actualChapterNumber = actualChapter.number
-            if actualChapterNumber <  totalChapters - 1 {
-                self.actualChapter = Chapter(bible: bible, number: actualChapterNumber + 1)
-                break
-            } else if ind < (bible.allBooks.count - 1) {
-                guard let abbrev = bible.allBooks[ind + 1].abbreviation["pt"] else { return }
-                bible.updateActualBook(abbreviation: abbrev)
-                self.actualChapter = Chapter(bible: bible, number: 0)
-                break
-            }
+        guard let bible = self.bible, let actualChapter = self.actualChapter else { return }
+        
+        if let actualBook = bible.actualBook,
+                  let nextChapter = actualBook.getNextChapter(actualChapter: actualChapter.number) {
+            
+            self.actualChapter = Chapter(bible: bible, number: nextChapter)
+        
+        } else if let nextBook = bible.getNextBook(),
+                  let abbreviation = nextBook.abbreviation["pt"] {
+                   
+                   bible.updateActualBook(abbreviation: abbreviation)
+                   self.actualChapter = Chapter(bible: bible, number: 0)
         }
         tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
     }
@@ -161,18 +159,19 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     // voltar
     @objc func leftSwipe() {
         guard let bible = bible, let actualChapter = actualChapter else { return }
-        for (ind, book) in bible.allBooks.enumerated()
-        where actualChapter.abbreviation == book.abbreviation["pt"] {
-            let actualChapterNumber = actualChapter.number
-            if actualChapterNumber > 0 {
-                self.actualChapter = Chapter(bible: bible, number: actualChapterNumber - 1)
-                break
-            } else if ind > 0 {
-                guard let abbrev = bible.allBooks[ind - 1].abbreviation["pt"] else { return }
-                bible.updateActualBook(abbreviation: abbrev)
-                self.actualChapter = Chapter(bible: bible, number: (bible.actualBook?.totalChapters ?? 0) - 1)
-                break
-            }
+        
+        if let actualBook = bible.actualBook,
+                  let previewChapter = actualBook.getPreviewChapter(actualChapter: actualChapter.number) {
+            
+            self.actualChapter = Chapter(bible: bible, number: previewChapter)
+        
+        } else if let previewBook = bible.getPreviewBook(),
+                  let abbreviation = previewBook.abbreviation["pt"] {
+                   
+            bible.updateActualBook(abbreviation: abbreviation)
+            let actualChapterNumber = previewBook.totalChapters ?? 0
+            
+            self.actualChapter = Chapter(bible: bible, number: actualChapterNumber - 1)
         }
         tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
     }

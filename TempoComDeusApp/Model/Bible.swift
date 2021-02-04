@@ -42,4 +42,23 @@ class Bible {
     private func getActualBook(abbreviation: String) -> BookResume? {
         booksResume.filter {$0.abbreviation == abbreviation}.first
     }
+    
+    func getNextBook() -> Book? {
+        for (indice, book) in self.allBooks.enumerated()
+        where book.abbreviation["pt"] == actualBook?.abbreviation
+            && indice < self.allBooks.count - 1 {
+                return allBooks[indice + 1]
+            
+        }
+        return nil
+    }
+    
+    func getPreviewBook() -> Book? {
+        for (indice, book) in self.allBooks.enumerated()
+        where book.abbreviation["pt"] == actualBook?.abbreviation
+        && indice > 0 {
+            return allBooks[indice - 1]
+        }
+        return nil
+    }
 }

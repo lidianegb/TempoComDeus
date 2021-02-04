@@ -26,4 +26,18 @@ class BookResume: Codable {
     func getVersesByChapter(chapter: Int) -> [String] {
         return chapters[chapter]
     }
+    
+    func getNextChapter(actualChapter: Int) -> Int? {
+        if actualChapter < self.totalChapters - 1 {
+            return actualChapter + 1
+        }
+        return nil
+    }
+    
+    func getPreviewChapter(actualChapter: Int) -> Int? {
+        if actualChapter > 0 {
+            return actualChapter - 1
+        }
+        return nil
+    }
 }
