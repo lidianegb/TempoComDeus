@@ -59,12 +59,7 @@ extension BooksTableViewController: UITableViewDelegate, UITableViewDataSource {
             return 44
         } else {
             let items = Double(tableData[indexPath.section].totalChapters ?? 0)
-            return calcCellHeight(qtdItems: items)
+            return CGFloat(Calculator.calculeBooksTableViewCellHeight(totalItems: items))
         }
-    }
-    
-    func calcCellHeight(qtdItems: Double) -> CGFloat {
-        let heigth = ceil(qtdItems / 7.0)
-        return CGFloat( heigth == 1 ? 70 : heigth * 50 + 20 )
     }
 }

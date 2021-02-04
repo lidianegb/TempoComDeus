@@ -36,8 +36,8 @@ UICollectionViewDelegateFlowLayout {
         let collectionWidth = Float(collectionView.frame.width)
         let collectionHeight = Float(collectionView.frame.height)
         
-        let size = (notesViewModel.calculeCellSize(width: collectionWidth,
-                                                          height: collectionHeight))
+        let size = Calculator.calculeNotesCollectionViewCellSize(width: collectionWidth,
+                                                          height: collectionHeight)
         
         return CGSize(width: CGFloat(size.width), height: CGFloat(size.height))
     }

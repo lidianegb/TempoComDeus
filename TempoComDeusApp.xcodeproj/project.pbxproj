@@ -51,6 +51,7 @@
 		AF7F203B24E55B1D0058FA2C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */; };
 		AF89E00D2511662600B5FEDB /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89E00C2511662600B5FEDB /* Chapter.swift */; };
 		AF8D318F25CC288400161507 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8D318E25CC288400161507 /* Date.swift */; };
+		AF8D319425CC3A1B00161507 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8D319325CC3A1B00161507 /* Calculator.swift */; };
 		AF8E2C3B25CB1065008A1CC7 /* UserDefaultsPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */; };
 		AF8E2C4325CB1DF3008A1CC7 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C4225CB1DF3008A1CC7 /* UIAlertController.swift */; };
 		AF8E2C4C25CB21D2008A1CC7 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */; };
@@ -144,6 +145,7 @@
 		AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		AF89E00C2511662600B5FEDB /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		AF8D318E25CC288400161507 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		AF8D319325CC3A1B00161507 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPersistence.swift; sourceTree = "<group>"; };
 		AF8E2C4225CB1DF3008A1CC7 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				AF34F4152500370A00BFAB2D /* Json.swift */,
 				AF34F417250037D900BFAB2D /* File.swift */,
 				AF4717612501B25000DDC69A /* Constantes.swift */,
+				AF8D319325CC3A1B00161507 /* Calculator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */,
 				AF7F203524E5589C0058FA2C /* UIColor.swift in Sources */,
 				AF51DF8E24EDC0B9001C352D /* BooksTableViewSections.swift in Sources */,
+				AF8D319425CC3A1B00161507 /* Calculator.swift in Sources */,
 				AFF120EF24EABBAB000A9B12 /* NoteRepository.swift in Sources */,
 				AF5D369425A5EC4E00DE3487 /* NotesCollectionDelegates.swift in Sources */,
 				AFBB37162516D428004B7105 /* UITextView.swift in Sources */,

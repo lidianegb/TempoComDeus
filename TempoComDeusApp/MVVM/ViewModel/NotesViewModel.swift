@@ -43,11 +43,4 @@ class NotesViewModel {
     func noteIdAtIndex(_ index: Int) -> UUID {
         notes[index].noteId
     }
-    
-    func calculeCellSize(width: Float, height: Float) -> (width: Float, height: Float) {
-        let cellWidth =  width / 2 - 15
-        let cellHeigth = height / 5 - 10
-        
-        return (width: cellWidth, height: cellHeigth)
-    }
 }
