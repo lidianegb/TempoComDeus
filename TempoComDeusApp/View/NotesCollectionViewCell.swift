@@ -17,7 +17,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
            if let note = note {
             labelPreview.text = note.body
             wrapperView.backgroundColor = .getColor(number: note.color)
-            labelDate.text = calcDate(date: note.date)
+            labelDate.text = note.date.convertToString()
            }
        }
     }
@@ -68,13 +68,6 @@ class NotesCollectionViewCell: UICollectionViewCell {
                             paddingTop: 10,
                             paddingLeft: 12,
                             paddingRight: 12)
-    }
-    
-    func calcDate(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "pt_BR")
-        dateFormatter.setLocalizedDateFormatFromTemplate("MMMMd")
-        return dateFormatter.string(from: date)
     }
     
     private func addButtonDelete() {

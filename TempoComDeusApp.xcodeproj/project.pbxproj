@@ -50,6 +50,7 @@
 		AF7F203924E55B060058FA2C /* BibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203824E55B060058FA2C /* BibleViewController.swift */; };
 		AF7F203B24E55B1D0058FA2C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */; };
 		AF89E00D2511662600B5FEDB /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89E00C2511662600B5FEDB /* Chapter.swift */; };
+		AF8D318F25CC288400161507 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8D318E25CC288400161507 /* Date.swift */; };
 		AF8E2C3B25CB1065008A1CC7 /* UserDefaultsPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */; };
 		AF8E2C4325CB1DF3008A1CC7 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C4225CB1DF3008A1CC7 /* UIAlertController.swift */; };
 		AF8E2C4C25CB21D2008A1CC7 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */; };
@@ -142,6 +143,7 @@
 		AF7F203824E55B060058FA2C /* BibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleViewController.swift; sourceTree = "<group>"; };
 		AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		AF89E00C2511662600B5FEDB /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		AF8D318E25CC288400161507 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPersistence.swift; sourceTree = "<group>"; };
 		AF8E2C4225CB1DF3008A1CC7 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				AF34F4112500331200BFAB2D /* UIView.swift */,
 				AFBB37152516D428004B7105 /* UITextView.swift */,
 				AF8E2C4225CB1DF3008A1CC7 /* UIAlertController.swift */,
+				AF8D318E25CC288400161507 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
 				AF4717602501B03900DDC69A /* BookResume.swift in Sources */,
 				AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */,
+				AF8D318F25CC288400161507 /* Date.swift in Sources */,
 				AF4A206225C8949000F6F14E /* Book.swift in Sources */,
 				AF51DF8A24EDA6D4001C352D /* ChaptersTableViewCell.swift in Sources */,
 				AF8E2C3B25CB1065008A1CC7 /* UserDefaultsPersistence.swift in Sources */,
