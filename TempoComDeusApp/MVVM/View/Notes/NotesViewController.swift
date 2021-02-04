@@ -67,10 +67,7 @@ class NotesViewController: UIViewController {
       override func viewDidLoad() {
         super.viewDidLoad()
         notesViewModel = NotesViewModel(noteRepository: noteRepository)
-        fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
         configureUI()
-        addTextInicial()
-        setupCollectionView()
       }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,7 +99,8 @@ class NotesViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(createNewNota))
-    
+        addTextInicial()
+        setupCollectionView()
     }
 
     func addTextInicial() {
@@ -163,7 +161,6 @@ class NotesViewController: UIViewController {
             collectionView.isHidden = false
             initialLabel.isHidden = true
         }
-        collectionView.reloadData()
     }
     
     func notaIsUpdated() {
