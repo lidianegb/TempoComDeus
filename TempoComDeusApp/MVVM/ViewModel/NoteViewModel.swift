@@ -6,29 +6,49 @@
 //  Copyright © 2021 Lidiane Gomes Barbosa. All rights reserved.
 
 import Foundation
+import CoreData
 class NoteViewModel {
-    private var note: Note
+    private var note: NoteModel?
+    private var context: NSManagedObjectContext!
+    
     var noteId: UUID {
-        self.note.noteId
+        self.note?.noteId ?? UUID()
     }
-    var body: String {
-        self.note.body
+    var text: String {
+        self.note?.text ?? ""
     }
     var date: Date {
-        self.note.date
+        self.note?.date ?? Date()
     }
-    var color: Int {
-        self.note.color
-    }
-    
-    init(note: Note?) {
-        self.note = note ?? Note()
+    var color: Int16 {
+        self.note?.color ?? 1
     }
     
-    func updateNote(text: String, color: Int, noteRepository: NoteRepository) {
-        self.note.body = text
-        self.note.color = color
-        noteRepository.update(item: self.note)
-        self.note = noteRepository.readItem(itemId: self.noteId) ?? Note()
+    init(context: NSManagedObjectContext, noteId: UUID) {
+        self.context = context
+        if let note = self.fetchNote(noteId: noteId) {
+            self.note = note
+        } else {
+            createNote()
+        }
+    }
+    
+    init(noteModel: NoteModel) {
+        self.note = noteModel
+    }
+    
+    func fetchNote(noteId: UUID) -> NoteModel? {
+        CoreDataService.shared.fetchNote(context: context, noteId: noteId)
+    }
+  
+    func updateNote(text: String, color: Int16) {
+        note?.updateNote(text: text, color: color)
+        CoreDataService.shared.save(context: context)
+    }
+    
+    func createNote() {
+        self.note = NoteModel(context: context)
+        note?.setValues(noteId: UUID(), text: "", color: 1, date: Date())
+        CoreDataService.shared.save(context: context)
     }
 }

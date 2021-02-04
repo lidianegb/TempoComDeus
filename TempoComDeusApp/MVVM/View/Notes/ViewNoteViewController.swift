@@ -6,19 +6,19 @@
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
 
 import UIKit
-
+import CoreData
 class ViewNoteViewController: UIViewController {
     // MARK: Properties
     
     var noteIsUpdated: (() -> Void)?
     var stackTopButtons: UIStackView!
     var color: Int
-    private let noteRepository: NoteRepository
+    private let context: NSManagedObjectContext!
     private let noteID: UUID
     private var noteViewModel: NoteViewModel {
         didSet {
-            textView.text = noteViewModel.body
-            textView.backgroundColor = .getColor(number: noteViewModel.color)
+            textView.text = noteViewModel.text
+            textView.backgroundColor = .getColor(number: Int(noteViewModel.color))
         }
     }
     
@@ -60,12 +60,11 @@ class ViewNoteViewController: UIViewController {
         configureUI()
     }
     
-    init(notaRepository: NoteRepository, notaId: UUID) {
-        self.noteRepository = notaRepository
-        self.noteID = notaId
-        let note = noteRepository.readItem(itemId: noteID)
-        self.noteViewModel = NoteViewModel(note: note)
-        self.color = noteViewModel.color
+    init(context: NSManagedObjectContext, noteId: UUID) {
+        self.context = context
+        self.noteID = noteId
+        self.noteViewModel = NoteViewModel(context: context, noteId: noteId)
+        self.color = Int(noteViewModel.color)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -75,7 +74,7 @@ class ViewNoteViewController: UIViewController {
     
     // MARK: Selectors
     @objc  func editNota() {
-        let editNoteViewController = CreateAndEditNoteViewController(noteRepository: noteRepository,
+        let editNoteViewController = CreateAndEditNoteViewController(context: context,
                                                                       noteId: noteID,
                                                                       action: .edit)
         editNoteViewController.onUpdateNotes = {
@@ -88,7 +87,7 @@ class ViewNoteViewController: UIViewController {
     }
     
     @objc func shareNota() {
-        let viewActivity = UIActivityViewController(activityItems: [noteViewModel.body], applicationActivities: [])
+        let viewActivity = UIActivityViewController(activityItems: [noteViewModel.text], applicationActivities: [])
         self.present(viewActivity, animated: true)
     }
     
@@ -110,8 +109,8 @@ class ViewNoteViewController: UIViewController {
     }
     
     func addTextView() {
-        textView.text = noteViewModel.body
-        textView.backgroundColor = .getColor(number: noteViewModel.color)
+        textView.text = noteViewModel.text
+        textView.backgroundColor = .getColor(number: Int(noteViewModel.color))
         
         view.addSubview(textView)
         textView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
@@ -130,7 +129,7 @@ class ViewNoteViewController: UIViewController {
     }
     
     func didChange(noteId: UUID) {
-        noteViewModel = NoteViewModel(note: noteRepository.readItem(itemId: noteID))
+        noteViewModel = NoteViewModel(context: context, noteId: noteId)
         noteIsUpdated?()
     }
 }

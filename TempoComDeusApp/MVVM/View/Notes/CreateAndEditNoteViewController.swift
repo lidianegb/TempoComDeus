@@ -6,10 +6,11 @@
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
 
 import UIKit
+import CoreData
 class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Properties
-    private let noteRepository: NoteRepository
+    private let context: NSManagedObjectContext!
     private let noteID: UUID
     private let action: Action
     private var stackViewHeader: UIStackView!
@@ -18,17 +19,17 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
 
     private var noteViewModel: NoteViewModel! {
         didSet {
-            textView.text = noteViewModel.body
-            textView.backgroundColor = .getColor(number: noteViewModel.color)
+            textView.text = noteViewModel.text
+            textView.backgroundColor = .getColor(number: Int(noteViewModel.color))
         }
     }
     
-    private var color: Int {
+    private var color: Int16 {
         didSet {
             switch action {
             case .create: break
             case .edit:
-                self.saveButton.isEnabled = !(self.textView.text == noteViewModel.body && color == noteViewModel.color)
+                self.saveButton.isEnabled = !(self.textView.text == noteViewModel.text && color == noteViewModel.color)
             }
         }
     }
@@ -65,12 +66,12 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     }()
     
     // MARK: Lifecycle
-    init(noteRepository: NoteRepository, noteId: UUID, action: Action) {
-        self.noteRepository = noteRepository
-        self.noteID = noteId
+    init(context: NSManagedObjectContext, noteId: UUID, action: Action) {
+        self.context = context
         self.action = action
-        noteViewModel = NoteViewModel(note: noteRepository.readItem(itemId: noteId))
+        noteViewModel = NoteViewModel(context: context, noteId: noteId)
         self.color = noteViewModel.color
+        self.noteID = noteViewModel.noteId
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -111,14 +112,14 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
                 self.dismiss(animated: true, completion: nil)
             } else { displayActionSheet() }
         case .edit:
-            if  textView.text == noteViewModel.body && color == noteViewModel.color {
+            if  textView.text == noteViewModel.text && color == noteViewModel.color {
                     self.dismiss(animated: true, completion: nil)
             } else { displayActionSheet() }
         }
     }
     
     @objc func salvar() {
-        noteViewModel.updateNote(text: textView.text, color: color, noteRepository: noteRepository)
+        noteViewModel.updateNote(text: textView.text, color: color)
         onUpdateNotes?()
         textView.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)
@@ -127,7 +128,7 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     @objc func changeColor(_ sender: UIButton) {
         guard let noteColor = sender.backgroundColor else { return }
         textView.backgroundColor = noteColor
-        self.color = MyColors.getColorNumber(color: noteColor.cgColor)
+        self.color = Int16(MyColors.getColorNumber(color: noteColor.cgColor))
     }
     
     @objc func keyboardHiden(notification: NSNotification) {
@@ -203,8 +204,8 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     
     func addTextView() {
         textView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
-        textView.text = noteViewModel.body
-        textView.backgroundColor = .getColor(number: noteViewModel.color)
+        textView.text = noteViewModel.text
+        textView.backgroundColor = .getColor(number: Int(noteViewModel.color))
         textView.delegate = self
         view.addSubview(textView)
         textView.anchor(top: stackViewHeader.bottomAnchor,
@@ -251,7 +252,7 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
             case .create:
                 self.saveButton.isEnabled = !textView.text.isEmpty
             case .edit:
-                self.saveButton.isEnabled = !(self.textView.text == noteViewModel.body && color == noteViewModel.color)
+                self.saveButton.isEnabled = !(self.textView.text == noteViewModel.text && color == noteViewModel.color)
             }
         }
     }

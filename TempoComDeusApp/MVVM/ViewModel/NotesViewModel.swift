@@ -6,23 +6,29 @@
 //  Copyright © 2021 Lidiane Gomes Barbosa. All rights reserved.
 
 import Foundation
+import CoreData
 class NotesViewModel {
     private var notes = [NoteViewModel]()
+    private let context: NSManagedObjectContext!
     
-    init(notes: [Note]) {
-        self.notes = fillNotes(notes: notes)
+    init(context: NSManagedObjectContext) {
+        self.context = context
+        self.notes = fillNotes(notes: fetchNotes())
     }
     
-    func updateNotes(notes: [Note]) {
+    func updateNotes() {
         self.notes.removeAll()
-        self.notes = fillNotes(notes: notes)
-        
+        self.notes = fillNotes(notes: fetchNotes())
     }
     
-    private func fillNotes(notes: [Note]) -> [NoteViewModel] {
+    private func fetchNotes() -> [NoteModel] {
+        CoreDataService.shared.fetchAllNotes(context: context, predicate: nil)
+    }
+    
+    private func fillNotes(notes: [NoteModel]) -> [NoteViewModel] {
         var notesViewModel = [NoteViewModel]()
         for note in notes {
-            let noteViewModel = NoteViewModel(note: note)
+            let noteViewModel = NoteViewModel(noteModel: note)
             notesViewModel.append(noteViewModel)
         }
         return notesViewModel

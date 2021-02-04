@@ -6,11 +6,11 @@
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
 
 import UIKit
-
+import CoreData
 class NotesViewController: UIViewController {
 
     // MARK: Properties
-    
+    var context: NSManagedObjectContext!
     let cellId = "CellId"
     var fonteSize: Int? {
         didSet {
@@ -32,10 +32,6 @@ class NotesViewController: UIViewController {
         collectionView.dataSource = self
         return collectionView
     }()
-    
-    var noteRepository: NoteRepository {
-          NoteRepository()
-    }
     
     var notesViewModel: NotesViewModel! {
         didSet {
@@ -66,7 +62,8 @@ class NotesViewController: UIViewController {
       // MARK: Lifecycle
       override func viewDidLoad() {
         super.viewDidLoad()
-        notesViewModel = NotesViewModel(notes: noteRepository.readAllItems())
+        setContext()
+        populateData()
         configureUI()
       }
     
@@ -77,12 +74,12 @@ class NotesViewController: UIViewController {
       // MARK: Selectors
 
     @objc func createNewNota() {
-        let novaNotaViewController = CreateAndEditNoteViewController(noteRepository: noteRepository,
+        let novaNotaViewController = CreateAndEditNoteViewController(context: context,
                                                                       noteId: UUID(),
                                                                       action: .create)
         novaNotaViewController.modalPresentationStyle = .fullScreen
         novaNotaViewController.onUpdateNotes = {
-            self.notesViewModel.updateNotes(notes: self.noteRepository.readAllItems())
+            self.notesViewModel.updateNotes()
             DispatchQueue.main.async {
                 self.updateUI()
             }
@@ -90,6 +87,15 @@ class NotesViewController: UIViewController {
         self.present(novaNotaViewController, animated: true)
     }
        // MARK: Helpers
+    
+    func setContext() {
+        self.context = (UIApplication.shared.delegate as? AppDelegate)?.persistenceContainer.viewContext
+        context.automaticallyMergesChangesFromParent = true
+    }
+    func populateData() {
+        notesViewModel = NotesViewModel(context: context)
+        collectionView.reloadData()
+    }
     
     func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -145,9 +151,9 @@ class NotesViewController: UIViewController {
     func deleteCell(cell: NotesCollectionViewCell) {
         if let indexPath = collectionView.indexPath(for: cell) {
             collectionView.performBatchUpdates({
-                _ = noteRepository.delete(itemId: notesViewModel.noteIdAtIndex(indexPath.row))
+                CoreDataService.shared.delete(context: context, noteId: notesViewModel.noteIdAtIndex(indexPath.row))
                 collectionView.deleteItems(at: [indexPath])
-                notesViewModel.updateNotes(notes: noteRepository.readAllItems())
+                notesViewModel.updateNotes()
                 updateUI()
             }, completion: nil)
         }
@@ -164,7 +170,7 @@ class NotesViewController: UIViewController {
     }
     
     func notaIsUpdated() {
-        notesViewModel.updateNotes(notes: noteRepository.readAllItems())
+        notesViewModel.updateNotes()
         updateUI()
     }
 }

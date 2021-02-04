@@ -15,8 +15,8 @@ class NotesCollectionViewCell: UICollectionViewCell {
     var note: NoteViewModel? {
        didSet {
            if let note = note {
-            labelPreview.text = note.body
-            wrapperView.backgroundColor = .getColor(number: note.color)
+            labelPreview.text = note.text
+            wrapperView.backgroundColor = .getColor(number: Int(note.color))
             labelDate.text = note.date.convertToString()
            }
        }
