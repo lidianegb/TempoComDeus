@@ -44,17 +44,24 @@ class NotesViewModel {
         notes.count
     }
     
-    func noteAtIndex(_ index: Int) -> NoteViewModel {
-        notes[index]
+    func noteAtIndex(_ index: Int) -> NoteViewModel? {
+        if !isEmpty() {
+            return  notes[index]
+        }
+       return nil
     }
     
     func deleteNote(index: Int) {
-        let noteViewModel = noteAtIndex(index)
-        let noteModel = noteViewModel.fetchNote(noteId: noteViewModel.noteId)
-        service.delete(noteModel: noteModel)
+        if let noteViewModel = noteAtIndex(index) {
+            let noteModel = noteViewModel.fetchNote(noteId: noteViewModel.noteId)
+            service.delete(noteModel: noteModel)
+        }
     }
     
-    func noteIdAtIndex(_ index: Int) -> UUID {
-        notes[index].noteId
+    func noteIdAtIndex(_ index: Int) -> UUID? {
+        if !isEmpty() {
+            return   notes[index].noteId
+        }
+       return nil
     }
 }
