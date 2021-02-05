@@ -38,17 +38,14 @@ struct CoreDataService {
         }
     }
     
-    func fetchNote(context: NSManagedObjectContext, noteId: UUID) -> NoteModel? {
+    func fetchNoteById(context: NSManagedObjectContext, noteId: UUID) -> NoteModel? {
         let predicate = NSPredicate(format: "noteId == %@", noteId.description)
-        if let note = fetchAllNotes(context: context, predicate: predicate).first {
-            return note
-        }
-        return nil
+        return fetchAllNotes(context: context, predicate: predicate).first
     }
     
-    func delete(context: NSManagedObjectContext, noteId: UUID) {
-        if let note = fetchNote(context: context, noteId: noteId) {
-            context.delete(note)
+    func delete(context: NSManagedObjectContext, noteModel: NoteModel?) {
+        if let noteModel = noteModel {
+            context.delete(noteModel)
             save(context: context)
         }
     }

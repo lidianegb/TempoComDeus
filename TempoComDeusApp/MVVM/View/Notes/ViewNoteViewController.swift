@@ -14,7 +14,6 @@ class ViewNoteViewController: UIViewController {
     var stackTopButtons: UIStackView!
     var color: Int
     private let context: NSManagedObjectContext!
-    private let noteID: UUID
     private var noteViewModel: NoteViewModel {
         didSet {
             textView.text = noteViewModel.text
@@ -60,10 +59,9 @@ class ViewNoteViewController: UIViewController {
         configureUI()
     }
     
-    init(context: NSManagedObjectContext, noteId: UUID) {
+    init(context: NSManagedObjectContext, noteViewModel: NoteViewModel) {
         self.context = context
-        self.noteID = noteId
-        self.noteViewModel = NoteViewModel(context: context, noteId: noteId)
+        self.noteViewModel = noteViewModel
         self.color = Int(noteViewModel.color)
         super.init(nibName: nil, bundle: nil)
     }
@@ -75,10 +73,10 @@ class ViewNoteViewController: UIViewController {
     // MARK: Selectors
     @objc  func editNota() {
         let editNoteViewController = CreateAndEditNoteViewController(context: context,
-                                                                      noteId: noteID,
-                                                                      action: .edit)
+                                                                     noteViewModel: noteViewModel,
+                                                                     action: .edit)
         editNoteViewController.onUpdateNotes = {
-            self.didChange(noteId: self.noteID)
+            self.didChange(noteId: self.noteViewModel.noteId)
         }
         
         editNoteViewController.modalPresentationStyle = .fullScreen

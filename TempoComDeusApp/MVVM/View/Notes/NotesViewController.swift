@@ -75,11 +75,11 @@ class NotesViewController: UIViewController {
 
     @objc func createNewNota() {
         let novaNotaViewController = CreateAndEditNoteViewController(context: context,
-                                                                      noteId: UUID(),
-                                                                      action: .create)
+                                                                     noteViewModel: nil,
+                                                                     action: .create)
         novaNotaViewController.modalPresentationStyle = .fullScreen
         novaNotaViewController.onUpdateNotes = {
-            self.notesViewModel.updateNotes()
+            self.notesViewModel.restartNotes(context: self.context)
             DispatchQueue.main.async {
                 self.updateUI()
             }
@@ -151,9 +151,9 @@ class NotesViewController: UIViewController {
     func deleteCell(cell: NotesCollectionViewCell) {
         if let indexPath = collectionView.indexPath(for: cell) {
             collectionView.performBatchUpdates({
-                CoreDataService.shared.delete(context: context, noteId: notesViewModel.noteIdAtIndex(indexPath.row))
+                notesViewModel.deleteNote(context: context, index: indexPath.row)
                 collectionView.deleteItems(at: [indexPath])
-                notesViewModel.updateNotes()
+                notesViewModel.restartNotes(context: context)
                 updateUI()
             }, completion: nil)
         }
@@ -170,7 +170,7 @@ class NotesViewController: UIViewController {
     }
     
     func notaIsUpdated() {
-        notesViewModel.updateNotes()
+        notesViewModel.restartNotes(context: context)
         updateUI()
     }
 }

@@ -9,8 +9,7 @@ import Foundation
 import CoreData
 class NoteViewModel {
     private var note: NoteModel?
-    private var context: NSManagedObjectContext!
-    
+  
     var noteId: UUID {
         self.note?.noteId ?? UUID()
     }
@@ -23,32 +22,27 @@ class NoteViewModel {
     var color: Int16 {
         self.note?.color ?? 1
     }
-    
-    init(context: NSManagedObjectContext, noteId: UUID) {
-        self.context = context
-        if let note = self.fetchNote(noteId: noteId) {
-            self.note = note
-        } else {
-            createNote()
-        }
-    }
-    
+
     init(noteModel: NoteModel) {
         self.note = noteModel
     }
     
-    func fetchNote(noteId: UUID) -> NoteModel? {
-        CoreDataService.shared.fetchNote(context: context, noteId: noteId)
+    init(context: NSManagedObjectContext, noteId: UUID) {
+        self.note = fetchNote(context: context, noteId: noteId)
     }
-  
-    func updateNote(text: String, color: Int16) {
-        note?.updateNote(text: text, color: color)
+    
+    init(context: NSManagedObjectContext, text: String, color: Int16) {
+        self.note = NoteModel(context: context)
+        note?.setValues(noteId: UUID(), text: text, color: color, date: Date())
         CoreDataService.shared.save(context: context)
     }
     
-    func createNote() {
-        self.note = NoteModel(context: context)
-        note?.setValues(noteId: UUID(), text: "", color: 1, date: Date())
+    func fetchNote(context: NSManagedObjectContext, noteId: UUID) -> NoteModel? {
+        CoreDataService.shared.fetchNoteById(context: context, noteId: noteId)
+    }
+  
+    func updateNote(context: NSManagedObjectContext, text: String, color: Int16) {
+        note?.updateNote(text: text, color: color)
         CoreDataService.shared.save(context: context)
     }
 }

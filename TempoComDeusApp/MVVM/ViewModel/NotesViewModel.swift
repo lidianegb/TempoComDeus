@@ -9,19 +9,19 @@ import Foundation
 import CoreData
 class NotesViewModel {
     private var notes = [NoteViewModel]()
-    private let context: NSManagedObjectContext!
-    
+   
     init(context: NSManagedObjectContext) {
-        self.context = context
-        self.notes = fillNotes(notes: fetchNotes())
+        self.notes = fillNotes(notes: fetchNotes(context: context))
+        self.notes.reverse()
     }
     
-    func updateNotes() {
+    func restartNotes(context: NSManagedObjectContext) {
         self.notes.removeAll()
-        self.notes = fillNotes(notes: fetchNotes())
+        self.notes = fillNotes(notes: fetchNotes(context: context))
+        self.notes.reverse()
     }
     
-    private func fetchNotes() -> [NoteModel] {
+    private func fetchNotes(context: NSManagedObjectContext) -> [NoteModel] {
         CoreDataService.shared.fetchAllNotes(context: context, predicate: nil)
     }
     
@@ -44,6 +44,12 @@ class NotesViewModel {
     
     func noteAtIndex(_ index: Int) -> NoteViewModel {
         notes[index]
+    }
+    
+    func deleteNote(context: NSManagedObjectContext, index: Int) {
+        let noteViewModel = noteAtIndex(index)
+        let noteModel = noteViewModel.fetchNote(context: context, noteId: noteViewModel.noteId)
+        CoreDataService.shared.delete(context: context, noteModel: noteModel)
     }
     
     func noteIdAtIndex(_ index: Int) -> UUID {

@@ -11,25 +11,25 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Properties
     private let context: NSManagedObjectContext!
-    private let noteID: UUID
     private let action: Action
     private var stackViewHeader: UIStackView!
     private var stackViewBottom: UIStackView!
     var onUpdateNotes: (() -> Void)?
 
-    private var noteViewModel: NoteViewModel! {
+    private var noteViewModel: NoteViewModel? {
         didSet {
-            textView.text = noteViewModel.text
-            textView.backgroundColor = .getColor(number: Int(noteViewModel.color))
+            textView.text = noteViewModel?.text
+            textView.backgroundColor = .getColor(number: Int(noteViewModel?.color ?? 1))
         }
     }
     
-    private var color: Int16 {
+    private var color: Int16 = 1 {
         didSet {
             switch action {
             case .create: break
             case .edit:
-                self.saveButton.isEnabled = !(self.textView.text == noteViewModel.text && color == noteViewModel.color)
+                self.saveButton.isEnabled = !(self.textView.text == noteViewModel?.text &&
+                                                color == noteViewModel?.color)
             }
         }
     }
@@ -66,12 +66,14 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     }()
     
     // MARK: Lifecycle
-    init(context: NSManagedObjectContext, noteId: UUID, action: Action) {
+    init(context: NSManagedObjectContext, noteViewModel: NoteViewModel?, action: Action) {
         self.context = context
         self.action = action
-        noteViewModel = NoteViewModel(context: context, noteId: noteId)
-        self.color = noteViewModel.color
-        self.noteID = noteViewModel.noteId
+        if let noteViewModel = noteViewModel {
+            self.noteViewModel = noteViewModel
+            self.color = noteViewModel.color
+        }
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -112,14 +114,19 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
                 self.dismiss(animated: true, completion: nil)
             } else { displayActionSheet() }
         case .edit:
-            if  textView.text == noteViewModel.text && color == noteViewModel.color {
+            if  textView.text == noteViewModel?.text && color == noteViewModel?.color {
                     self.dismiss(animated: true, completion: nil)
             } else { displayActionSheet() }
         }
     }
     
     @objc func salvar() {
-        noteViewModel.updateNote(text: textView.text, color: color)
+        switch action {
+        case .create:
+            noteViewModel = NoteViewModel(context: context, text: textView.text, color: color)
+        case .edit:
+            noteViewModel?.updateNote(context: context, text: textView.text, color: color)
+        }
         onUpdateNotes?()
         textView.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)
@@ -204,8 +211,8 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     
     func addTextView() {
         textView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
-        textView.text = noteViewModel.text
-        textView.backgroundColor = .getColor(number: Int(noteViewModel.color))
+        textView.text = noteViewModel?.text
+        textView.backgroundColor = .getColor(number: Int(noteViewModel?.color ?? 1))
         textView.delegate = self
         view.addSubview(textView)
         textView.anchor(top: stackViewHeader.bottomAnchor,
@@ -252,7 +259,8 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
             case .create:
                 self.saveButton.isEnabled = !textView.text.isEmpty
             case .edit:
-                self.saveButton.isEnabled = !(self.textView.text == noteViewModel.text && color == noteViewModel.color)
+                self.saveButton.isEnabled = !(self.textView.text == noteViewModel?.text &&
+                                                color == noteViewModel?.color)
             }
         }
     }
