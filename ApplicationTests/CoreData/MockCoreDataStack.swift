@@ -1,5 +1,5 @@
 //
-//  TestCoreDataStack.swift
+//  MockCoreDataStack.swift
 //  ApplicationTests
 //
 //  Created by Lidiane Gomes Barbosa on 05/02/21.
@@ -8,8 +8,7 @@
 
 import CoreData
 @testable import tempo_com_Deus
-class TestCoreDataStack {
-    static let shared = TestCoreDataStack()
+class MockCoreDataStack {
     let persistentStoreDescription: NSPersistentStoreDescription
     let testPersistentContainer: NSPersistentContainer
     let viewContext: NSManagedObjectContext
