@@ -10,8 +10,8 @@ import CoreData
 class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Properties
-    private let context: NSManagedObjectContext!
     private let action: Action
+    private let service: CoreDataService!
     private var stackViewHeader: UIStackView!
     private var stackViewBottom: UIStackView!
     var onUpdateNotes: (() -> Void)?
@@ -66,8 +66,8 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     }()
     
     // MARK: Lifecycle
-    init(context: NSManagedObjectContext, noteViewModel: NoteViewModel?, action: Action) {
-        self.context = context
+    init(service: CoreDataService?, noteViewModel: NoteViewModel?, action: Action) {
+        self.service = service
         self.action = action
         if let noteViewModel = noteViewModel {
             self.noteViewModel = noteViewModel
@@ -123,9 +123,9 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     @objc func salvar() {
         switch action {
         case .create:
-            noteViewModel = NoteViewModel(context: context, text: textView.text, color: color)
+            noteViewModel = NoteViewModel(service: service, text: textView.text, color: color)
         case .edit:
-            noteViewModel?.updateNote(context: context, text: textView.text, color: color)
+            noteViewModel?.updateNote(text: textView.text, color: color)
         }
         onUpdateNotes?()
         textView.resignFirstResponder()

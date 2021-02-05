@@ -9,26 +9,28 @@ import Foundation
 import CoreData
 class NotesViewModel {
     private var notes = [NoteViewModel]()
+    var service: CoreDataService
    
-    init(context: NSManagedObjectContext) {
-        self.notes = fillNotes(notes: fetchNotes(context: context))
+    init(service: CoreDataService) {
+        self.service = service
+        self.notes = fillNotes(notes: fetchNotes())
         self.notes.reverse()
     }
     
-    func restartNotes(context: NSManagedObjectContext) {
+    func restartNotes() {
         self.notes.removeAll()
-        self.notes = fillNotes(notes: fetchNotes(context: context))
+        self.notes = fillNotes(notes: fetchNotes())
         self.notes.reverse()
     }
     
-    private func fetchNotes(context: NSManagedObjectContext) -> [NoteModel] {
-        CoreDataService.shared.fetchAllNotes(context: context, predicate: nil)
+    private func fetchNotes() -> [NoteModel] {
+        service.fetchNotes()
     }
     
     private func fillNotes(notes: [NoteModel]) -> [NoteViewModel] {
         var notesViewModel = [NoteViewModel]()
         for note in notes {
-            let noteViewModel = NoteViewModel(noteModel: note)
+            let noteViewModel = NoteViewModel(service: service, noteModel: note)
             notesViewModel.append(noteViewModel)
         }
         return notesViewModel
@@ -46,10 +48,10 @@ class NotesViewModel {
         notes[index]
     }
     
-    func deleteNote(context: NSManagedObjectContext, index: Int) {
+    func deleteNote(index: Int) {
         let noteViewModel = noteAtIndex(index)
-        let noteModel = noteViewModel.fetchNote(context: context, noteId: noteViewModel.noteId)
-        CoreDataService.shared.delete(context: context, noteModel: noteModel)
+        let noteModel = noteViewModel.fetchNote(noteId: noteViewModel.noteId)
+        service.delete(noteModel: noteModel)
     }
     
     func noteIdAtIndex(_ index: Int) -> UUID {

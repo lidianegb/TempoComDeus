@@ -11,6 +11,7 @@ class NotesViewController: UIViewController {
 
     // MARK: Properties
     var context: NSManagedObjectContext!
+    var service: CoreDataService!
     let cellId = "CellId"
     var fonteSize: Int? {
         didSet {
@@ -74,12 +75,12 @@ class NotesViewController: UIViewController {
       // MARK: Selectors
 
     @objc func createNewNota() {
-        let novaNotaViewController = CreateAndEditNoteViewController(context: context,
+        let novaNotaViewController = CreateAndEditNoteViewController(service: service,
                                                                      noteViewModel: nil,
                                                                      action: .create)
         novaNotaViewController.modalPresentationStyle = .fullScreen
         novaNotaViewController.onUpdateNotes = {
-            self.notesViewModel.restartNotes(context: self.context)
+            self.notesViewModel.restartNotes()
             DispatchQueue.main.async {
                 self.updateUI()
             }
@@ -91,9 +92,10 @@ class NotesViewController: UIViewController {
     func setContext() {
         self.context = (UIApplication.shared.delegate as? AppDelegate)?.persistenceContainer.viewContext
         context.automaticallyMergesChangesFromParent = true
+        service = CoreDataService(context)
     }
     func populateData() {
-        notesViewModel = NotesViewModel(context: context)
+        notesViewModel = NotesViewModel(service: service)
         collectionView.reloadData()
     }
     
@@ -151,9 +153,9 @@ class NotesViewController: UIViewController {
     func deleteCell(cell: NotesCollectionViewCell) {
         if let indexPath = collectionView.indexPath(for: cell) {
             collectionView.performBatchUpdates({
-                notesViewModel.deleteNote(context: context, index: indexPath.row)
+                notesViewModel.deleteNote(index: indexPath.row)
                 collectionView.deleteItems(at: [indexPath])
-                notesViewModel.restartNotes(context: context)
+                notesViewModel.restartNotes()
                 updateUI()
             }, completion: nil)
         }
@@ -170,7 +172,7 @@ class NotesViewController: UIViewController {
     }
     
     func notaIsUpdated() {
-        notesViewModel.restartNotes(context: context)
+        notesViewModel.restartNotes()
         updateUI()
     }
 }

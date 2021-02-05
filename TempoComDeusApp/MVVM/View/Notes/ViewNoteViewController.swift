@@ -9,11 +9,10 @@ import UIKit
 import CoreData
 class ViewNoteViewController: UIViewController {
     // MARK: Properties
-    
+    var service: CoreDataService!
     var noteIsUpdated: (() -> Void)?
     var stackTopButtons: UIStackView!
     var color: Int
-    private let context: NSManagedObjectContext!
     private var noteViewModel: NoteViewModel {
         didSet {
             textView.text = noteViewModel.text
@@ -59,8 +58,8 @@ class ViewNoteViewController: UIViewController {
         configureUI()
     }
     
-    init(context: NSManagedObjectContext, noteViewModel: NoteViewModel) {
-        self.context = context
+    init(service: CoreDataService, noteViewModel: NoteViewModel) {
+        self.service = service
         self.noteViewModel = noteViewModel
         self.color = Int(noteViewModel.color)
         super.init(nibName: nil, bundle: nil)
@@ -72,9 +71,8 @@ class ViewNoteViewController: UIViewController {
     
     // MARK: Selectors
     @objc  func editNota() {
-        let editNoteViewController = CreateAndEditNoteViewController(context: context,
-                                                                     noteViewModel: noteViewModel,
-                                                                     action: .edit)
+        let editNoteViewController =
+            CreateAndEditNoteViewController(service: nil, noteViewModel: noteViewModel, action: .edit)
         editNoteViewController.onUpdateNotes = {
             self.didChange(noteId: self.noteViewModel.noteId)
         }
@@ -127,7 +125,7 @@ class ViewNoteViewController: UIViewController {
     }
     
     func didChange(noteId: UUID) {
-        noteViewModel = NoteViewModel(context: context, noteId: noteId)
+        noteViewModel = NoteViewModel(service: service, noteId: noteId)
         noteIsUpdated?()
     }
 }

@@ -8,41 +8,42 @@
 import Foundation
 import CoreData
 class NoteViewModel {
-    private var note: NoteModel?
-  
+    private var note: NoteModel!
+    private var service: CoreDataService
     var noteId: UUID {
-        self.note?.noteId ?? UUID()
+        self.note.noteId ?? UUID()
     }
     var text: String {
-        self.note?.text ?? ""
+        self.note.text ?? ""
     }
     var date: Date {
-        self.note?.date ?? Date()
+        self.note.date ?? Date()
     }
     var color: Int16 {
-        self.note?.color ?? 1
+        self.note.color
     }
 
-    init(noteModel: NoteModel) {
+    init(service: CoreDataService, noteModel: NoteModel) {
         self.note = noteModel
+        self.service = service
     }
     
-    init(context: NSManagedObjectContext, noteId: UUID) {
-        self.note = fetchNote(context: context, noteId: noteId)
+    init(service: CoreDataService, noteId: UUID) {
+        self.service = service
+        self.note = fetchNote(noteId: noteId)
     }
     
-    init(context: NSManagedObjectContext, text: String, color: Int16) {
-        self.note = NoteModel(context: context)
-        note?.setValues(noteId: UUID(), text: text, color: color, date: Date())
-        CoreDataService.shared.save(context: context)
+    init(service: CoreDataService, text: String, color: Int16) {
+        self.service = service
+        self.note = service.create(text: text, color: color)
     }
     
-    func fetchNote(context: NSManagedObjectContext, noteId: UUID) -> NoteModel? {
-        CoreDataService.shared.fetchNoteById(context: context, noteId: noteId)
+    func fetchNote(noteId: UUID) -> NoteModel? {
+        service.fetchNoteById(noteId: noteId)
     }
   
-    func updateNote(context: NSManagedObjectContext, text: String, color: Int16) {
-        note?.updateNote(text: text, color: color)
-        CoreDataService.shared.save(context: context)
+    func updateNote(text: String, color: Int16) {
+        self.note.updateNote(text: text, color: color)
+        service.saveContext()
     }
 }

@@ -11,12 +11,6 @@ import CoreData
 
 @objc(NotaModel)
 extension NoteModel {
-    func setValues(noteId: UUID, text: String, color: Int16, date: Date) {
-        self.noteId = noteId
-        self.text = text
-        self.color = color
-        self.date = date
-    }
     func updateNote(text: String, color: Int16) {
         self.text = text
         self.color = color

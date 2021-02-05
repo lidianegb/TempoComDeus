@@ -44,7 +44,7 @@ UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-        let viewNote = ViewNoteViewController(context: context,
+        let viewNote = ViewNoteViewController(service: service,
                                               noteViewModel: notesViewModel.noteAtIndex(indexPath.row))
         viewNote.noteIsUpdated = { 
             self.notaIsUpdated()

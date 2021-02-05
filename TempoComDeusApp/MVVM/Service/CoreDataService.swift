@@ -9,18 +9,22 @@
 import Foundation
 import CoreData
 
-struct CoreDataService {
+class CoreDataService {
     
-    static let shared = CoreDataService()
+    var viewContext: NSManagedObjectContext!
     
-    func fetchAllNotes(context: NSManagedObjectContext, predicate: NSPredicate?) -> [NoteModel] {
+    init(_ context: NSManagedObjectContext) {
+        self.viewContext = context
+    }
+    
+    func fetchNotes(predicate: NSPredicate? = nil) -> [NoteModel] {
         var notesModel = [NoteModel]()
         do {
             let request = NoteModel.fetchRequest() as NSFetchRequest<NoteModel>
             if predicate != nil {
                 request.predicate = predicate
             }
-            notesModel = try context.fetch(request)
+            notesModel = try viewContext.fetch(request)
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -29,24 +33,36 @@ struct CoreDataService {
         return notesModel
     }
     
-    func save(context: NSManagedObjectContext) {
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+    func saveContext () {
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
         }
     }
     
-    func fetchNoteById(context: NSManagedObjectContext, noteId: UUID) -> NoteModel? {
+    func create(text: String, color: Int16) -> NoteModel {
+        let note = NoteModel(context: viewContext)
+        note.noteId = UUID()
+        note.color = 1
+        note.text = text
+        note.color = color
+        saveContext()
+        return note
+    }
+
+    func fetchNoteById(noteId: UUID) -> NoteModel? {
         let predicate = NSPredicate(format: "noteId == %@", noteId.description)
-        return fetchAllNotes(context: context, predicate: predicate).first
+        return fetchNotes(predicate: predicate).first
     }
     
-    func delete(context: NSManagedObjectContext, noteModel: NoteModel?) {
+    func delete(noteModel: NoteModel?) {
         if let noteModel = noteModel {
-            context.delete(noteModel)
-            save(context: context)
+            viewContext.delete(noteModel)
+            saveContext()
         }
     }
     
