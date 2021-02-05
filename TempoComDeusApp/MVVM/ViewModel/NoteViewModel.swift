@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 class NoteViewModel {
-    private var note: NoteModel!
+    var note: NoteModel!
     private var service: CoreDataService
     var noteId: UUID {
         self.note.noteId ?? UUID()
@@ -30,7 +30,7 @@ class NoteViewModel {
     
     init(service: CoreDataService, noteId: UUID) {
         self.service = service
-        self.note = fetchNote(noteId: noteId)
+        self.note = self.fetchNote(noteId: noteId)
     }
     
     init(service: CoreDataService, text: String, color: Int16) {

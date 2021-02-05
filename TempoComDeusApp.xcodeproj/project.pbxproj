@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		60114059C86EF0970045B7A4 /* Pods_TempoComDeusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4374D5D46BF8F458C5DB5F23 /* Pods_TempoComDeusApp.framework */; };
 		AF015F9825C9BEE800F6861E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF015F9725C9BEE800F6861E /* Action.swift */; };
-		AF10216B24F1577D0090CDC8 /* CalcCellDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10216A24F1577D0090CDC8 /* CalcCellDimensions.swift */; };
 		AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */; };
 		AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */; };
 		AF1868B42506E494001731AA /* ExtensionBibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1868B32506E494001731AA /* ExtensionBibliaViewController.swift */; };
@@ -27,8 +26,6 @@
 		AF3EB88B2508432A003F988F /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EB88A2508432A003F988F /* ConfigViewController.swift */; };
 		AF4717602501B03900DDC69A /* BookResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47175F2501B03900DDC69A /* BookResume.swift */; };
 		AF4717622501B25000DDC69A /* Constantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4717612501B25000DDC69A /* Constantes.swift */; };
-		AF48267A24F43E1C00C44A46 /* CreateNotaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48267924F43E1C00C44A46 /* CreateNotaTest.swift */; };
-		AF48268224F44B2000C44A46 /* CalcDateStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF48268124F44B2000C44A46 /* CalcDateStringTest.swift */; };
 		AF4A206225C8949000F6F14E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A206125C8949000F6F14E /* Book.swift */; };
 		AF4E6C7525030FA400C53EF0 /* livrosResumo.json in Resources */ = {isa = PBXBuildFile; fileRef = AF4E6C7425030FA400C53EF0 /* livrosResumo.json */; };
 		AF51DF8A24EDA6D4001C352D /* ChaptersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51DF8924EDA6D4001C352D /* ChaptersTableViewCell.swift */; };
@@ -38,7 +35,6 @@
 		AF5D36A125A600EA00DE3487 /* BooksTableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5D36A025A600EA00DE3487 /* BooksTableViewDelegates.swift */; };
 		AF6A1E3F24EFFB0800FF46FF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF6A1E3E24EFFB0800FF46FF /* .swiftlint.yml */; };
 		AF6A1E4724F1492300FF46FF /* ApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A1E4624F1492300FF46FF /* ApplicationTests.swift */; };
-		AF6A1E4F24F149BF00FF46FF /* HeightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A1E4E24F149BF00FF46FF /* HeightTests.swift */; };
 		AF7F200124E557440058FA2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200024E557440058FA2C /* AppDelegate.swift */; };
 		AF7F200324E557440058FA2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F200224E557440058FA2C /* SceneDelegate.swift */; };
 		AF7F200824E557440058FA2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7F200624E557440058FA2C /* Main.storyboard */; };
@@ -61,10 +57,12 @@
 		AFBB37162516D428004B7105 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB37152516D428004B7105 /* UITextView.swift */; };
 		AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */; };
 		AFC2A32624E87A13001A266D /* CreateAndEditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */; };
-		AFC820E424F68F3A003C7B0A /* NotaRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */; };
 		AFD310B624F561BB00A74E2E /* TempoComDeusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */; };
 		AFDB6D6124EEA80000F58A6D /* ChaptersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB6D6024EEA80000F58A6D /* ChaptersCollectionViewCell.swift */; };
-		AFF0F45725CD90010096F713 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F45625CD90010096F713 /* TestCoreDataStack.swift */; };
+		AFF0F45725CD90010096F713 /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F45625CD90010096F713 /* MockCoreDataStack.swift */; };
+		AFF0F47625CDC4890096F713 /* TestCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F47525CDC4890096F713 /* TestCoreDataService.swift */; };
+		AFF0F47F25CDD6F60096F713 /* TestNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F47E25CDD6F60096F713 /* TestNoteViewModel.swift */; };
+		AFF0F48825CDE1ED0096F713 /* TestNotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F48725CDE1ED0096F713 /* TestNotesViewModel.swift */; };
 		AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */; };
 		AFFA1D1124EC1C6B00399F96 /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1024EC1C6B00399F96 /* BooksTableViewController.swift */; };
 		AFFA1D1324EC1CF400399F96 /* BibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1224EC1CF400399F96 /* BibleTableViewCell.swift */; };
@@ -100,7 +98,6 @@
 		9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1CDB9FBAB76BDF26783D292 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusApp_tempoComDeusAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF015F9725C9BEE800F6861E /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		AF10216A24F1577D0090CDC8 /* CalcCellDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcCellDimensions.swift; sourceTree = "<group>"; };
 		AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionOneTableViewCell.swift; sourceTree = "<group>"; };
 		AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionTwoTableViewCell.swift; sourceTree = "<group>"; };
 		AF1868B32506E494001731AA /* ExtensionBibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionBibliaViewController.swift; sourceTree = "<group>"; };
@@ -118,8 +115,6 @@
 		AF3EB88A2508432A003F988F /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		AF47175F2501B03900DDC69A /* BookResume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResume.swift; sourceTree = "<group>"; };
 		AF4717612501B25000DDC69A /* Constantes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constantes.swift; sourceTree = "<group>"; };
-		AF48267924F43E1C00C44A46 /* CreateNotaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotaTest.swift; sourceTree = "<group>"; };
-		AF48268124F44B2000C44A46 /* CalcDateStringTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcDateStringTest.swift; sourceTree = "<group>"; };
 		AF4A206125C8949000F6F14E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		AF4E6C7425030FA400C53EF0 /* livrosResumo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = livrosResumo.json; sourceTree = "<group>"; };
 		AF51DF8924EDA6D4001C352D /* ChaptersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersTableViewCell.swift; sourceTree = "<group>"; };
@@ -131,7 +126,6 @@
 		AF6A1E4424F1492300FF46FF /* ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF6A1E4624F1492300FF46FF /* ApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTests.swift; sourceTree = "<group>"; };
 		AF6A1E4824F1492300FF46FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF6A1E4E24F149BF00FF46FF /* HeightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightTests.swift; sourceTree = "<group>"; };
 		AF7F1FFD24E557440058FA2C /* tempo com Deus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tempo com Deus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7F200024E557440058FA2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF7F200224E557440058FA2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,12 +150,14 @@
 		AFBB37152516D428004B7105 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNoteViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndEditNoteViewController.swift; sourceTree = "<group>"; };
-		AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaRepositoryTest.swift; sourceTree = "<group>"; };
 		AFD310B324F561BB00A74E2E /* tempoComDeusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tempoComDeusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoComDeusUITests.swift; sourceTree = "<group>"; };
 		AFD310B724F561BB00A74E2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFDB6D6024EEA80000F58A6D /* ChaptersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersCollectionViewCell.swift; sourceTree = "<group>"; };
-		AFF0F45625CD90010096F713 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		AFF0F45625CD90010096F713 /* MockCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
+		AFF0F47525CDC4890096F713 /* TestCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataService.swift; sourceTree = "<group>"; };
+		AFF0F47E25CDD6F60096F713 /* TestNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNoteViewModel.swift; sourceTree = "<group>"; };
+		AFF0F48725CDE1ED0096F713 /* TestNotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNotesViewModel.swift; sourceTree = "<group>"; };
 		AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		AFFA1D1024EC1C6B00399F96 /* BooksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewController.swift; sourceTree = "<group>"; };
 		AFFA1D1224EC1CF400399F96 /* BibleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleTableViewCell.swift; sourceTree = "<group>"; };
@@ -255,14 +251,10 @@
 		AF6A1E4524F1492300FF46FF /* ApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
+				AFF0F48625CDE1C80096F713 /* Note */,
+				AFF0F47D25CDD6B60096F713 /* CoreData */,
 				AF6A1E4624F1492300FF46FF /* ApplicationTests.swift */,
-				AF48267924F43E1C00C44A46 /* CreateNotaTest.swift */,
-				AF6A1E4E24F149BF00FF46FF /* HeightTests.swift */,
-				AF10216A24F1577D0090CDC8 /* CalcCellDimensions.swift */,
 				AF6A1E4824F1492300FF46FF /* Info.plist */,
-				AF48268124F44B2000C44A46 /* CalcDateStringTest.swift */,
-				AFC820E324F68F3A003C7B0A /* NotaRepositoryTest.swift */,
-				AFF0F45625CD90010096F713 /* TestCoreDataStack.swift */,
 			);
 			path = ApplicationTests;
 			sourceTree = "<group>";
@@ -422,6 +414,24 @@
 				AFD310B724F561BB00A74E2E /* Info.plist */,
 			);
 			path = TempoComDeusUITests;
+			sourceTree = "<group>";
+		};
+		AFF0F47D25CDD6B60096F713 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AFF0F47525CDC4890096F713 /* TestCoreDataService.swift */,
+				AFF0F45625CD90010096F713 /* MockCoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		AFF0F48625CDE1C80096F713 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				AFF0F47E25CDD6F60096F713 /* TestNoteViewModel.swift */,
+				AFF0F48725CDE1ED0096F713 /* TestNotesViewModel.swift */,
+			);
+			path = Note;
 			sourceTree = "<group>";
 		};
 		AFF7C7D025A35E8A002694B3 /* Books */ = {
@@ -644,13 +654,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF6A1E4F24F149BF00FF46FF /* HeightTests.swift in Sources */,
-				AFF0F45725CD90010096F713 /* TestCoreDataStack.swift in Sources */,
+				AFF0F47F25CDD6F60096F713 /* TestNoteViewModel.swift in Sources */,
+				AFF0F45725CD90010096F713 /* MockCoreDataStack.swift in Sources */,
 				AF6A1E4724F1492300FF46FF /* ApplicationTests.swift in Sources */,
-				AF48267A24F43E1C00C44A46 /* CreateNotaTest.swift in Sources */,
-				AF48268224F44B2000C44A46 /* CalcDateStringTest.swift in Sources */,
-				AFC820E424F68F3A003C7B0A /* NotaRepositoryTest.swift in Sources */,
-				AF10216B24F1577D0090CDC8 /* CalcCellDimensions.swift in Sources */,
+				AFF0F48825CDE1ED0096F713 /* TestNotesViewModel.swift in Sources */,
+				AFF0F47625CDC4890096F713 /* TestCoreDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
