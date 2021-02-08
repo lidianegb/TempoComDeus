@@ -153,7 +153,10 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
                    bible.updateActualBook(abbreviation: abbreviation)
                    self.actualChapter = Chapter(bible: bible, number: 0)
         }
-        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        
+        if tableView.numberOfSections > 0 && tableView.numberOfRows(inSection: 0) > 0 {
+            tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        }
     }
     
     // voltar
@@ -173,7 +176,10 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
             
             self.actualChapter = Chapter(bible: bible, number: actualChapterNumber - 1)
         }
-        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        
+        if tableView.numberOfSections > 0 && tableView.numberOfRows(inSection: 0) > 0 {
+            tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        }
     }
     
     // MARK: Helpers
@@ -196,7 +202,10 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         guard let bible = bible else { return }
         bible.updateActualBook(abbreviation: abbr)
         self.actualChapter = Chapter(bible: bible, number: chapter)
-        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        
+        if tableView.numberOfSections > 0 && tableView.numberOfRows(inSection: 0) > 0 {
+            tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        }
     }
     
     func updateTitleWidthConstraint() {
