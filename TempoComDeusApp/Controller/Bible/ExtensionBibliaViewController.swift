@@ -29,11 +29,7 @@ extension BibleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let myCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as?
                 BibleTableViewCell else { return UITableViewCell() }
-        if let actualChapter = actualChapter {
-            let num = "\(indexPath.row + 1)"
-            let verso =  actualChapter.versicles[indexPath.row]
-            myCell.createCell(num: num, verso: verso)
-        }
+            myCell.createCell(actualVerse: verses[indexPath.row])
         return myCell
     }
 }

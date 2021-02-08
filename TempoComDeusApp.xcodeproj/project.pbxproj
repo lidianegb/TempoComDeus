@@ -55,6 +55,7 @@
 		AF8E2C4C25CB21D2008A1CC7 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */; };
 		AF8E2C5425CB21F1008A1CC7 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */; };
 		AF98FAE625D15D1D00314447 /* ContextMenuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF98FAE525D15D1D00314447 /* ContextMenuExtension.swift */; };
+		AF98FAEB25D1B10300314447 /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF98FAEA25D1B10300314447 /* Verse.swift */; };
 		AFBB37162516D428004B7105 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB37152516D428004B7105 /* UITextView.swift */; };
 		AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */; };
 		AFC2A32624E87A13001A266D /* CreateAndEditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */; };
@@ -151,6 +152,7 @@
 		AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 		AF98FAE525D15D1D00314447 /* ContextMenuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuExtension.swift; sourceTree = "<group>"; };
+		AF98FAEA25D1B10300314447 /* Verse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verse.swift; sourceTree = "<group>"; };
 		AFBB37152516D428004B7105 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNoteViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndEditNoteViewController.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				AF3C21F8250AA46000F81685 /* DataPicker.swift */,
 				AF015F9725C9BEE800F6861E /* Action.swift */,
 				AF8E2C3A25CB1065008A1CC7 /* UserDefaultsPersistence.swift */,
+				AF98FAEA25D1B10300314447 /* Verse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 				AFFA1D1124EC1C6B00399F96 /* BooksTableViewController.swift in Sources */,
 				AF3EB88B2508432A003F988F /* ConfigViewController.swift in Sources */,
 				AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */,
+				AF98FAEB25D1B10300314447 /* Verse.swift in Sources */,
 				AF5D36A125A600EA00DE3487 /* BooksTableViewDelegates.swift in Sources */,
 				AF98FAE625D15D1D00314447 /* ContextMenuExtension.swift in Sources */,
 				AF34F4162500370A00BFAB2D /* Json.swift in Sources */,

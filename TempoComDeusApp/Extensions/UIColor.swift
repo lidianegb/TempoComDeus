@@ -50,6 +50,16 @@ extension UIColor {
              }
         }
     }()
+    
+    static let highlighted = {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return MyColors.yellowHighlightedDark } else {
+                return MyColors.yellowHighlighted
+                
+             }
+        }
+    }()
         
     static let noteColor1 = {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in

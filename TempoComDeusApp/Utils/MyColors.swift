@@ -9,11 +9,13 @@ import UIKit
 import Foundation
 
 class MyColors {
+    static let yellowHighlighted = UIColor.rgb(red: 0, green: 255, blue: 255)
     static let blueActLight = UIColor.rgb(red: 6, green: 181, blue: 209)
     static let backgroudColorLight = UIColor.rgb(red: 228, green: 246, blue: 250)
     static let blueClearLight = UIColor.rgb(red: 148, green: 223, blue: 235)
     static let backColorLight = UIColor.rgb(red: 255, green: 255, blue: 255)
        
+    static let yellowHighlightedDark = UIColor.rgb(red: 0, green: 130, blue: 142)
     static let blueActDark = UIColor.rgb(red: 0, green: 188, blue: 217)
     static let backgroudColorDark = UIColor.rgb(red: 0, green: 0, blue: 0)
     static let blueClearDark = UIColor.rgb(red: 106, green: 138, blue: 144)

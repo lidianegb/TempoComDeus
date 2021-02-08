@@ -27,6 +27,16 @@ struct  UserDefaultsPersistence {
             defaults.set(17, forKey: FONTSIZE)
         }
     }
+
+    func isHighlighted(abbreviation: String, chapterNumber: Int, verseNumber: Int) -> Bool {
+        let key = abbreviation + "\(chapterNumber)-\(verseNumber)-highlighted"
+        return defaults.bool(forKey: key)
+    }
+    
+    func setVerseHighlighted(verse: Verse) {
+        let key = verse.abbreviation + "\(verse.chapterNumber)-\(verse.verseNumber)-highlighted"
+        defaults.set(verse.isHighlighted, forKey: key)
+    }
     
     func getDefaultChapter() -> Int {
         defaults.integer(forKey: CHAPTER)

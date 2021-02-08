@@ -15,8 +15,10 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     let dataPicker = DataPicker.data()
     let cellId = "CellId"
     var bible: Bible?
+    var verses = [Verse]()
     var actualChapter: Chapter? {
         didSet {
+            setupVerses()
             updateUI()
         }
     }
@@ -119,6 +121,22 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
             self.actualChapter = Chapter(bible: bible, number: chapter)
         }
     }
+    
+    func setupVerses() {
+        if let actualChapter = actualChapter {
+            verses.removeAll()
+            for (index, verse) in actualChapter.versicles.enumerated() {
+                let isHighlighted = UserDefaultsPersistence.shared.isHighlighted(
+                    abbreviation: actualChapter.abbreviation, chapterNumber: actualChapter.number,
+                    verseNumber: index)
+                verses.append(Verse(abbreviation: actualChapter.abbreviation,
+                                    chapterNumber: actualChapter.number,
+                                    verseNumber: index, verseText: verse,
+                                    isHighlighted: isHighlighted))
+            }
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
@@ -234,12 +252,6 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
                 titleButton.widthAnchor.constraint(equalToConstant: CGFloat(buttonTitle.count * 10 + 20))
             widthTitleButtonConstraint?.isActive = true
         }
-    }
-    
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-        false
     }
     
     func updateUI() {
