@@ -17,7 +17,7 @@ extension BibleViewController {
             for index in allIndexesPath {
                 indexes.append(index.row)
             }
-            return indexes
+            return indexes.sorted()
         }
         
         return nil
