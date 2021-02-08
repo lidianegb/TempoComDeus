@@ -36,10 +36,4 @@ extension BibleViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return myCell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard  let myCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as?
-                BibleTableViewCell else { return }
-        myCell.isHighlighted = true
-    }
 }

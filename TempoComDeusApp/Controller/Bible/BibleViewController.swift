@@ -134,6 +134,14 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         self.present(livrosTableView, animated: true)
     }
     
+    func addGestures() {
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        view.addGestureRecognizer(rightSwipe)
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
+    }
+    
     @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
         if sender.state == .ended {
             switch sender.direction {
@@ -204,7 +212,7 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         setupTableView()
         setupPicker()
         setupButtonsNav()
-        setupSwipeGestures()
+        addGestures()
     }
     
     func didSelectSection(abbr: String, chapter: Int) {
@@ -234,14 +242,6 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         false
     }
     
-    private func setupSwipeGestures() {
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        view.addGestureRecognizer(rightSwipe)
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        leftSwipe.direction = .left
-        view.addGestureRecognizer(leftSwipe)
-    }
-
     func updateUI() {
         showHiddenArrowsLeftRight()
         UserDefaultsPersistence.shared.updateDefaultValues(actualChapter: actualChapter)
