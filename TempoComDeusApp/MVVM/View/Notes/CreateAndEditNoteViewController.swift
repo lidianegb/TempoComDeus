@@ -74,6 +74,11 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
             self.color = noteViewModel.color
         }
         
+        if let noteViewModel = noteViewModel, action == .create {
+            textView.text = noteViewModel.text
+            saveButton.isEnabled = true
+        }
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -121,12 +126,13 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func salvar() {
-        switch action {
-        case .create:
+        
+        if let noteViewModel = noteViewModel {
+            noteViewModel.updateNote(text: textView.text, color: color)
+        } else {
             noteViewModel = NoteViewModel(service: service, text: textView.text, color: color)
-        case .edit:
-            noteViewModel?.updateNote(text: textView.text, color: color)
         }
+
         onUpdateNotes?()
         textView.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)
@@ -268,6 +274,9 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     func displayActionSheet() {
         let menu = UIAlertController(title: nil, message: "Descartar alterações?", preferredStyle: .actionSheet)
         let deleteAtion = UIAlertAction(title: "Descartar", style: .destructive, handler: { _ in
+            if self.action == .create {
+                self.service.delete(noteModel: self.noteViewModel?.note)
+            }
             self.dismiss(animated: true, completion: nil)
         })
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)

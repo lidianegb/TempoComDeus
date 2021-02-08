@@ -6,10 +6,12 @@
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
 
 import UIKit
-
+import CoreData
 class BibleViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
+    var context: NSManagedObjectContext!
+    var service: CoreDataService!
     let dataPicker = DataPicker.data()
     let cellId = "CellId"
     var bible: Bible?
@@ -58,7 +60,7 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         tableView.layer.cornerRadius = 8
         tableView.layer.masksToBounds = true
         tableView.separatorStyle = .none
-        tableView.allowsSelection = false
+        tableView.allowsMultipleSelection = true
         tableView.alwaysBounceVertical = false
         tableView.alwaysBounceHorizontal = false
         tableView.delegate = self
@@ -96,9 +98,16 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaultsPersistence.shared.setupDefaultsValues()
+        setContext()
         setupData()
         versionButton.delegate = self
         configureUI()
+    }
+    
+    func setContext() {
+        self.context = (UIApplication.shared.delegate as? AppDelegate)?.persistenceContainer.viewContext
+        context.automaticallyMergesChangesFromParent = true
+        service = CoreDataService(context)
     }
     
     func setupData() {

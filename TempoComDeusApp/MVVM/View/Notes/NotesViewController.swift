@@ -70,6 +70,7 @@ class NotesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
+        notaIsUpdated()
     }
       
       // MARK: Selectors
