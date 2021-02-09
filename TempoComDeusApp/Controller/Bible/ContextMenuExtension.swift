@@ -28,13 +28,17 @@ extension BibleViewController {
         }
     }
     
-    func addNewNote(text: String) {
+    func addNewNote(text: String, indexPath: IndexPath) {
         let newNote = NoteViewModel(service: service,
                                     text: text,
                                     color: 1)
         let novaNotaViewController = CreateAndEditNoteViewController(service: service,
                                                                      noteViewModel: newNote,
                                                                      action: .create)
+        novaNotaViewController.verse = verses[indexPath.row]
+        guard let bibleCell = tableView.cellForRow(at: indexPath) as? BibleTableViewCell else { return }
+        bibleCell.actualVerse = verses[indexPath.row]
+        
         novaNotaViewController.modalPresentationStyle = .fullScreen
         self.present(novaNotaViewController, animated: true)
     }
@@ -58,12 +62,20 @@ extension BibleViewController {
                 self.shareVerses(indexes: indexes)
             }
             
-            let newNoteAction = UIAction(title: "criar nota", image: UIImage(systemName: "doc.badge.plus")) { _ in
-    
-                self.addNewNote(text: self.actualChapter?.getReferenceVerse(selectedIndex: indexPath) ?? "")
+            var noteAction: UIAction!
+            if self.verses[indexPath.row].noteId == nil {
+                noteAction = UIAction(title: "criar nota", image: UIImage(systemName: "doc.badge.plus")) { _ in
+                    
+                    self.addNewNote(text: self.actualChapter?.getReferenceVerse(
+                                        selectedIndex: indexPath) ?? "", indexPath: indexPath)
+                }
+            } else {
+                noteAction = UIAction(title: "ver nota", image: UIImage(systemName: "doc")) { _ in
+                    print(self.verses[indexPath.row].noteId ?? "nil")
+                }
             }
             
-            return UIMenu(title: "", image: nil, children: [copyAction, shareAction, newNoteAction])
+            return UIMenu(title: "", image: nil, children: [copyAction, shareAction, noteAction])
         }
        
     }

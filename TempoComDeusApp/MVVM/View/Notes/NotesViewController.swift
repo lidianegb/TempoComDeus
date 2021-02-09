@@ -154,11 +154,19 @@ class NotesViewController: UIViewController {
     func deleteCell(cell: NotesCollectionViewCell) {
         if let indexPath = collectionView.indexPath(for: cell) {
             collectionView.performBatchUpdates({
+                self.deleteNoteReference(index: indexPath.row)
                 notesViewModel.deleteNote(index: indexPath.row)
                 collectionView.deleteItems(at: [indexPath])
                 notesViewModel.restartNotes()
                 updateUI()
             }, completion: nil)
+        }
+    }
+    
+    func deleteNoteReference(index: Int) {
+        if let noteViewModel = notesViewModel.noteAtIndex(index),
+           let keyVerse = noteViewModel.keyVerse {
+            UserDefaultsPersistence.shared.setNilNoteId(key: keyVerse)
         }
     }
     

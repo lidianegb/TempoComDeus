@@ -14,6 +14,7 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
     private let service: CoreDataService!
     private var stackViewHeader: UIStackView!
     private var stackViewBottom: UIStackView!
+    var verse: Verse?
     var onUpdateNotes: (() -> Void)?
 
     private var noteViewModel: NoteViewModel? {
@@ -132,7 +133,12 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
         } else {
             noteViewModel = NoteViewModel(service: service, text: textView.text, color: color)
         }
-
+        if let verse = verse, let noteViewModel = noteViewModel {
+            noteViewModel.setKeyVerse(
+                keyVerse: verse.abbreviation + "\(verse.chapterNumber)-\(verse.verseNumber)-note")
+            verse.updateNoteId(noteId: noteViewModel.noteId)
+            UserDefaultsPersistence.shared.setNoteId(verse: verse)
+        }
         onUpdateNotes?()
         textView.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)

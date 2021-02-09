@@ -15,17 +15,22 @@ class Verse {
     var isHighlighted: Bool
     var noteId: UUID?
     
-    init(abbreviation: String, chapterNumber: Int, verseNumber: Int, verseText: String, isHighlighted: Bool) {
+    init(abbreviation: String, chapterNumber: Int,
+         verseNumber: Int, verseText: String,
+         isHighlighted: Bool = false, noteId: UUID? = nil) {
         self.abbreviation = abbreviation
         self.chapterNumber = chapterNumber
         self.verseNumber = verseNumber
         self.verseText = verseText
         self.isHighlighted = isHighlighted
-        self.noteId = nil
+        self.noteId = noteId
     }
     
     func setHighlighted(isHighlighted: Bool) {
         self.isHighlighted = isHighlighted
     }
     
+    func updateNoteId(noteId: UUID?) {
+        self.noteId = noteId
+    }
 }

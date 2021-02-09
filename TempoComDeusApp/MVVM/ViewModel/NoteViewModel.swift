@@ -10,6 +10,9 @@ import CoreData
 class NoteViewModel {
     var note: NoteModel!
     private var service: CoreDataService
+    var keyVerse: String? {
+        self.note.keyVerse
+    }
     var noteId: UUID {
         self.note.noteId ?? UUID()
     }
@@ -40,6 +43,11 @@ class NoteViewModel {
     
     func fetchNote(noteId: UUID) -> NoteModel? {
         service.fetchNoteById(noteId: noteId)
+    }
+
+    func setKeyVerse(keyVerse: String) {
+        self.note.keyVerse = keyVerse
+        service.saveContext()
     }
   
     func updateNote(text: String, color: Int16) {

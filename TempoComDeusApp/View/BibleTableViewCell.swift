@@ -8,9 +8,11 @@
 import UIKit
 
 class BibleTableViewCell: UITableViewCell {
-    
+
     var actualVerse: Verse?
-    
+    var fontSize: Int!
+    var stackView: UIStackView!
+   
     let number: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -26,6 +28,10 @@ class BibleTableViewCell: UITableViewCell {
         label.layer.masksToBounds = true
         label.font = UIFont.systemFont(ofSize: 17)
         return label
+    }()
+    
+    let imageNote: UIImageView = {
+        UIImageView(image: UIImage(systemName: "bookmark.fill"))
     }()
     
     override func awakeFromNib() {
@@ -52,13 +58,29 @@ class BibleTableViewCell: UITableViewCell {
         self.actualVerse = actualVerse
         self.backgroundColor = .backViewColor
         self.verse.text = "\(actualVerse.verseNumber + 1).  " + actualVerse.verseText
-        let fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
+        fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
         self.verse.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
         self.selectionStyle = .none
-        addTextVerso()
+        
+        setButtonNoteDimension()
+        addStackView()
         addGestures()
-    
+        setNote()
         self.verse.backgroundColor = actualVerse.isHighlighted ? .highlighted : .clear
+    }
+    
+    func setNote() {
+        if let actualVerse = actualVerse, actualVerse.noteId != nil {
+                imageNote.isHidden = false
+        } else { imageNote.isHidden = true }
+    }
+    
+    func setButtonNoteDimension() {
+        let allConstraints = imageNote.constraints
+        for constraint in allConstraints {
+            imageNote.removeConstraint(constraint)
+        }
+        imageNote.setDimensions(width: CGFloat(fontSize), height: CGFloat(fontSize))
     }
     
     func addGestures() {
@@ -78,21 +100,15 @@ class BibleTableViewCell: UITableViewCell {
         
     }
     
-    func addNumberVerso() {
-        contentView.addSubview(number)
-        number.anchor(top: contentView.topAnchor,
-                      left: contentView.leftAnchor,
-                      paddingTop: 0,
-                      paddingLeft: 16)
-    }
-    func addTextVerso() {
-        contentView.addSubview(verse)
-        verse.anchor(top: contentView.topAnchor,
-                     left: contentView.leftAnchor,
-                     right: contentView.rightAnchor,
-                     paddingTop: 8,
-                     paddingLeft: 8,
-                     paddingRight: 16)
+    func addStackView() {
+        stackView = UIStackView(arrangedSubviews: [verse, imageNote])
+        stackView.alignment = .leading
+        contentView.addSubview(stackView)
+        stackView.anchor(top: contentView.topAnchor,
+                         left: contentView.leftAnchor,
+                         bottom: contentView.bottomAnchor,
+                         right: contentView.rightAnchor,
+                         paddingTop: 8, paddingLeft: 8, paddingRight: 16)
         translatesAutoresizingMaskIntoConstraints = false
         contentView.bottomAnchor.constraint(equalTo: verse.bottomAnchor, constant: 8).isActive = true
     }

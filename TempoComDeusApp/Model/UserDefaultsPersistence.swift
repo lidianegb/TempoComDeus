@@ -38,6 +38,25 @@ struct  UserDefaultsPersistence {
         defaults.set(verse.isHighlighted, forKey: key)
     }
     
+    func getNoteId(abbreviation: String, chapterNumber: Int, verseNumber: Int) -> UUID? {
+        let key = abbreviation + "\(chapterNumber)-\(verseNumber)-note"
+        if let uuidString = defaults.string(forKey: key) {
+            return UUID(uuidString: uuidString)
+        }
+        return nil
+    }
+    
+    func setNoteId(verse: Verse) {
+        let key = verse.abbreviation + "\(verse.chapterNumber)-\(verse.verseNumber)-note"
+        defaults.set(verse.noteId?.uuidString, forKey: key)
+    }
+    
+    func setNilNoteId(key: String) {
+        if defaults.string(forKey: key) != nil {
+            defaults.set("", forKey: key)
+        }
+    }
+    
     func getDefaultChapter() -> Int {
         defaults.integer(forKey: CHAPTER)
     }

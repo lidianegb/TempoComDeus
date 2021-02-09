@@ -22,7 +22,6 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         }
     }
     var widthTitleButtonConstraint: NSLayoutConstraint?
-    
     var fonteSize: Int? {
         didSet {
             tableView.reloadData()
@@ -62,8 +61,6 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         tableView.layer.masksToBounds = true
         tableView.separatorStyle = .none
         tableView.allowsMultipleSelection = true
-        tableView.alwaysBounceVertical = false
-        tableView.alwaysBounceHorizontal = false
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -129,10 +126,15 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
                 let isHighlighted = UserDefaultsPersistence.shared.isHighlighted(
                     abbreviation: actualChapter.abbreviation, chapterNumber: actualChapter.number,
                     verseNumber: index)
-                verses.append(Verse(abbreviation: actualChapter.abbreviation,
-                                    chapterNumber: actualChapter.number,
-                                    verseNumber: index, verseText: verse,
-                                    isHighlighted: isHighlighted))
+                let noteId = UserDefaultsPersistence.shared.getNoteId(
+                    abbreviation: actualChapter.abbreviation,
+                    chapterNumber: actualChapter.number, verseNumber: index)
+              
+                let verse = Verse(abbreviation: actualChapter.abbreviation,
+                                  chapterNumber: actualChapter.number,
+                                  verseNumber: index, verseText: verse,
+                                  isHighlighted: isHighlighted, noteId: noteId)
+                verses.append(verse)
             }
         }
     }
@@ -140,6 +142,7 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
+        updateUI()
     }
     
     // MARK: Selectors
@@ -200,9 +203,8 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         
         if let actualBook = bible.actualBook,
                   let previewChapter = actualBook.getPreviewChapter(actualChapter: actualChapter.number) {
-            
             self.actualChapter = Chapter(bible: bible, number: previewChapter)
-        
+
         } else if let previewBook = bible.getPreviewBook(),
                   let abbreviation = previewBook.abbreviation["pt"] {
                    

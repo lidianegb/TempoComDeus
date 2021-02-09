@@ -212,6 +212,7 @@
 		AF45FC6725C9A28F000EE4C6 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				AF21B47324E5D2EB00D44D39 /* NotesCollectionViewCell.swift */,
 				AF7F203A24E55B1D0058FA2C /* NotesViewController.swift */,
 				AF5D369325A5EC4E00DE3487 /* NotesCollectionDelegates.swift */,
 				AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */,
@@ -327,7 +328,6 @@
 		AF7F203124E558430058FA2C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AF21B47324E5D2EB00D44D39 /* NotesCollectionViewCell.swift */,
 				AFDB6D6024EEA80000F58A6D /* ChaptersCollectionViewCell.swift */,
 				AF51DF8924EDA6D4001C352D /* ChaptersTableViewCell.swift */,
 				AFFA1D1224EC1CF400399F96 /* BibleTableViewCell.swift */,
