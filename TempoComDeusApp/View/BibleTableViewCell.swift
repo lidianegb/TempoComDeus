@@ -33,9 +33,24 @@ class BibleTableViewCell: UITableViewCell {
         
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+         super.setSelected(selected, animated: animated)
+
+         if selected {
+            let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue |
+                                        NSUnderlineStyle.single.rawValue,
+                                      NSAttributedString.Key.underlineColor: UIColor.blueAct]
+                as [NSAttributedString.Key: Any]
+            let underlineAttributedString = NSAttributedString(string: verse.text ?? "", attributes: underlineAttribute)
+            verse.attributedText = underlineAttributedString
+         } else {
+            verse.attributedText = NSMutableAttributedString.init(string: verse.text ?? "")
+         }
+     }
+    
     func createCell(actualVerse: Verse) {
         self.actualVerse = actualVerse
-        backgroundColor = .backViewColor
+        self.backgroundColor = .backViewColor
         self.verse.text = "\(actualVerse.verseNumber + 1).  " + actualVerse.verseText
         let fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
         self.verse.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
@@ -56,6 +71,7 @@ class BibleTableViewCell: UITableViewCell {
         let isHighlighted = self.verse.backgroundColor == .highlighted ? true : false
         self.verse.backgroundColor = isHighlighted ? .clear : .highlighted
         actualVerse?.setHighlighted(isHighlighted: !isHighlighted)
+        verse.attributedText = NSMutableAttributedString.init(string: verse.text ?? "")
         if let actualVerse = actualVerse {
             UserDefaultsPersistence.shared.setVerseHighlighted(verse: actualVerse)
         }

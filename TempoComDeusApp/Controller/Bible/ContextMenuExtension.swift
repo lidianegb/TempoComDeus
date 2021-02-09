@@ -11,20 +11,18 @@ import Foundation
 
 extension BibleViewController {
     
-    func getSelectedIndexes() -> [Int]? {
-        var indexes = [Int]()
+    func getSelectedIndexes() -> [IndexPath] {
+        var indexes = [IndexPath]()
         if let allIndexesPath = self.tableView.indexPathsForSelectedRows {
             for index in allIndexesPath {
-                indexes.append(index.row)
+                indexes.append(index)
             }
-            return indexes.sorted()
         }
-        
-        return nil
+        return indexes
     }
     
-    func shareVerse(indexes: [Int]) {
-        if let verses = actualChapter?.getSelectedVerses(selectedIndexes: indexes) {
+    func shareVerses(indexes: [IndexPath]) {
+        if let verses = actualChapter?.getSelectedVersesText(selectedIndexes: indexes) {
             let viewActivity = UIActivityViewController(activityItems: [verses], applicationActivities: [])
             self.present(viewActivity, animated: true)
         }
@@ -45,21 +43,24 @@ extension BibleViewController {
                    contextMenuConfigurationForRowAt indexPath: IndexPath,
                    point: CGPoint) -> UIContextMenuConfiguration? {
         let identifier = "\(indexPath.row)" as NSString
-        let indexes: [Int] = self.getSelectedIndexes() ?? [indexPath.row]
+        var indexesPath = self.getSelectedIndexes()
+        if !indexesPath.contains(indexPath) {
+            indexesPath.append(indexPath)
+        }
+        let indexes = indexesPath.sorted()
         
         return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { _  in
             let copyAction = UIAction(title: "copiar", image: UIImage(systemName: "doc.on.doc")) { _ in
-                    UIPasteboard.general.string = self.actualChapter?.getSelectedVerses(selectedIndexes: indexes)
+                    UIPasteboard.general.string = self.actualChapter?.getSelectedVersesText(selectedIndexes: indexes)
             }
             
             let shareAction = UIAction(title: "compartilhar", image: UIImage(systemName: "square.and.arrow.up")) { _ in
-                self.shareVerse(indexes: indexes)
+                self.shareVerses(indexes: indexes)
             }
             
             let newNoteAction = UIAction(title: "criar nota", image: UIImage(systemName: "doc.badge.plus")) { _ in
     
-                self.addNewNote(text: self.actualChapter?.getSelectedVerses(
-                                    selectedIndexes: indexes) ?? "")
+                self.addNewNote(text: self.actualChapter?.getReferenceVerse(selectedIndex: indexPath) ?? "")
             }
             
             return UIMenu(title: "", image: nil, children: [copyAction, shareAction, newNoteAction])
