@@ -223,7 +223,7 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     
     private func configureUI() {
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = .backgroundColor
+        navigationController?.navigationBar.tintColor = .blueAct
         navigationController?.navigationBar.isTranslucent = false
         view.backgroundColor = .backgroundColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)

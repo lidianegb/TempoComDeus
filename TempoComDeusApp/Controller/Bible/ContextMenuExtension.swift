@@ -62,20 +62,22 @@ extension BibleViewController {
                 self.shareVerses(indexes: indexes)
             }
             
-            var noteAction: UIAction!
-            if self.verses[indexPath.row].noteId == nil {
-                noteAction = UIAction(title: "criar nota", image: UIImage(systemName: "doc.badge.plus")) { _ in
+            guard let noteID = self.verses[indexPath.row].noteId else {
+                let newNoteAction = UIAction(title: "criar nota", image: UIImage(systemName: "doc.badge.plus")) { _ in
                     
                     self.addNewNote(text: self.actualChapter?.getReferenceVerse(
                                         selectedIndex: indexPath) ?? "", indexPath: indexPath)
                 }
-            } else {
-                noteAction = UIAction(title: "ver nota", image: UIImage(systemName: "doc")) { _ in
-                    print(self.verses[indexPath.row].noteId ?? "nil")
-                }
+                
+                return UIMenu(title: "", image: nil, children: [copyAction, shareAction, newNoteAction])
             }
-            
-            return UIMenu(title: "", image: nil, children: [copyAction, shareAction, noteAction])
+            let viewNoteAction = UIAction(title: "ver nota", image: UIImage(systemName: "doc")) { _ in
+                let noteViewModel = NoteViewModel(service: self.service, noteId: noteID)
+                let viewNote = ViewNoteViewController(service: self.service,
+                                                      noteViewModel: noteViewModel)
+                self.navigationController?.pushViewController(viewNote, animated: true)
+            }
+            return UIMenu(title: "", image: nil, children: [copyAction, shareAction, viewNoteAction])
         }
        
     }

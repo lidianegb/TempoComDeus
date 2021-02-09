@@ -6,13 +6,13 @@
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
 
 import UIKit
-
+import CoreData
 class BibleTableViewCell: UITableViewCell {
 
     var actualVerse: Verse?
     var fontSize: Int!
     var stackView: UIStackView!
-   
+    var service: CoreDataService!
     let number: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -54,7 +54,8 @@ class BibleTableViewCell: UITableViewCell {
          }
      }
     
-    func createCell(actualVerse: Verse) {
+    func createCell(actualVerse: Verse, service: CoreDataService) {
+        self.service = service
         self.actualVerse = actualVerse
         self.backgroundColor = .backViewColor
         self.verse.text = "\(actualVerse.verseNumber + 1).  " + actualVerse.verseText
@@ -70,7 +71,10 @@ class BibleTableViewCell: UITableViewCell {
     }
     
     func setNote() {
-        if let actualVerse = actualVerse, actualVerse.noteId != nil {
+        if let actualVerse = actualVerse, let noteId = actualVerse.noteId {
+            let noteViewModel = NoteViewModel(service: service, noteId: noteId)
+            imageNote.tintColor = UIColor.getColor(number: Int(noteViewModel.color))
+            
                 imageNote.isHidden = false
         } else { imageNote.isHidden = true }
     }
