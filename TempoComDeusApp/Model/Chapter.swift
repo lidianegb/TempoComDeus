@@ -55,7 +55,7 @@ class Chapter: Codable {
     }
     
     func getSelectedVerses(selectedIndexes: [Int]) -> String {
-        var formattedText: String = bookName + " \(number)"
+        var formattedText: String = bookName + " \(number + 1)"
         for index in selectedIndexes {
             formattedText += "\n\(index + 1). " + versicles[index]
         }
