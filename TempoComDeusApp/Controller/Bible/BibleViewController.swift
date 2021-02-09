@@ -18,7 +18,6 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     var verses = [Verse]()
     var actualChapter: Chapter? {
         didSet {
-            setupVerses()
             updateUI()
         }
     }
@@ -120,6 +119,7 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         if let bible = bible {
             self.actualChapter = Chapter(bible: bible, number: chapter)
         }
+        setupVerses()
     }
     
     func setupVerses() {
@@ -257,6 +257,7 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
     func updateUI() {
         showHiddenArrowsLeftRight()
         UserDefaultsPersistence.shared.updateDefaultValues(actualChapter: actualChapter)
+        setupVerses()
         updateButtonTitle()
         tableView.reloadData()
     }
