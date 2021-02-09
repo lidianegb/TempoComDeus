@@ -11,7 +11,6 @@ import Foundation
 class NotesCollectionViewCell: UICollectionViewCell {
 
     var onDeleteCell: ((_ cell: NotesCollectionViewCell) -> Void)?
-    
     var note: NoteViewModel? {
        didSet {
            if let note = note {
