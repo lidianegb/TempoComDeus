@@ -61,4 +61,14 @@ class Bible {
         }
         return nil
     }
+    
+    func generateRamdomVerse() -> String {
+        let bookSelected = booksResume[Int.random(in: 0..<booksResume.count)]
+        let chapterNumber = Int.random(in: 0..<bookSelected.chapters.count)
+        let chapter = bookSelected.chapters[chapterNumber]
+        let verseNumber = Int.random(in: 0..<chapter.count)
+        let verse = chapter[verseNumber]
+        let resultString = bookSelected.name + " \(chapterNumber+1): \(verseNumber+1)\n" + verse
+        return resultString
+    }
 }
