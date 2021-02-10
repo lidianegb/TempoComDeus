@@ -7,9 +7,11 @@
 
 import UIKit
 import CoreData
+import JTMaterialTransition
 class NotesViewController: UIViewController {
 
     // MARK: Properties
+    var transition: JTMaterialTransition?
     var context: NSManagedObjectContext!
     var service: CoreDataService!
     let cellId = "CellId"
@@ -66,11 +68,13 @@ class NotesViewController: UIViewController {
         setContext()
         populateData()
         configureUI()
+        transition = JTMaterialTransition()
+        transition?.startBackgroundColor = .blueAct
+        setAnimatedTransition()
       }
     
     override func viewWillAppear(_ animated: Bool) {
         fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
-        notaIsUpdated()
     }
       
       // MARK: Selectors
@@ -79,7 +83,8 @@ class NotesViewController: UIViewController {
         let novaNotaViewController = CreateAndEditNoteViewController(service: service,
                                                                      noteViewModel: nil,
                                                                      action: .create)
-        novaNotaViewController.modalPresentationStyle = .fullScreen
+        novaNotaViewController.modalPresentationStyle = .custom
+        novaNotaViewController.transitioningDelegate = self.transition
         novaNotaViewController.onUpdateNotes = {
             self.notesViewModel.restartNotes()
             DispatchQueue.main.async {
@@ -89,6 +94,14 @@ class NotesViewController: UIViewController {
         self.present(novaNotaViewController, animated: true)
     }
        // MARK: Helpers
+    
+    func setAnimatedTransition() {
+        let positionY = (navigationController?.navigationBar.frame.height ?? 0) +
+            (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
+        let positionX = view.frame.width - 40
+        
+        transition?.startFrame = CGRect(x: positionX, y: positionY, width: 20, height: 20)
+    }
     
     func setContext() {
         self.context = (UIApplication.shared.delegate as? AppDelegate)?.persistenceContainer.viewContext
@@ -178,6 +191,7 @@ class NotesViewController: UIViewController {
             collectionView.isHidden = false
             initialLabel.isHidden = true
         }
+        collectionView.reloadData()
     }
     
     func notaIsUpdated() {

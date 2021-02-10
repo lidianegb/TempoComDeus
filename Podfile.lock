@@ -1,20 +1,24 @@
 PODS:
+  - JTMaterialTransition (2.0.3)
   - lottie-ios (3.2.1)
   - SwiftLint (0.42.0)
 
 DEPENDENCIES:
+  - JTMaterialTransition (~> 2.0)
   - lottie-ios
   - SwiftLint
 
 SPEC REPOS:
   trunk:
+    - JTMaterialTransition
     - lottie-ios
     - SwiftLint
 
 SPEC CHECKSUMS:
+  JTMaterialTransition: 7ff22aae6cd969734d775708f08e3656c52cb7bf
   lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: 2c8887ac7129c385a08ec0b2e312826c7f41ec27
+PODFILE CHECKSUM: 52bcce76e4af5bdbc57a784637078ec3c6e7ab53
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
