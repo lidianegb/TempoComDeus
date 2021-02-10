@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		60114059C86EF0970045B7A4 /* Pods_TempoComDeusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4374D5D46BF8F458C5DB5F23 /* Pods_TempoComDeusApp.framework */; };
+		AF00490925D31AB500B37767 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00490825D31AB500B37767 /* NotificationController.swift */; };
 		AF015F9825C9BEE800F6861E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF015F9725C9BEE800F6861E /* Action.swift */; };
 		AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */; };
 		AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */; };
@@ -101,6 +102,7 @@
 		925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1CDB9FBAB76BDF26783D292 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusApp_tempoComDeusAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF00490825D31AB500B37767 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		AF015F9725C9BEE800F6861E /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionOneTableViewCell.swift; sourceTree = "<group>"; };
 		AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionTwoTableViewCell.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */,
 				AF1868B32506E494001731AA /* ExtensionBibliaViewController.swift */,
 				AF98FAE525D15D1D00314447 /* ContextMenuExtension.swift */,
+				AF00490825D31AB500B37767 /* NotificationController.swift */,
 			);
 			path = Bible;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				AF34F418250037D900BFAB2D /* File.swift in Sources */,
 				AF7F203724E5592E0058FA2C /* MainTabBarController.swift in Sources */,
 				AF4717602501B03900DDC69A /* BookResume.swift in Sources */,
+				AF00490925D31AB500B37767 /* NotificationController.swift in Sources */,
 				AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */,
 				AF8D318F25CC288400161507 /* Date.swift in Sources */,
 				AF4A206225C8949000F6F14E /* Book.swift in Sources */,

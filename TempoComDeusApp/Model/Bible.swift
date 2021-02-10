@@ -23,6 +23,13 @@ class Bible {
     }
     var allBooks = [Book]()
     
+    init() {
+        self.version = NVI
+        self.abbreviation = ""
+        self.allBooks = File().readBiblia()
+        self.booksResume = File().readBibleByVersion(version: NVI)
+    }
+    
     init(version: String, abbreviation: String) {
         self.version = version
         self.abbreviation = abbreviation
@@ -62,13 +69,13 @@ class Bible {
         return nil
     }
     
-    func generateRamdomVerse() -> String {
+    func generateRamdomVerse() -> (title: String, body: String) {
         let bookSelected = booksResume[Int.random(in: 0..<booksResume.count)]
         let chapterNumber = Int.random(in: 0..<bookSelected.chapters.count)
         let chapter = bookSelected.chapters[chapterNumber]
         let verseNumber = Int.random(in: 0..<chapter.count)
         let verse = chapter[verseNumber]
-        let resultString = bookSelected.name + " \(chapterNumber+1): \(verseNumber+1)\n" + verse
-        return resultString
+        let title = bookSelected.name + " \(chapterNumber+1): \(verseNumber+1)\n"
+        return (title, verse)
     }
 }
