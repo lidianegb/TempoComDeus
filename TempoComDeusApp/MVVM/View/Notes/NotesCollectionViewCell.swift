@@ -7,7 +7,7 @@
 
 import UIKit
 import Foundation
-
+import Lottie
 class NotesCollectionViewCell: UICollectionViewCell {
 
     var onDeleteCell: ((_ cell: NotesCollectionViewCell) -> Void)?
@@ -21,6 +21,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
        }
     }
     
+    var animationView: AnimationView!
     let wrapperView = UIView()
     let labelPreview = UILabel()
     let labelDate = UILabel()
@@ -38,6 +39,21 @@ class NotesCollectionViewCell: UICollectionViewCell {
         addTextDate()
         let fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
         labelPreview.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
+        
+        animationView = .init(name: "delete2")
+        animationView.frame = contentView.bounds
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .playOnce
+        
+        if let note = note {
+            animationView.backgroundColor = .getColor(number: Int(note.color))
+            animationView.tintColor =  .getColor(number: Int(note.color))
+        }
+        animationView.animationSpeed = 0.5
+        animationView.layer.masksToBounds = true
+        animationView.layer.cornerRadius = 8
+        animationView.isHidden = true
+        wrapperView.addSubview(animationView)
     }
     
     private func addWrapperView() {

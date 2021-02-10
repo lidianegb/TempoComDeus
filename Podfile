@@ -7,5 +7,6 @@ target 'TempoComDeusApp' do
 
   # Pods for TempoComDeusApp
 	 pod 'SwiftLint'
+	 pod 'lottie-ios'
 
 end

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -57,6 +57,8 @@
 		AF8E2C5425CB21F1008A1CC7 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */; };
 		AF98FAE625D15D1D00314447 /* ContextMenuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF98FAE525D15D1D00314447 /* ContextMenuExtension.swift */; };
 		AF98FAEB25D1B10300314447 /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF98FAEA25D1B10300314447 /* Verse.swift */; };
+		AFA6413425D4262800C7C8AE /* delete.json in Resources */ = {isa = PBXBuildFile; fileRef = AFA6413325D4262800C7C8AE /* delete.json */; };
+		AFA6413F25D42DF300C7C8AE /* delete2.json in Resources */ = {isa = PBXBuildFile; fileRef = AFA6413E25D42DF300C7C8AE /* delete2.json */; };
 		AFBB37162516D428004B7105 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB37152516D428004B7105 /* UITextView.swift */; };
 		AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */; };
 		AFC2A32624E87A13001A266D /* CreateAndEditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */; };
@@ -155,6 +157,8 @@
 		AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 		AF98FAE525D15D1D00314447 /* ContextMenuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuExtension.swift; sourceTree = "<group>"; };
 		AF98FAEA25D1B10300314447 /* Verse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verse.swift; sourceTree = "<group>"; };
+		AFA6413325D4262800C7C8AE /* delete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = delete.json; sourceTree = "<group>"; };
+		AFA6413E25D42DF300C7C8AE /* delete2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = delete2.json; sourceTree = "<group>"; };
 		AFBB37152516D428004B7105 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNoteViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndEditNoteViewController.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 		AF7F203324E558770058FA2C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AFA6412F25D424B700C7C8AE /* Animations */,
 				AF34F4132500334E00BFAB2D /* MyColors.swift */,
 				AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */,
 				AF34F4152500370A00BFAB2D /* Json.swift */,
@@ -407,6 +412,15 @@
 				AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AFA6412F25D424B700C7C8AE /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				AFA6413E25D42DF300C7C8AE /* delete2.json */,
+				AFA6413325D4262800C7C8AE /* delete.json */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		AFC2A32024E6B8B3001A266D /* Extensions */ = {
@@ -518,6 +532,7 @@
 				AF7F1FFA24E557440058FA2C /* Frameworks */,
 				AF7F1FFB24E557440058FA2C /* Resources */,
 				AF6A1E3D24EFF65A00FF46FF /* ShellScript */,
+				9A8C041D4CC5BF529D8C6EFB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -607,8 +622,10 @@
 				AF7F200D24E557450058FA2C /* LaunchScreen.storyboard in Resources */,
 				AF34F41E250044A200BFAB2D /* aa.json in Resources */,
 				AF7F200A24E557450058FA2C /* Assets.xcassets in Resources */,
+				AFA6413425D4262800C7C8AE /* delete.json in Resources */,
 				AF34F420250044A200BFAB2D /* nvi.json in Resources */,
 				AF34F41F250044A200BFAB2D /* acf.json in Resources */,
+				AFA6413F25D42DF300C7C8AE /* delete2.json in Resources */,
 				AF7F200824E557440058FA2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,6 +640,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		9A8C041D4CC5BF529D8C6EFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AF6A1E3D24EFF65A00FF46FF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

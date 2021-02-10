@@ -18,7 +18,7 @@ class NotificationsController {
     init(center: UNUserNotificationCenter) {
         self.center = center
         (subtitle, body) = Bible().generateRamdomVerse()
-        title = "Você um tempo para Deus?"
+        title = "Reserve um tempo com Deus"
     }
     
     func schenduleNotificationNonRepeat() {
