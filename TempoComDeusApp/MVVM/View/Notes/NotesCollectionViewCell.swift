@@ -40,25 +40,21 @@ class NotesCollectionViewCell: UICollectionViewCell {
         let fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
         labelPreview.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
         
-        animationView = .init(name: "delete2")
-        animationView.frame = contentView.bounds
+        animationView = .init(name: "delete")
+        animationView.frame = contentView.frame
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .playOnce
-        
-        if let note = note {
-            animationView.backgroundColor = .getColor(number: Int(note.color))
-            animationView.tintColor =  .getColor(number: Int(note.color))
-        }
+        animationView.backgroundColor = .backViewColor
         animationView.animationSpeed = 0.5
         animationView.layer.masksToBounds = true
         animationView.layer.cornerRadius = 8
         animationView.isHidden = true
-        wrapperView.addSubview(animationView)
+        contentView.addSubview(animationView)
     }
     
     private func addWrapperView() {
         contentView.addSubview(wrapperView)
-       
+        
         wrapperView.anchor(top: contentView.topAnchor,
                            left: contentView.leftAnchor,
                            bottom: contentView.bottomAnchor,
@@ -121,5 +117,11 @@ class NotesCollectionViewCell: UICollectionViewCell {
     
     @objc func deleteCell() {
         onDeleteCell?(self)
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseIn]) {
+            self.wrapperView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        } completion: { _ in
+            self.animationView.isHidden = false
+        }
+        
     }
 }

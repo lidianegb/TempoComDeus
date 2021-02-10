@@ -68,13 +68,12 @@ class NotesViewController: UIViewController {
         setContext()
         populateData()
         configureUI()
-        transition = JTMaterialTransition()
-        transition?.startBackgroundColor = .blueAct
         setAnimatedTransition()
       }
     
     override func viewWillAppear(_ animated: Bool) {
         fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
+        noteIsUpdated()
     }
       
       // MARK: Selectors
@@ -100,6 +99,8 @@ class NotesViewController: UIViewController {
             (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
         let positionX = view.frame.width - 40
         
+        transition = JTMaterialTransition()
+        transition?.startBackgroundColor = .blueAct
         transition?.startFrame = CGRect(x: positionX, y: positionY, width: 20, height: 20)
     }
     
@@ -153,11 +154,18 @@ class NotesViewController: UIViewController {
     func displayActionSheet(cell: NotesCollectionViewCell) {
             let menu = UIAlertController(title: nil, message: "Deletar nota?", preferredStyle: .actionSheet)
             let deleteAtion = UIAlertAction(title: "Deletar", style: .destructive, handler: { _ in
-                self.deleteCell(cell: cell)
-                    }
-    
-                )
-            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+                cell.animationView.play()
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.4) {
+                    self.deleteCell(cell: cell)
+                }}
+            )
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: {_ in
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveLinear]) {
+                cell.animationView.isHidden = true
+                cell.wrapperView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+                
+            })
             menu.addAction(deleteAtion)
             menu.addAction(cancelAction)
             self.present(menu, animated: true, completion: nil)
@@ -172,7 +180,10 @@ class NotesViewController: UIViewController {
                 collectionView.deleteItems(at: [indexPath])
                 notesViewModel.restartNotes()
                 updateUI()
-            }, completion: nil)
+            }, completion: {_ in
+                cell.animationView.isHidden = true
+                cell.wrapperView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
         }
     }
     
@@ -194,7 +205,7 @@ class NotesViewController: UIViewController {
         collectionView.reloadData()
     }
     
-    func notaIsUpdated() {
+    func noteIsUpdated() {
         notesViewModel.restartNotes()
         updateUI()
     }

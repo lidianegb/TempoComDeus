@@ -47,7 +47,7 @@ UICollectionViewDelegateFlowLayout {
         let viewNote = ViewNoteViewController(service: service,
                                               noteViewModel: notesViewModel.noteAtIndex(indexPath.row)!)
         viewNote.noteIsUpdated = { 
-            self.notaIsUpdated()
+            self.noteIsUpdated()
         }
 
         self.navigationController?.pushViewController(viewNote, animated: true)
