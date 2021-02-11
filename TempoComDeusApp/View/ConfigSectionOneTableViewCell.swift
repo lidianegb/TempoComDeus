@@ -10,7 +10,6 @@ import UIKit
 class ConfigSectionOneTableViewCell: UITableViewCell {
     
     let defaults = UserDefaults.standard
-    
     var darkMode = UserDefaults.standard.bool(forKey: DARK)
     var stackDark: UIStackView!
     var stackLight: UIStackView!
@@ -79,23 +78,38 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
     }
     
     @objc func setDarkMode() {
-        window?.overrideUserInterfaceStyle = .dark
-        defaults.set(true, forKey: DARK)
-        buttonLight.tintColor = .systemGray3
-        buttonDark.tintColor = .blueAct
-        labelModoClaro.isEnabled = false
-        labelModoEscuro.isEnabled = true
-        self.layoutIfNeeded()
+        UIView.animate(withDuration: 0.2, animations: {
+            self.defaults.set(true, forKey: DARK)
+            self.buttonLight.tintColor = .systemGray3
+            self.buttonDark.tintColor = .blueAct
+            self.labelModoClaro.isEnabled = false
+            self.labelModoEscuro.isEnabled = true
+
+            self.layoutIfNeeded()
+        }, completion: { _ in
+            UIView.transition(with: self.window!, duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: { self.window?.overrideUserInterfaceStyle = .dark },
+                              completion: nil)
+        })
     }
     
     @objc func setLightMode() {
-        window?.overrideUserInterfaceStyle = .light
-        defaults.set(false, forKey: DARK)
-        buttonLight.tintColor = .blueAct
-        buttonDark.tintColor = .systemGray3
-        labelModoEscuro.isEnabled = false
-        labelModoClaro.isEnabled = true
-        self.layoutIfNeeded()
+        UIView.animate(withDuration: 0.2, animations: {
+            self.defaults.set(false, forKey: DARK)
+            self.buttonLight.tintColor = .blueAct
+            self.buttonDark.tintColor = .systemGray3
+            self.labelModoEscuro.isEnabled = false
+            self.labelModoClaro.isEnabled = true
+        
+            self.layoutIfNeeded()
+        }, completion: { _ in
+            UIView.transition(with: self.window!, duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: { self.window?.overrideUserInterfaceStyle = .light},
+                              completion: nil)
+        })
+        
     }
     
     func setupWrapperView() {
