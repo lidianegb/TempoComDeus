@@ -23,7 +23,7 @@ class NotesViewController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
                        
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.layer.cornerRadius = 8

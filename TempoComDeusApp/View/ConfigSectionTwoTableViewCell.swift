@@ -19,7 +19,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
      
      let titleLabel: UILabel = {
          let label = UILabel()
-         label.text = "Fonte:"
+         label.text = "Tamanho da Fonte:"
          label.textAlignment = .left
          label.numberOfLines = 1
          label.font = .systemFont(ofSize: 17, weight: .medium)

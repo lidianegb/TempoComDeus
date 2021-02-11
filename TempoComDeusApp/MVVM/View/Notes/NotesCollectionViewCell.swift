@@ -58,11 +58,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
         wrapperView.anchor(top: contentView.topAnchor,
                            left: contentView.leftAnchor,
                            bottom: contentView.bottomAnchor,
-                           right: contentView.rightAnchor,
-                           paddingTop: 0,
-                           paddingLeft: 8,
-                           paddingBottom: 0,
-                           paddingRight: 8)
+                           right: contentView.rightAnchor)
         wrapperView.layer.masksToBounds = true
         wrapperView.layer.cornerRadius = 8
     }
@@ -76,14 +72,14 @@ class NotesCollectionViewCell: UICollectionViewCell {
         labelPreview.anchor(top: wrapperView.topAnchor,
                             left: wrapperView.leftAnchor,
                             right: wrapperView.rightAnchor,
-                            paddingTop: 10,
+                            paddingTop: 20,
                             paddingLeft: 12,
                             paddingRight: 12)
     }
     
     private func addButtonDelete() {
         buttonDelete.setImage(UIImage(systemName: "trash"), for: .normal)
-        buttonDelete.imageView?.tintColor = .secondaryLabel
+        buttonDelete.imageView?.tintColor = .blueAct
         buttonDelete.imageView?.contentMode = .scaleAspectFill
         wrapperView.addSubview(buttonDelete)
         buttonDelete.contentVerticalAlignment = .fill
@@ -94,13 +90,13 @@ class NotesCollectionViewCell: UICollectionViewCell {
                              paddingTop: 10,
                              paddingBottom: 10,
                              paddingRight: 12,
-                             width: 20,
-                             height: 20)
+                             width: 30,
+                             height: 30)
         buttonDelete.addTarget(self, action: #selector(deleteCell), for: .touchUpInside)
     }
     
     private func addTextDate() {
-        labelDate.font = UIFont.systemFont(ofSize: 14)
+        labelDate.font = UIFont.systemFont(ofSize: 15)
        labelDate.textAlignment = .left
        labelDate.textColor = .secondaryLabel
        labelDate.numberOfLines = 1
