@@ -90,8 +90,8 @@ class NotesCollectionViewCell: UICollectionViewCell {
                              paddingTop: 10,
                              paddingBottom: 10,
                              paddingRight: 12,
-                             width: 30,
-                             height: 30)
+                             width: 25,
+                             height: 25)
         buttonDelete.addTarget(self, action: #selector(deleteCell), for: .touchUpInside)
     }
     
