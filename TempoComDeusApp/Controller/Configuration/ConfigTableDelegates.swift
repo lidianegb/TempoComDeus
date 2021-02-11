@@ -47,13 +47,11 @@ extension ConfigViewController: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 50
-        }
-        if indexPath.row == 1 {
-            return 100
+        if indexPath.row > 1 {
+            return CGFloat(tableView.frame.height - 100)
         }
         
-        return CGFloat(tableView.frame.height - 150)
+        return 50
+   
     }
 }

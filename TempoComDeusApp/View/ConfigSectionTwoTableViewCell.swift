@@ -16,69 +16,89 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
          wrapper.layer.masksToBounds = true
          return wrapper
      }()
+    let minimumValue = 17
+    let maximumValue = 28
+    var fontSize: Int = UserDefaultsPersistence.shared.getDefaultFontSize() {
+        didSet {
+            updateFontSize(size: fontSize)
+            updateButtonTintColor(size: fontSize)
+        }
+    }
      
-     let titleLabel: UILabel = {
-         let label = UILabel()
-         label.text = "Tamanho da Fonte:"
-         label.textAlignment = .left
-         label.numberOfLines = 1
-         label.font = .systemFont(ofSize: 17, weight: .medium)
-         label.textColor = .label
-         return label
-     }()
-    
-    let exampleLabel: UILabel = {
+    let labelFontSize: UILabel = {
         let label = UILabel()
-        label.text = "Texto Exemplo"
+        label.text = "Tamanho da Fonte"
         label.textAlignment = .center
         label.numberOfLines = 1
-        label.textColor = .secondaryLabel
-        label.layer.borderColor = UIColor.systemGray3.cgColor
-        label.layer.borderWidth = 1
-        label.layer.cornerRadius = 8
-        label.layer.masksToBounds = true
+        label.textColor = .label
         return label
     }()
     
-    lazy var stepperControl: UIStepper = {
-        let stepper = UIStepper()
-        stepper.minimumValue = 17
-        stepper.maximumValue = 28
-        stepper.stepValue = 1
-        stepper.value = Double(UserDefaultsPersistence.shared.getDefaultFontSize())
-        stepper.setDecrementImage(UIImage(systemName: "minus"), for: .normal)
-        stepper.setIncrementImage(UIImage(systemName: "plus"), for: .normal)
-        stepper.layer.cornerRadius = 8
-        stepper.layer.masksToBounds = true
-        stepper.autorepeat = true
-        stepper.addTarget(self, action: #selector(changeFontValue), for: .touchUpInside)
-        return stepper
+    lazy var buttonPlus: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(plus), for: .touchUpInside)
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        return button
     }()
+    
+    lazy var buttonMinus: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(minus), for: .touchUpInside)
+        button.setImage(UIImage(systemName: "minus"), for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        return button
+    }()
+    
+    @objc func plus() {
+        if fontSize < maximumValue {
+            fontSize += 1
+        }
+    }
+    
+    @objc func minus() {
+        if fontSize > minimumValue {
+            fontSize -= 1
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    @objc func changeFontValue() {
-        let fontSize = Int(stepperControl.value)
-        UserDefaultsPersistence.shared.updateFontSize(size: fontSize)
-        exampleLabel.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
+    func updateFontSize(size: Int) {
+        UserDefaultsPersistence.shared.updateFontSize(size: size)
+        labelFontSize.font = UIFont.systemFont(ofSize: CGFloat(size))
         self.layoutIfNeeded()
+    }
+    
+    func updateButtonTintColor(size: Int) {
+        buttonMinus.tintColor = fontSize == minimumValue ? .systemGray3 : .blueAct
+        buttonMinus.isEnabled = size == minimumValue ? false : true
+        buttonMinus.layer.borderColor = size == minimumValue ?
+            UIColor.systemGray3.cgColor : UIColor.blueAct.cgColor
+        
+        buttonPlus.tintColor = fontSize == maximumValue ? .systemGray3 : .blueAct
+        buttonPlus.isEnabled = size == maximumValue ? false : true
+        buttonPlus.layer.borderColor = size == maximumValue ?
+            UIColor.systemGray3.cgColor : UIColor.blueAct.cgColor
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         self.backgroundColor = .backgroundColor
         setupWrapperView()
-        setupTitleLabel()
-        setupStepper()
-        setupExampleLabel()
+        setupButtonPlus()
+        setupButtonMinus()
+        setupLabelFontSize()
     }
     
     func setupFonteSize() {
-        let fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
-        stepperControl.value = Double(fontSize)
-        exampleLabel.font = .systemFont(ofSize: CGFloat(fontSize))
+        fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
     }
     
     func setupWrapperView() {
@@ -88,30 +108,30 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
                            left: contentView.leftAnchor,
                            bottom: contentView.bottomAnchor,
                            right: contentView.rightAnchor,
-                           paddingTop: 0, paddingLeft: 0,
-                           paddingBottom: 3, paddingRight: 0)
+                           paddingBottom: 3)
     }
     
-    func setupTitleLabel() {
-        contentView.addSubview(titleLabel)
-        titleLabel.anchor(top: wrapperView.topAnchor,
-                          left: wrapperView.leftAnchor,
-                          paddingTop: 8, paddingLeft: 8)
+    func setupButtonPlus() {
+        contentView.addSubview(buttonPlus)
+        buttonPlus.translatesAutoresizingMaskIntoConstraints = false
+        buttonPlus.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor).isActive = true
+        buttonPlus.rightAnchor.constraint(equalTo: wrapperView.rightAnchor, constant: -16).isActive = true
+        buttonPlus.setDimensions(width: 30, height: 30)
     }
     
-    func setupStepper() {
-        contentView.addSubview(stepperControl)
-        stepperControl.anchor(top: wrapperView.topAnchor,
-                              right: wrapperView.rightAnchor,
-                              paddingTop: 8, paddingRight: 8)
+    func setupButtonMinus() {
+        contentView.addSubview(buttonMinus)
+        buttonMinus.translatesAutoresizingMaskIntoConstraints = false
+        buttonMinus.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor).isActive = true
+        buttonMinus.leftAnchor.constraint(equalTo: wrapperView.leftAnchor, constant: 16).isActive = true
+        buttonMinus.setDimensions(width: 30, height: 30)
     }
     
-    func setupExampleLabel() {
-        contentView.addSubview(exampleLabel)
-        exampleLabel.anchor(top: stepperControl.bottomAnchor,
+    func setupLabelFontSize() {
+        contentView.addSubview(labelFontSize)
+        labelFontSize.anchor(top: wrapperView.topAnchor,
                             left: wrapperView.leftAnchor,
-                            right: wrapperView.rightAnchor,
-                            paddingTop: 12, paddingLeft: 8,
-                            paddingRight: 8, height: 40)
+                            bottom: wrapperView.bottomAnchor,
+                            right: wrapperView.rightAnchor)
     }
 }
