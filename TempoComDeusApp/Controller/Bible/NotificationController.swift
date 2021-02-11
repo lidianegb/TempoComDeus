@@ -46,7 +46,7 @@ class NotificationsController {
         content.body = body
         content.sound = .default
             
-        let date = Date().addingTimeInterval(10)
+        let date = Date()
     //    let date = Date().addingTimeInterval(24 * 60 * 60) // -> 24 horas
 //        let dateComponents = Calendar.current.dateComponents(
 //            [.year, .month, .day, .hour, .minute, .second], from: date)
