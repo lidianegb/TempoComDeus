@@ -8,6 +8,5 @@ target 'TempoComDeusApp' do
   # Pods for TempoComDeusApp
 	pod 'SwiftLint'
 	pod 'lottie-ios'
-	pod 'JTMaterialTransition', '~> 2.0'
 	
 end

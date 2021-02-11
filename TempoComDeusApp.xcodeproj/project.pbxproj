@@ -55,6 +55,7 @@
 		AF8E2C4325CB1DF3008A1CC7 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C4225CB1DF3008A1CC7 /* UIAlertController.swift */; };
 		AF8E2C4C25CB21D2008A1CC7 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */; };
 		AF8E2C5425CB21F1008A1CC7 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */; };
+		AF977D0225D5CD12001EAA37 /* NotesTransitionDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF977D0125D5CD12001EAA37 /* NotesTransitionDelegates.swift */; };
 		AF98FAE625D15D1D00314447 /* ContextMenuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF98FAE525D15D1D00314447 /* ContextMenuExtension.swift */; };
 		AF98FAEB25D1B10300314447 /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF98FAEA25D1B10300314447 /* Verse.swift */; };
 		AFA6416E25D45DDE00C7C8AE /* delete.json in Resources */ = {isa = PBXBuildFile; fileRef = AFA6416D25D45DDE00C7C8AE /* delete.json */; };
@@ -94,14 +95,10 @@
 
 /* Begin PBXFileReference section */
 		19E9D45F067F28149909F528 /* Pods-tempoComDeusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp/Pods-tempoComDeusApp.release.xcconfig"; sourceTree = "<group>"; };
-		1BEE505222F55FA8F3FF75C4 /* Pods-tempoComDeusAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusAppTests.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusAppTests/Pods-tempoComDeusAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		358E921D2685D2CE0E27706F /* Pods-TempoComDeusApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempoComDeusApp.debug.xcconfig"; path = "Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp.debug.xcconfig"; sourceTree = "<group>"; };
 		376DB0D253AFBE2AB93CEE18 /* Pods-tempoComDeusApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp/Pods-tempoComDeusApp.debug.xcconfig"; sourceTree = "<group>"; };
-		3B847CA1921DE90A32D01F3D /* Pods-tempoComDeusAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusAppTests.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusAppTests/Pods-tempoComDeusAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		4374D5D46BF8F458C5DB5F23 /* Pods_TempoComDeusApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TempoComDeusApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3AFD92A8E1CD8935F5211B /* Pods_tempoComDeusAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-tempoComDeusApp-tempoComDeusAppUITests/Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1CDB9FBAB76BDF26783D292 /* Pods_tempoComDeusApp_tempoComDeusAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tempoComDeusApp_tempoComDeusAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF00490825D31AB500B37767 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		AF015F9725C9BEE800F6861E /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
@@ -154,6 +151,7 @@
 		AF8E2C4225CB1DF3008A1CC7 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		AF8E2C4B25CB21D2008A1CC7 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		AF8E2C5325CB21F1008A1CC7 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
+		AF977D0125D5CD12001EAA37 /* NotesTransitionDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTransitionDelegates.swift; sourceTree = "<group>"; };
 		AF98FAE525D15D1D00314447 /* ContextMenuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuExtension.swift; sourceTree = "<group>"; };
 		AF98FAEA25D1B10300314447 /* Verse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verse.swift; sourceTree = "<group>"; };
 		AFA6416D25D45DDE00C7C8AE /* delete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = delete.json; sourceTree = "<group>"; };
@@ -221,6 +219,7 @@
 				AF5D369325A5EC4E00DE3487 /* NotesCollectionDelegates.swift */,
 				AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */,
 				AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */,
+				AF977D0125D5CD12001EAA37 /* NotesTransitionDelegates.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -489,10 +488,6 @@
 			children = (
 				376DB0D253AFBE2AB93CEE18 /* Pods-tempoComDeusApp.debug.xcconfig */,
 				19E9D45F067F28149909F528 /* Pods-tempoComDeusApp.release.xcconfig */,
-				9E4507DCD70893862DEB0BA5 /* Pods-tempoComDeusApp-tempoComDeusAppUITests.debug.xcconfig */,
-				925FF4659E50E28250B13DAF /* Pods-tempoComDeusApp-tempoComDeusAppUITests.release.xcconfig */,
-				1BEE505222F55FA8F3FF75C4 /* Pods-tempoComDeusAppTests.debug.xcconfig */,
-				3B847CA1921DE90A32D01F3D /* Pods-tempoComDeusAppTests.release.xcconfig */,
 				358E921D2685D2CE0E27706F /* Pods-TempoComDeusApp.debug.xcconfig */,
 				F4171B03F0493A5F705E0A78 /* Pods-TempoComDeusApp.release.xcconfig */,
 			);
@@ -756,6 +751,7 @@
 				AF89E00D2511662600B5FEDB /* Chapter.swift in Sources */,
 				AF7F203924E55B060058FA2C /* BibleViewController.swift in Sources */,
 				AF34F4142500334E00BFAB2D /* MyColors.swift in Sources */,
+				AF977D0225D5CD12001EAA37 /* NotesTransitionDelegates.swift in Sources */,
 				AF7F203B24E55B1D0058FA2C /* NotesViewController.swift in Sources */,
 				AF4717622501B25000DDC69A /* Constantes.swift in Sources */,
 				AF8D31C325CC6CA100161507 /* CoreDataService.swift in Sources */,

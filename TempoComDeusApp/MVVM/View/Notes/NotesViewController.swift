@@ -7,11 +7,10 @@
 
 import UIKit
 import CoreData
-import JTMaterialTransition
 class NotesViewController: UIViewController {
 
     // MARK: Properties
-    var transition: JTMaterialTransition?
+    var isPresenting: Bool = true
     var context: NSManagedObjectContext!
     var service: CoreDataService!
     let cellId = "CellId"
@@ -68,12 +67,20 @@ class NotesViewController: UIViewController {
         setContext()
         populateData()
         configureUI()
-        setAnimatedTransition()
       }
     
     override func viewWillAppear(_ animated: Bool) {
         fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
         noteIsUpdated()
+    }
+    
+    func animeCell(cell: NotesCollectionViewCell) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+            cell.wrapperView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }, completion: { _ in
+            cell.wrapperView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            
+        })
     }
       
       // MARK: Selectors
@@ -82,8 +89,8 @@ class NotesViewController: UIViewController {
         let novaNotaViewController = CreateAndEditNoteViewController(service: service,
                                                                      noteViewModel: nil,
                                                                      action: .create)
-        novaNotaViewController.modalPresentationStyle = .custom
-        novaNotaViewController.transitioningDelegate = self.transition
+        novaNotaViewController.modalPresentationStyle = .fullScreen
+        novaNotaViewController.modalTransitionStyle = .crossDissolve
         novaNotaViewController.onUpdateNotes = {
             self.notesViewModel.restartNotes()
             DispatchQueue.main.async {
@@ -93,16 +100,6 @@ class NotesViewController: UIViewController {
         self.present(novaNotaViewController, animated: true)
     }
        // MARK: Helpers
-    
-    func setAnimatedTransition() {
-        let positionY = (navigationController?.navigationBar.frame.height ?? 0) +
-            (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
-        let positionX = view.frame.width - 40
-        
-        transition = JTMaterialTransition()
-        transition?.startBackgroundColor = .blueAct
-        transition?.startFrame = CGRect(x: positionX, y: positionY, width: 20, height: 20)
-    }
     
     func setContext() {
         self.context = (UIApplication.shared.delegate as? AppDelegate)?.persistenceContainer.viewContext

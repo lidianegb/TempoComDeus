@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import JTMaterialTransition
 extension NotesViewController: UICollectionViewDataSource, UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout {
     
@@ -25,6 +24,9 @@ UICollectionViewDelegateFlowLayout {
         myCell.createCell()
         myCell.onDeleteCell = { cell in
             self.displayActionSheet(cell: cell)
+        }
+        myCell.onShowCell = { cell in
+            self.animeCell(cell: cell)
         }
         return myCell
     }
@@ -46,11 +48,14 @@ UICollectionViewDelegateFlowLayout {
     
         let viewNote = ViewNoteViewController(service: service,
                                               noteViewModel: notesViewModel.noteAtIndex(indexPath.row)!)
-        viewNote.noteIsUpdated = { 
+        viewNote.noteIsUpdated = {
             self.noteIsUpdated()
         }
-
-        self.navigationController?.pushViewController(viewNote, animated: true)
+        
+        viewNote.modalPresentationStyle = .custom
+        viewNote.transitioningDelegate = self
+       
+        self.present(viewNote, animated: true)
     }
 
 }

@@ -43,6 +43,14 @@ class ViewNoteViewController: UIViewController {
         return button
     }()
     
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Voltar", for: .normal)
+        button.setTitleColor(.blueAct, for: .normal)
+        button.addTarget(self, action: #selector(back), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
@@ -87,10 +95,13 @@ class ViewNoteViewController: UIViewController {
         self.present(viewActivity, animated: true)
     }
     
+    @objc func back() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: Helpers
     
     func configureUI() {
-        navigationController?.navigationBar.shadowImage = UIImage()
         view.backgroundColor = .backgroundColor
         addStackViewButtons()
         addTextView()
@@ -98,10 +109,18 @@ class ViewNoteViewController: UIViewController {
     }
 
     private func addStackViewButtons() {
-        stackTopButtons = UIStackView(arrangedSubviews: [editButton, shareButton])
+        let stackButtons = UIStackView(arrangedSubviews: [editButton, shareButton])
+        stackButtons.distribution = .equalSpacing
+        stackButtons.spacing = 20
+        stackTopButtons = UIStackView(arrangedSubviews: [backButton, stackButtons])
         stackTopButtons.distribution = .equalSpacing
-        stackTopButtons.spacing = 20
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: stackTopButtons)
+        view.addSubview(stackTopButtons)
+        stackTopButtons.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                               left: view.leftAnchor,
+                               right: view.rightAnchor,
+                               paddingTop: 0,
+                               paddingLeft: 8,
+                               paddingRight: 8)
     }
     
     func addTextView() {
@@ -109,11 +128,11 @@ class ViewNoteViewController: UIViewController {
         textView.backgroundColor = .getColor(number: Int(noteViewModel.color))
         
         view.addSubview(textView)
-        textView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+        textView.anchor(top: stackTopButtons.bottomAnchor,
                         left: view.leftAnchor,
                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
                         right: view.rightAnchor,
-                        paddingTop: 0,
+                        paddingTop: 20,
                         paddingLeft: 8,
                         paddingBottom: 0,
                         paddingRight: 8)

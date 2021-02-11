@@ -35,7 +35,7 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    private var textView: UITextView = {
+    lazy var textView: UITextView = {
         let text = UITextView()
         text.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         text.isEditable = true
@@ -48,7 +48,7 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
         return text
     }()
     
-    private let cancelButton: UIButton = {
+    lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Cancelar", for: .normal)
         button.setTitleColor(.blueAct, for: .normal)
@@ -56,7 +56,7 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
         return button
     }()
     
-    private let saveButton: UIButton = {
+    lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Salvar", for: .normal)
         button.setTitleColor(.blueAct, for: .normal)
@@ -74,13 +74,12 @@ class CreateAndEditNoteViewController: UIViewController, UITextViewDelegate {
             self.noteViewModel = noteViewModel
             self.color = noteViewModel.color
         }
+        super.init(nibName: nil, bundle: nil)
         
         if let noteViewModel = noteViewModel, action == .create {
-            textView.text = noteViewModel.text
-            saveButton.isEnabled = true
+            self.textView.text = noteViewModel.text
+            self.saveButton.isEnabled = true
         }
-        
-        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
