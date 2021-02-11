@@ -22,6 +22,7 @@ extension ConfigViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: sectionOne, for: indexPath)
                 as? ConfigSectionOneTableViewCell else { return UITableViewCell() }
+            cell.configureAppearance()
             return cell
             
         }

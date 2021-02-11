@@ -24,33 +24,26 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
     lazy var labelModoClaro: UIButton = {
         let button = UIButton()
         button.setTitle("Modo claro", for: .normal)
-        button.setTitleColor(.secondaryLabel, for: .disabled)
-        button.setTitleColor(.label, for: .normal)
         button.titleLabel?.textAlignment = .left
         button.titleLabel?.font = .systemFont(ofSize: 17)
         button.titleLabel?.tintColor = .secondaryLabel
         button.addTarget(self, action: #selector(setLightMode), for: .touchUpInside)
-        button.isEnabled = darkMode ? false : true
         return button
     }()
     
     lazy var labelModoEscuro: UIButton = {
         let button = UIButton()
         button.setTitle("Modo escuro", for: .normal)
-        button.setTitleColor(.secondaryLabel, for: .disabled)
-        button.setTitleColor(.label, for: .normal)
         button.titleLabel?.textAlignment = .left
         button.titleLabel?.font = .systemFont(ofSize: 17)
         button.titleLabel?.tintColor = .secondaryLabel
         button.addTarget(self, action: #selector(setDarkMode), for: .touchUpInside)
-        button.isEnabled = darkMode ? true : false
         return button
     }()
     
     lazy var buttonLight: UIButton = {
         let button = UIButton()
         button.setDimensions(width: 30, height: 30)
-        button.tintColor = darkMode ? .systemGray3 : .blueAct
         button.setBackgroundImage(UIImage(systemName: "sun.max.fill"), for: .normal)
         button.addTarget(self, action: #selector(setLightMode), for: .touchUpInside)
         return button
@@ -59,12 +52,27 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
     lazy var buttonDark: UIButton = {
         let button = UIButton()
         button.setDimensions(width: 30, height: 30)
-        button.tintColor = darkMode ? .blueAct : .systemGray3
         button.setBackgroundImage(UIImage(systemName: "moon.fill"), for: .normal)
         button.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(setDarkMode), for: .touchUpInside)
         return button
     }()
+    
+    func configureAppearance() {
+        darkMode = UserDefaults.standard.bool(forKey: DARK)
+        if darkMode {
+            buttonDark.tintColor = .blueAct
+            buttonLight.tintColor = .systemGray3
+            labelModoClaro.setTitleColor(.secondaryLabel, for: .normal)
+            labelModoEscuro.setTitleColor(.label, for: .normal)
+            
+        } else {
+            buttonDark.tintColor = .systemGray3
+            buttonLight.tintColor = .blueAct
+            labelModoClaro.setTitleColor(.label, for: .normal)
+            labelModoEscuro.setTitleColor(.secondaryLabel, for: .normal)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -78,38 +86,28 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
     }
     
     @objc func setDarkMode() {
-        UIView.animate(withDuration: 0.2, animations: {
-            self.defaults.set(true, forKey: DARK)
-            self.buttonLight.tintColor = .systemGray3
-            self.buttonDark.tintColor = .blueAct
-            self.labelModoClaro.isEnabled = false
-            self.labelModoEscuro.isEnabled = true
-
-            self.layoutIfNeeded()
-        }, completion: { _ in
-            UIView.transition(with: self.window!, duration: 0.3,
-                              options: .transitionCrossDissolve,
-                              animations: { self.window?.overrideUserInterfaceStyle = .dark },
-                              completion: nil)
-        })
+        UIView.transition(with: self.window!, duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                            self.window?.overrideUserInterfaceStyle = .dark
+                            self.defaults.set(true, forKey: DARK)
+                            self.configureAppearance()
+                            self.layoutIfNeeded()
+                          },
+                          completion: nil)
+        
     }
-    
+
     @objc func setLightMode() {
-        UIView.animate(withDuration: 0.2, animations: {
-            self.defaults.set(false, forKey: DARK)
-            self.buttonLight.tintColor = .blueAct
-            self.buttonDark.tintColor = .systemGray3
-            self.labelModoEscuro.isEnabled = false
-            self.labelModoClaro.isEnabled = true
-        
-            self.layoutIfNeeded()
-        }, completion: { _ in
-            UIView.transition(with: self.window!, duration: 0.3,
-                              options: .transitionCrossDissolve,
-                              animations: { self.window?.overrideUserInterfaceStyle = .light},
-                              completion: nil)
-        })
-        
+        UIView.transition(with: self.window!, duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                            self.window?.overrideUserInterfaceStyle = .light
+                            self.defaults.set(false, forKey: DARK)
+                            self.configureAppearance()
+                            self.layoutIfNeeded()
+                          },
+                          completion: nil)
     }
     
     func setupWrapperView() {
