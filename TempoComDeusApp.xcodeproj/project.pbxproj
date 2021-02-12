@@ -62,7 +62,7 @@
 		AFBB37162516D428004B7105 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB37152516D428004B7105 /* UITextView.swift */; };
 		AFC2A32224E6C70C001A266D /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */; };
 		AFC2A32624E87A13001A266D /* CreateAndEditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */; };
-		AFD310B624F561BB00A74E2E /* TempoComDeusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */; };
+		AFD310B624F561BB00A74E2E /* TestBibleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD310B524F561BB00A74E2E /* TestBibleUITests.swift */; };
 		AFDB6D6124EEA80000F58A6D /* ChaptersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB6D6024EEA80000F58A6D /* ChaptersCollectionViewCell.swift */; };
 		AFF0F45725CD90010096F713 /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F45625CD90010096F713 /* MockCoreDataStack.swift */; };
 		AFF0F47625CDC4890096F713 /* TestCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F47525CDC4890096F713 /* TestCoreDataService.swift */; };
@@ -78,6 +78,7 @@
 		AFFD042525D6AFD100FBC088 /* TestBible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD042425D6AFD100FBC088 /* TestBible.swift */; };
 		AFFD042D25D6B71C00FBC088 /* TestChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD042C25D6B71C00FBC088 /* TestChapter.swift */; };
 		AFFD043C25D6CA3900FBC088 /* TestConfigTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD043725D6C9E000FBC088 /* TestConfigTableView.swift */; };
+		AFFD045125D6E40800FBC088 /* TestNoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD044925D6E33400FBC088 /* TestNoteUITests.swift */; };
 		AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -164,7 +165,7 @@
 		AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNoteViewController.swift; sourceTree = "<group>"; };
 		AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndEditNoteViewController.swift; sourceTree = "<group>"; };
 		AFD310B324F561BB00A74E2E /* tempoComDeusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tempoComDeusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoComDeusUITests.swift; sourceTree = "<group>"; };
+		AFD310B524F561BB00A74E2E /* TestBibleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBibleUITests.swift; sourceTree = "<group>"; };
 		AFD310B724F561BB00A74E2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFDB6D6024EEA80000F58A6D /* ChaptersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersCollectionViewCell.swift; sourceTree = "<group>"; };
 		AFF0F45625CD90010096F713 /* MockCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 		AFFD042425D6AFD100FBC088 /* TestBible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBible.swift; sourceTree = "<group>"; };
 		AFFD042C25D6B71C00FBC088 /* TestChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestChapter.swift; sourceTree = "<group>"; };
 		AFFD043725D6C9E000FBC088 /* TestConfigTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfigTableView.swift; sourceTree = "<group>"; };
+		AFFD044925D6E33400FBC088 /* TestNoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNoteUITests.swift; sourceTree = "<group>"; };
 		AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerBibliaViewController.swift; sourceTree = "<group>"; };
 		F4171B03F0493A5F705E0A78 /* Pods-TempoComDeusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempoComDeusApp.release.xcconfig"; path = "Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -449,9 +451,10 @@
 		AFD310B424F561BB00A74E2E /* TempoComDeusUITests */ = {
 			isa = PBXGroup;
 			children = (
-				AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */,
-				AFD310B724F561BB00A74E2E /* Info.plist */,
+				AFFD044925D6E33400FBC088 /* TestNoteUITests.swift */,
 				AFFD043725D6C9E000FBC088 /* TestConfigTableView.swift */,
+				AFD310B524F561BB00A74E2E /* TestBibleUITests.swift */,
+				AFD310B724F561BB00A74E2E /* Info.plist */,
 			);
 			path = TempoComDeusUITests;
 			sourceTree = "<group>";
@@ -782,7 +785,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFD310B624F561BB00A74E2E /* TempoComDeusUITests.swift in Sources */,
+				AFFD045125D6E40800FBC088 /* TestNoteUITests.swift in Sources */,
+				AFD310B624F561BB00A74E2E /* TestBibleUITests.swift in Sources */,
 				AFFD043C25D6CA3900FBC088 /* TestConfigTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

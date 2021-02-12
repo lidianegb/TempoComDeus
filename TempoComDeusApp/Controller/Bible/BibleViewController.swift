@@ -37,7 +37,7 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         button.titleLabel?.tintColor = .white
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.accessibilityIdentifier = "titleButton"
+       
         button.addTarget(self, action: #selector(showBooks), for: .touchUpInside)
         return button
     }()
@@ -101,6 +101,8 @@ class BibleViewController: UIViewController, UITextFieldDelegate {
         setupData()
         versionButton.delegate = self
         configureUI()
+        
+        titleButton.accessibilityIdentifier = "titleButton"
     }
     
     func setContext() {
