@@ -16,12 +16,12 @@ class Chapter: Codable {
         versicles.count
     }
     
-    init(book: String = "",
+    init(bookName: String = "",
          abbreviation: String = ABBR,
          number: Int = 0, versicles: [String] = [],
          version: String = VERSION) {
         self.abbreviation = abbreviation
-        self.bookName = book
+        self.bookName = bookName
         self.number = number
         self.versicles = versicles
         self.version = version

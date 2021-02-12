@@ -70,9 +70,13 @@
 		AFF0F48825CDE1ED0096F713 /* TestNotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F48725CDE1ED0096F713 /* TestNotesViewModel.swift */; };
 		AFF0F49825CDE7BB0096F713 /* TestBookResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F49725CDE7BB0096F713 /* TestBookResume.swift */; };
 		AFF0F49D25CDEAD90096F713 /* TestBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0F49C25CDEAD90096F713 /* TestBook.swift */; };
-		AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */; };
 		AFFA1D1124EC1C6B00399F96 /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1024EC1C6B00399F96 /* BooksTableViewController.swift */; };
 		AFFA1D1324EC1CF400399F96 /* BibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA1D1224EC1CF400399F96 /* BibleTableViewCell.swift */; };
+		AFFD040225D6A2D600FBC088 /* TestVerse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD040125D6A2D600FBC088 /* TestVerse.swift */; };
+		AFFD040B25D6A48E00FBC088 /* TestMyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD040A25D6A48E00FBC088 /* TestMyColors.swift */; };
+		AFFD041425D6AB1B00FBC088 /* TestCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD041325D6AB1B00FBC088 /* TestCalculator.swift */; };
+		AFFD042525D6AFD100FBC088 /* TestBible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD042425D6AFD100FBC088 /* TestBible.swift */; };
+		AFFD042D25D6B71C00FBC088 /* TestChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD042C25D6B71C00FBC088 /* TestChapter.swift */; };
 		AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -168,9 +172,13 @@
 		AFF0F48725CDE1ED0096F713 /* TestNotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNotesViewModel.swift; sourceTree = "<group>"; };
 		AFF0F49725CDE7BB0096F713 /* TestBookResume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBookResume.swift; sourceTree = "<group>"; };
 		AFF0F49C25CDEAD90096F713 /* TestBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBook.swift; sourceTree = "<group>"; };
-		AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		AFFA1D1024EC1C6B00399F96 /* BooksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewController.swift; sourceTree = "<group>"; };
 		AFFA1D1224EC1CF400399F96 /* BibleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleTableViewCell.swift; sourceTree = "<group>"; };
+		AFFD040125D6A2D600FBC088 /* TestVerse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVerse.swift; sourceTree = "<group>"; };
+		AFFD040A25D6A48E00FBC088 /* TestMyColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMyColors.swift; sourceTree = "<group>"; };
+		AFFD041325D6AB1B00FBC088 /* TestCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCalculator.swift; sourceTree = "<group>"; };
+		AFFD042425D6AFD100FBC088 /* TestBible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBible.swift; sourceTree = "<group>"; };
+		AFFD042C25D6B71C00FBC088 /* TestChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestChapter.swift; sourceTree = "<group>"; };
 		AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerBibliaViewController.swift; sourceTree = "<group>"; };
 		F4171B03F0493A5F705E0A78 /* Pods-TempoComDeusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempoComDeusApp.release.xcconfig"; path = "Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,11 +273,17 @@
 		AF6A1E4524F1492300FF46FF /* ApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
+				AFFD042C25D6B71C00FBC088 /* TestChapter.swift */,
+				AFFD042425D6AFD100FBC088 /* TestBible.swift */,
+				AFF0F49C25CDEAD90096F713 /* TestBook.swift */,
+				AFF0F49725CDE7BB0096F713 /* TestBookResume.swift */,
+				AFFD040125D6A2D600FBC088 /* TestVerse.swift */,
+				AFFD040A25D6A48E00FBC088 /* TestMyColors.swift */,
+				AFFD041325D6AB1B00FBC088 /* TestCalculator.swift */,
 				AFF0F48625CDE1C80096F713 /* Note */,
 				AFF0F47D25CDD6B60096F713 /* CoreData */,
 				AF6A1E4624F1492300FF46FF /* ApplicationTests.swift */,
 				AF6A1E4824F1492300FF46FF /* Info.plist */,
-				AFF0F49725CDE7BB0096F713 /* TestBookResume.swift */,
 			);
 			path = ApplicationTests;
 			sourceTree = "<group>";
@@ -358,7 +372,6 @@
 			children = (
 				AFA6412F25D424B700C7C8AE /* Animations */,
 				AF34F4132500334E00BFAB2D /* MyColors.swift */,
-				AFF120EC24EAB7A2000A9B12 /* FileHelper.swift */,
 				AF34F4152500370A00BFAB2D /* Json.swift */,
 				AF34F417250037D900BFAB2D /* File.swift */,
 				AF4717612501B25000DDC69A /* Constantes.swift */,
@@ -445,7 +458,6 @@
 			children = (
 				AFF0F47525CDC4890096F713 /* TestCoreDataService.swift */,
 				AFF0F45625CD90010096F713 /* MockCoreDataStack.swift */,
-				AFF0F49C25CDEAD90096F713 /* TestBook.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -695,12 +707,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFF0F49D25CDEAD90096F713 /* TestBook.swift in Sources */,
+				AFFD040B25D6A48E00FBC088 /* TestMyColors.swift in Sources */,
 				AFF0F47F25CDD6F60096F713 /* TestNoteViewModel.swift in Sources */,
 				AFF0F45725CD90010096F713 /* MockCoreDataStack.swift in Sources */,
 				AF6A1E4724F1492300FF46FF /* ApplicationTests.swift in Sources */,
 				AFF0F48825CDE1ED0096F713 /* TestNotesViewModel.swift in Sources */,
 				AFF0F47625CDC4890096F713 /* TestCoreDataService.swift in Sources */,
+				AFFD041425D6AB1B00FBC088 /* TestCalculator.swift in Sources */,
+				AFFD042525D6AFD100FBC088 /* TestBible.swift in Sources */,
 				AFF0F49825CDE7BB0096F713 /* TestBookResume.swift in Sources */,
+				AFFD040225D6A2D600FBC088 /* TestVerse.swift in Sources */,
+				AFFD042D25D6B71C00FBC088 /* TestChapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,7 +757,6 @@
 				AF5D369925A5F0C800DE3487 /* ConfigTableDelegates.swift in Sources */,
 				AF1868B42506E494001731AA /* ExtensionBibliaViewController.swift in Sources */,
 				AF1947C424EBF02200724B23 /* Bible.swift in Sources */,
-				AFF120ED24EAB7A2000A9B12 /* FileHelper.swift in Sources */,
 				AFFA1D1124EC1C6B00399F96 /* BooksTableViewController.swift in Sources */,
 				AF3EB88B2508432A003F988F /* ConfigViewController.swift in Sources */,
 				AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */,
