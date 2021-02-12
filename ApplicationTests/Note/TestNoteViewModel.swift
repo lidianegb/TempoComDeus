@@ -54,6 +54,12 @@ class TestNoteViewModel: XCTestCase {
         XCTAssertEqual(sut.color, color)
     }
     
+    func testSetKeyVerse() {
+        let keyVerse = "keyVerse"
+        sut.setKeyVerse(keyVerse: keyVerse)
+        XCTAssertEqual(sut.keyVerse, keyVerse)
+    }
+    
     override func tearDown() {
         self.testCoreDataStack = nil
         self.service = nil
