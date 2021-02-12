@@ -1,33 +1,41 @@
 //
-//  CalculatorTests.swift
+//  TestCalculator.swift
 //  ApplicationTests
 //
 //  Created by Lidiane Gomes Barbosa on 12/02/21.
 //  Copyright © 2021 Lidiane Gomes Barbosa. All rights reserved.
-//
+// swiftlint:disable all
 
 import XCTest
+@testable import tempo_com_Deus
+class TestCalculator: XCTestCase {
 
-class CalculatorTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var sut: Calculator!
+    override func setUp() {
+        sut = Calculator()
+        super.setUp()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCalculeBooksTableViewCellHeight() {
+        var result = Calculator.calculeBooksTableViewCellHeight(totalItems: 1)
+        XCTAssertEqual(result, 70)
+        
+        result = Calculator.calculeBooksTableViewCellHeight(totalItems: 7)
+        XCTAssertEqual(result, 70)
+        
+        result = Calculator.calculeBooksTableViewCellHeight(totalItems: 8)
+        XCTAssertEqual(result, 120)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testCalculeNotesCollectionViewCellSize() {
+        let (width,height) = Calculator.calculeNotesCollectionViewCellSize(width: 20, height: 20)
+        XCTAssertEqual(width, height)
+        XCTAssertEqual(width, 5)
     }
 
 }
