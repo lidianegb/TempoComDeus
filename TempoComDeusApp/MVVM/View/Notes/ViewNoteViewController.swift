@@ -132,7 +132,7 @@ class ViewNoteViewController: UIViewController {
                         left: view.leftAnchor,
                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
                         right: view.rightAnchor,
-                        paddingTop: 20,
+                        paddingTop: 12,
                         paddingLeft: 8,
                         paddingBottom: 0,
                         paddingRight: 8)

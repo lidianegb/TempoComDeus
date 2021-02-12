@@ -75,7 +75,8 @@ extension BibleViewController {
                 let noteViewModel = NoteViewModel(service: self.service, noteId: noteID)
                 let viewNote = ViewNoteViewController(service: self.service,
                                                       noteViewModel: noteViewModel)
-                self.navigationController?.pushViewController(viewNote, animated: true)
+                viewNote.modalPresentationStyle = .fullScreen
+                self.present(viewNote, animated: true)
             }
             return UIMenu(title: "", image: nil, children: [copyAction, shareAction, viewNoteAction])
         }

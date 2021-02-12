@@ -11,7 +11,6 @@ import Lottie
 class NotesCollectionViewCell: UICollectionViewCell {
 
     var onDeleteCell: ((_ cell: NotesCollectionViewCell) -> Void)?
-    var onShowCell: ((_ cell: NotesCollectionViewCell) -> Void)?
     var note: NoteViewModel? {
        didSet {
            if let note = note {
@@ -21,11 +20,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
            }
        }
     }
-    override var isSelected: Bool {
-        didSet {
-            onShowCell?(self)
-        }
-    }
+    
     var animationView: AnimationView!
     let wrapperView = UIView()
     let labelPreview = UILabel()

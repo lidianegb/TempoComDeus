@@ -25,9 +25,6 @@ UICollectionViewDelegateFlowLayout {
         myCell.onDeleteCell = { cell in
             self.displayActionSheet(cell: cell)
         }
-        myCell.onShowCell = { cell in
-            self.animeCell(cell: cell)
-        }
         return myCell
     }
     
