@@ -17,22 +17,27 @@ class TempoComDeusUITests: XCTestCase {
     override func tearDownWithError() throws {
     }
 
-    func testExample() throws {
+    func testSelectChapterBible() throws {
         let app = XCUIApplication()
        app.launch()
-        app.navigationBars["Biblia"]/*@START_MENU_TOKEN@*/.staticTexts["Juízes 21"]/*[[".staticTexts",".buttons[\"Juízes 21\"].staticTexts[\"Juízes 21\"]",".staticTexts[\"Juízes 21\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
- 
+        app.buttons["titleButton"].tap()
         let tablesQuery2 = app.tables
         tablesQuery2/*@START_MENU_TOKEN@*/.staticTexts["Levítico"]/*[[".cells.staticTexts[\"Levítico\"]",".staticTexts[\"Levítico\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-
         let tablesQuery = tablesQuery2
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["16"]/*[[".cells.staticTexts[\"16\"]",".staticTexts[\"16\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-
-        let tabBarsQuery = app.tabBars
-        tabBarsQuery.buttons["Anotações"].tap()
-        tabBarsQuery.buttons["Ajustes"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["sun.max"]/*[[".cells.buttons[\"sun.max\"]",".buttons[\"sun.max\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["moon"]/*[[".cells.buttons[\"moon\"]",".buttons[\"moon\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let bibliaNavigationBar = XCUIApplication().navigationBars["Biblia"]
+        bibliaNavigationBar.buttons["right"].tap()
+        bibliaNavigationBar.buttons["left"].tap()
+        
+    }
+    
+    func testSelecVersionBible() {
+        let app = XCUIApplication()
+        app.launch()
+        app.navigationBars["Biblia"].children(matching: .textField).element.tap()
+        app/*@START_MENU_TOKEN@*/.pickerWheels["Nova Versão Internacional - NVI"]/*[[".pickers.pickerWheels[\"Nova Versão Internacional - NVI\"]",".pickerWheels[\"Nova Versão Internacional - NVI\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.toolbars["Toolbar"].buttons["Done"].tap()
         
     }
 

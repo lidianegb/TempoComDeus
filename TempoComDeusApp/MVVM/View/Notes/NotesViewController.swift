@@ -22,12 +22,12 @@ class NotesViewController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
                        
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.layer.cornerRadius = 8
         collectionView.layer.masksToBounds = true
-        collectionView.backgroundColor = .backViewColor
+        collectionView.backgroundColor = .backgroundColor
         collectionView.alwaysBounceVertical = false
         collectionView.alwaysBounceHorizontal = false
         collectionView.delegate = self

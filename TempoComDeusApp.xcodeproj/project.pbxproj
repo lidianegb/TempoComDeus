@@ -77,6 +77,7 @@
 		AFFD041425D6AB1B00FBC088 /* TestCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD041325D6AB1B00FBC088 /* TestCalculator.swift */; };
 		AFFD042525D6AFD100FBC088 /* TestBible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD042425D6AFD100FBC088 /* TestBible.swift */; };
 		AFFD042D25D6B71C00FBC088 /* TestChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD042C25D6B71C00FBC088 /* TestChapter.swift */; };
+		AFFD043C25D6CA3900FBC088 /* TestConfigTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD043725D6C9E000FBC088 /* TestConfigTableView.swift */; };
 		AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +180,7 @@
 		AFFD041325D6AB1B00FBC088 /* TestCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCalculator.swift; sourceTree = "<group>"; };
 		AFFD042425D6AFD100FBC088 /* TestBible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBible.swift; sourceTree = "<group>"; };
 		AFFD042C25D6B71C00FBC088 /* TestChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestChapter.swift; sourceTree = "<group>"; };
+		AFFD043725D6C9E000FBC088 /* TestConfigTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfigTableView.swift; sourceTree = "<group>"; };
 		AFFEB73625056394006984B6 /* UIPickerBibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerBibliaViewController.swift; sourceTree = "<group>"; };
 		F4171B03F0493A5F705E0A78 /* Pods-TempoComDeusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempoComDeusApp.release.xcconfig"; path = "Target Support Files/Pods-TempoComDeusApp/Pods-TempoComDeusApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -449,6 +451,7 @@
 			children = (
 				AFD310B524F561BB00A74E2E /* TempoComDeusUITests.swift */,
 				AFD310B724F561BB00A74E2E /* Info.plist */,
+				AFFD043725D6C9E000FBC088 /* TestConfigTableView.swift */,
 			);
 			path = TempoComDeusUITests;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD310B624F561BB00A74E2E /* TempoComDeusUITests.swift in Sources */,
+				AFFD043C25D6CA3900FBC088 /* TestConfigTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

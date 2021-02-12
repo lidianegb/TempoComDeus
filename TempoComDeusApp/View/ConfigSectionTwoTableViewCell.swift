@@ -4,11 +4,20 @@
 //
 //  Created by Lidiane Gomes Barbosa on 09/09/20.
 //  Copyright © 2020 Lidiane Gomes Barbosa. All rights reserved.
-
+// swiftlint:disable unused_setter_value
 import UIKit
 
 class ConfigSectionTwoTableViewCell: UITableViewCell {
     
+    override var accessibilityIdentifier: String? {
+        get {
+            "configRowTwoTableViewCell"
+        }
+        set {
+           //  because only red is allowed
+        }
+    }
+
     let wrapperView: UIView = {
          let wrapper = UIView()
          wrapper.backgroundColor = .backViewColor
@@ -31,6 +40,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
         label.textAlignment = .center
         label.numberOfLines = 1
         label.textColor = .label
+        label.accessibilityIdentifier = "labelFontSize"
         return label
     }()
     
@@ -41,6 +51,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
+        button.accessibilityIdentifier = "buttonPlus"
         return button
     }()
     
@@ -51,6 +62,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
+        button.accessibilityIdentifier = "buttonMinus"
         return button
     }()
     
@@ -129,9 +141,8 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
     
     func setupLabelFontSize() {
         contentView.addSubview(labelFontSize)
-        labelFontSize.anchor(top: wrapperView.topAnchor,
-                            left: wrapperView.leftAnchor,
-                            bottom: wrapperView.bottomAnchor,
-                            right: wrapperView.rightAnchor)
+        labelFontSize.translatesAutoresizingMaskIntoConstraints = false
+        labelFontSize.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor).isActive = true
+        labelFontSize.centerXAnchor.constraint(equalTo: wrapperView.centerXAnchor).isActive = true
     }
 }
