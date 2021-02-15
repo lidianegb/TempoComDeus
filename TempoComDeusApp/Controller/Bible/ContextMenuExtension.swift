@@ -61,7 +61,7 @@ extension BibleViewController {
             listIndexs.append(indexPath)
         }
         let indexes = listIndexs.sorted()
-        guard let actualChapter = actualChapter else {return nil}
+        guard let actualChapter = actualChapter, let firstIndex = indexes.first else {return nil}
         
         return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { _  in
             let copyAction = UIAction(title: "copiar", image: UIImage(systemName: "doc.on.doc")) { _ in
@@ -72,11 +72,11 @@ extension BibleViewController {
                 self.shareVerses(indexes: indexes)
             }
             
-            guard let noteID = self.verses[indexPath.row].noteId else {
+            guard let noteID = self.verses[firstIndex.row].noteId else {
                 let newNoteAction = UIAction(title: "criar nota", image: UIImage(systemName: "doc.badge.plus")) { _ in
-                    
+                   
                     self.addNewNote(text: actualChapter.getSelectedVersesText(selectedIndexes: indexes) + "\n",
-                                    indexPath: indexPath)
+                                    indexPath: firstIndex)
                 }
                 
                 return UIMenu(title: "", image: nil, children: [copyAction, shareAction, newNoteAction])

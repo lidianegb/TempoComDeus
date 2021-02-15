@@ -21,24 +21,6 @@ class NotificationsController {
         title = "Reserve um tempo com Deus"
     }
     
-    func schenduleNotificationNonRepeat() {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = body
-        content.subtitle = subtitle
-        content.sound = UNNotificationSound.default
-
-        let trigger = UNTimeIntervalNotificationTrigger(
-          timeInterval: 10,
-          repeats: false)
-        let request = UNNotificationRequest(
-            identifier: UUID().uuidString,
-          content: content,
-          trigger: trigger)
-        center.add(request)
-        
-    }
-    
     func schenduleNotification() {
         let content = UNMutableNotificationContent()
         content.title = title
