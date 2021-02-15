@@ -20,20 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController =  MainTabBarController()
         window?.tintColor = .blueAct
         window?.makeKeyAndVisible()
-  
-        if UserDefaults.standard.object(forKey: DARK) != nil { } else {
-            let isDark = window?.overrideUserInterfaceStyle.rawValue
-            if let isDark = isDark, isDark == 0 {
-                UserDefaults.standard.set(true, forKey: DARK)
-            } else {
-                UserDefaults.standard.set(false, forKey: DARK)
-            }
-        }
-        let darkMode = UserDefaults.standard.bool(forKey: DARK)
-        if darkMode {
-            window?.overrideUserInterfaceStyle = .dark
-        } else {
+        UserDefaultsPersistence.shared.setDefaultKeyTheme()
+        let darkMode = UserDefaultsPersistence.shared.getKeyTheme()
+        print(darkMode)
+        if darkMode == 1 {
             window?.overrideUserInterfaceStyle = .light
+        } else if darkMode == 2 {
+            window?.overrideUserInterfaceStyle = .dark
         }
        
     }

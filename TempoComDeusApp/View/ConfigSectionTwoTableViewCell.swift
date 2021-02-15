@@ -14,7 +14,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
             "configRowTwoTableViewCell"
         }
         set {
-           //  because only red is allowed
+           //  because only get is allowed
         }
     }
 
@@ -25,7 +25,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
          wrapper.layer.masksToBounds = true
          return wrapper
      }()
-    let minimumValue = 17
+    let minimumValue = 15
     let maximumValue = 28
     var fontSize: Int = UserDefaultsPersistence.shared.getDefaultFontSize() {
         didSet {

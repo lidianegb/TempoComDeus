@@ -84,4 +84,17 @@ struct  UserDefaultsPersistence {
         defaults.set(actualChapter.version, forKey: VERSION)
     }
     
+    func setDefaultKeyTheme() {
+        if defaults.object(forKey: THEME) == nil {
+            defaults.setValue(0, forKey: THEME)
+        }
+    }
+    
+    func setKeyTheme(theme: Int) {
+        defaults.setValue(theme, forKey: THEME)
+    }
+    
+    func getKeyTheme() -> Int {
+        defaults.integer(forKey: THEME)
+    }
 }

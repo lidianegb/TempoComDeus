@@ -9,10 +9,10 @@ import UIKit
 
 class ConfigSectionOneTableViewCell: UITableViewCell {
     
-    let defaults = UserDefaults.standard
-    var darkMode = UserDefaults.standard.bool(forKey: DARK)
+    var theme: Int = 0
     var stackDark: UIStackView!
     var stackLight: UIStackView!
+    var statckAuto: UIStackView!
     let wrapperView: UIView = {
         let wrapper = UIView()
         wrapper.backgroundColor = .backViewColor
@@ -21,23 +21,30 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
         return wrapper
     }()
     
-    lazy var labelModoClaro: UIButton = {
+    lazy var labelLightMode: UIButton = {
         let button = UIButton()
-        button.setTitle("Modo claro", for: .normal)
+        button.setTitle("claro", for: .normal)
         button.titleLabel?.textAlignment = .left
         button.titleLabel?.font = .systemFont(ofSize: 17)
-        button.titleLabel?.tintColor = .secondaryLabel
         button.addTarget(self, action: #selector(setLightMode), for: .touchUpInside)
         return button
     }()
     
-    lazy var labelModoEscuro: UIButton = {
+    lazy var labelDarkMode: UIButton = {
         let button = UIButton()
-        button.setTitle("Modo escuro", for: .normal)
+        button.setTitle("escuro", for: .normal)
         button.titleLabel?.textAlignment = .left
         button.titleLabel?.font = .systemFont(ofSize: 17)
-        button.titleLabel?.tintColor = .secondaryLabel
         button.addTarget(self, action: #selector(setDarkMode), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var labelAutoMode: UIButton = {
+        let button = UIButton()
+        button.setTitle("automático", for: .normal)
+        button.titleLabel?.textAlignment = .left
+        button.titleLabel?.font = .systemFont(ofSize: 17)
+        button.addTarget(self, action: #selector(setAutoMode), for: .touchUpInside)
         return button
     }()
     
@@ -52,26 +59,59 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
     lazy var buttonDark: UIButton = {
         let button = UIButton()
         button.setDimensions(width: 30, height: 30)
-        button.setBackgroundImage(UIImage(systemName: "moon.fill"), for: .normal)
+        button.setBackgroundImage(UIImage(systemName: "moon.stars.fill"), for: .normal)
         button.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(setDarkMode), for: .touchUpInside)
         return button
     }()
     
+    lazy var buttonAuto: UIButton = {
+        let button = UIButton()
+        button.setDimensions(width: 30, height: 30)
+        button.setBackgroundImage(UIImage(systemName: "sparkles"), for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(setAutoMode), for: .touchUpInside)
+        return button
+    }()
+    
     func configureAppearance() {
-        darkMode = UserDefaults.standard.bool(forKey: DARK)
-        if darkMode {
-            buttonDark.tintColor = .blueAct
-            buttonLight.tintColor = .systemGray3
-            labelModoClaro.setTitleColor(.secondaryLabel, for: .normal)
-            labelModoEscuro.setTitleColor(.label, for: .normal)
-            
-        } else {
-            buttonDark.tintColor = .systemGray3
-            buttonLight.tintColor = .blueAct
-            labelModoClaro.setTitleColor(.label, for: .normal)
-            labelModoEscuro.setTitleColor(.secondaryLabel, for: .normal)
+        theme = UserDefaults.standard.integer(forKey: THEME)
+
+        switch theme {
+        case 1:
+            configureLighAppearance()
+        case 2:
+            configureDarkAppearance()
+        default:
+            configureAutoAppearance()
         }
+    }
+    
+    func configureAutoAppearance() {
+        buttonDark.tintColor = .systemGray3
+        buttonAuto.tintColor = .blueAct
+        buttonLight.tintColor = .systemGray3
+        labelLightMode.setTitleColor(.secondaryLabel, for: .normal)
+        labelDarkMode.setTitleColor(.secondaryLabel, for: .normal)
+        labelAutoMode.setTitleColor(.label, for: .normal)
+    }
+    
+    func configureLighAppearance() {
+        buttonDark.tintColor = .systemGray3
+        buttonAuto.tintColor = .systemGray3
+        buttonLight.tintColor = .blueAct
+        labelLightMode.setTitleColor(.label, for: .normal)
+        labelDarkMode.setTitleColor(.secondaryLabel, for: .normal)
+        labelAutoMode.setTitleColor(.secondaryLabel, for: .normal)
+    }
+    
+    func configureDarkAppearance() {
+        buttonDark.tintColor = .blueAct
+        buttonLight.tintColor = .systemGray3
+        buttonAuto.tintColor = .systemGray3
+        labelLightMode.setTitleColor(.secondaryLabel, for: .normal)
+        labelAutoMode.setTitleColor(.secondaryLabel, for: .normal)
+        labelDarkMode.setTitleColor(.label, for: .normal)
     }
     
     override func awakeFromNib() {
@@ -90,8 +130,8 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
                           options: .transitionCrossDissolve,
                           animations: {
                             self.window?.overrideUserInterfaceStyle = .dark
-                            self.defaults.set(true, forKey: DARK)
-                            self.configureAppearance()
+                            UserDefaultsPersistence.shared.setKeyTheme(theme: 2)
+                            self.configureDarkAppearance()
                             self.layoutIfNeeded()
                           },
                           completion: nil)
@@ -103,7 +143,20 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
                           options: .transitionCrossDissolve,
                           animations: {
                             self.window?.overrideUserInterfaceStyle = .light
-                            self.defaults.set(false, forKey: DARK)
+                            UserDefaultsPersistence.shared.setKeyTheme(theme: 1)
+                            self.configureLighAppearance()
+                            self.layoutIfNeeded()
+                          },
+                          completion: nil)
+    }
+    
+    @objc func setAutoMode() {
+    
+        UIView.transition(with: self.window!, duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                            self.window?.overrideUserInterfaceStyle = .unspecified
+                            UserDefaultsPersistence.shared.setKeyTheme(theme: 0)
                             self.configureAppearance()
                             self.layoutIfNeeded()
                           },
@@ -120,27 +173,36 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
     }
     
     func setupButtons() {
-        stackLight = UIStackView(arrangedSubviews: [buttonLight, labelModoClaro])
+        stackLight = UIStackView(arrangedSubviews: [buttonLight, labelLightMode])
         stackLight.distribution = .equalCentering
         stackLight.spacing = 8
         stackLight.alignment = .center
         stackLight.axis = .horizontal
-        
-        contentView.addSubview(stackLight)
-        stackLight.translatesAutoresizingMaskIntoConstraints = false
-        stackLight.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        stackLight.leftAnchor.constraint(equalTo: wrapperView.leftAnchor, constant: 8).isActive = true
-        
-        stackDark = UIStackView(arrangedSubviews: [buttonDark, labelModoEscuro])
+    
+        stackDark = UIStackView(arrangedSubviews: [buttonDark, labelDarkMode])
         stackDark.distribution = .equalCentering
         stackDark.spacing = 8
         stackDark.alignment = .center
         stackDark.axis = .horizontal
+
+        statckAuto = UIStackView(arrangedSubviews: [buttonAuto, labelAutoMode])
+        statckAuto.distribution = .equalCentering
+        statckAuto.alignment = .center
+        stackDark.spacing = 8
+        statckAuto.axis = .horizontal
         
-        contentView.addSubview(stackDark)
-        stackDark.translatesAutoresizingMaskIntoConstraints = false
-        stackDark.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        stackDark.rightAnchor.constraint(equalTo: wrapperView.rightAnchor, constant: -8).isActive = true
+        let stack = UIStackView(arrangedSubviews: [stackLight, stackDark, statckAuto])
+        stack.distribution = .equalCentering
+        stack.alignment = .center
+        stack.axis = .horizontal
+        
+        contentView.addSubview(stack)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.anchor(top: wrapperView.topAnchor,
+                     left: wrapperView.leftAnchor,
+                     bottom: wrapperView.bottomAnchor,
+                     right: contentView.rightAnchor,
+                     paddingTop: 2, paddingLeft: 8, paddingBottom: 2, paddingRight: 8)
 
     }
     

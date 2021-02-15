@@ -14,7 +14,7 @@ let AA = "aa"
 let BIBLE = "biblia"
 
 // UserDefaults
-let DARK = "darkMode"
+let THEME = "theme"
 let ABBR = "abbr"
 let VERSION = "version"
 let CHAPTER = "chapter"
