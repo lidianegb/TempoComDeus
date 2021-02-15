@@ -59,7 +59,8 @@ class Chapter: Codable {
         for index in selectedIndexes {
             formattedText += "\n\(index.row + 1). " + versicles[index.row]
         }
-       return formattedText
+       
+       return formattedText + "\n"
     }
     
     func getReferenceVerse(selectedIndex: IndexPath) -> String {

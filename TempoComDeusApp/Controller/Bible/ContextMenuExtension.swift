@@ -44,18 +44,28 @@ extension BibleViewController {
     }
     
     func tableView(_ tableView: UITableView,
+                   previewForHighlightingContextMenuWithConfiguration
+                    configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        guard let identifier = configuration.identifier as? String, let index = Int(identifier),
+            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? BibleTableViewCell
+        else { return nil }
+        return UITargetedPreview(view: cell.contentView)
+    }
+    
+    func tableView(_ tableView: UITableView,
                    contextMenuConfigurationForRowAt indexPath: IndexPath,
                    point: CGPoint) -> UIContextMenuConfiguration? {
         let identifier = "\(indexPath.row)" as NSString
-        var indexesPath = self.getSelectedIndexes()
-        if !indexesPath.contains(indexPath) {
-            indexesPath.append(indexPath)
+        var listIndexs = self.getSelectedIndexes()
+        if !listIndexs.contains(indexPath) {
+            listIndexs.append(indexPath)
         }
-        let indexes = indexesPath.sorted()
+        let indexes = listIndexs.sorted()
+        guard let actualChapter = actualChapter else {return nil}
         
         return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { _  in
             let copyAction = UIAction(title: "copiar", image: UIImage(systemName: "doc.on.doc")) { _ in
-                    UIPasteboard.general.string = self.actualChapter?.getSelectedVersesText(selectedIndexes: indexes)
+                    UIPasteboard.general.string = actualChapter.getSelectedVersesText(selectedIndexes: indexes)
             }
             
             let shareAction = UIAction(title: "compartilhar", image: UIImage(systemName: "square.and.arrow.up")) { _ in
@@ -65,8 +75,8 @@ extension BibleViewController {
             guard let noteID = self.verses[indexPath.row].noteId else {
                 let newNoteAction = UIAction(title: "criar nota", image: UIImage(systemName: "doc.badge.plus")) { _ in
                     
-                    self.addNewNote(text: self.actualChapter?.getReferenceVerse(
-                                        selectedIndex: indexPath) ?? "", indexPath: indexPath)
+                    self.addNewNote(text: actualChapter.getSelectedVersesText(selectedIndexes: indexes) + "\n",
+                                    indexPath: indexPath)
                 }
                 
                 return UIMenu(title: "", image: nil, children: [copyAction, shareAction, newNoteAction])

@@ -38,11 +38,11 @@ class TestChapter: XCTestCase {
     }
     
     func testgetSelectedVersesText() {
-        let selectedVerses = sut.bookName + " \(sut.number + 1)"
+        let selectedVerses = sut.bookName + " \(sut.number + 1)\n"
         let selectedVersesTest = sut.getSelectedVersesText(selectedIndexes: [])
         XCTAssertEqual(selectedVerses, selectedVersesTest)
         
-        let selectedVerses2 = sut.bookName + " \(sut.number + 1)" + "\n1. " + verse1
+        let selectedVerses2 = sut.bookName + " \(sut.number + 1)" + "\n1. " + verse1 + "\n"
         let selectedVersesTest2 = sut.getSelectedVersesText(selectedIndexes: [IndexPath(row: 0, section: 0)])
         XCTAssertEqual(selectedVerses2, selectedVersesTest2)
     }
