@@ -22,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         UserDefaultsPersistence.shared.setDefaultKeyTheme()
         let darkMode = UserDefaultsPersistence.shared.getKeyTheme()
-        print(darkMode)
         if darkMode == 1 {
             window?.overrideUserInterfaceStyle = .light
         } else if darkMode == 2 {

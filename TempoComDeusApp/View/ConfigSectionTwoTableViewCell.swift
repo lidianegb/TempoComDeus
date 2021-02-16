@@ -34,13 +34,21 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
         }
     }
      
-    let labelFontSize: UILabel = {
+    let label: UILabel = {
         let label = UILabel()
-        label.text = "Tamanho da Fonte"
+        label.text = "Tamanho da Fonte:"
         label.textAlignment = .center
         label.numberOfLines = 1
         label.textColor = .label
-        label.accessibilityIdentifier = "labelFontSize"
+        return label
+    }()
+    
+    let labelFontSize: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = "15"
+        label.numberOfLines = 1
+        label.textColor = .label
         return label
     }()
     
@@ -85,6 +93,7 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
     func updateFontSize(size: Int) {
         UserDefaultsPersistence.shared.updateFontSize(size: size)
         labelFontSize.font = UIFont.systemFont(ofSize: CGFloat(size))
+        labelFontSize.text = "\(size)"
         self.layoutIfNeeded()
     }
     
@@ -103,14 +112,12 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.backgroundColor = .backgroundColor
-        setupWrapperView()
-        setupButtonPlus()
-        setupButtonMinus()
-        setupLabelFontSize()
+        setup()
     }
     
     func setupFonteSize() {
         fontSize = UserDefaultsPersistence.shared.getDefaultFontSize()
+        labelFontSize.text = "\(fontSize)"
     }
     
     func setupWrapperView() {
@@ -128,21 +135,34 @@ class ConfigSectionTwoTableViewCell: UITableViewCell {
         buttonPlus.translatesAutoresizingMaskIntoConstraints = false
         buttonPlus.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor).isActive = true
         buttonPlus.rightAnchor.constraint(equalTo: wrapperView.rightAnchor, constant: -16).isActive = true
-        buttonPlus.setDimensions(width: 30, height: 30)
+        buttonPlus.setDimensions(width: 35, height: 35)
     }
-    
+
     func setupButtonMinus() {
         contentView.addSubview(buttonMinus)
         buttonMinus.translatesAutoresizingMaskIntoConstraints = false
         buttonMinus.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor).isActive = true
-        buttonMinus.leftAnchor.constraint(equalTo: wrapperView.leftAnchor, constant: 16).isActive = true
-        buttonMinus.setDimensions(width: 30, height: 30)
+        buttonMinus.rightAnchor.constraint(equalTo: buttonPlus.leftAnchor, constant: -60).isActive = true
+        buttonMinus.setDimensions(width: 35, height: 35)
     }
-    
+
     func setupLabelFontSize() {
         contentView.addSubview(labelFontSize)
         labelFontSize.translatesAutoresizingMaskIntoConstraints = false
         labelFontSize.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor).isActive = true
-        labelFontSize.centerXAnchor.constraint(equalTo: wrapperView.centerXAnchor).isActive = true
+        labelFontSize.rightAnchor.constraint(equalTo: buttonPlus.leftAnchor, constant: -8).isActive = true
+        labelFontSize.leftAnchor.constraint(equalTo: buttonMinus.rightAnchor, constant: 8).isActive = true
+    }
+
+    func setup() {
+        setupWrapperView()
+        contentView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor).isActive = true
+        label.leftAnchor.constraint(equalTo: wrapperView.leftAnchor, constant: 16).isActive = true
+        
+        setupButtonPlus()
+        setupButtonMinus()
+        setupLabelFontSize()
     }
 }
