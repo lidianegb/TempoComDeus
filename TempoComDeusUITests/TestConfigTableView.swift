@@ -19,13 +19,26 @@ class TestConfigTableView: XCTestCase {
     }
 
     func testButtonsDarkAndLightModeConfig() {
+        
         let app = XCUIApplication()
         app.launch()
         app.tabBars["Tab Bar"].buttons["Ajustes"].tap()
         
         let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["moon"]/*[[".cells.buttons[\"moon\"]",".buttons[\"moon\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["sun.max"]/*[[".cells.buttons[\"sun.max\"]",".buttons[\"sun.max\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let buttonTheme = tablesQuery.buttons["buttonTheme"]
+        buttonTheme.tap()
+        
+        let collectionViewsQuery = app.collectionViews
+        collectionViewsQuery.buttons["Modo escuro"].tap()
+        sleep(1)
+        buttonTheme.tap()
+        
+        collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Padrão do sistema"]/*[[".cells.buttons[\"Padrão do sistema\"]",".buttons[\"Padrão do sistema\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(1)
+        buttonTheme.tap()
+        
+        collectionViewsQuery.buttons["Modo claro"].tap()
+        sleep(1)
     }
     
     func testButtonsPlusAndMinusFontConfig() {

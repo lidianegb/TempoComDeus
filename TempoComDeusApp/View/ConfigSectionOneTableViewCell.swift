@@ -36,6 +36,7 @@ class ConfigSectionOneTableViewCell: UITableViewCell {
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
         button.layer.borderColor = UIColor.blueAct.cgColor
+        button.accessibilityLabel = "buttonTheme"
         return button
     }()
     

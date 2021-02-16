@@ -21,9 +21,11 @@ class TestBibleUITests: XCTestCase {
         app.launch()
         app.buttons["titleButton"].tap()
         let tablesQuery2 = app.tables
-        tablesQuery2/*@START_MENU_TOKEN@*/.staticTexts["Levítico"]/*[[".cells.staticTexts[\"Levítico\"]",".staticTexts[\"Levítico\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(1)
+        tablesQuery2.staticTexts["Números"].tap()
+        sleep(1)
         let tablesQuery = tablesQuery2
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["16"]/*[[".cells.staticTexts[\"16\"]",".staticTexts[\"16\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery.staticTexts["16"].tap()
         
         let bibliaNavigationBar = XCUIApplication().navigationBars["Biblia"]
         bibliaNavigationBar.buttons["right"].tap()

@@ -35,7 +35,7 @@ class TestCalculator: XCTestCase {
     func testCalculeNotesCollectionViewCellSize() {
         let (width,height) = Calculator.calculeNotesCollectionViewCellSize(width: 20, height: 20)
         XCTAssertEqual(width, height)
-        XCTAssertEqual(width, 5)
+        XCTAssertEqual(width, -5)
     }
 
 }
