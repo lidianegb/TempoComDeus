@@ -44,7 +44,7 @@ class NotesCollectionViewCell: UICollectionViewCell {
         animationView.frame = contentView.frame
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .playOnce
-        animationView.backgroundColor = .backgroundColor
+        animationView.backgroundColor = .backViewColor
         animationView.animationSpeed = 0.5
         animationView.layer.masksToBounds = true
         animationView.layer.cornerRadius = 8
