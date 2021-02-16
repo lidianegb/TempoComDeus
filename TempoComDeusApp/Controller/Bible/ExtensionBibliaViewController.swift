@@ -14,11 +14,7 @@ extension BibleViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.leftAnchor,
                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                         right: view.rightAnchor,
-                         paddingTop: 0,
-                         paddingLeft: 8,
-                         paddingBottom: 0,
-                         paddingRight: 8)
+                         right: view.rightAnchor)
         tableView.register(BibleTableViewCell.self, forCellReuseIdentifier: cellId)
     }
     
