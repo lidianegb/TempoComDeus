@@ -14,7 +14,7 @@ struct Calculator {
     }
     
     static func calculeNotesCollectionViewCellSize(width: Float, height: Float) -> (width: Float, height: Float) {
-        let cellWidth =  width / 2 - 5
+        let cellWidth =  width / 2 - 15
         let cellHeigth = cellWidth
         
         return (width: cellWidth, height: cellHeigth)
