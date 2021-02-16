@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 class NotesViewModel {
-    private var notes = [NoteViewModel]()
+    var notes = [NoteViewModel]()
     var service: CoreDataService
    
     init(service: CoreDataService) {
@@ -63,5 +63,13 @@ class NotesViewModel {
             return   notes[index].noteId
         }
        return nil
+    }
+    
+    func getFilteredNotes(string: String) -> [NoteViewModel] {
+        var result = [NoteViewModel]()
+        for note in notes where note.text.lowercased().contains(string.lowercased()) {
+            result.append(note)
+        }
+        return result
     }
 }
