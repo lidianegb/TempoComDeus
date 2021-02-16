@@ -112,7 +112,7 @@ class BibleTableViewCell: UITableViewCell {
                          left: contentView.leftAnchor,
                          bottom: contentView.bottomAnchor,
                          right: contentView.rightAnchor,
-                         paddingTop: 8, paddingLeft: 8, paddingRight: 16)
+                         paddingTop: 8, paddingLeft: 16, paddingRight: 16)
         translatesAutoresizingMaskIntoConstraints = false
         contentView.bottomAnchor.constraint(equalTo: verse.bottomAnchor, constant: 8).isActive = true
     }
