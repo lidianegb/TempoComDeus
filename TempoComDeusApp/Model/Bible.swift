@@ -81,7 +81,7 @@ class Bible {
     
     func getFilteredBook(string: String) -> [Book] {
         var result = [Book]()
-        for book in allBooks where book.name.contains(string) {
+        for book in allBooks where book.name.lowercased().contains(string.lowercased()) {
             result.append(book)
         }
         return result
