@@ -49,11 +49,7 @@ class ConfigViewController: UIViewController {
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.leftAnchor,
                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                         right: view.rightAnchor,
-                         paddingTop: 0,
-                         paddingLeft: 8,
-                         paddingBottom: 0,
-                         paddingRight: 8)
+                         right: view.rightAnchor)
         
         tableView.register(ConfigSectionOneTableViewCell.self, forCellReuseIdentifier: sectionOne)
         tableView.register(ConfigSectionTwoTableViewCell.self, forCellReuseIdentifier: sectionTwo)
