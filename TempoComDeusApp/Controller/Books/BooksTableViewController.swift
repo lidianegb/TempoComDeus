@@ -9,12 +9,12 @@ import UIKit
 
 class BooksTableViewController: UIViewController {
     
-    var tableData = File().readBiblia()
+    var tableData = [Book]()
     var abbreviation: String?
-    
+    var data = Bible()
     let cellId = "cellId"
     let cellSection = "cellSection"
-    
+    let searchBar = UISearchBar()
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .backViewColor
@@ -46,13 +46,18 @@ class BooksTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
+        setupSearchController()
+        tableData = data.allBooks
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func configureUI() {
         view.backgroundColor = .backViewColor
-        setupTableView()
         addHeader()
+        setupTableView()
     }
     
     @objc func cancelar() {
@@ -60,22 +65,39 @@ class BooksTableViewController: UIViewController {
     }
     
     func addHeader() {
-        view.insertSubview(cancelButton, at: 1)
+        view.addSubview(cancelButton)
         cancelButton.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
         
-        view.insertSubview(labelTitle, at: 1)
+        view.addSubview(labelTitle)
         labelTitle.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: 16)
+        
+        view.addSubview(searchBar)
+        searchBar.anchor(top: labelTitle.bottomAnchor,
+                         left: view.leftAnchor,
+                         right: view.rightAnchor,
+                         paddingTop: 8, paddingLeft: 16, paddingRight: 16)
+    }
+    
+    func setupSearchController() {
+        searchBar.delegate = self
+        searchBar.searchBarStyle = .prominent
+        searchBar.placeholder = "Buscar livros"
+        searchBar.sizeToFit()
+        searchBar.backgroundColor = .backViewColor
+        searchBar.searchTextField.backgroundColor = .backgroundColor
+        searchBar.isTranslucent = true
+        searchBar.backgroundImage = UIImage()
     }
     
     func setupTableView() {
         tableView.register(ChaptersTableViewCell.self, forCellReuseIdentifier: cellId)
         tableView.register(BooksTableViewSections.self, forCellReuseIdentifier: cellSection)
         view.insertSubview(tableView, at: 0)
-        tableView.anchor(top: view.topAnchor,
+        tableView.anchor(top: searchBar.bottomAnchor,
                          left: view.leftAnchor,
                          bottom: view.bottomAnchor,
                          right: view.rightAnchor,
-                         paddingTop: 50,
+                         paddingTop: 8,
                          paddingLeft: 0,
                          paddingBottom: 0,
                          paddingRight: 0)

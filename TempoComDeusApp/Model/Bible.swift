@@ -78,4 +78,12 @@ class Bible {
         let title = bookSelected.name + " \(chapterNumber+1): \(verseNumber+1)\n"
         return (title, verse)
     }
+    
+    func getFilteredBook(string: String) -> [Book] {
+        var result = [Book]()
+        for book in allBooks where book.name.contains(string) {
+            result.append(book)
+        }
+        return result
+    }
 }

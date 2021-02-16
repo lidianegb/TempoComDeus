@@ -45,10 +45,15 @@ extension BooksTableViewController: UITableViewDelegate, UITableViewDataSource {
         if tableData[indexPath.section].opened == true {
             tableData[indexPath.section].opened = false
             let sections = IndexSet.init(integer: indexPath.section)
-            tableView.reloadSections(sections, with: .none) } else {
+            tableView.beginUpdates()
+            tableView.reloadSections(sections, with: .fade)
+            tableView.endUpdates()
+        } else {
                 tableData[indexPath.section].opened = true
             let sections = IndexSet.init(integer: indexPath.section)
-            tableView.reloadSections(sections, with: .none)
+            tableView.beginUpdates()
+            tableView.reloadSections(sections, with: .fade)
+            tableView.endUpdates()
             
         }
         self.abbreviation = tableData[indexPath.section].abbreviation["pt"]
