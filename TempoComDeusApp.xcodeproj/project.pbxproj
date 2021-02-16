@@ -11,6 +11,7 @@
 		AF00490925D31AB500B37767 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00490825D31AB500B37767 /* NotificationController.swift */; };
 		AF015F9825C9BEE800F6861E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF015F9725C9BEE800F6861E /* Action.swift */; };
 		AF05EA8C25DBF2D100D91FEF /* SearchControllerBooksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF05EA8B25DBF2D100D91FEF /* SearchControllerBooksTableView.swift */; };
+		AF05EA9125DC0C6500D91FEF /* SearchControllerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF05EA9025DC0C6500D91FEF /* SearchControllerDelegates.swift */; };
 		AF16E6FF250996B600F32400 /* ConfigSectionOneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */; };
 		AF16E701250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */; };
 		AF1868B42506E494001731AA /* ExtensionBibliaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1868B32506E494001731AA /* ExtensionBibliaViewController.swift */; };
@@ -110,6 +111,7 @@
 		AF00490825D31AB500B37767 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		AF015F9725C9BEE800F6861E /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		AF05EA8B25DBF2D100D91FEF /* SearchControllerBooksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerBooksTableView.swift; sourceTree = "<group>"; };
+		AF05EA9025DC0C6500D91FEF /* SearchControllerDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerDelegates.swift; sourceTree = "<group>"; };
 		AF16E6FE250996B600F32400 /* ConfigSectionOneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionOneTableViewCell.swift; sourceTree = "<group>"; };
 		AF16E700250996CC00F32400 /* ConfigSectionTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSectionTwoTableViewCell.swift; sourceTree = "<group>"; };
 		AF1868B32506E494001731AA /* ExtensionBibliaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionBibliaViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				AFC2A32524E87A13001A266D /* CreateAndEditNoteViewController.swift */,
 				AFC2A32124E6C70C001A266D /* ViewNoteViewController.swift */,
 				AF977D0125D5CD12001EAA37 /* NotesTransitionDelegates.swift */,
+				AF05EA9025DC0C6500D91FEF /* SearchControllerDelegates.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				AF00490925D31AB500B37767 /* NotificationController.swift in Sources */,
 				AFFEB73725056394006984B6 /* UIPickerBibliaViewController.swift in Sources */,
 				AF8D318F25CC288400161507 /* Date.swift in Sources */,
+				AF05EA9125DC0C6500D91FEF /* SearchControllerDelegates.swift in Sources */,
 				AF4A206225C8949000F6F14E /* Book.swift in Sources */,
 				AF51DF8A24EDA6D4001C352D /* ChaptersTableViewCell.swift in Sources */,
 				AF8E2C3B25CB1065008A1CC7 /* UserDefaultsPersistence.swift in Sources */,

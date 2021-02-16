@@ -65,11 +65,14 @@ class NotesViewModel {
        return nil
     }
     
-    func getFilteredNotes(string: String) -> [NoteViewModel] {
+    func filterNotes(string: String) {
         var result = [NoteViewModel]()
-        for note in notes where note.text.lowercased().contains(string.lowercased()) {
+        var allNotes = fillNotes(notes: fetchNotes())
+        allNotes.reverse()
+        for note in allNotes where note.text.lowercased().contains(string.lowercased()) {
             result.append(note)
         }
-        return result
+        self.notes.removeAll()
+        self.notes = result
     }
 }

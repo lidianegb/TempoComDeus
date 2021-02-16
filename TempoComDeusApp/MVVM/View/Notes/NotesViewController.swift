@@ -11,8 +11,11 @@ class NotesViewController: UIViewController {
 
     // MARK: Properties
     var isPresenting: Bool = true
+    let searchController = UISearchController(searchResultsController: nil)
     var context: NSManagedObjectContext!
     var service: CoreDataService!
+    var searchActive = false
+    var textSearch = ""
     let cellId = "CellId"
     var fonteSize: Int? {
         didSet {
@@ -22,12 +25,12 @@ class NotesViewController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
                        
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.layer.cornerRadius = 8
         collectionView.layer.masksToBounds = true
-        collectionView.backgroundColor = .backgroundColor
+        collectionView.backgroundColor = .backViewColor
         collectionView.alwaysBounceVertical = false
         collectionView.alwaysBounceHorizontal = false
         collectionView.delegate = self
@@ -50,16 +53,6 @@ class NotesViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-
-    let titleLabel: UILabel = {
-        var label = UILabel()
-        label.text = "Anotações"
-        label.textColor = .label
-        label.font = .systemFont(ofSize: 17, weight: .bold)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
    
       // MARK: Lifecycle
       override func viewDidLoad() {
@@ -67,11 +60,13 @@ class NotesViewController: UIViewController {
         setContext()
         populateData()
         configureUI()
+        setupSearchController()
       }
     
     override func viewWillAppear(_ animated: Bool) {
         fonteSize = UserDefaultsPersistence.shared.getDefaultFontSize()
         noteIsUpdated()
+        navigationItem.searchController = nil
     }
     
     func animeCell(cell: NotesCollectionViewCell) {
@@ -112,19 +107,41 @@ class NotesViewController: UIViewController {
     }
     
     func configureUI() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = .backgroundColor
+        navigationItem.searchController = nil
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = false
         view.backgroundColor = .backgroundColor
-        navigationItem.titleView = titleLabel
+        navigationItem.title = "Anotações"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(createNewNota))
-        addTextInicial()
         setupCollectionView()
+        addTextInicial()
     }
 
+    func setupSearchController() {
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Buscar notas"
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.isTranslucent = true
+        searchController.searchBar.sizeToFit()
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.becomeFirstResponder()
+        searchController.searchBar.backgroundColor = .backgroundColor
+        self.definesPresentationContext = true
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+            if scrollView == self.collectionView {
+                navigationItem.searchController = searchController
+            }
+    }
+    
     func addTextInicial() {
-        view.addSubview(initialLabel)
+        collectionView.addSubview(initialLabel)
         initialLabel.anchor(left: view.leftAnchor,
                             right: view.rightAnchor,
                             paddingLeft: 16,
@@ -140,12 +157,7 @@ class NotesViewController: UIViewController {
         collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                               left: view.leftAnchor,
                               bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                              right: view.rightAnchor,
-                              paddingTop: 0,
-                              paddingLeft: 8,
-                              paddingBottom: 0,
-                              paddingRight: 8)
-        
+                              right: view.rightAnchor)
        }
     
     func displayActionSheet(cell: NotesCollectionViewCell) {
@@ -175,8 +187,12 @@ class NotesViewController: UIViewController {
                 self.deleteNoteReference(index: indexPath.row)
                 notesViewModel.deleteNote(index: indexPath.row)
                 collectionView.deleteItems(at: [indexPath])
-                notesViewModel.restartNotes()
-                updateUI()
+                if searchActive {
+                    notesViewModel.filterNotes(string: textSearch)
+                } else {
+                    notesViewModel.restartNotes()
+                    self.updateUI()
+                }
             }, completion: {_ in
                 cell.animationView.isHidden = true
                 cell.wrapperView.transform = CGAffineTransform(scaleX: 1, y: 1)
@@ -194,9 +210,8 @@ class NotesViewController: UIViewController {
     func updateUI() {
         if notesViewModel.isEmpty() {
             initialLabel.isHidden = false
-            collectionView.isHidden = true
+            navigationItem.searchController = nil
         } else {
-            collectionView.isHidden = false
             initialLabel.isHidden = true
         }
         collectionView.reloadData()
