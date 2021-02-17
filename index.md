@@ -1,5 +1,4 @@
-# Bem vindo ao Tempo Com Deus
-# Política de privacidade
+# Política de privacidade Tempo Com Deus
 
 Lidiane Gomes Barbosa desenvolveu o aplicativo Tempo Com Deus como um aplicativo gratuito. Este SERVIÇO é prestado por Lidiane Gomes Barbosa sem custos e destina-se à utilização tal como está.
 Esta página é usada para informar os visitantes sobre minhas políticas de coleta, uso e divulgação de Informações Pessoais, caso alguém decida usar meu Serviço.
