@@ -37,6 +37,6 @@ Posso atualizar nossa Política de Privacidade eventualmente. Portanto, recomend
 
 ## Contate-Nos
 
-Se você tiver dúvidas ou sugestões sobre a minha Política de Privacidade, não hesite em entrar em contato comigo pelo e-mail letrandoabc@gmail.com.
+Se você tiver dúvidas ou sugestões sobre a minha Política de Privacidade, não hesite em entrar em contato comigo pelo e-mail lidianegomesbarbosa@gmail.com.
 
 Esta página de política de privacidade foi criada em [privacypolicytemplate.net](https://privacypolicytemplate.net) e modificado por Lidiane Gomes Barbosa
