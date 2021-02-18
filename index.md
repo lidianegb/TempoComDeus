@@ -27,6 +27,8 @@ Valorizo sua confiança em nos fornecer suas informações pessoais, portanto, e
 
 Este serviço pode conter links para outros sites. Se você clicar em um link de terceiros, você será direcionado a esse site. Observe que esses sites externos não são operados por mim. Portanto, recomendo fortemente que você reveja a Política de Privacidade desses sites. Não tenho controle e não assumo qualquer responsabilidade pelo conteúdo, políticas de privacidade ou práticas de quaisquer sites ou serviços de terceiros.
 
+## Diretitos de Conteúdos 
+As traduções bíblicas deste projeto são de autoria e propriedade intelectual da Sociedade Bíblica Internacional (NVI), da Sociedade Bíblica Trinitariana (ACF) e da Imprensa Bíblica Brasileira (AA). Todos os direitos reservados aos autores.
 
 ## Mudanças nesta Política de Privacidade
 
