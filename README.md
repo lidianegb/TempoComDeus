@@ -12,8 +12,8 @@ Colocar Deus sempre em primeiro lugar nas nossas vidas faz com que cresçamos e 
 
 Download na [App Store](https://apps.apple.com/us/app/tempo-com-deus/id1551323588)
 
-<img align="left" width="414" height="896" src="https://github.com/LidyIfce/AppTempoComDeus/blob/screenshots/screenshots/tempoComDeus_01.png">
-<img align="left" width="414" height="896" src="https://github.com/LidyIfce/AppTempoComDeus/blob/screenshots/screenshots/tempoComDeus_02.png">
+<img align="left" width="310.5" height="651.75" src="https://github.com/LidyIfce/AppTempoComDeus/blob/screenshots/screenshots/tempoComDeus_01.png">
+<img align="left" width="310.5" height="651.75" src="https://github.com/LidyIfce/AppTempoComDeus/blob/screenshots/screenshots/tempoComDeus_02.png">
 
 <img align="left" width="414" height="896" src="https://github.com/LidyIfce/AppTempoComDeus/blob/screenshots/screenshots/tempoComDeus_03.png">
 <img align="left" width="414" height="896" src="https://github.com/LidyIfce/AppTempoComDeus/blob/screenshots/screenshots/tempoComDeus_04.png">
